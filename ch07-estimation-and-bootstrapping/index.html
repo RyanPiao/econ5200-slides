@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=d9aedc36cd98c8bd1cf92e1db6795e68">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=cd4e6a0a6c8f910fe543c83338c3f350">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estimation &amp; Bootstrapping</title>
@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../mock-cell.css">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
@@ -110,6 +111,21 @@
         <p class="text-lg">Nothing was wrong with the data. The <em>uncertainty formula</em> failed. Today: what to do when you cannot trust it &mdash; and, harder, how to tell whether the replacement is any better.</p>
       </div>
       <div class="footnote">Federal Reserve Board, &ldquo;Costs of Rising Uncertainty,&rdquo; FEDS Notes, April 2025.</div>
+    </section>
+
+    <section id="room-boot-vote" style="padding: 34px 60px;">
+      <h2><i class="fa-solid fa-mobile-screen" style="color: var(--secondary-color);"></i> Room Poll: Minutes From Your Door to This Room</h2>
+      <div class="content">
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 16px 24px; margin-top: 6px;">
+          <p style="font-size: 16pt; line-height: 1.55; margin: 0;">Today, how many minutes did it take you to get here, door to door, from wherever you started to this room? A rough guess is fine, and rounding to the nearest five is fine.</p>
+        </div>
+        <div class="poll-number" data-poll-id="ch07-econ5200-poll-5" data-poll-voting data-min="0" data-max="240" data-step="1" data-unit="min" style="margin-top: 26px;"></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;">
+          <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 12px 18px;"><p style="font-size: 14.5pt; margin: 0;">We report the room&rsquo;s <strong>median</strong>: the centre that a few long journeys cannot drag.</p></div>
+          <div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 12px 18px;"><p style="font-size: 14.5pt; margin: 0;">Then the question Section 3 ends on: what is the <strong>standard error</strong> of that median?</p></div>
+        </div>
+        <p style="font-size: 15pt; margin-top: 18px; text-align: center; color: var(--muted-color);">No results yet. The room&rsquo;s numbers come back in Section 4, resampled 2,000 times.</p>
+      </div>
     </section>
 
     <section id="div-1" class="section-divider" data-state="is-section-divider">
@@ -351,23 +367,39 @@
       </div>
     </section>
 
-    <section id="degenerate" style="padding: 34px 50px;">
-      <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> Now Break It on Purpose: Median Age, Adult Census</h2>
+    <section id="room-boot-reveal" style="padding: 22px 46px;">
+      <h2 style="font-size: 22pt; margin-bottom: 8px;"><i class="fa-solid fa-dice" style="color: var(--accent-color);"></i> Your Room, Resampled: the Median Has an SE Now</h2>
       <div class="content">
-        <p class="text-lg">An analyst reports a 95% CI for median age and gets <code>[37.0, 37.0]</code>. They conclude the median is known exactly and move on. Here is what the code actually prints:</p>
-        <pre style="font-size: 13.5pt; background: #f8f6f3; padding: 16px 20px; border-radius: 8px; margin: 12px 0; line-height: 1.5;"><code>n:                 32,561
-Sample median:     37.0
-Bootstrap SE:      0.000000
-Percentile 95% CI: [37.0, 37.0]
-Distinct values across 2,000 resamples: 1</code></pre>
-        <div class="key-result">
-          <p><strong>This is not a bug.</strong> Age is integer-valued and heavily tied at the middle of the distribution. At \(n = 32{,}561\) the median is pinned: every one of 2,000 resamples returns 37. The bootstrap is correctly reporting that <em>the estimator does not move</em>.</p>
+        <div style="display: grid; grid-template-columns: 1fr 470px; gap: 20px; align-items: start;">
+          <div class="poll-number-results" data-poll-id="ch07-econ5200-poll-5" data-min="0" data-max="240" data-unit="min" data-waiting="Waiting for the Room Poll &mdash; this slide runs on the room&rsquo;s own minutes."></div>
+          <div>
+            <p style="font-size: 12.5pt; font-weight: 700; margin: 0 0 4px; color: #3A3632;">The five lines Diagnosis 1 prints, on the room&rsquo;s minutes</p>
+            <pre style="font-size: 12.5pt; background: #f8f6f3; padding: 12px 16px; border-radius: 8px; margin: 0; line-height: 1.5;"><code>n:                 <span data-poll-fill="ch07-econ5200-poll-5" data-key="n">&mdash;</span>
+Sample median:     <span data-poll-fill="ch07-econ5200-poll-5" data-key="median.all">&mdash;</span> min
+Bootstrap SE:      <span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.se.median">&mdash;</span>
+Percentile 95% CI: [<span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.ci.median.lo">&mdash;</span>, <span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.ci.median.hi">&mdash;</span>]
+Distinct values across <span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.B">&mdash;</span> resamples: <span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.distinct.median">&mdash;</span></code></pre>
+          </div>
         </div>
-        <div class="misconception">
-          <p><strong>What it is NOT reporting:</strong> that the population median is 37.0 with certainty. It is reporting that the resampling variability of this statistic, at this \(n\), is below the resolution of the statistic itself.</p>
+        <div class="fragment fade-up" style="background: #f0f5f8; border-radius: 8px; padding: 9px 18px; margin-top: 10px; font-size: 14pt; line-height: 1.5;">
+          <strong>The mean already had a formula.</strong> SD/&radic;n = <span data-poll-fill="ch07-econ5200-poll-5" data-key="se.mean">&mdash;</span> min; the bootstrap SE of the mean is <span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.se.mean">&mdash;</span> min. Two routes to one number.
+        </div>
+        <div class="fragment fade-up" style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 9px 18px; margin-top: 8px; font-size: 14pt; line-height: 1.5;">
+          <strong>The median had none.</strong> Its SE here, <span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.se.median">&mdash;</span> min, comes from resampling alone. And the 2,000 resampled medians landed on only <span data-poll-fill="ch07-econ5200-poll-5" data-key="boot.distinct.median">&mdash;</span> distinct values: with rounded minutes the median can only sit on a number someone typed. Next slide: 32,561 ages, and that count is 1.
         </div>
       </div>
-      <div class="footnote">Lab 7, Diagnosis 1 &mdash; executed on this machine. Hours-per-week does the same thing: median 40.0, SE 0.000000, one distinct value.</div>
+    </section>
+
+    <section id="degenerate" style="padding: 26px 50px;">
+      <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> Now Break It on Purpose: Median Age, Adult Census</h2>
+      <div class="content">
+        <p class="text-lg" style="margin-bottom: 6px;">An analyst reports a 95% CI for median age of <code>[37.0, 37.0]</code> and concludes the median is known exactly. Diagnosis 1 is their code, run as-is:</p>
+        <div class="mock colab" data-src="cells/ch07.json" data-cell="4" data-lines="3-4,6-7,11,14" data-size="11pt" style="max-width: 1100px;"></div>
+        <div class="key-result" style="margin-top: 8px;">
+          <p><strong>This is not a bug.</strong> Age is integer-valued and heavily tied at the middle, so at \(n = 32{,}561\) every one of 2,000 resamples returns 37. The bootstrap reports that <em>the estimator does not move</em>, not that the population median is 37.0 with certainty.</p>
+        </div>
+      </div>
+      <div class="footnote">Lab 7, Diagnosis 1 (cell 4): the published notebook, run by the runner behind this cell. Hours-per-week does the same thing: median 40.0, SE 0.000000, one distinct value.</div>
     </section>
 
     <section id="degenerate-figure" style="padding: 22px 50px;">
@@ -386,17 +418,11 @@ Distinct values across 2,000 resamples: 1</code></pre>
       </div>
     </section>
 
-    <section id="bca-refuses" style="padding: 34px 50px;">
+    <section id="bca-refuses" style="padding: 26px 50px;">
       <h2><i class="fa-solid fa-hand" style="color: var(--danger-color);"></i> Ask BCa for an Interval on That, and It Refuses</h2>
       <div class="content">
-        <pre style="font-size: 13pt; background: #f8f6f3; padding: 16px 20px; border-radius: 8px; margin: 8px 0; line-height: 1.5;"><code>WARNING RAISED: RuntimeWarning
-  invalid value encountered in scalar divide
-WARNING RAISED: DegenerateDataWarning
-  The BCa confidence interval cannot be calculated. This problem is known
-  to occur when the distribution is degenerate or the statistic is np.min.
-
-BCa 95% CI: [nan, nan]</code></pre>
-        <p class="text-lg"><strong>Read the warning, not the number.</strong> BCa's acceleration constant comes from the <em>jackknife</em>: leave one observation out at a time and see how far the statistic moves. Here it never moves, so the acceleration is \(0/0\) and scipy returns <code>nan</code> rather than a confidently wrong interval.</p>
+        <div class="mock colab" data-src="cells/ch07.json" data-cell="7" data-lines="5,9-10,15" data-size="9.6pt" style="max-width: 1100px;"></div>
+        <p class="text-lg" style="margin-top: 8px;"><strong>Read the warning, not the number.</strong> BCa&#x27;s acceleration constant comes from the <em>jackknife</em>: leave one observation out at a time and see how far the statistic moves. Here it never moves, so the acceleration is \(0/0\) and scipy returns <code>nan</code> rather than a confidently wrong interval.</p>
         <div class="key-result">
           <p><strong>A method that refuses to answer is behaving well.</strong> The failure mode to fear is the one that returns something plausible &mdash; which is exactly what the next two sections do, twice, at scale.</p>
         </div>
@@ -659,21 +685,16 @@ BCa 95% CI: [nan, nan]</code></pre>
       </div>
     </section>
 
-    <section id="coverage-table" style="padding: 34px 50px;">
+    <section id="coverage-table" style="padding: 26px 50px;">
       <h2><i class="fa-solid fa-table" style="color: var(--accent-color);"></i> Measured &mdash; Read the Top Two Rows First</h2>
       <div class="content">
-        <pre style="font-size: 15pt; background: #f8f6f3; padding: 18px 24px; border-radius: 8px; margin: 8px 0; line-height: 1.6;"><code>  target       method   coverage    MC SE
-------------------------------------------
-    mean   parametric     92.5%     1.3%
-    mean    bootstrap     92.0%     1.4%
-  median   parametric     66.8%     2.4%
-  median    bootstrap     92.8%     1.3%</code></pre>
-        <p class="text-lg">Nominal is 95% in all four rows. Two of these numbers are noise apart. One of them is a catastrophe.</p>
+        <div class="mock colab" data-src="cells/ch07.json" data-cell="11" data-lines="3,5,10-12" data-size="11.5pt" style="max-width: 1100px;"></div>
+        <p class="text-lg" style="margin-top: 8px;">Nominal is 95% in all four rows. Two of these numbers are noise apart. One of them is a catastrophe.</p>
         <div class="key-result">
           <p>Before the next slide: <strong>which pair is which</strong>, and does the answer match what Section 5 predicted?</p>
         </div>
       </div>
-      <div class="footnote">Lab 7, Diagnosis 2 &mdash; executed on this machine. The chapter runs the same design at 1,000 experiments and 999 resamples and lands in the same place.</div>
+      <div class="footnote">Lab 7, Diagnosis 2 (cell 11, after cell 10&#x27;s 400 experiments), the published notebook run by the runner. The chapter&#x27;s 1,000 experiments and 999 resamples land in the same place.</div>
     </section>
 
     <section id="coverage-figure" style="padding: 28px 50px;">
@@ -820,21 +841,16 @@ BCa 95% CI: [nan, nan]</code></pre>
       <p class="text-lg" style="color: var(--muted-color);">The failure mode that will actually bite your own research</p>
     </section>
 
-    <section id="cluster-disaster" style="padding: 34px 50px;">
+    <section id="cluster-disaster" style="padding: 26px 50px;">
       <h2><i class="fa-solid fa-people-group" style="color: var(--danger-color);"></i> The Expensive Failure, Measured</h2>
       <div class="content">
-        <p class="text-lg">1,000 workers across 25 firms. Firms differ a lot; workers within a firm resemble one another. True mean wage $60,000 by construction. The analyst bootstraps them as 1,000 independent draws.</p>
-        <pre style="font-size: 13.5pt; background: #f8f6f3; padding: 15px 20px; border-radius: 8px; margin: 10px 0; line-height: 1.5;"><code>Between-firm SD:    7,689          Within-firm SD:  2,946
-Sample mean wage: $59,588          (true mean $60,000)
-
-Naive (i.i.d.) bootstrap 95% CI: [$59,092, $60,121]   width $1,029
-Clustered      bootstrap 95% CI: [$56,624, $62,465]   width $5,841
-                                  the honest interval is 5.7x wider</code></pre>
-        <div class="misconception">
+        <p class="text-lg" style="margin-bottom: 6px;">1,000 workers across 25 firms, true mean $60,000 by construction; cell 15 prints between-firm SD 7,689, within-firm SD 2,946, sample mean $59,588. The analyst resamples workers; the repair resamples firms:</p>
+        <div class="mock colab" data-src="cells/ch07.json" data-cell="19" data-lines="4,6,11-12,15,17" data-size="10.5pt" style="max-width: 1100px;"></div>
+        <div class="misconception" style="margin-top: 8px;">
           <p><strong>The naive interval happens to contain the true mean this time.</strong> One draw is no defence. The question is what the procedure does over repeated application, which is the next slide.</p>
         </div>
       </div>
-      <div class="footnote">Lab 7, Diagnosis 3 &mdash; executed on this machine.</div>
+      <div class="footnote">Lab 7, Diagnosis 3 (cells 15, 16 and 19): the published notebook, run by the runner behind this cell.</div>
     </section>
 
     <section id="cluster-figure" style="padding: 20px 50px;">
@@ -1138,6 +1154,7 @@ Bootstrap percentile 95% CI:  [9.0, 10.0]</code></pre>
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
   <script src="../poll.js" data-checkin></script>
+  <script src="../mock-cell.js"></script>
   <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
