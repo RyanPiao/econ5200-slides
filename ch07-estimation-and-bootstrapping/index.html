@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=7ea4297ea9331cf59e4e5558312b1e24">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=3a312f8a98d34668adea1c27bdcc99db">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estimation &amp; Bootstrapping</title>
@@ -181,6 +181,7 @@
       </div>
     </section>
 
+    <section>
     <section id="sd-se-measured" style="padding: 36px 50px;">
       <h2><i class="fa-solid fa-calculator" style="color: var(--success-color);"></i> Measured, Not Asserted</h2>
       <div class="content">
@@ -204,12 +205,30 @@
         </div>
       </div>
     </section>
+    <section id="soup-fpc" style="padding: 26px 48px;">
+      <h2><i class="fa-solid fa-mug-hot" style="color: var(--secondary-color);"></i> Does the Population Size Matter?</h2>
+      <div class="content">
+        <p style="font-size: 15.5pt; margin: 0 0 4px;">Look at the formula again: \(s/\sqrt{n}\). <strong>There is no \(N\) in it.</strong> A sample of 200 is as precise for Massachusetts as for the whole country &mdash; which feels wrong, and is not.</p>
+        <div class="mathjax_ignore tex2jax_ignore" style="margin: 4px 0 10px;"><svg viewBox="0 0 1160 226" style="width:100%;display:block" role="img" aria-label="A small pot and a very large vat seen from above, each with one spoon of the same size dipped in. The caption notes that the spoonful tells you the flavour either way."><ellipse cx="210" cy="96" rx="78" ry="50" fill="#ffffff" stroke="#2D5572" stroke-width="2.6"/><ellipse cx="210" cy="96" rx="67" ry="42" fill="#2D5572" opacity=".80"/><ellipse cx="180" cy="82" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="220" cy="104" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="204" cy="116" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="244" cy="90" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="252" cy="92" rx="15" ry="9" fill="none" stroke="#C47B5A" stroke-width="3"/><line x1="264" y1="85" x2="312" y2="24" stroke="#C47B5A" stroke-width="3" stroke-linecap="round"/><text x="210" y="176" text-anchor="middle" font-size="19" fill="#2D2D2D" font-weight="700">a small pot</text><ellipse cx="700" cy="96" rx="230" ry="72" fill="#ffffff" stroke="#2D5572" stroke-width="2.6"/><ellipse cx="700" cy="96" rx="219" ry="64" fill="#2D5572" opacity=".80"/><ellipse cx="550" cy="68" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="620" cy="108" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="690" cy="62" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="740" cy="120" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="810" cy="84" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="870" cy="114" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="590" cy="130" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="770" cy="66" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="840" cy="132" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="660" cy="90" rx="6" ry="3.4" fill="#C47B5A"/><ellipse cx="894" cy="92" rx="15" ry="9" fill="none" stroke="#C47B5A" stroke-width="3"/><line x1="906" y1="85" x2="954" y2="2" stroke="#C47B5A" stroke-width="3" stroke-linecap="round"/><text x="700" y="198" text-anchor="middle" font-size="19" fill="#2D2D2D" font-weight="700">a hundred-gallon vat</text><text x="1148" y="62" text-anchor="end" font-size="19" fill="#2D2D2D" font-weight="700">Same spoon.</text><text x="1148" y="90" text-anchor="end" font-size="19" fill="#2D2D2D" font-weight="700">Same answer.</text><text x="1148" y="124" text-anchor="end" font-size="17" fill="#8C8580">The pot size is not</text><text x="1148" y="152" text-anchor="end" font-size="17" fill="#8C8580">in the formula.</text></svg></div>
+        <div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 15px;">
+          <div style="background: #eef2f6; border-radius: 9px; padding: 12px 20px;">
+            <p style="font-size: 14.5pt; margin: 0 0 6px;">The exact version carries a correction, \(\sqrt{(N-n)/(N-1)}\), and it only matters when your sample is a big slice of the population:</p>
+            <p style="font-size: 14pt; margin: 0; line-height: 1.75;">200 of 2.9&nbsp;million &rarr; cuts the SE by <strong>0.003%</strong><br>200 of 20,000 &rarr; <strong>0.5%</strong><br>200 of 2,000 &rarr; <strong>5%</strong><br>200 of 400 &rarr; <strong>29%</strong></p>
+          </div>
+          <div style="background: #e9f0e9; border-left: 5px solid var(--success-color); border-radius: 9px; padding: 12px 20px;">
+            <p style="font-size: 14.5pt; margin: 0;">Below about <strong>n/N = 5%</strong> you can ignore it, which is almost every survey you will ever read. Above it, you are sampling a <em>sizeable fraction</em> of the thing itself, and the uncertainty really is smaller.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </section>
 
     <section id="div-2" class="section-divider" data-state="is-section-divider">
       <h1>2 &nbsp;&bull;&nbsp; The CLT, and Its Rate</h1>
       <p class="text-lg" style="color: var(--muted-color);">Not whether it arrives. How fast, and in what shape.</p>
     </section>
 
+    <section>
     <section id="clt-statement" style="padding: 36px 50px;">
       <h2><i class="fa-solid fa-bell" style="color: var(--secondary-color);"></i> The Central Limit Theorem</h2>
       <div class="content">
@@ -225,6 +244,151 @@
           <p><strong>Misconception:</strong> &ldquo;The CLT means my data is normally distributed.&rdquo; It applies to sample means and sums, never to individual observations.</p>
         </div>
       </div>
+    </section>
+    <section id="clt-housing" style="padding: 22px 46px;">
+      <h2><i class="fa-solid fa-house" style="color: var(--secondary-color);"></i> Watch the Averages Turn Normal</h2>
+      <div class="content mathjax_ignore tex2jax_ignore">
+        <p style="font-size: 15pt; margin: 0 0 6px;">A population that is <strong>not</strong> a bell: the median home value in <strong>20,640 California districts</strong> &mdash; Ch 4&rsquo;s skewed data. Draw a sample, record its mean, keep going.</p>
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 0 0 4px;">
+          <span style="font-size: 14pt; color: #666; font-weight: 600;">sample size n</span>
+          <div class="ch07h-n" data-n="5" style="border: 2px solid #C9C4BC; background: #fff; color: #4A4A4A; border-radius: 8px; padding: 4px 13px; font-size: 14pt; font-weight: 700; cursor: pointer; user-select: none;">5</div>
+          <div class="ch07h-n" data-n="30" style="border: 2px solid #C9C4BC; background: #fff; color: #4A4A4A; border-radius: 8px; padding: 4px 13px; font-size: 14pt; font-weight: 700; cursor: pointer; user-select: none;">30</div>
+          <div class="ch07h-n" data-n="100" style="border: 2px solid #C9C4BC; background: #fff; color: #4A4A4A; border-radius: 8px; padding: 4px 13px; font-size: 14pt; font-weight: 700; cursor: pointer; user-select: none;">100</div>
+          <span style="width: 12px;"></span>
+          <div class="ch07h-go" data-k="1" style="background: var(--success-color); color: #fff; border-radius: 8px; padding: 6px 16px; font-size: 14pt; font-weight: 600; cursor: pointer; user-select: none;">Draw 1</div>
+          <div class="ch07h-go" data-k="10" style="background: var(--success-color); color: #fff; border-radius: 8px; padding: 6px 16px; font-size: 14pt; font-weight: 600; cursor: pointer; user-select: none;">Draw 10</div>
+          <div class="ch07h-go" data-k="100" style="background: #4A4A4A; color: #fff; border-radius: 8px; padding: 6px 16px; font-size: 14pt; font-weight: 600; cursor: pointer; user-select: none;">Draw 100</div>
+          <div class="ch07h-go" data-k="reset" style="background: #fff; color: #4A4A4A; border: 2px solid #C9C4BC; border-radius: 8px; padding: 4px 14px; font-size: 14pt; font-weight: 600; cursor: pointer; user-select: none;">Reset</div>
+        </div>
+        <div id="ch07h-formula" style="text-align: center; margin: 2px 0 4px;"></div>
+        <div id="ch07h-wrap"></div>
+        <p id="ch07h-count" style="font-size: 14.5pt; margin: 2px 0 0;"></p>
+      </div>
+      <script>
+      (function () {
+        /* California housing, median home value per district (sklearn), rounded to $1,000:
+           V = value in thousands, C = how many of the 20,640 districts have it. Computed,
+           not typed: see the commit. MU and SIGMA are from the unrounded data. */
+        var V = [15,18,22,25,27,28,30,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500], C = [4,1,4,1,2,2,2,4,2,2,2,2,5,5,7,4,14,10,16,12,12,15,37,22,31,26,46,39,53,62,50,52,62,52,54,55,62,46,47,55,67,49,121,56,88,61,84,64,63,57,53,47,46,47,58,68,71,65,67,66,89,52,151,74,95,75,89,99,107,89,106,81,105,76,110,63,62,79,71,64,79,47,84,71,83,65,167,55,108,63,81,65,86,85,64,70,67,80,66,98,63,77,63,71,67,78,73,66,82,69,87,61,185,74,92,78,99,91,94,60,108,68,79,55,116,64,103,74,98,73,112,84,129,89,112,94,206,78,93,98,103,81,71,80,86,96,65,72,99,95,73,55,95,64,80,80,85,81,106,77,81,64,146,53,90,76,103,53,89,62,73,51,73,45,79,39,53,45,58,52,53,41,52,54,67,39,81,69,57,63,51,77,80,70,55,64,61,54,61,123,73,54,59,67,54,71,63,63,42,60,52,44,75,52,67,57,58,46,62,42,49,38,57,38,61,33,47,40,64,41,39,28,58,25,43,41,66,24,52,40,51,52,52,34,47,52,45,37,47,84,41,27,40,34,43,29,40,32,26,33,33,27,58,21,36,30,34,28,38,27,30,16,21,18,39,17,29,17,23,19,19,29,15,21,21,23,34,16,26,23,23,16,27,25,24,23,24,21,25,34,23,21,21,23,29,30,25,26,29,28,30,26,21,21,31,29,27,25,24,20,33,11,28,18,91,22,23,22,26,18,22,15,17,21,21,20,33,12,20,15,22,26,18,19,12,8,18,10,19,28,14,15,11,7,21,10,21,8,12,11,14,12,19,3,14,12,11,10,22,12,14,10,15,10,29,4,7,12,7,15,13,9,6,4,18,13,15,5,10,11,8,13,16,10,12,6,11,8,5,13,10,6,6,7,7,10,11,12,8,11,11,8,12,8,6,8,9,7,14,4,9,11,3,40,11,6,7,8,5,7,10,9,4,8,5,3,3,6,3,6,5,5,5,7,6,4,6,5,11,3,8,5,2,3,4,3,9,5,10,2,5,3,3,5,4,5,5,3,2,10,1,2,5,992], MU = 206856, SIGMA = 115393;
+        var cum = [], T = 0;
+        for (var i = 0; i < C.length; i++) { T += C[i]; cum.push(T); }
+        function one() {
+          var u = Math.random() * T, lo = 0, hi = cum.length - 1;
+          while (lo < hi) { var mid = (lo + hi) >> 1; if (cum[mid] > u) hi = mid; else lo = mid + 1; }
+          return V[lo] * 1000;
+        }
+        var n = 30, means = [], last = null;
+        var XMAX = 525000, BW = 25000, NB = 21, MBW = 5000;
+        var pop = new Array(NB).fill(0);
+        for (i = 0; i < V.length; i++) pop[Math.min(NB - 1, Math.floor(V[i] * 1000 / BW))] += C[i];
+        var money = function (x) { return "&#36;" + Math.round(x).toLocaleString("en-US"); };
+
+        function paint() {
+          var W = 1160, H = 322, yb = 262, yt = 50, xa0 = 40, xa1 = 560, xb0 = 620, xb1 = 1140;
+          var sa = function (v) { return xa0 + v / XMAX * (xa1 - xa0); };
+          var sb = function (v) { return xb0 + v / XMAX * (xb1 - xb0); };
+          var o = "", j;
+          /* left: the population */
+          var mxP = Math.max.apply(null, pop), bwp = (xa1 - xa0) / NB;
+          for (j = 0; j < NB; j++) {
+            var h = pop[j] / mxP * (yb - yt);
+            o += '<rect x="' + (xa0 + j * bwp + 1).toFixed(1) + '" y="' + (yb - h).toFixed(1) + '" width="' + (bwp - 2).toFixed(1) +
+                 '" height="' + h.toFixed(1) + '" fill="#9ca3af" opacity="0.75"/>';
+          }
+          if (last) {
+            for (j = 0; j < last.length; j++)
+              o += '<line x1="' + sa(last[j]).toFixed(1) + '" y1="' + (yb - 12) + '" x2="' + sa(last[j]).toFixed(1) + '" y2="' + yb +
+                   '" stroke="#f97316" stroke-width="2" opacity="0.8"/>';
+            var lm = means[means.length - 1];
+            o += '<line x1="' + sa(lm).toFixed(1) + '" y1="' + (yt - 4) + '" x2="' + sa(lm).toFixed(1) + '" y2="' + yb +
+                 '" stroke="#f97316" stroke-width="3"/>';
+          }
+          o += '<line x1="' + sa(MU).toFixed(1) + '" y1="' + (yt - 4) + '" x2="' + sa(MU).toFixed(1) + '" y2="' + yb +
+               '" stroke="#111" stroke-width="2" stroke-dasharray="6 5"/>';
+          o += '<text x="' + xa0 + '" y="20" font-size="19" font-weight="700" fill="#555">THE POPULATION &mdash; 20,640 districts</text>';
+          o += '<text x="' + xa0 + '" y="44" font-size="16" fill="#777">' +
+               (last ? '<tspan fill="#f97316" font-weight="700">orange: the ' + n + ' just drawn, and their mean</tspan>' : 'dashed: the population mean, ' + money(MU)) + '</text>';
+          /* right: the means, on the SAME axis */
+          var k = means.length, bins = {}, mxB = 0;
+          for (j = 0; j < k; j++) { var b = Math.floor(means[j] / MBW); bins[b] = (bins[b] || 0) + 1; if (bins[b] > mxB) mxB = bins[b]; }
+          var se = SIGMA / Math.sqrt(n), peakExp = k * MBW / (se * Math.sqrt(2 * Math.PI));
+          var top = Math.max(mxB, k ? peakExp : 1), bwm = (xb1 - xb0) * MBW / XMAX;
+          for (var key in bins) {
+            var hh = bins[key] / top * (yb - yt);
+            o += '<rect x="' + sb(key * MBW).toFixed(1) + '" y="' + (yb - hh).toFixed(1) + '" width="' + Math.max(1, bwm - 0.8).toFixed(1) +
+                 '" height="' + hh.toFixed(1) + '" fill="#2563eb" opacity="0.55"/>';
+          }
+          var pts = [], lo = Math.max(0, MU - 4 * se), hi = Math.min(XMAX, MU + 4 * se);
+          for (j = 0; j <= 200; j++) {
+            var xv = lo + (hi - lo) * j / 200, dens = Math.exp(-Math.pow(xv - MU, 2) / (2 * se * se)) / (se * Math.sqrt(2 * Math.PI));
+            var hv = k ? (k * MBW * dens) / top : dens / (1 / (se * Math.sqrt(2 * Math.PI)));
+            pts.push(sb(xv).toFixed(1) + "," + (yb - hv * (yb - yt)).toFixed(1));
+          }
+          o += '<polyline points="' + pts.join(" ") + '" fill="none" stroke="#dc2626" stroke-width="2.5"/>';
+          if (last) o += '<line x1="' + sb(lm).toFixed(1) + '" y1="' + (yb - 14) + '" x2="' + sb(lm).toFixed(1) + '" y2="' + (yb + 4) +
+                         '" stroke="#f97316" stroke-width="3.5"/>';
+          o += '<text x="' + xb0 + '" y="20" font-size="19" font-weight="700" fill="#2563eb">MEANS RECORDED &mdash; ' + k + (k === 1 ? ' sample' : ' samples') + ' of ' + n + '</text>';
+          o += '<text x="' + xb0 + '" y="44" font-size="16" fill="#dc2626">red: what the CLT predicts, Normal(' + money(MU) + ', ' + money(se) + ')</text>';
+          /* one shared axis */
+          [[xa0, xa1, sa], [xb0, xb1, sb]].forEach(function (p) {
+            o += '<line x1="' + p[0] + '" y1="' + yb + '" x2="' + p[1] + '" y2="' + yb + '" stroke="#999"/>';
+            for (var t = 0; t <= 500000; t += 100000)
+              o += '<text x="' + p[2](t).toFixed(1) + '" y="' + (yb + 22) + '" text-anchor="middle" font-size="16" fill="#777">' + (t ? "&#36;" + t / 1000 + "k" : "&#36;0") + '</text>';
+          });
+          o += '<text x="' + xa0 + '" y="' + (H - 8) + '" font-size="16" fill="#888">the spike at the right edge: the census recorded every value above &#36;500,000 as &#36;500,001</text>';
+          /* room-clt's one idea worth keeping: the theorem with its parts named, live in n. */
+          var fm = document.getElementById("ch07h-formula");
+          if (fm) {
+            var term = function (val, col, gloss) {
+              return '<span style="display:inline-flex;flex-direction:column;align-items:center;margin:0 6px;">' +
+                '<span style="font-size:15pt;font-weight:800;color:' + col + ';line-height:1.15;">' + val + '</span>' +
+                '<span style="font-size:11pt;color:' + col + ';line-height:1.2;white-space:nowrap;">' + gloss + '</span></span>';
+            };
+            var glue = function (t) { return '<span style="font-size:14pt;color:#444;line-height:1.3;">' + t + '</span>'; };
+            fm.innerHTML = '<span style="display:inline-flex;align-items:flex-start;gap:2px;background:#f8f6f3;' +
+              'border:1px solid #e3ded5;border-radius:10px;padding:5px 14px 5px;">' +
+              glue('x&#772; of ' + n + ' &asymp; Normal(') +
+              term(money(MU), "#16a34a", "the centre &mdash; never moves") + glue(',') +
+              term(money(SIGMA), "#ea580c", "&sigma; &mdash; fixed by the population") + glue('&divide; &radic;') +
+              term(String(n), "#2563eb", "n &mdash; the one you control") + glue('=') +
+              term(money(se), "#7c3aed", "SE &mdash; spread of the average") + glue(')') + '</span>';
+          }
+          var wrap = document.getElementById("ch07h-wrap");
+          if (wrap) wrap.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;display:block" role="img" aria-label="Left, the skewed population of California district home values; right, a histogram of recorded sample means on the same axis, with the normal curve the central limit theorem predicts.">' + o + '</svg>';
+          var cnt = document.getElementById("ch07h-count");
+          if (cnt) {
+            if (!k) { cnt.innerHTML = '<span style="color:#888">no samples yet &mdash; each one is ' + n + ' districts drawn at random</span>'; }
+            else {
+              var m = 0, s2 = 0; for (j = 0; j < k; j++) m += means[j]; m /= k;
+              for (j = 0; j < k; j++) s2 += Math.pow(means[j] - m, 2);
+              var sd = k > 1 ? Math.sqrt(s2 / (k - 1)) : null;
+              cnt.innerHTML = 'mean of the means <strong style="color:#2563eb">' + money(m) + '</strong> (population ' + money(MU) + ')' +
+                (sd === null ? '' : ' &nbsp;&middot;&nbsp; SD of the means <strong style="color:#2563eb">' + money(sd) + '</strong> (&sigma;/&radic;' + n + ' = ' + money(se) + ')');
+            }
+          }
+          var nb = document.querySelectorAll(".ch07h-n");
+          for (j = 0; j < nb.length; j++) {
+            var on = +nb[j].dataset.n === n;
+            nb[j].style.background = on ? "#2563eb" : "#fff"; nb[j].style.color = on ? "#fff" : "#4A4A4A"; nb[j].style.borderColor = on ? "#2563eb" : "#C9C4BC";
+          }
+        }
+        function drawK(k) {
+          for (var a = 0; a < k; a++) { var s = [], sum = 0; for (var b = 0; b < n; b++) { var x = one(); s.push(x); sum += x; } last = s; means.push(sum / n); }
+          paint();
+        }
+        function wire() {
+          var go = document.querySelectorAll(".ch07h-go");
+          if (!go.length || go[0].dataset.wired) return;
+          [].forEach.call(go, function (b) { b.dataset.wired = "1"; b.addEventListener("click", function () {
+            if (this.dataset.k === "reset") { means = []; last = null; paint(); } else drawK(+this.dataset.k); }); });
+          [].forEach.call(document.querySelectorAll(".ch07h-n"), function (b) { b.addEventListener("click", function () {
+            n = +this.dataset.n; means = []; last = null; paint(); }); });
+          paint();
+        }
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire); else wire();
+      })();
+      </script>
+    </section>
     </section>
 
     <section id="clt-figure" style="padding: 30px 50px;">
@@ -268,37 +432,12 @@
       </div>
     </section>
 
-    <section>
-      <section id="poll-1" style="padding: 36px 50px;">
-        <h2><i class="fa-solid fa-chart-bar" style="color: var(--accent-color);"></i> Poll: What Does the Bootstrap Substitute?</h2>
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 18px 24px; margin-top: 12px;">
-          <p style="font-size: 15pt; line-height: 1.6;">The bootstrap principle says the relationship between a <em>resample</em> and your <em>sample</em> mimics the relationship between your <em>sample</em> and the <em>population</em>.</p>
-          <p style="font-size: 16pt; font-weight: 600; margin-top: 10px;">Stated formally: what is being substituted for what?</p>
-        </div>
-        <div class="poll-grid" data-poll-id="ch07-econ5200-poll-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; font-size: 15pt;">
-          <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">A) The normal distribution, for the unknown sampling distribution</div>
-          <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">B) The empirical distribution \(\hat{F}\), for the unknown population \(F\)</div>
-          <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">C) A larger sample, for a smaller one</div>
-          <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">D) A parametric model, for a non-parametric one</div>
-        </div>
-      </section>
-      <section id="poll-1-reveal" data-poll-results="ch07-econ5200-poll-1" style="padding: 30px 50px;">
-        <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> Answer: B &mdash; It Is a Plug-In Estimator</h2>
-        <div class="poll-results-chart" data-poll-id="ch07-econ5200-poll-1" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:150px; margin:10px 60px;"></div>
-        <div style="padding: 6px 50px;">
-          <p style="font-size: 15pt; line-height: 1.6;">You want a functional of \(F\) &mdash; the sampling distribution of \(T(X_1,\dots,X_n; F)\). You do not have \(F\). So you substitute \(\hat{F}\), which puts mass \(1/n\) on each observed point, and compute the functional <em>exactly</em> under \(\hat{F}\) by simulation.</p>
-          <div style="background: #F9F0EE; border-left: 4px solid var(--danger-color); padding: 14px 20px; border-radius: 8px; margin: 12px 0;">
-            <p style="font-size: 14pt; margin: 0;"><strong>Why C is the dangerous answer:</strong> resampling creates no information. Every bootstrap sample uses only the original observations. If \(\hat{F}\) is a poor stand-in for \(F\) &mdash; a biased sample (Ch 6), or a tiny one &mdash; the bootstrap reproduces that faithfully and confidently.</p>
-          </div>
-        </div>
-      </section>
-    </section>
-
     <section id="div-3" class="section-divider" data-state="is-section-divider">
       <h1>3 &nbsp;&bull;&nbsp; The Parametric Interval, and the Wall</h1>
-      <p class="text-lg" style="color: var(--muted-color);">Six minutes to reach the place where the formula runs out.</p>
+      <p class="text-lg" style="color: var(--muted-color);">Eight minutes to reach the place where the formula runs out.</p>
     </section>
 
+    <section>
     <section id="build-ci" style="padding: 36px 50px;">
       <h2><i class="fa-solid fa-arrows-left-right-to-line" style="color: var(--secondary-color);"></i> Building the Interval from the CLT</h2>
       <div class="content">
@@ -312,6 +451,120 @@
         </div>
         <p class="text-lg" style="margin-top: 8px;">Hold that sentence. In Section 8 the Bayesian bootstrap will offer you a different one &mdash; and the difference between the two sentences is the only thing that distinguishes them.</p>
       </div>
+    </section>
+    <section id="coverage-throw" style="padding: 22px 46px;">
+      <h2><i class="fa-solid fa-bullseye" style="color: var(--success-color);"></i> Throw a Hundred Horseshoes</h2>
+      <div class="content">
+        <p style="font-size: 15pt; margin: 0 0 6px;">The stake never moves &mdash; the true mean is 37.525, fixed. <strong>The horseshoe is what varies:</strong> each throw is a fresh sample of 50 from a right-skewed lognormal(3.5,&nbsp;0.5), like wages, with the last slide&rsquo;s interval \(\bar{x} \pm 1.96\,s/\sqrt{50}\).</p>
+        <p style="font-size: 14.5pt; margin: 0 0 6px; color: #7a4a12;"><strong>Before you throw</strong>, the formula promises 95% ringers. <strong>Once it lands</strong>, it is a ringer or it isn&rsquo;t. Throw a hundred and count what the method delivers.</p>
+        <div style="display: flex; gap: 10px; align-items: center; margin: 0 0 6px;">
+          <div class="ch07-throw-ctl" data-n="1" style="background: var(--success-color); color: #fff; border-radius: 8px; padding: 7px 18px; font-size: 14.5pt; font-weight: 600; cursor: pointer; user-select: none;">Throw 1</div>
+          <div class="ch07-throw-ctl" data-n="10" style="background: var(--success-color); color: #fff; border-radius: 8px; padding: 7px 18px; font-size: 14.5pt; font-weight: 600; cursor: pointer; user-select: none;">Throw 10</div>
+          <div class="ch07-throw-ctl" data-n="rest" style="background: #4A4A4A; color: #fff; border-radius: 8px; padding: 7px 18px; font-size: 14.5pt; font-weight: 600; cursor: pointer; user-select: none;">Fill to 100</div>
+          <div class="ch07-throw-ctl" data-n="reset" style="background: #fff; color: #4A4A4A; border: 2px solid #C9C4BC; border-radius: 8px; padding: 5px 16px; font-size: 14.5pt; font-weight: 600; cursor: pointer; user-select: none;">Reset</div>
+          <p id="ch07-throw-count" style="font-size: 15.5pt; margin: 0 0 0 6px;"></p>
+        </div>
+        <div class="mathjax_ignore tex2jax_ignore" id="ch07-throw-wrap" style="margin: 0;"></div>
+      </div>
+      <script>
+      (function () {
+        /* Lab 7 Diagnosis 2's design, one experiment per throw: n = 50 drawn lognormal(3.5, 0.5),
+           interval xbar +/- 1.96 s / sqrt(50). True mean exp(3.625) = 37.525. Its long-run
+           coverage is about 93.4% (400,000 runs), not 95: the misses fall mostly below the stake. */
+        var MEANLOG = 3.5, SDLOG = 0.5, NS = 50, N = 100, Z = 1.96;
+        var MU = Math.exp(MEANLOG + SDLOG * SDLOG / 2), SE0 = 2.828;
+        var thrown = [];
+
+        function gauss() {
+          var u = 0, v = 0;
+          while (u === 0) u = Math.random();
+          while (v === 0) v = Math.random();
+          return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+        }
+        function experiment() {
+          var sum = 0, sq = 0, x, i;
+          var xs = [];
+          for (i = 0; i < NS; i++) { x = Math.exp(MEANLOG + SDLOG * gauss()); xs.push(x); sum += x; }
+          var m = sum / NS;
+          for (i = 0; i < NS; i++) sq += (xs[i] - m) * (xs[i] - m);
+          var se = Math.sqrt(sq / (NS - 1)) / Math.sqrt(NS);
+          return { m: m, lo: m - Z * se, hi: m + Z * se };
+        }
+
+        function draw() {
+          var W = 1160, H = 302, x0 = 54, x1 = 1140, yTop = 56, yBot = 266;
+          // the right tail makes high intervals long, so the range is wider above the stake;
+          // anything beyond it is clamped to the plot, never drawn over the legend
+          var lo = MU - 4.6 * SE0, hi = MU + 6.0 * SE0;
+          var yOf = function (v) { return Math.max(yTop, Math.min(yBot, yBot - (v - lo) / (hi - lo) * (yBot - yTop))); };
+          var GREEN = "#6A8E6B", RED = "#B3493F";
+          var o = '', cov = 0, below = 0, above = 0, n = thrown.length;
+
+          o += '<line x1="' + x0 + '" y1="26" x2="' + (x0 + 40) + '" y2="26" stroke="#2D2D2D" stroke-width="2" stroke-dasharray="7 5"/>';
+          o += '<text x="' + (x0 + 50) + '" y="32" font-size="17" fill="#2D2D2D" font-weight="700">the stake &#8212; true mean 37.525, and it never moves</text>';
+          o += '<line x1="508" y1="26" x2="536" y2="26" stroke="' + GREEN + '" stroke-width="6" stroke-linecap="round"/>';
+          o += '<text x="546" y="32" font-size="17" fill="' + GREEN + '" font-weight="700">covers it</text>';
+          o += '<line x1="648" y1="26" x2="676" y2="26" stroke="' + RED + '" stroke-width="6" stroke-linecap="round"/>';
+          o += '<text x="686" y="32" font-size="17" fill="' + RED + '" font-weight="700">misses</text>';
+
+          o += '<line x1="' + x0 + '" y1="' + yOf(MU) + '" x2="' + x1 + '" y2="' + yOf(MU) +
+               '" stroke="#2D2D2D" stroke-width="2" stroke-dasharray="7 5"/>';
+
+          var w = Math.min(8, 0.45 * (x1 - x0) / Math.max(n, 10));
+          for (var i = 0; i < n; i++) {
+            var t = thrown[i], hit = (t.lo <= MU && MU <= t.hi);
+            if (hit) cov++; else if (t.hi < MU) below++; else above++;
+            var x = x0 + (i + 0.5) / Math.max(n, 1) * (x1 - x0), c = hit ? GREEN : RED;
+            o += '<line x1="' + x.toFixed(1) + '" y1="' + yOf(t.hi).toFixed(1) + '" x2="' + x.toFixed(1) +
+                 '" y2="' + yOf(t.lo).toFixed(1) + '" stroke="' + c + '" stroke-width="' + (hit ? w : w + 1).toFixed(1) +
+                 '" stroke-linecap="round" opacity="' + (hit ? 0.8 : 1) + '"/>';
+            o += '<circle cx="' + x.toFixed(1) + '" cy="' + yOf(t.m).toFixed(1) + '" r="' + Math.max(2.2, w * 0.55).toFixed(1) + '" fill="#2D2D2D"/>';
+          }
+
+          o += '<text x="' + x0 + '" y="292" font-size="16" fill="#8C8580">' +
+               (n === 0 ? 'nothing thrown yet &#8212; each throw is a fresh sample of 50, with its own nominal 95% interval'
+                        : n + (n === 1 ? ' sample of 50, with its own nominal 95% interval' : ' samples of 50, each with its own nominal 95% interval')) +
+               '</text>';
+
+          var wrap = document.getElementById("ch07-throw-wrap");
+          if (wrap) wrap.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H +
+            '" style="width:100%;display:block" role="img" aria-label="Vertical nominal 95% confidence intervals from samples of 50 against a fixed horizontal line at the true mean 37.525: green where the interval crosses the line, red where it misses.">' + o + '</svg>';
+
+          var cnt = document.getElementById("ch07-throw-count");
+          if (cnt) {
+            cnt.innerHTML = n === 0
+              ? '<span style="color:#8C8580">thrown 0 of 100</span>'
+              : '<strong>thrown ' + n + '</strong> &#8212; <strong style="color:' + GREEN + '">' + cov +
+                (cov === 1 ? ' ringer' : ' ringers') + '</strong>, <strong style="color:' + RED + '">' + (n - cov) + ' missed</strong>' +
+                (n - cov ? ' <span style="color:#8C8580">(' + below + ' fell short, ' + above + ' overshot)</span>' : '') +
+                (n === N ? ' &#8212; ' + cov + '%' : '');
+          }
+        }
+
+        function throwN(k) {
+          for (var i = 0; i < k && thrown.length < N; i++) thrown.push(experiment());
+          draw();
+        }
+        function wire() {
+          var btns = document.querySelectorAll(".ch07-throw-ctl");
+          if (!btns.length || btns[0].dataset.wired) return;
+          for (var i = 0; i < btns.length; i++) {
+            btns[i].dataset.wired = "1";
+            btns[i].addEventListener("click", function () {
+              var v = this.dataset.n;
+              if (v === "reset") { thrown = []; draw(); }
+              else if (v === "rest") throwN(N - thrown.length);
+              else throwN(parseInt(v, 10));
+            });
+          }
+          draw();
+        }
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+        else wire();
+      })();
+
+      </script>
+    </section>
     </section>
 
     <section id="the-wall" style="padding: 34px 50px;">
@@ -334,6 +587,7 @@
       <p class="text-lg" style="color: var(--muted-color);">Ten minutes. We build it, then break it on purpose.</p>
     </section>
 
+    <section>
     <section id="algorithm" style="padding: 34px 50px;">
       <h2><i class="fa-solid fa-repeat" style="color: var(--secondary-color);"></i> The Algorithm, in English Before Any Code</h2>
       <div class="content">
@@ -360,6 +614,25 @@
         </div>
       </div>
     </section>
+    <section id="hand-walkthrough" style="padding: 30px 55px;">
+      <h2><i class="fa-solid fa-hand" style="color: var(--accent-color);"></i> Six Resamples, By Hand</h2>
+      <div class="content">
+        <p style="font-size: 15.5pt; margin-bottom: 8px;"><strong>Step 1.</strong> Five people report minutes from door to class: <strong>15, 22, 22, 35, 86</strong>. Sample median = <strong>22</strong>. The room&rsquo;s poll asked you the same question.</p>
+        <table class="table-standard" style="width: 100%; font-size: 14pt;">
+          <tr style="background: #f8f6f3;"><th style="text-align: left;">#</th><th style="text-align: left;">Step 2 &middot; draw 5 with replacement</th><th style="text-align: left;">Sorted</th><th style="text-align: right;">Step 3 &middot; median</th></tr>
+          <tr><td>1</td><td>22, 86, 15, 22, 22</td><td>15, 22, <strong>22</strong>, 22, 86</td><td style="text-align: right;">22</td></tr>
+          <tr><td>2</td><td>35, 15, 86, 15, 22</td><td>15, 15, <strong>22</strong>, 35, 86</td><td style="text-align: right;">22</td></tr>
+          <tr style="background: #fdf0ea;"><td>3</td><td>86, <strong>86</strong>, 35, 22, 15</td><td>15, 22, <strong>35</strong>, 86, 86</td><td style="text-align: right;">35</td></tr>
+          <tr style="background: #fdf0ea;"><td>4</td><td>15, 22, 15, 15, 35 <em>(no 86)</em></td><td>15, 15, <strong>15</strong>, 22, 35</td><td style="text-align: right;">15</td></tr>
+          <tr><td>5</td><td>22, 35, 22, 86, 35</td><td>22, 22, <strong>35</strong>, 35, 86</td><td style="text-align: right;">35</td></tr>
+          <tr><td>6</td><td>22, 22, 22, 35, 22</td><td>22, 22, <strong>22</strong>, 22, 35</td><td style="text-align: right;">22</td></tr>
+        </table>
+        <div class="fragment fade-up" style="background: #eef5ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 14px 20px; margin-top: 14px;">
+          <p style="font-size: 15.5pt; margin: 0 0 6px;"><strong>Step 4</strong>, with \(B = 6\): SD of {22, 22, 35, 15, 35, 22} &asymp; <strong>8.1 minutes</strong>. A standard error for a median, with <strong>no formula whatsoever</strong>.</p><p style="font-size: 14pt; margin: 0; color: #555;">All \(5^5 = 3{,}125\) possible resamples give <strong>15.5</strong>. Six draws are far too few, and the median can only ever be 15, 22, 35 or 86.</p>
+        </div>
+      </div>
+    </section>
+    </section>
 
     <section id="how-many-b" style="padding: 34px 50px;">
       <h2><i class="fa-solid fa-hashtag" style="color: var(--accent-color);"></i> How Large Should \(B\) Be?</h2>
@@ -378,6 +651,32 @@
         </div>
         <p class="text-lg" style="margin-top: 8px;">Practical check: run it twice with different seeds. If the endpoints move meaningfully, raise \(B\).</p>
       </div>
+    </section>
+
+    <section>
+      <section id="poll-1" style="padding: 36px 50px;">
+        <h2><i class="fa-solid fa-chart-bar" style="color: var(--accent-color);"></i> Poll: What Does the Bootstrap Substitute?</h2>
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 18px 24px; margin-top: 12px;">
+          <p style="font-size: 15pt; line-height: 1.6;">The bootstrap principle says the relationship between a <em>resample</em> and your <em>sample</em> mimics the relationship between your <em>sample</em> and the <em>population</em>.</p>
+          <p style="font-size: 16pt; font-weight: 600; margin-top: 10px;">Stated formally: what is being substituted for what?</p>
+        </div>
+        <div class="poll-grid" data-poll-id="ch07-econ5200-poll-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; font-size: 15pt;">
+          <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">A) The normal distribution, for the unknown sampling distribution</div>
+          <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">B) The empirical distribution \(\hat{F}\), for the unknown population \(F\)</div>
+          <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">C) A larger sample, for a smaller one</div>
+          <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">D) A parametric model, for a non-parametric one</div>
+        </div>
+      </section>
+      <section id="poll-1-reveal" data-poll-results="ch07-econ5200-poll-1" style="padding: 30px 50px;">
+        <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> Answer: B &mdash; It Is a Plug-In Estimator</h2>
+        <div class="poll-results-chart" data-poll-id="ch07-econ5200-poll-1" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:150px; margin:10px 60px;"></div>
+        <div style="padding: 6px 50px;">
+          <p style="font-size: 15pt; line-height: 1.6;">You want a functional of \(F\) &mdash; the sampling distribution of \(T(X_1,\dots,X_n; F)\). You do not have \(F\). So you substitute \(\hat{F}\), which puts mass \(1/n\) on each observed point, and compute the functional <em>exactly</em> under \(\hat{F}\) by simulation.</p>
+          <div style="background: #F9F0EE; border-left: 4px solid var(--danger-color); padding: 14px 20px; border-radius: 8px; margin: 12px 0;">
+            <p style="font-size: 14pt; margin: 0;"><strong>Why C is the dangerous answer:</strong> resampling creates no information. Every bootstrap sample uses only the original observations. If \(\hat{F}\) is a poor stand-in for \(F\) &mdash; a biased sample (Ch 6), or a tiny one &mdash; the bootstrap reproduces that faithfully and confidently.</p>
+          </div>
+        </div>
+      </section>
     </section>
 
     <section id="room-boot-reveal" style="padding: 22px 46px;">
