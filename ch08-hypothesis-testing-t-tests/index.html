@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=4156414ff6b0fe27aded62d395b84e64">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=9e89fe3ca893643e0a7c76b2e3ce378e">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hypothesis Testing: Power, Optimality, and Multiplicity</title>
@@ -92,15 +92,15 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 6px;">
           <div style="background: #f8f6f3; border-radius: 10px; padding: 18px 24px; border-left: 4px solid var(--success-color);">
             <p style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; color: var(--success-color); margin-bottom: 10px;">What Moderna had</p>
-            <p style="font-size: 14.5pt; line-height: 1.65;">mRNA-1010, seasonal flu. <strong>43,800</strong> participants across two Phase 3 trials. Statistical <strong>superiority on every pre-specified endpoint</strong>. Clean safety data.</p>
+            <p style="font-size: 14.5pt; line-height: 1.65;">mRNA-1010, seasonal flu. <strong>43,808</strong> participants across two Phase 3 trials. Statistical <strong>superiority on every pre-specified endpoint</strong>. Clean safety data.</p>
           </div>
           <div style="background: #f8f6f3; border-radius: 10px; padding: 18px 24px; border-left: 4px solid var(--danger-color);">
             <p style="font-size: 13pt; text-transform: uppercase; letter-spacing: 2px; color: var(--danger-color); margin-bottom: 10px;">What the FDA said</p>
-            <p style="font-size: 14.5pt; line-height: 1.65;"><strong>Refusal to File.</strong> Not one p-value disputed. The comparator was a standard-dose shot &mdash; not the standard of care for adults over 65.</p>
+            <p style="font-size: 14.5pt; line-height: 1.65;"><strong>Refusal to File.</strong> Not one p-value disputed. The comparator was a standard-dose shot &mdash; not what CDC advisers prefer for adults 65 and over.</p>
           </div>
         </div>
         <div style="background: #fdf8f4; border-left: 5px solid var(--accent-color); border-radius: 8px; padding: 16px 26px; margin-top: 20px;">
-          <p style="font-size: 17pt; line-height: 1.5;">A <strong>$2 billion</strong> programme stalled by the choice of null hypothesis. Every number was right. The question was wrong.</p>
+          <p style="font-size: 17pt; line-height: 1.5;">A filing refused over the <strong>choice of comparator</strong>, which is the choice of null hypothesis. Every number was right. The question was wrong.</p>
         </div>
       </div>
     </section>
@@ -454,7 +454,7 @@
         </div>
         <p style="font-size: 15pt; margin-top: 12px; line-height: 1.6;"><strong>Reading it.</strong> The gap, measured in standard deviations instead of dollars. Benchmarks \(d = 0.2\) / \(0.5\) / \(0.8\) are rough guides, not thresholds &mdash; a &ldquo;small&rdquo; effect on earnings can still be thousands of dollars.</p>
         <div style="background: #fdf4f4; border-left: 5px solid var(--danger-color); border-radius: 8px; padding: 15px 26px; margin-top: 16px;">
-          <p style="font-size: 15.5pt; line-height: 1.6;"><strong>The property that matters:</strong> unlike the p-value, \(d\) does not move when you add data. Ten million users make a 0.001% CTR difference significant at \(p&lt;0.01\); \(d\) stays microscopic, because it was always microscopic.</p>
+          <p style="font-size: 15.5pt; line-height: 1.6;"><strong>The property that matters:</strong> unlike the p-value, \(d\) does not move when you add data. Ten million users can detect about a 1% relative change in click-through at \(p&lt;0.01\); \(d\) stays microscopic, because it was always microscopic.</p>
         </div>
       </div>
     </section>
@@ -854,10 +854,10 @@
       <div class="content">
         <p style="font-size: 14.5pt; line-height: 1.6;"><strong>Netflix, KDD 2025 Best Paper (Applied Data Science).</strong> 300m+ memberships, thousands of concurrent experiments. The variants showing the strongest significance often do so because they caught <em>favourable noise</em>. Ship the smallest-p thumbnail out of 100 and the realised lift is smaller than the experimental lift &mdash; part of that lift was luck.</p>
         <div style="background: #fdf4f4; border-left: 5px solid var(--danger-color); border-radius: 8px; padding: 15px 24px; margin-top: 15px;">
-          <p style="font-size: 15.5pt; line-height: 1.55;">Netflix estimated that blindly shipping all &ldquo;significant winners&rdquo; produced aggregate business impact <strong>20&ndash;40% below</strong> expectation.</p>
+          <p style="font-size: 15.5pt; line-height: 1.55;">Winners picked from many weak experiments <strong>overstate what they deliver</strong>, because noise helped pick them.</p>
         </div>
         <div style="background: #f4f8f4; border-left: 5px solid var(--success-color); border-radius: 8px; padding: 15px 24px; margin-top: 14px;">
-          <p style="font-size: 15pt; line-height: 1.6;"><strong>Their fix &mdash; return-aware experimentation.</strong> Use 90% of units to <em>select</em> the winning variant, and the held-out 10% to <em>estimate</em> its effect. This is Chapter 6's train&ndash;test logic, applied to business decisions instead of model fitting.</p>
+          <p style="font-size: 15pt; line-height: 1.6;"><strong>Their fix:</strong> <em>select</em> the winner on one part of the data and <em>estimate</em> its effect on another. Across 123 past tests the new decision rule would have raised returns by about 33%, and Netflix adopted it. This is Chapter 6's train&ndash;test logic, applied to business decisions instead of model fitting.</p>
         </div>
         <p style="font-size: 15pt; margin-top: 14px; text-align: center;"><strong>Never evaluate a decision rule on the data you used to optimise it.</strong></p>
       </div>
