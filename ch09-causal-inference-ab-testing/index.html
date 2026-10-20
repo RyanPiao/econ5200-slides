@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=e60aabc24cb4e21b3c5d43807efe2852">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=287afd1c8069f1149333b491efe8b49b">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Causal Inference I: A/B Testing at Scale</title>
@@ -19,6 +19,14 @@
   </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <link rel="stylesheet" href="../mock-cell.css">
+  <style>
+    [data-arm] .arm-block[hidden]{display:none!important}
+    [data-arm] .arm-label{display:none;font-size:11pt;color:#777;margin:8px 0 4px}
+    body.arm-both [data-arm] .arm-label{display:block}
+    body.arm-both [data-arm] .poll-grid,[data-arm-view=both] .poll-grid{font-size:12.5pt!important}
+    .arm-checkin{font-size:15pt;padding:8px 22px;border-radius:8px;border:0;background:var(--secondary-color,#1e3a5f);color:#fff;cursor:pointer}
+    .fx-plot svg{display:block;width:100%;height:auto}
+  </style>
 </head>
 <body>
 <div class="reveal">
@@ -78,7 +86,8 @@
 </div>
 <div class="footnote">Answer to the second one is the key to today: Monte Carlo (Ch 5) and the bootstrap (Ch 7) are done. The permutation test is the third — and it is the one that belongs to a randomised design.</div>
 </section>
-<section id="hook" style="padding: 34px 55px;">
+<section>
+      <section id="hook" style="padding: 34px 55px;">
 <h2><i class="fa-solid fa-industry" style="color: var(--secondary-color);"></i> Experimentation Is Infrastructure Now</h2>
 <div class="content">
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px;">
@@ -106,6 +115,28 @@
 </div>
 <div class="footnote">Microsoft ExP (2024); Airbnb; Booking.com; LinkedIn — Chapter 9 §1.</div>
 </section>
+      <section id="framing-poll" style="padding: 34px 50px;">
+        <h2><i class="fa-solid fa-chart-bar" style="color: var(--accent-color);"></i> Poll: Two Programmes</h2>
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 22px; margin-top: 10px;"><p style="font-size: 15.5pt; line-height: 1.55; margin: 0;">A new disease is expected to kill <strong>600 people</strong>. Two programmes have been proposed to fight it. Which programme do you choose?</p></div>
+        <div data-arm="nuid-parity" style="margin-top: 16px;">
+          <div class="arm-block" data-arm-version="room">
+            <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 16px 22px;">
+              <p style="font-size: 16pt; margin: 0;"><i class="fa-solid fa-mobile-screen" style="color: var(--secondary-color);"></i> Your two options are on <strong>your own screen</strong>. Choose there, and keep your answer to yourself: the result comes after the permutation test.</p>
+            </div>
+          </div>
+          <div class="arm-block" data-arm-version="pending" hidden>
+            <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 16px 22px;">
+              <p style="font-size: 15.5pt; margin: 0 0 10px;">Check in with your NUID to see your two options.</p>
+              <button type="button" data-arm-checkin class="arm-checkin">Check in</button>
+            </div>
+          </div>
+          <div class="arm-block" data-arm-version="odd" hidden><p class="arm-label">Odd NUID &middot; poll-5 &middot; <i>saved</i></p><div class="poll-grid" data-poll-id="ch09-econ5200-poll-5" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 14.5pt;"><div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 13px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>Programme 1:</strong> 200 of the 600 people will be saved.</div><div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 13px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>Programme 2:</strong> a 1/3 chance that all 600 people are saved, and a 2/3 chance that no one is saved.</div></div></div>
+          <div class="arm-block" data-arm-version="even" hidden><p class="arm-label">Even NUID &middot; poll-6 &middot; <i>die</i></p><div class="poll-grid" data-poll-id="ch09-econ5200-poll-6" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 14.5pt;"><div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 13px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>Programme 1:</strong> 400 of the 600 people will die.</div><div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 13px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>Programme 2:</strong> a 1/3 chance that nobody dies, and a 2/3 chance that all 600 people die.</div></div></div>
+        </div>
+        <p class="fx-count" style="text-align: center; font-size: 13pt; color: var(--muted-color); margin-top: 14px;"></p>
+        
+      </section>
+    </section>
 <section id="roadmap" style="padding: 36px 58px;">
 <h2><i class="fa-solid fa-map" style="color: var(--secondary-color);"></i> Where We Are Going</h2>
 <div class="content">
@@ -319,7 +350,8 @@
 </div>
 <div class="footnote">Chapter 9 §5.1. This is the third resampling flavour from Chapter 7 — Monte Carlo, bootstrap, permutation — and the only one that belongs to a randomised design.</div>
 </section>
-<section id="permutation-null" style="padding: 30px 50px;">
+<section>
+      <section id="permutation-null" style="padding: 30px 50px;">
 <h2><i class="fa-solid fa-chart-column" style="color: var(--secondary-color);"></i> What 20,000 Shuffles Look Like</h2>
 <div class="content" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 22px; align-items: center;">
 <img alt="Histogram of 20,000 permuted differences in mean earnings, centred on zero and slightly skewed, with the observed plus 1,794 dollar effect far out in the right tail and only 0.38 percent of shuffles as extreme" src="figures/figure_002_permutation_null.png" style="width: 100%; border-radius: 8px;"/>
@@ -335,6 +367,33 @@
 </div>
 <div class="footnote">20,000 permutations, seed 42, NSW experimental sample — <code>figures/_prep_data.py</code>.</div>
 </section>
+      <section id="framing-reveal" data-poll-results="ch09-econ5200-poll-5 ch09-econ5200-poll-6" style="padding: 30px 50px;">
+        <h2><i class="fa-solid fa-shuffle" style="color: var(--secondary-color);"></i> Result: One Choice, Worded Two Ways</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--secondary-color);">
+            <p style="font-size: 12.5pt; color: var(--muted-color); margin: 0;">Odd NUID read</p>
+            <p style="font-size: 14pt; margin: 4px 0 0;">1: 200 of 600 <strong>saved</strong> &nbsp;&middot;&nbsp; 2: 1/3 chance all 600 saved</p>
+            <p style="font-size: 30pt; font-weight: 700; color: var(--secondary-color); margin: 8px 0 0; line-height: 1.1;"><span class="fx-pa">&ndash;</span></p>
+            <p style="font-size: 13pt; margin: 2px 0 0;">chose the sure programme &nbsp;&middot;&nbsp; n = <span class="fx-na">0</span></p>
+          </div>
+          <div style="background: #fdf0ea; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--accent-color);">
+            <p style="font-size: 12.5pt; color: var(--muted-color); margin: 0;">Even NUID read</p>
+            <p style="font-size: 14pt; margin: 4px 0 0;">1: 400 of 600 <strong>die</strong> &nbsp;&middot;&nbsp; 2: 1/3 chance nobody dies</p>
+            <p style="font-size: 30pt; font-weight: 700; color: var(--accent-color); margin: 8px 0 0; line-height: 1.1;"><span class="fx-pb">&ndash;</span></p>
+            <p style="font-size: 13pt; margin: 2px 0 0;">chose the sure programme &nbsp;&middot;&nbsp; n = <span class="fx-nb">0</span></p>
+          </div>
+        </div>
+        <p style="font-size: 14pt; margin-top: 12px; text-align: center;">Programme 1 is the same outcome on both screens: <strong>200 live, 400 die</strong>. Only the wording changed, and the last digit of your NUID decided which wording you got.</p>
+        <div class="fragment fade-up" style="display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 14px; margin-top: 10px;">
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 16px; text-align: center;"><p style="font-size: 12pt; color: var(--muted-color); margin: 0;">Gap, odd minus even</p><p style="font-size: 20pt; font-weight: 700; margin: 2px 0 0;"><span class="fx-d">&ndash;</span></p></div>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 16px; text-align: center;"><p style="font-size: 12pt; color: var(--muted-color); margin: 0;">Permutation test, 9,999 shuffles</p><p style="font-size: 20pt; font-weight: 700; margin: 2px 0 0;"><span class="fx-p">&ndash;</span></p></div>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 16px; text-align: center;"><p style="font-size: 12pt; color: var(--muted-color); margin: 0;">95% interval for the gap (bootstrap)</p><p style="font-size: 20pt; font-weight: 700; margin: 2px 0 0;"><span class="fx-ci">&ndash;</span></p><p style="font-size: 12pt; margin: 0;" class="fx-zero"></p></div>
+          
+        </div>
+        <div class="footnote">Your own votes, read live. Shuffles and resamples are seeded, so the same votes always give the same numbers. Each device counts once: its first answer.</div>
+        
+      </section>
+    </section>
 <section id="interval" style="padding: 34px 55px;">
 <h2><i class="fa-solid fa-arrows-left-right-to-line" style="color: var(--accent-color);"></i> The p-Value Does Not Tell You How Big</h2>
 <div class="content">
@@ -1145,6 +1204,233 @@
   </style>
 <script data-checkin="" src="../poll.js"></script>
   <script src="../mock-cell.js"></script>
+<script>
+(function () {
+  // Topic 9 framing experiment: #framing-poll (one question, two wordings), #framing-reveal and
+  // #room-vs-cookie. Votes are the ordinary poll_votes rows of ch09-econ5200-poll-5 (odd NUID,
+  // "saved") and -6 (even NUID, "die"); choice A = the sure programme, B = the gamble.
+  // This script only READS poll_votes. Voting is the deck's own poll-grid code.
+
+  /* framing-stats:begin */
+  var FramingStats = (function () {
+    function rng(seed) {                       // mulberry32: same votes -> same numbers on every screen
+      return function () {
+        seed = (seed + 0x6D2B79F5) | 0;
+        var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    // rows: [{poll_id, choice, voter_id, created_at}] for both polls. Each device counts once,
+    // with its FIRST answer in either version (a re-vote after a reload, or a vote in the other
+    // version after a changed NUID, is dropped). 1 = chose the sure programme (A).
+    function tally(rows, idA, idB) {
+      var seen = {}, a = [], b = [];
+      rows.slice().sort(function (x, y) {
+        return String(x.created_at || "") < String(y.created_at || "") ? -1 :
+               String(x.created_at || "") > String(y.created_at || "") ? 1 : 0;
+      }).forEach(function (r) {
+        if (r.poll_id !== idA && r.poll_id !== idB) return;
+        if (r.choice !== "A" && r.choice !== "B") return;
+        var v = r.voter_id || ("anon" + Math.random());
+        if (seen[v]) return;
+        seen[v] = 1;
+        (r.poll_id === idA ? a : b).push(r.choice === "A" ? 1 : 0);
+      });
+      return { a: a, b: b };
+    }
+    function mean(x) { var s = 0; for (var i = 0; i < x.length; i++) s += x[i]; return s / x.length; }
+    function quantile(sorted, q) {             // linear interpolation, numpy's default
+      var h = (sorted.length - 1) * q, lo = Math.floor(h), hi = Math.ceil(h);
+      return sorted[lo] + (sorted[hi] - sorted[lo]) * (h - lo);
+    }
+    // Difference in means a - b (shares, in percentage points), a two-sided permutation p
+    // (labels reshuffled with group sizes fixed; p = (shuffles at least as extreme + 1) / (R + 1)),
+    // and a 95% percentile bootstrap interval (each group resampled with replacement).
+    function analyse(a, b, R, seed) {
+      R = R || 9999;
+      var nA = a.length, nB = b.length, out = { nA: nA, nB: nB, n: nA + nB, ready: nA > 0 && nB > 0 };
+      if (!out.ready) return out;
+      var pA = mean(a), pB = mean(b), d = pA - pB, rand = rng(seed == null ? 42 : seed);
+      var pool = a.concat(b), N = pool.length, k, extreme = 0, eps = 1e-12;
+      for (var r = 0; r < R; r++) {
+        for (var i = 0; i < nA; i++) {          // partial Fisher-Yates: the first nA are group A
+          var j = i + Math.floor(rand() * (N - i)), t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+        }
+        var sA = 0, sAll = 0;
+        for (k = 0; k < N; k++) { sAll += pool[k]; if (k < nA) sA += pool[k]; }
+        var dStar = sA / nA - (sAll - sA) / nB;
+        if (Math.abs(dStar) >= Math.abs(d) - eps) extreme++;
+      }
+      var boots = new Array(R);
+      for (r = 0; r < R; r++) {
+        var xa = 0, xb = 0;
+        for (k = 0; k < nA; k++) xa += a[Math.floor(rand() * nA)];
+        for (k = 0; k < nB; k++) xb += b[Math.floor(rand() * nB)];
+        boots[r] = xa / nA - xb / nB;
+      }
+      boots.sort(function (x, y) { return x - y; });
+      out.pA = pA; out.pB = pB; out.d = d;
+      out.p = (extreme + 1) / (R + 1);
+      out.lo = quantile(boots, 0.025); out.hi = quantile(boots, 0.975);
+      out.containsZero = out.lo <= 0 && out.hi >= 0;
+      return out;
+    }
+    // Keep only the rows of the newest session_key (keys start with the date, so they sort).
+    function latest(rows) {
+      var top = "";
+      rows.forEach(function (r) { if (String(r.session_key || "") > top) top = String(r.session_key); });
+      return rows.filter(function (r) { return String(r.session_key || "") === top; });
+    }
+    return { rng: rng, tally: tally, analyse: analyse, quantile: quantile, latest: latest };
+  })();
+  /* framing-stats:end */
+  window.FramingStats = FramingStats;
+
+  var ID_A = "ch09-econ5200-poll-5", ID_B = "ch09-econ5200-poll-6";
+  var COOKIE = { n: 90189, lo: -0.07, hi: 1.23 };   // from #cookie-result, Lab 9 Part 4 (BCa)
+  var Q = location.search;
+  var RECEIVER = /[?&]receiver(&|$)/.test(Q);       // either speaker-view pane (its URL also carries ?presenter)
+  var PROJECTOR = /[?&]presenter(&|=|$)/.test(Q) && !RECEIVER;
+  var INSTR = RECEIVER || /[?&]instructor/.test(Q);
+
+  /* ---------- which version this screen shows ----------
+     poll.js owns this when it has Poll.arm() (data-arm="nuid-parity": odd/even/room/pending).
+     Until then the deck does the same thing here, so the slide works either way. */
+  function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+  function deviceParity() {
+    var d = lsGet("ec_device_id") || lsGet("ec_arm_device");
+    if (!d) { d = "a_" + Math.random().toString(36).slice(2, 12); lsSet("ec_arm_device", d); }
+    var h = 0;
+    for (var i = 0; i < d.length; i++) h = (h * 31 + d.charCodeAt(i)) | 0;
+    return (h & 1) ? "odd" : "even";
+  }
+  var fallback = false;
+  function show(c, list, src) {
+    [].forEach.call(c.querySelectorAll(":scope > [data-arm-version]"), function (el) {
+      var on = list.indexOf(el.getAttribute("data-arm-version")) >= 0;
+      if (on) el.removeAttribute("hidden"); else el.setAttribute("hidden", "");
+    });
+    c.setAttribute("data-arm-assigned", list.join(" "));
+    if (src) c.setAttribute("data-arm-source", src); else c.removeAttribute("data-arm-source");
+  }
+  function assignArms() {
+    if (window.Poll && typeof window.Poll.arm === "function") return;   // poll.js does it
+    if (INSTR) document.body.classList.add("arm-both");                 // labels: only here, poll.js draws its own
+    [].forEach.call(document.querySelectorAll('[data-arm="nuid-parity"]'), function (c) {
+      if (PROJECTOR) return show(c, ["room"]);
+      if (INSTR) return show(c, ["odd", "even"]);
+      var n = lsGet("ec_nuid");
+      if (n && /^[0-9]{9}$/.test(n)) return show(c, [(+n.charAt(8)) % 2 ? "odd" : "even"], "nuid");
+      if (fallback) return show(c, [deviceParity()], "device");
+      show(c, ["pending"]);
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-arm-checkin]");
+    if (!b || (window.Poll && typeof window.Poll.arm === "function")) return;
+    if (!(window.Poll && window.Poll.checkIn)) { fallback = true; assignArms(); return; }
+    window.Poll.checkIn();
+    var t0 = Date.now(), iv = setInterval(function () {
+      var open = document.getElementById("ec-checkin");
+      if (lsGet("ec_nuid") || !open || Date.now() - t0 > 120000) {
+        clearInterval(iv);
+        if (!lsGet("ec_nuid")) fallback = true;      // cancelled: still one version, by device
+        assignArms();
+      }
+    }, 300);
+  });
+  assignArms();
+  if (window.Reveal && Reveal.on) Reveal.on("slidechanged", assignArms);
+
+  /* ---------- live numbers ---------- */
+  function pp(x, sign) { var v = (x * 100).toFixed(1); return (sign && x > 0 ? "+" : "") + v.replace("-", "−") + " pp"; }
+  function pct(x) { return Math.round(x * 100) + "%"; }
+  function pnum(p) { return p < 0.001 ? "< 0.001" : p.toFixed(3); }
+  function pval(p) { return p < 0.001 ? "p < 0.001" : "p = " + pnum(p); }
+  function interval(r) { return "[" + pp(r.lo, true).replace(" pp", "") + ", " + pp(r.hi, true).replace(" pp", "") + "] pp"; }
+  function fmtInt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  function setAll(cls, txt) { [].forEach.call(document.querySelectorAll("." + cls), function (e) { e.textContent = txt; }); }
+
+  function plot(r) {
+    var host = document.querySelector("#room-vs-cookie .fx-plot");
+    if (!host) return;
+    var lo = Math.min(r.lo * 100, COOKIE.lo, -1), hi = Math.max(r.hi * 100, COOKIE.hi, 1);
+    var m = Math.max(Math.abs(lo), Math.abs(hi));
+    var step = m > 40 ? 20 : m > 20 ? 10 : m > 8 ? 5 : m > 4 ? 2 : 1;
+    m = Math.ceil(m / step) * step;
+    var W = 1000, L = 150, Rt = 970, x = function (v) { return L + (v + m) / (2 * m) * (Rt - L); };
+    var s = '<svg viewBox="0 0 ' + W + ' 112" xmlns="http://www.w3.org/2000/svg" font-family="inherit" font-size="15">';
+    for (var t = -m; t <= m + 1e-9; t += step) {
+      s += '<line x1="' + x(t) + '" x2="' + x(t) + '" y1="10" y2="86" stroke="#e5e1da"/>' +
+           '<text x="' + x(t) + '" y="106" text-anchor="middle" fill="#777">' + (t > 0 ? "+" : "") + String(t).replace("-", "−") + '</text>';
+    }
+    s += '<line x1="' + x(0) + '" x2="' + x(0) + '" y1="6" y2="90" stroke="#555" stroke-dasharray="5 4"/>';
+    var row = function (y, a, b, mid, col, label) {
+      return '<text x="0" y="' + (y + 5) + '" fill="#333">' + label + '</text>' +
+        '<line x1="' + x(a) + '" x2="' + x(b) + '" y1="' + y + '" y2="' + y + '" stroke="' + col + '" stroke-width="8" stroke-linecap="round"/>' +
+        '<circle cx="' + x(mid) + '" cy="' + y + '" r="7" fill="#fff" stroke="' + col + '" stroke-width="3"/>';
+    };
+    s += row(30, r.lo * 100, r.hi * 100, r.d * 100, "#2a5a8a", "This room");
+    s += row(66, COOKIE.lo, COOKIE.hi, 0.59, "#c0612b", "Cookie Cats");
+    s += '<text x="0" y="106" fill="#777" font-size="13">gap, pp</text></svg>';
+    host.innerHTML = s;
+  }
+
+  var last = null;
+  function paint(rows) {
+    var t = FramingStats.tally(rows, ID_A, ID_B), r = FramingStats.analyse(t.a, t.b, 9999, 42);
+    var key = t.a.join("") + "|" + t.b.join("");
+    setAll("fx-count", r.n ? r.n + " answer" + (r.n === 1 ? "" : "s") + " so far, both versions together" : "");
+    setAll("fx-na", r.nA); setAll("fx-nb", r.nB); setAll("fx-n", fmtInt(r.n));
+    if (!r.ready) {
+      ["fx-pa", "fx-pb", "fx-d", "fx-p", "fx-pn", "fx-ci", "fx-w", "fx-k", "fx-wr", "fx-sk"].forEach(function (c) { setAll(c, "–"); });
+      setAll("fx-zero", "waiting for votes in both versions");
+      var pl = document.querySelector("#room-vs-cookie .fx-plot"); if (pl) pl.innerHTML = "";
+      last = null;
+      return;
+    }
+    if (key === last) return;
+    last = key;
+    setAll("fx-pa", pct(r.pA)); setAll("fx-pb", pct(r.pB));
+    setAll("fx-d", pp(r.d, true)); setAll("fx-p", pval(r.p)); setAll("fx-pn", pnum(r.p)); setAll("fx-ci", interval(r));
+    setAll("fx-zero", r.containsZero ? "contains zero" : "does not contain zero");
+    var w = (r.hi - r.lo) * 100, cw = COOKIE.hi - COOKIE.lo, k = COOKIE.n / r.n;
+    setAll("fx-w", w.toFixed(1) + " pp");
+    setAll("fx-k", fmtInt(k)); setAll("fx-sk", "about " + Math.round(Math.sqrt(k)));
+    setAll("fx-wr", w > 0 ? "about " + Math.round(w / cw) : "–");
+    plot(r);
+  }
+  window.FramingPaint = paint;   // for a planted-data test in the console; never writes anything
+
+  var SU = "https://dpntbrsorgbivmntwmod.supabase.co";
+  var SK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
+  // #room-vs-cookie can come a meeting after the vote (a topic split over two meetings), so there
+  // it reads this course's LATEST session that voted, not today's: the votes of Mon 19 Oct 2026
+  // would otherwise be empty, since the room voted on Thu 15 Oct. The poll slides keep today's.
+  function fetchRows() {
+    if (location.protocol === "file:") return;
+    var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+    var today = window.Poll ? Poll.q() : "";        // "&session_key=eq.<date>-<am|pm>-<course>", or ""
+    var latest = !!(s && s.id === "room-vs-cookie" && today);
+    var url = SU + "/rest/v1/poll_votes?poll_id=in.(" + ID_A + "," + ID_B + ")&select=poll_id,choice,voter_id,created_at" +
+              (latest ? ",session_key&session_key=like.*-" + today.split("-").pop() : today);
+    fetch(url, { headers: { apikey: SK, Authorization: "Bearer " + SK, "Cache-Control": "no-cache, no-store" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) { if (rows) paint(latest ? FramingStats.latest(rows) : rows); })
+      .catch(function () {});
+  }
+  var HERE = ["framing-poll", "framing-reveal", "room-vs-cookie"];
+  function onExperiment() {
+    var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+    return !!(s && HERE.indexOf(s.id) >= 0);
+  }
+  setInterval(function () { if (!document.hidden && onExperiment()) fetchRows(); }, 4000);
+  if (window.Reveal && Reveal.on) Reveal.on("slidechanged", function () { if (onExperiment()) fetchRows(); });
+  setTimeout(fetchRows, 800);
+})();
+</script>
 <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
