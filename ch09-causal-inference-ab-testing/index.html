@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=c4a2f9c572bdcda1e1952d23e04cbc11">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=e60aabc24cb4e21b3c5d43807efe2852">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Causal Inference I: A/B Testing at Scale</title>
@@ -18,6 +18,7 @@
     };
   </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="../mock-cell.css">
 </head>
 <body>
 <div class="reveal">
@@ -489,7 +490,8 @@
 </div>
 </div>
 </section>
-<section id="cuped-lab" style="padding: 32px 50px;">
+<section>
+      <section id="cuped-lab" style="padding: 32px 50px;">
 <h2><i class="fa-solid fa-flask" style="color: var(--accent-color);"></i> What Your Lab Measures</h2>
 <div class="content">
 <div style="background: #f8f6f3; border-radius: 10px; padding: 15px 24px;">
@@ -512,6 +514,13 @@
 </div>
 <div class="footnote">Values reproduced from <code>book/5200/labs/lab-ch09-diagnostic.ipynb</code>, Part 1, seed 42.</div>
 </section>
+      <section id="cuped-lab-cell" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Part 1, Run: the Analyst&rsquo;s CUPED Report</h2>
+        <div class="content">
+          <div class="mock colab" data-src="cells/ch09.json" data-cell="6" data-lines="5,8,13-16,18,28-30" data-size="12pt" style="max-width: 1100px;"></div>
+        </div>
+      </section>
+    </section>
 <section id="cuped-sota" style="padding: 34px 55px;">
 <h2><i class="fa-solid fa-microchip" style="color: var(--secondary-color);"></i> The State of the Art, and Its Price</h2>
 <div class="content">
@@ -632,7 +641,8 @@
 <p class="fragment fade-up" style="font-size: 15.5pt; margin-top: 15px;">Fabijan et al. (2019) find SRM in roughly <strong>6%</strong> of experiments at Microsoft and Booking.com. Industry alarms at <strong>p &lt; 0.001</strong>, not 0.05 — the check runs on every experiment, and a 5% false-alarm rate would drown the channel. The \(\chi^2\) critical value at df = 1 is <strong>10.83</strong>.</p>
 </div>
 </section>
-<section id="srm-paradox" style="padding: 32px 50px;">
+<section>
+      <section id="srm-paradox" style="padding: 32px 50px;">
 <h2><i class="fa-solid fa-circle-exclamation" style="color: var(--danger-color);"></i> Both Alarms Fire. Only One Is a Problem.</h2>
 <div class="content">
 <table style="width: 100%; font-size: 15pt; border-collapse: collapse; margin-top: 6px;">
@@ -652,6 +662,13 @@
 </div>
 <div class="footnote">Lab 9 Part 2. Both statistics reproduced exactly in <code>figures/_prep_data.py</code>.</div>
 </section>
+      <section id="srm-cell" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Part 2, Run: Two Experiments, Two Alarms</h2>
+        <div class="content">
+          <div class="mock colab" data-src="cells/ch09.json" data-cell="14" data-lines="5,8,19,21" data-size="10pt" style="max-width: 1100px;"></div>
+        </div>
+      </section>
+    </section>
 <section id="srm-scaling" style="padding: 30px 50px;">
 <h2><i class="fa-solid fa-arrow-trend-up" style="color: var(--danger-color);"></i> Significance Is Not Severity</h2>
 <div class="content" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: center;">
@@ -763,7 +780,8 @@
 </div>
 <div class="footnote">Holtz et al. (2025), <em>Management Science</em> 71(1):390–406 — a meta-experiment, i.e. an experiment on experimental designs.</div>
 </section>
-<section id="three-worlds" style="padding: 28px 42px;">
+<section>
+      <section id="three-worlds" style="padding: 28px 42px;">
 <h2><i class="fa-solid fa-globe" style="color: var(--danger-color);"></i> Your Lab's Three Worlds</h2>
 <div class="content">
 <img alt="Left: purchase rates by arm with and without interference; the control rate falls 0.118 while the treated rate falls only 0.082. Right: the true individual effect 0.1500, the naive A/B estimate 0.1861 and the global rollout effect 0.1428" src="figures/figure_008_interference.png" style="width: 97%; display: block; margin: 0 auto; border-radius: 8px;"/>
@@ -773,6 +791,13 @@
 </div>
 <div class="footnote">10,000 buyers, 4,000 items, availability elasticity 1.0 for control against 0.3 for treated — Lab 9 Part 3, seed 42.</div>
 </section>
+      <section id="three-worlds-cell" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Part 3, Run: World 3, the Launch</h2>
+        <div class="content">
+          <div class="mock colab" data-src="cells/ch09.json" data-cell="20" data-lines="5-7,9-14" data-size="12pt" style="max-width: 1100px;"></div>
+        </div>
+      </section>
+    </section>
 <section id="which-benchmark" style="padding: 32px 52px;">
 <h2><i class="fa-solid fa-code-compare" style="color: var(--danger-color);"></i> Two Biases. Only One Is the Decision.</h2>
 <div class="content">
@@ -1119,6 +1144,7 @@
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
 <script data-checkin="" src="../poll.js"></script>
+  <script src="../mock-cell.js"></script>
 <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
