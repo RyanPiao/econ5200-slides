@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=287afd1c8069f1149333b491efe8b49b">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=f545d7b333b1db90d7c8d7c79082cb0e">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Causal Inference I: A/B Testing at Scale</title>
@@ -304,6 +304,12 @@
 <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 22px;"><p style="font-size: 15pt; margin: 0;"><strong>1.</strong> Write the one sentence about \(Y_i(0)\) that the matching estimate needs to be true.</p></div>
 <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 22px;"><p style="font-size: 15pt; margin: 0;"><strong>2.</strong> Name a variable that would break it <em>and that your firm does not record</em>.</p></div>
 <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 22px;"><p style="font-size: 15pt; margin: 0;"><strong>3.</strong> What would you want next week's DAG to show you about it?</p></div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin-top: 12px;">
+<div class="fragment" style="background: #fff; border: 1px solid #e3ddd3; border-left: 4px solid #9aa5b1; border-radius: 8px; padding: 8px 14px;"><p style="font-size: 12.5pt; line-height: 1.35; margin: 0;"><strong>Weak answer: holiday.</strong> A real backdoor if the new price went out around the holidays. But the firm records the date: add it to the match.</p></div>
+<div class="fragment" style="background: #fff; border: 1px solid #e3ddd3; border-left: 4px solid #1565C0; border-radius: 8px; padding: 8px 14px;"><p style="font-size: 12.5pt; line-height: 1.35; margin: 0;"><strong>Strong answer: gift-hunting.</strong> Private and unrecorded. It pushes a customer toward the deal and raises what they spend anyway.</p></div>
+<div class="fragment" style="background: #fff; border: 1px solid #e3ddd3; border-left: 4px solid #B7791F; border-radius: 8px; padding: 8px 14px;"><p style="font-size: 12.5pt; line-height: 1.35; margin: 0;"><strong>So \(\hat\tau_{\text{match}}\) keeps a bias term:</strong> \(E[Y_i(0)\mid D_i{=}1, X_i] - E[Y_i(0)\mid D_i{=}0, X_i] &gt; 0\). Matching overstates the new price.</p></div>
+<div class="fragment" style="background: #fff; border: 1px solid #e3ddd3; border-left: 4px solid #2E7D32; border-radius: 8px; padding: 8px 14px;"><p style="font-size: 12.5pt; line-height: 1.35; margin: 0;"><strong>Randomisation removes it:</strong> a coin does not know who is shopping for a gift.</p></div>
 </div>
 </div>
 <div class="footnote">4 minutes in pairs. Press <kbd>4</kbd> for the timer.</div>
