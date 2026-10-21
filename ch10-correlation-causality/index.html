@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=79f9afb96e3c045f08cf5fbbde0bd896">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=0be3170f71c2afde2e07e59374716d7a">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correlation & Causality: Causal Logic and DAGs</title>
@@ -114,6 +114,30 @@
       <p style="font-size: 17pt; color: var(--muted-color); font-style: italic; margin-top: 14px;">And no test that separates them</p>
     </section>
 
+    <section>
+      <section id="worlds-poll" style="padding: 26px 44px;">
+        <h2><i class="fa-solid fa-chart-bar" style="color: var(--accent-color);"></i> Poll: Which One Shows D Causing Y?</h2>
+        <p style="font-size: 14.5pt; margin: 4px 0 6px;">Three datasets we collected. In each, <strong>D</strong> goes up and <strong>Y</strong> goes up with it.</p>
+        <img src="figures/figure_002b_three_worlds_blind.png" alt="Three upward-sloping scatterplots: tutoring hours and exam score (correlation 0.889), ice-cream sales and drownings (0.664), and approved borrowers' income and debt (0.632)" style="display:block; margin: 0 auto; max-height: 410px; max-width: 100%; width: auto;">
+        <div class="poll-grid" data-poll-id="ch10-econ5200-poll-5" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; font-size: 13.5pt;">
+          <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 11px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">A) 1 &middot; tutoring</div>
+          <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 11px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">B) 2 &middot; ice cream</div>
+          <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 11px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">C) 3 &middot; borrowers</div>
+          <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 11px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">D) Can&rsquo;t tell from the picture</div>
+        </div>
+      </section>
+      <section id="worlds-poll-reveal" data-poll-results="ch10-econ5200-poll-5" style="padding: 30px 50px;">
+        <h2><i class="fa-solid fa-circle-check" style="color: var(--success-color);"></i> Answer: 1 &mdash; But Not From the Picture</h2>
+        <div class="poll-results-chart" data-poll-id="ch10-econ5200-poll-5" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:165px; margin:10px 60px 28px;"></div>
+        <div style="padding: 0 45px;">
+          <p style="font-size: 15pt; line-height: 1.6;">Only World 1 has a real effect, and it has the strongest cloud (<strong>0.889</strong>). But that is not how you knew: World 2 at <strong>0.664</strong> has an effect of exactly zero, and World 3 at <strong>0.632</strong> has no arrow at all. You knew from the <strong>story</strong> on top.</p>
+          <div style="background: #eef5ee; border-left: 4px solid var(--success-color); padding: 14px 20px; border-radius: 8px; margin-top: 12px;">
+            <p style="font-size: 14pt; margin: 0;"><strong>Strip the labels</strong> and nothing in the clouds tells the three apart. The next slide names the three ways an upward slope gets made.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
     <section id="three-stories" style="padding: 36px 55px;">
       <h2><i class="fa-solid fa-code-branch" style="color: var(--secondary-color);"></i> Your Scatterplot Slopes Upward. Why?</h2>
       <div class="content">
@@ -135,6 +159,7 @@
           <p style="font-size: 16pt;"><strong>They are indistinguishable in the data.</strong> A correlation of 0.7 looks identical under all three. Any claim to have separated them is a claim about <em>structure</em> &mdash; asserted, then defended, never computed.</p>
         </div>
       </div>
+      <p style="font-size: 11.5pt; color: var(--muted-color); margin: 8px 0 0;">Two lines that rise together by luck and a search: <a href="https://www.tylervigen.com/spurious-correlations" target="_blank" rel="noopener">tylervigen.com/spurious-correlations</a> (Amazon&rsquo;s stock price against babies named Stevie).</p>
     </section>
 
     <section id="two-worlds" style="padding: 30px 45px;">
