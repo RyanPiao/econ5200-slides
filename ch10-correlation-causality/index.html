@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=0be3170f71c2afde2e07e59374716d7a">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=aa6701ca341c96c3f713653e7e3c7bb7">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correlation & Causality: Causal Logic and DAGs</title>
@@ -82,14 +82,14 @@
     <section id="hook-1" style="padding: 36px 60px;">
       <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> A Finding That Was Never There</h2>
       <div class="content">
-        <p class="text-xl" style="line-height: 1.6;">For most of a decade, strategy and management research reported that when a company appoints a <strong>woman CEO</strong>, the other women executives at that company do <em>worse</em> &mdash; lower pay, lower representation below.</p>
+        <p class="text-xl" style="line-height: 1.6;">Two 2022 studies in strategy and management research reported that when a company appoints a <strong>woman CEO</strong>, the other women executives at that company do <em>worse</em> &mdash; lower pay, lower representation below.</p>
         <p class="text-lg" style="margin-top: 14px; color: var(--muted-color);">Published. Cited. Circulated as evidence of something people were quick to name.</p>
         <div class="fragment fade-up" style="background: #f8f6f3; border-left: 5px solid var(--danger-color); border-radius: 8px; padding: 20px 26px; margin-top: 20px;">
           <p class="text-xl" style="font-weight: 600;">March 2024. Frake, Hagemann and Uribe re-ran it. <span style="color: var(--danger-color);">The effect was not there.</span></p>
-          <p class="text-lg" style="margin-top: 10px;">No fabricated data. No miscoded variable. The regressions ran correctly on real data and returned a real number. The problem was <strong>one control variable</strong>.</p>
+          <p class="text-lg" style="margin-top: 10px;">No fabricated data. No miscoded variable. The regressions ran correctly on real data and returned a real number. The problem was <strong>one sample restriction</strong>: the studies left CEOs out of the sample of executives.</p>
         </div>
       </div>
-      <div class="footnote">Frake, Hagemann &amp; Uribe (2024), <em>Strategic Management Journal</em>, DOI: 10.1002/smj.3588</div>
+      <div class="footnote">Frake, Hagemann &amp; Uribe (2024), <em>Strategic Management Journal</em> 45(7), 1393&ndash;1419. DOI: 10.1002/smj.3588</div>
     </section>
 
     <section id="hook-2" style="padding: 36px 60px;">
@@ -250,6 +250,7 @@ y2 = 1.4*u + rng.normal(0,1,n)
       <h2><i class="fa-solid fa-shapes" style="color: var(--accent-color);"></i> Everything Is Built From Three Configurations</h2>
       <div class="content">
         <img src="figures/figure_001_three_structures.png" alt="Three DAG configurations side by side: a chain from D to M to Y, a fork with U pointing to both D and Y, and a collider with D and Y both pointing into C, each annotated with whether conditioning opens or closes the path" style="width: 100%; max-width: 1050px; margin: 4px auto 0; display: block;">
+        <p style="font-size: 15pt; margin-top: 8px; text-align: center;">A <strong>collider</strong> is caused by both: \(D \to C \leftarrow Y\).</p>
         <div class="fragment fade-up" style="background: #f8f6f3; border-left: 5px solid var(--danger-color); border-radius: 8px; padding: 15px 22px; margin-top: 14px;">
           <p style="font-size: 16.5pt;"><strong>Conditioning &mdash; controlling for it, stratifying on it, filtering to one of its values &mdash; closes chains and forks. It <span style="color: var(--danger-color);">opens</span> colliders.</strong></p>
         </div>
@@ -259,7 +260,7 @@ y2 = 1.4*u + rng.normal(0,1,n)
     <section id="paths-blocking" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-route" style="color: var(--secondary-color);"></i> Paths, Backdoors, and the Pipe Metaphor</h2>
       <div class="content">
-        <p class="text-lg" style="line-height: 1.6;">A <strong>path</strong> is any sequence of edges connecting \(D\) and \(Y\), <em>ignoring arrow direction</em>. It is <strong>causal</strong> if every arrow points away from \(D\). Every other path is a <strong>backdoor path</strong> &mdash; the first arrow points <em>into</em> \(D\), through the back door.</p>
+        <p class="text-lg" style="line-height: 1.6;">A <strong>path</strong> is any sequence of edges connecting \(D\) and \(Y\), <em>ignoring arrow direction</em>. It is <strong>causal</strong> if every arrow points away from \(D\). A <strong>backdoor path</strong> is one whose first arrow points <em>into</em> \(D\), through the back door. A non-causal path that leaves \(D\) is a third kind: it must meet a collider.</p>
         <div style="background: #f8f6f3; border-radius: 10px; padding: 16px 24px; margin-top: 14px;">
           <p style="font-size: 15.5pt; margin-bottom: 8px;"><strong>A path is blocked by \(\mathbf{S}\) if either:</strong></p>
           <p style="font-size: 15pt; margin-bottom: 6px;"><strong>1.</strong> it contains a chain \(\cdots \to W \to \cdots\) or fork \(\cdots \leftarrow W \to \cdots\) with \(W \in \mathbf{S}\); or</p>
@@ -336,7 +337,7 @@ y2 = 1.4*u + rng.normal(0,1,n)
             <p style="font-size: 15pt;"><strong>Condition 1</strong> is the familiar one. Close the confounding channels.</p>
           </div>
           <div style="background: #fdf0ed; border-radius: 8px; padding: 15px 20px; border-left: 4px solid var(--danger-color);">
-            <p style="font-size: 15pt;"><strong>Condition 2</strong> is the one people forget. Anything downstream of \(D\) is either a <em>mediator</em> (blocking the effect you want) or a <em>collider</em> (creating bias you did not have).</p>
+            <p style="font-size: 15pt;"><strong>Condition 2</strong> is the one people forget. Anything downstream of \(D\) is usually a <em>mediator</em> (blocking the effect you want) or a <em>collider</em> (creating bias you did not have).</p>
           </div>
         </div>
       </div>
@@ -351,7 +352,7 @@ y2 = 1.4*u + rng.normal(0,1,n)
         </div>
         <div class="poll-grid" data-poll-id="ch10-econ5200-poll-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 16px; font-size: 14pt;">
           <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 14px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">A) Condition 1 &mdash; a backdoor is left open, so the estimate is confounded upward</div>
-          <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 14px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">B) Condition 2 &mdash; skill is a descendant of \(D\); the estimate shrinks toward zero</div>
+          <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 14px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">B) Condition 2 &mdash; skill is a descendant of \(D\); the estimate shrinks toward the direct effect</div>
           <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 14px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">C) Neither &mdash; skill is measured before the outcome, so the control is valid</div>
           <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 14px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">D) Both &mdash; descendants always leave backdoors open as well</div>
         </div>
@@ -423,8 +424,8 @@ y2 = 1.4*u + rng.normal(0,1,n)
     </section>
 
     <section id="divider-3" class="section-divider" data-state="is-section-divider">
-      <h1>3 &nbsp;&bull;&nbsp; The Lalonde Debate, as a Graph</h1>
-      <p style="font-size: 17pt; color: var(--muted-color); font-style: italic; margin-top: 14px;">Thirty years of argument, restated as one unblocked path</p>
+      <h1>3 &nbsp;&bull;&nbsp; The LaLonde Debate, as a Graph</h1>
+      <p style="font-size: 17pt; color: var(--muted-color); font-style: italic; margin-top: 14px;">Forty years of argument, restated as one unblocked path</p>
     </section>
 
     <section id="lalonde-graphs" style="padding: 28px 45px;">
@@ -472,13 +473,13 @@ Observational, adjusted:  $   699</code></pre>
         mutilated, {"D"}, {"Y"}, set(adjust))</code></pre>
           <div>
             <pre style="font-size: 11pt; line-height: 1.6; background: #2d2d2d; color: #f0ede9; border-radius: 6px; padding: 13px 15px; margin: 0;"><code>nothing:            False
-earn74, educ:       False
-earn74, educ, U:    True</code></pre>
+re74, educ:         False
+re74, educ, U:      True</code></pre>
             <p style="font-size: 13.5pt; margin-top: 10px; color: var(--muted-color);">This function <em>is</em> the graph surgery from the theorem: delete the out-edges of \(D\), test d-separation in what remains.</p>
           </div>
         </div>
         <div class="fragment fade-up" style="background: #fdf0ed; border-left: 5px solid var(--danger-color); border-radius: 8px; padding: 15px 22px; margin-top: 14px;">
-          <p style="font-size: 15.5pt;"><strong>The middle line sums up thirty years of argument about this dataset.</strong> Adjusting for every covariate anyone actually measured does <em>not</em> close all the backdoors, because \(U\) remains. The graph does not say the estimate is wrong &mdash; it says precisely which assumption you are relying on.</p>
+          <p style="font-size: 15.5pt;"><strong>The middle line sums up forty years of argument about this dataset.</strong> Adjusting for every covariate anyone actually measured does <em>not</em> close all the backdoors, because \(U\) remains. The graph does not say the estimate is wrong &mdash; it says precisely which assumption you are relying on.</p>
         </div>
       </div>
     </section>
@@ -587,16 +588,16 @@ Adjusting for U  0.014
     <section id="netflix" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-briefcase" style="color: var(--accent-color);"></i> Economist at Work: Netflix Automates the Checklist</h2>
       <div class="content">
-        <p class="text-lg" style="line-height: 1.6;">Netflix makes nine-figure content and product decisions on evidence that is often observational. Their analysts did what analysts everywhere do: put every available user metric in the model and hope more controls meant less bias.</p>
+        <p class="text-lg" style="line-height: 1.6;">Many of Netflix&rsquo;s content and product questions cannot be randomised, so the evidence is often observational. The temptation, in any firm rich in metrics, is to put every available user metric in the model and hope more controls mean less bias.</p>
         <div style="background: #fdf0ed; border-left: 5px solid var(--danger-color); border-radius: 8px; padding: 14px 22px; margin-top: 13px;">
-          <p style="font-size: 15pt;">That routinely violates condition 2 &mdash; &ldquo;every available user metric&rdquo; includes variables measured <em>after</em> treatment: subsequent viewing, downstream engagement. Those are mediators and colliders, not confounders.</p>
+          <p style="font-size: 15pt;">That violates condition 2 &mdash; &ldquo;every available user metric&rdquo; includes variables measured <em>after</em> treatment: subsequent viewing, downstream engagement. Those are mediators and colliders, not confounders.</p>
         </div>
-        <p class="text-lg" style="margin-top: 13px; line-height: 1.6;">In June 2026 they open-sourced <strong><code>oci-agent</code></strong>: an <em>actor</em> that executes the analysis plan and a <em>critic</em> that reviews the output. It automates covariate balance (standardised mean difference below 0.2), propensity-score trimming for overlap, and sensitivity analysis. Netflix reports it orchestrating <strong>100+ analyses a month</strong>.</p>
+        <p class="text-lg" style="margin-top: 13px; line-height: 1.6;">In June 2026 they open-sourced <strong><code>oci-agent</code></strong>: an <em>actor</em> that executes the analysis plan and a <em>critic</em> that reviews the output. It automates covariate balance (standardised mean difference below 0.2), propensity-score trimming for overlap, and sensitivity analysis.</p>
         <div class="fragment fade-up key-result" style="margin-top: 13px;">
           <p style="font-size: 16pt;"><strong>The transferable principle.</strong> What a machine should do is the mechanical checking a tired analyst skips. Framing the question, scrutinising the assumptions, judging the diagnostics stay with you. <em>Automating the checklist does not automate the argument.</em></p>
         </div>
       </div>
-      <div class="footnote">Chen, A. et al. (2026), arXiv:2607.22443; Netflix Technology Blog, June 2026.</div>
+      <div class="footnote">Chou, W., Alexandre, A., Olds, L., Zhang, Y. &amp; Kallus, N. (2026), arXiv:2607.22443; Netflix Technology Blog, June 2026.</div>
     </section>
 
     <section id="divider-5" class="section-divider" data-state="is-section-divider">
@@ -676,11 +677,11 @@ corr(D,Y), holding C fixed: -0.563</code></pre>
             <p style="font-size: 14.5pt;"><strong>&ldquo;Either one suffices&rdquo; rules</strong> (a sum). ICU admission, restaurant visits, executives who appear in the data. Induced association: <strong>negative</strong>.</p>
           </div>
           <div style="background: #eef4ee; border-radius: 8px; padding: 14px 20px; border-left: 4px solid var(--success-color);">
-            <p style="font-size: 14.5pt;"><strong>&ldquo;One compensates for the other&rdquo; rules</strong> (a difference). Diners trading quality against price; lenders trading interest rate against default risk; employers trading skill against wage. Induced association: <strong>positive</strong>.</p>
+            <p style="font-size: 14.5pt;"><strong>&ldquo;One counts against the other&rdquo; rules</strong> (a difference). Diners trading quality against price; lenders trading interest rate against default risk; employers trading skill against wage. Induced association: <strong>positive</strong>.</p>
           </div>
         </div>
         <div class="fragment fade-up key-result" style="margin-top: 14px;">
-          <p style="font-size: 16pt;">Every canonical teaching example is a sum. That is why the folklore says &ldquo;negative&rdquo; &mdash; and why the folklore will mislead you the first time you meet a compensating selection rule in the wild.</p>
+          <p style="font-size: 16pt;">Every canonical teaching example is a sum. That is why the folklore says &ldquo;negative&rdquo; &mdash; and why the folklore will mislead you the first time you meet a difference-shaped selection rule in the wild.</p>
         </div>
       </div>
     </section>
@@ -714,7 +715,7 @@ corr(D,Y), holding C fixed: -0.563</code></pre>
           </tbody>
         </table>
         <div class="fragment fade-up" style="background: #f8f6f3; border-left: 5px solid var(--accent-color); border-radius: 8px; padding: 14px 22px; margin-top: 16px;">
-          <p style="font-size: 15.5pt;">Only the first and third are <em>bias</em>. The middle one is not a bias problem at all &mdash; and calling it one is the most common confusion in applied seminars.</p>
+          <p style="font-size: 15.5pt;">Only the first and third are <em>bias</em> on their own. The middle one changes the estimand: it misses the total effect but is right for the direct effect, <strong>provided nothing unmeasured drives both \(M\) and \(Y\)</strong>. If something does, \(D \to M \leftarrow U \to Y\) opens a path as well.</p>
         </div>
       </div>
     </section>
@@ -732,7 +733,7 @@ corr(D,Y), holding C fixed: -0.563</code></pre>
           </div>
         </div>
         <div class="fragment fade-up key-result" style="margin-top: 9px;">
-          <p style="font-size: 15.5pt;"><strong>So the rule is misnamed.</strong> &ldquo;Don&rsquo;t control for post-treatment variables&rdquo; is taught as a bias rule. It is really a statement about <strong>which estimand you want</strong>.</p>
+          <p style="font-size: 15.5pt;"><strong>So the rule is only partly about bias.</strong> &ldquo;Don&rsquo;t control for post-treatment variables&rdquo; is taught as a bias rule. For a mediator it is mostly about <strong>which estimand you want</strong>, and it is a bias rule again if something unmeasured drives both \(M\) and \(Y\).</p>
         </div>
       </div>
     </section>
@@ -763,7 +764,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
         <div class="fragment fade-up key-result" style="margin-top: 18px;">
           <p style="font-size: 17pt;"><strong>&ldquo;Bias from a control variable&rdquo; and &ldquo;bias from sample selection&rdquo; are the same mathematical event.</strong></p>
         </div>
-        <p class="text-lg" style="margin-top: 18px; line-height: 1.6;">This retroactively explains Chapter 6. Survivorship bias, non-response bias, and Berkson&rsquo;s paradox are <em>one structure with three names</em> &mdash; and it is the structure in the opening hook: executive presence in the observed data is caused both by the CEO&rsquo;s gender and by the career outcomes being measured.</p>
+        <p class="text-lg" style="margin-top: 18px; line-height: 1.6;">This retroactively explains Chapter 6. Survivorship bias, non-response bias, and Berkson&rsquo;s paradox are <em>one structure with three names</em> &mdash; and it is the structure in the opening hook: being in the non-CEO sample is caused both by whether the firm has a woman CEO and by the career outcomes being measured.</p>
       </div>
     </section>
 
@@ -822,10 +823,10 @@ is_d_separator(..., {"W"})  # False</code></pre>
           <p style="font-size: 15.5pt;"><strong>The testable implication.</strong> If ICU selection were manufacturing a spurious protective effect, the same artifact should appear for <em>other</em> conditions that lower the admission threshold.</p>
         </div>
         <div style="background: #fdf0ed; border-radius: 8px; padding: 15px 22px; border-left: 4px solid var(--danger-color); margin-top: 13px;">
-          <p style="font-size: 15.5pt;"><strong>They looked, and it did not.</strong> Other diagnoses failed to show the same protective association, before and after adjustment. They then estimated the effect with propensity-score overlap weighting to balance measured confounders &mdash; and the association survived.</p>
+          <p style="font-size: 15.5pt;"><strong>They looked. It mostly did not.</strong> Other diagnoses did not show the same protective association, and most adjusted estimates were null or harmful. In the primary analysis, with propensity-score overlap weighting to balance measured confounders, the association remained (11.4% against 12.7%).</p>
         </div>
         <div class="fragment fade-up key-result" style="margin-top: 16px;">
-          <p style="font-size: 16pt;"><strong>The collider did not explain it away.</strong> A plausible collider was proposed, formalised as a graph, converted into a <em>testable implication</em>, and rejected on evidence. That is what a DAG is actually for.</p>
+          <p style="font-size: 16pt;"><strong>The collider did not explain it away.</strong> A plausible collider was proposed, formalised as a graph, converted into a <em>testable implication</em>, and tested. The evidence did not support it, though the authors say they cannot rule selection out. That is what a DAG is actually for.</p>
         </div>
         <p class="text-lg" style="margin-top: 14px; line-height: 1.6; color: var(--secondary-color); font-weight: 600;">It does not settle arguments. It turns a vague worry &mdash; &ldquo;isn&rsquo;t this just selection?&rdquo; &mdash; into a specific claim that data can bear on.</p>
       </div>
@@ -834,7 +835,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
     <section id="evalue" style="padding: 30px 50px;">
       <h2><i class="fa-solid fa-gauge-high" style="color: var(--secondary-color);"></i> The Answerable Question, and the E-Value</h2>
       <div class="content">
-        <p class="text-lg" style="line-height: 1.55;">The immature response is to claim there is no unobserved confounding &mdash; untestable, and everyone knows it. The mature response answers a different question: <strong>how strong would an unmeasured confounder have to be to overturn this?</strong></p>
+        <p class="text-lg" style="line-height: 1.55;">Claiming there is no unobserved confounding does not help &mdash; it is untestable, and everyone knows it. A better response answers a different question: <strong>how strong would an unmeasured confounder have to be to overturn this?</strong></p>
         <div style="background: #f8f6f3; border-radius: 10px; padding: 12px 24px; margin-top: 12px; text-align: center;">
           <p style="font-size: 15pt; margin: 0;">$$\text{E-value} = RR + \sqrt{RR \times (RR - 1)}$$</p>
         </div>
@@ -925,7 +926,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
       <h2><i class="fa-solid fa-handshake" style="color: var(--secondary-color);"></i> The Current Settlement</h2>
       <div class="content">
         <div style="background: #f8f6f3; border-radius: 10px; padding: 18px 26px; border-left: 5px solid var(--accent-color);">
-          <p style="font-size: 16pt; line-height: 1.6;">The two frameworks are <strong>formally equivalent</strong> for the questions both can express &mdash; you saw the proof of that in Section 2.8 &mdash; and <strong>complementary in practice</strong>.</p>
+          <p style="font-size: 16pt; line-height: 1.6;">The two frameworks are <strong>formally equivalent</strong> for the questions both can express &mdash; Section 2 showed the match for the backdoor case &mdash; and <strong>complementary in practice</strong>.</p>
         </div>
         <div class="fragment fade-up key-result" style="margin-top: 18px;">
           <p style="font-size: 16.5pt;">Modern causal machine learning uses graphs because <strong>algorithms need a criterion they can check, not judgment they cannot.</strong></p>
