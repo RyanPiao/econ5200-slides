@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=aa6701ca341c96c3f713653e7e3c7bb7">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=d83b5a618dffcd7fdb7f03b5c27efd86">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correlation & Causality: Causal Logic and DAGs</title>
@@ -117,7 +117,7 @@
     <section>
       <section id="worlds-poll" style="padding: 26px 44px;">
         <h2><i class="fa-solid fa-chart-bar" style="color: var(--accent-color);"></i> Poll: Which One Shows D Causing Y?</h2>
-        <p style="font-size: 14.5pt; margin: 4px 0 6px;">Three datasets we collected. In each, <strong>D</strong> goes up and <strong>Y</strong> goes up with it.</p>
+        <p style="font-size: 14.5pt; margin: 4px 0 6px;">Three simulated datasets. In each, <strong>D</strong> goes up and <strong>Y</strong> goes up with it.</p>
         <img src="figures/figure_002b_three_worlds_blind.png" alt="Three upward-sloping scatterplots: tutoring hours and exam score (correlation 0.889), ice-cream sales and drownings (0.664), and approved borrowers' income and debt (0.632)" style="display:block; margin: 0 auto; max-height: 410px; max-width: 100%; width: auto;">
         <div class="poll-grid" data-poll-id="ch10-econ5200-poll-5" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; font-size: 13.5pt;">
           <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 11px 16px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">A) 1 &middot; tutoring</div>
@@ -839,7 +839,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
         <div style="background: #f8f6f3; border-radius: 10px; padding: 12px 24px; margin-top: 12px; text-align: center;">
           <p style="font-size: 15pt; margin: 0;">$$\text{E-value} = RR + \sqrt{RR \times (RR - 1)}$$</p>
         </div>
-        <p style="font-size: 14.5pt; margin-top: 11px; line-height: 1.6;"><strong>Where / Interpretation.</strong> \(RR\) is the observed risk ratio. An E-value of 2.37 says: to erase this result, some unmeasured variable must raise the probability of treatment by a factor of at least 2.37 <em>and</em> raise the probability of the outcome by at least 2.37. Weaker confounders cannot do it.</p>
+        <p style="font-size: 14.5pt; margin-top: 11px; line-height: 1.6;"><strong>Where / Interpretation.</strong> \(RR\) is the observed risk ratio. An E-value of 2.37 says: an unmeasured variable tied to <em>both</em> the treatment and the outcome by a risk ratio of 2.37 each, beyond what you measured, could erase this result. One weaker than 2.37 on both cannot.</p>
         <table class="table-standard" style="width: 100%; margin-top: 12px;">
           <thead><tr><th>Observed \(RR\)</th><th>1.2</th><th>1.5</th><th>2.0</th><th>3.0</th></tr></thead>
           <tbody><tr><td><strong>E-value</strong></td><td>1.69</td><td>2.37</td><td>3.41</td><td>5.45</td></tr></tbody>
@@ -1024,7 +1024,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px;">
           <div style="background: #f0f5f8; border-radius: 8px; padding: 13px 18px; border-left: 4px solid var(--accent-color);">
-            <p style="font-size: 14pt;"><strong>Ch 11 &mdash; DiD.</strong> Every adjustment set today assumed you could <em>measure</em> the confounders. DiD does not ask you to.</p>
+            <p style="font-size: 14pt;"><strong>Ch 11 &mdash; DiD.</strong> Every adjustment set today assumed you could <em>measure</em> the confounders. DiD lets one stay unmeasured if its effect does not change over time; the price is parallel trends.</p>
           </div>
           <div style="background: #f0f5f8; border-radius: 8px; padding: 13px 18px; border-left: 4px solid var(--success-color);">
             <p style="font-size: 14pt;"><strong>Ch 12&ndash;13 &mdash; IV and RD.</strong> Two more ways to get identification without measuring the confounder &mdash; and IV is the framework for the simultaneity acyclicity forbids.</p>

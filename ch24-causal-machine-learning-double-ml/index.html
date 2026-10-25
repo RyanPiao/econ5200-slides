@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=a298eab1d4a0bf0e1c9b64104fc72b8f">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=092054fff7442297efb41858110406d6">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Causal ML: Double Machine Learning</title>
@@ -269,14 +269,16 @@
       </section>
 
       <section id="lalonde-callback">
-        <h2>The Lalonde Callback: Full Circle</h2>
+        <h2>The Lalonde Callback: How Close Does DML Get?</h2>
         <table style="font-size:14pt; margin:auto; border-collapse:collapse;">
           <tr style="border-bottom:2px solid #333;"><th style="padding:8px 16px;">Chapter</th><th style="padding:8px 16px;">Method</th><th style="padding:8px 16px;">Estimate</th><th style="padding:8px 16px;">Lesson</th></tr>
           <tr class="fragment"><td style="padding:8px 16px;">Ch 8</td><td>Two-sample t-test</td><td>\$1,794</td><td>Statistical significance ≠ causal</td></tr>
           <tr class="fragment"><td style="padding:8px 16px;">Ch 9</td><td>Permutation + Bootstrap</td><td>\$1,794 (ATE)</td><td>Randomization <em>makes</em> it causal</td></tr>
-          <tr class="fragment" style="background:#d5f5e3;"><td style="padding:8px 16px;"><strong>Ch 24</strong></td><td><strong>DML</strong></td><td><strong>~\$1,600–\$2,100</strong></td><td><strong>Recovers benchmark from obs. data</strong></td></tr>
+          <tr class="fragment"><td style="padding:8px 16px;">Ch 10</td><td>OLS + 8 covariates (CPS)</td><td>&minus;\$8,498 &rarr; +\$699</td><td>Controls fix only measured confounders</td></tr>
+          <tr class="fragment"><td style="padding:8px 16px;">Ch 10</td><td>Propensity score matching</td><td>\$854&ndash;\$1,860 by spec and rule</td><td>Closest, and most fragile</td></tr>
+          <tr class="fragment" style="background:#d5f5e3;"><td style="padding:8px 16px;"><strong>Ch 24</strong></td><td><strong>DML (ATT), same CPS data</strong></td><td><strong>\$1,228&ndash;\$1,525 by learner</strong></td><td><strong>Closer and steadier; every 95% CI includes \$0</strong></td></tr>
         </table>
-        <p class="fragment" style="font-size:14pt; margin-top:20px;">Same data, three chapters, increasingly sophisticated analysis. <br><strong>DML doesn't replace experiments &mdash; but when experiments are impossible, it's the next best thing.</strong></p>
+        <p class="fragment" style="font-size:14pt; margin-top:20px;">Same men, four chapters, increasingly sophisticated analysis. <br><strong>DML adjusts for the confounders you measured. Only an experiment handles the ones you didn&rsquo;t.</strong></p>
       </section>
 
       <section id="poll-3">
