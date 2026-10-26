@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=f9e940bca9775dae644d720152d78ce3">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=6c328e58214401c0d98cf8551b74d19b">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correlation & Causality: Causal Logic and DAGs</title>
@@ -974,21 +974,8 @@ is_d_separator(..., {"W"})  # False</code></pre>
     <section id="icu-study" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-hospital" style="color: var(--secondary-color);"></i> A Real Study, Where Nobody Knew the Answer</h2>
       <div class="content">
-        <p class="text-lg" style="line-height: 1.6;">A 2026 population-based cohort study of <strong>142,045 ICU hospitalizations</strong> for COVID-19 across Texas hospitals, 2020&ndash;2024. In-hospital mortality:</p>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px;">
-          <div style="background: #eef4ee; padding: 16px; border-radius: 8px; text-align: center; border-bottom: 3px solid var(--success-color);">
-            <p style="font-size: 26pt; font-weight: 700; color: var(--success-color);">10.7%</p>
-            <p style="font-size: 14pt;">currently nicotine-dependent</p>
-          </div>
-          <div style="background: #f8f6f3; padding: 16px; border-radius: 8px; text-align: center; border-bottom: 3px solid var(--accent-color);">
-            <p style="font-size: 26pt; font-weight: 700; color: var(--accent-color);">13.8%</p>
-            <p style="font-size: 14pt;">formerly dependent</p>
-          </div>
-          <div style="background: #fdf0ed; padding: 16px; border-radius: 8px; text-align: center; border-bottom: 3px solid var(--danger-color);">
-            <p style="font-size: 26pt; font-weight: 700; color: var(--danger-color);">16.1%</p>
-            <p style="font-size: 14pt;">never dependent</p>
-          </div>
-        </div>
+        <p class="text-lg" style="line-height: 1.6;">A 2026 population-based cohort study of <strong>142,045 ICU hospitalizations</strong> for COVID-19 across Texas hospitals, 2020&ndash;2024.</p>
+        <div style="margin-top: 14px;"><div class="mathjax_ignore tex2jax_ignore"><svg viewBox="0 0 1160 184" xmlns="http://www.w3.org/2000/svg" style="width:100%; display:block;" role="img" aria-label="Left: nicotine dependence and COVID severity both lead to ICU admission, and severity leads to death; the data hold only ICU patients. Right: in-hospital mortality of 10.7 percent for the currently dependent, 13.8 percent formerly dependent, 16.1 percent never dependent."><defs><marker id="g7-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2c3e50"/></marker><marker id="g7-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#a94442"/></marker></defs><rect x="10" y="14" width="220" height="44" rx="9" fill="#fff" stroke="#2c3e50" stroke-width="2.5"/><text x="120.0" y="42.0" text-anchor="middle" font-size="17" font-weight="600" fill="#2c3e50">Nicotine dependence</text><rect x="10" y="132" width="220" height="44" rx="9" fill="#fff" stroke="#2c3e50" stroke-width="2.5"/><text x="120.0" y="159.9" text-anchor="middle" font-size="17" font-weight="600" fill="#2c3e50">COVID severity</text><rect x="290" y="73" width="200" height="44" rx="9" fill="#fff" stroke="#a94442" stroke-width="2.5" stroke-dasharray="7 5"/><text x="390.0" y="101.0" text-anchor="middle" font-size="17" font-weight="600" fill="#a94442">Admitted to the ICU</text><rect x="420" y="132" width="190" height="44" rx="9" fill="#fff" stroke="#2c3e50" stroke-width="2.5"/><text x="515.0" y="159.9" text-anchor="middle" font-size="17" font-weight="600" fill="#2c3e50">Death in hospital</text><line x1="232" y1="46" x2="284" y2="76" stroke="#a94442" stroke-width="2.8" marker-end="url(#g7-red)"/><line x1="232" y1="142" x2="284" y2="114" stroke="#a94442" stroke-width="2.8" marker-end="url(#g7-red)"/><line x1="232" y1="160" x2="414" y2="160" stroke="#2c3e50" stroke-width="2.8" marker-end="url(#g7-ink)"/><text x="390" y="62" text-anchor="middle" font-size="15" fill="#a94442" font-weight="700">everyone in the data</text><text x="858" y="16" text-anchor="start" font-size="16" fill="#2c3e50" font-weight="700">In-hospital mortality</text><text x="848" y="54" text-anchor="end" font-size="16" fill="#2c3e50">currently dependent</text><rect x="858" y="30" width="149.8" height="36" rx="4" fill="#4f7f52" opacity="0.85"/><text x="1017.8" y="55" text-anchor="start" font-size="20" fill="#4f7f52" font-weight="700">10.7%</text><text x="848" y="104" text-anchor="end" font-size="16" fill="#2c3e50">formerly dependent</text><rect x="858" y="80" width="193.2" height="36" rx="4" fill="#c0612b" opacity="0.85"/><text x="1061.2" y="105" text-anchor="start" font-size="20" fill="#c0612b" font-weight="700">13.8%</text><text x="848" y="154" text-anchor="end" font-size="16" fill="#2c3e50">never dependent</text><rect x="858" y="130" width="225.4" height="36" rx="4" fill="#a94442" opacity="0.85"/><text x="1093.4" y="155" text-anchor="start" font-size="20" fill="#a94442" font-weight="700">16.1%</text></svg></div></div>
         <p class="text-lg" style="margin-top: 16px; line-height: 1.6;">At face value, nicotine dependence looks <em>protective</em> against dying of COVID. The collider is easy to see with this lecture&rsquo;s vocabulary &mdash; and <strong>the authors saw it too</strong>: their paper includes a DAG in which nicotine dependence and COVID severity <strong>collide on ICU admission</strong>.</p>
       </div>
       <div class="footnote">Garza, J. et al. (2026), <em>PLOS One</em> 21(4), e0308776.</div>
