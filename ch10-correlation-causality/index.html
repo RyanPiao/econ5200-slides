@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=4ca42c923c736e10508f3334f7870bba">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=1da2b13020958df17f6756d7fab00ec3">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correlation & Causality: Causal Logic and DAGs</title>
@@ -20,6 +20,7 @@
                svg: {fontCache: 'global'}};
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="../mock-cell.css">
 </head>
 <body>
   <div class="reveal">
@@ -749,6 +750,12 @@ Adjusting for U  0.014
           <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 14px 18px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">D) Unstable &mdash; it would flip sign across seeds</div>
         </div>
       </section>
+      <section id="poll-3-run" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Poll 3, Run: the Analyst&rsquo;s Own Cell</h2>
+        <div class="content">
+          <div class="mock colab" data-src="cells/ch10.json" data-cell="4" data-lines="3-6,8-9" data-size="12pt" style="max-width: 1100px;"></div>
+        </div>
+      </section>
       <section id="poll-3-reveal" data-poll-results="ch10-econ5200-poll-3" style="padding: 26px 45px;">
         <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> Answer: C &mdash; &minus;0.593, with \(p &lt; 0.001\)</h2>
         <div class="poll-results-chart" data-poll-id="ch10-econ5200-poll-3" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:130px; margin:8px 60px;"></div>
@@ -1284,6 +1291,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
   <script src="../poll.js" data-checkin></script>
+  <script src="../mock-cell.js"></script>
   <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
