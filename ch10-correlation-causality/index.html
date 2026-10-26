@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=1da2b13020958df17f6756d7fab00ec3">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=37891e3e44d8ec023c0c5d35d70f9dff">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correlation & Causality: Causal Logic and DAGs</title>
@@ -671,7 +671,8 @@ re74, educ, U:      True</code></pre>
       </div>
     </section>
 
-    <section id="three-question" style="padding: 36px 55px;">
+    <section>
+      <section id="three-question" style="padding: 36px 55px;">
       <h2><i class="fa-solid fa-lightbulb" style="color: var(--accent-color);"></i> Think Like an Economist: The Three-Question Test</h2>
       <div class="content">
         <div style="display: flex; flex-direction: column; gap: 13px;">
@@ -692,6 +693,22 @@ re74, educ, U:      True</code></pre>
           <p style="font-size: 15.5pt;">All three yes \(\Rightarrow\) confounder, include it. Third answer no \(\Rightarrow\) <strong>stop</strong>. And notice what is <em>not</em> on the list: &ldquo;does it improve model fit.&rdquo; Fit is a prediction criterion; this is an identification problem.</p>
         </div>
       </div>
+    </section>
+      <section id="room-two-numbers" style="padding: 34px 50px;">
+        <h2><i class="fa-solid fa-cake-candles" style="color: var(--secondary-color);"></i> Two Numbers About You</h2>
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 22px; margin-top: 10px;"><p style="font-size: 15.5pt; line-height: 1.55; margin: 0;">Send two numbers. <strong>They have nothing to do with each other.</strong> We use them after the break.</p></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--secondary-color);">
+            <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">1. The day of the month you were born (1&ndash;31)</p>
+            <div class="poll-number" data-poll-id="ch10-econ5200-poll-6" data-poll-voting data-min="1" data-max="31" data-step="1"></div>
+          </div>
+          <div style="background: #fdf0ea; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--accent-color);">
+            <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">2. The month you were born (1&ndash;12)</p>
+            <div class="poll-number" data-poll-id="ch10-econ5200-poll-7" data-poll-voting data-min="1" data-max="12" data-step="1"></div>
+          </div>
+        </div>
+        <p class="rs-count" style="text-align: center; font-size: 13pt; color: var(--muted-color); margin-top: 16px;"></p>
+      </section>
     </section>
 
     <section id="good-control-works" style="padding: 26px 45px;">
@@ -767,6 +784,18 @@ Controlling for C   estimate = -0.593  p = 0.000  R2 = 0.585   (truth = 0.000)</
           </div>
           <p style="font-size: 14.5pt;">No diagnostic flags it. Residuals look fine. \(R^2\) went from 0.000 to <strong>0.585</strong> &mdash; the fit <em>improved</em>.</p>
         </div>
+      </section>
+      <section id="room-slices" style="padding: 24px 46px;">
+        <h2><i class="fa-solid fa-people-group" style="color: var(--secondary-color);"></i> The Room&rsquo;s Two Slices</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 2px; color: #5d5d5d;"><strong style="color: #2c3e50;">What we did:</strong> your two unrelated numbers, put on one scale. Middle: only the third of the room whose <strong>total</strong> is nearest the room&rsquo;s middle. Right: the third whose <strong>difference</strong> is.</p>
+          <div class="rs-plot mathjax_ignore tex2jax_ignore" style="margin-top: 2px;"></div>
+          <p class="rs-wait" style="font-size: 15pt; text-align: center; color: var(--muted-color); margin-top: 60px;">Waiting for both numbers from at least 8 of you.</p>
+          <div class="fragment fade-up" style="background: #f7eeee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 8px 18px; margin-top: 6px;">
+            <p style="font-size: 14.5pt; line-height: 1.42; margin: 0;">Nobody&rsquo;s birth month depends on the day. Hold the <strong>total</strong> fixed and a later day <strong>has to</strong> come with an earlier month: negative. Hold the <strong>difference</strong> fixed and a later day comes with a later month: positive. Same people, same numbers; <strong>the rule you selected on set the sign.</strong> The next three slides say why.</p>
+          </div>
+        </div>
+        <div class="footnote">Your numbers, read live. Day and month each put on one scale (z-scores); each slice is the third of the room nearest the middle value of the total, or of the difference. One answer per device.</div>
       </section>
     </section>
 
@@ -1292,6 +1321,139 @@ is_d_separator(..., {"W"})  # False</code></pre>
   </style>
   <script src="../poll.js" data-checkin></script>
   <script src="../mock-cell.js"></script>
+<script>
+/* ============================================================
+   Topic 10: THE ROOM'S TWO SLICES (5200, 26 Oct 2026). Each student types the day of the month they were born
+   (ch10-econ5200-poll-6, 1-31) and the month (ch10-econ5200-poll-7, 1-12). Both go on one scale (z-scores, n - 1 SD).
+   Slice 1: the third of the room whose total z_day + z_month is nearest the room's median total. Slice 2: the third
+   whose difference z_day - z_month is nearest the median difference (at least 5 each). corr(day, month) is drawn for
+   everyone and for each slice. Reads poll_votes; never writes. window.RoomSlices.paint(rows) takes planted rows.
+   ============================================================ */
+(function () {
+  "use strict";
+  var ID_D = "ch10-econ5200-poll-6", ID_M = "ch10-econ5200-poll-7";
+  var NUM = /^\s*(?:[oe]\*?:)?\s*(-?\d+(?:\.\d+)?)\s*$/;
+  var MIN_N = 8, MIN_K = 5;
+  var RANGE = {}; RANGE[ID_D] = [1, 31]; RANGE[ID_M] = [1, 12];
+
+  function pairs(rows) {                      // one {d, m} per device that sent both (its first of each)
+    var first = {};
+    (rows || []).slice().sort(function (a, b) { return String(a.created_at || "") < String(b.created_at || "") ? -1 : 1; })
+      .forEach(function (r) {
+        if (!r || !RANGE[r.poll_id]) return;
+        var x = NUM.exec(String(r.choice)); if (!x) return;
+        var v = +x[1], rg = RANGE[r.poll_id]; if (v < rg[0] || v > rg[1]) return;
+        var f = first[r.voter_id] = first[r.voter_id] || {};
+        if (f[r.poll_id] === undefined) f[r.poll_id] = v;
+      });
+    return Object.keys(first).sort().filter(function (k) { return first[k][ID_D] !== undefined && first[k][ID_M] !== undefined; })
+      .map(function (k) { return { d: first[k][ID_D], m: first[k][ID_M] }; });
+  }
+  function mean(a) { var t = 0; a.forEach(function (x) { t += x; }); return t / a.length; }
+  function sd(a) { var u = mean(a), ss = 0; a.forEach(function (x) { ss += (x - u) * (x - u); }); return Math.sqrt(ss / (a.length - 1)); }
+  function median(a) { var s = a.slice().sort(function (x, y) { return x - y; }), h = s.length >> 1; return s.length % 2 ? s[h] : (s[h - 1] + s[h]) / 2; }
+  function corr(P) {
+    if (P.length < 3) return null;
+    var md = mean(P.map(function (p) { return p.d; })), mm = mean(P.map(function (p) { return p.m; })), sxy = 0, sxx = 0, syy = 0;
+    P.forEach(function (p) { sxy += (p.d - md) * (p.m - mm); sxx += (p.d - md) * (p.d - md); syy += (p.m - mm) * (p.m - mm); });
+    return (sxx > 0 && syy > 0) ? sxy / Math.sqrt(sxx * syy) : null;
+  }
+  function slice(P, key, k) {
+    var med = median(P.map(function (p) { return p[key]; }));
+    return P.slice().sort(function (a, b) { return (Math.abs(a[key] - med) - Math.abs(b[key] - med)) || (a.i - b.i); }).slice(0, k);
+  }
+  function analyse(P) {
+    var n = P.length, out = { n: n, ready: false };
+    if (n < MIN_N) return out;
+    var sdD = sd(P.map(function (p) { return p.d; })), sdM = sd(P.map(function (p) { return p.m; }));
+    if (!(sdD > 0) || !(sdM > 0)) return out;
+    var mD = mean(P.map(function (p) { return p.d; })), mM = mean(P.map(function (p) { return p.m; }));
+    P.forEach(function (p, i) { p.i = i; var zd = (p.d - mD) / sdD, zm = (p.m - mM) / sdM; p.tot = zd + zm; p.dif = zd - zm; });
+    var k = Math.max(MIN_K, Math.ceil(n / 3));
+    out.S = slice(P, "tot", k); out.F = slice(P, "dif", k);
+    out.rAll = corr(P); out.rS = corr(out.S); out.rF = corr(out.F); out.k = k; out.P = P;
+    out.ready = out.rAll !== null && out.rS !== null && out.rF !== null;
+    return out;
+  }
+  function f2(x) { return x.toFixed(2).replace("-", "−"); }
+  function plot(r) {
+    var W = 1180, H = 330, top = 54, bot = 280, pw = 330, x0 = [70, 455, 840];
+    var X = function (k, v) { return x0[k] + (v - 1) / 30 * pw; }, Y = function (v) { return bot - (v - 1) / 11 * (bot - top); };
+    var col = ["#2f4f4f", "#b22222", "#1f6fb2"];
+    var titles = ["Everyone: corr = " + f2(r.rAll) + " (n = " + r.n + ")",
+                  "Same total: corr = " + f2(r.rS) + " (n = " + r.k + ")",
+                  "Same difference: corr = " + f2(r.rF) + " (n = " + r.k + ")"];
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="Three scatterplots of birth day against birth month: everyone, the slice with the total held roughly fixed, and the slice with the difference held roughly fixed">';
+    [0, 1, 2].forEach(function (k) {
+      s += '<rect x="' + x0[k] + '" y="' + top + '" width="' + pw + '" height="' + (bot - top) + '" fill="#fbfaf8" stroke="#d9d4cb"/>';
+      [1, 8, 15, 22, 29].forEach(function (t) {
+        s += '<line x1="' + X(k, t) + '" x2="' + X(k, t) + '" y1="' + top + '" y2="' + bot + '" stroke="#ece8e1"/>' +
+             '<text x="' + X(k, t) + '" y="' + (bot + 20) + '" text-anchor="middle" font-size="15" fill="#777">' + t + '</text>';
+      });
+      [1, 4, 7, 10, 12].forEach(function (t) {
+        s += '<line x1="' + x0[k] + '" x2="' + (x0[k] + pw) + '" y1="' + Y(t) + '" y2="' + Y(t) + '" stroke="#ece8e1"/>' +
+             '<text x="' + (x0[k] - 8) + '" y="' + (Y(t) + 5) + '" text-anchor="end" font-size="15" fill="#777">' + t + '</text>';
+      });
+      s += '<text x="' + (x0[k] + pw / 2) + '" y="' + (top - 20) + '" text-anchor="middle" font-size="18" font-weight="700" fill="' + col[k] + '">' + titles[k] + '</text>' +
+           '<text x="' + (x0[k] + pw / 2) + '" y="' + (H - 4) + '" text-anchor="middle" font-size="15" fill="#555">day of the month born</text>';
+    });
+    s += '<text transform="translate(22 ' + ((top + bot) / 2) + ') rotate(-90)" text-anchor="middle" font-size="15" fill="#555">month born</text>';
+    r.P.forEach(function (p) { s += '<circle cx="' + X(0, p.d) + '" cy="' + Y(p.m) + '" r="7" fill="' + col[0] + '" fill-opacity="0.55"/>'; });
+    r.S.forEach(function (p) { s += '<circle cx="' + X(1, p.d) + '" cy="' + Y(p.m) + '" r="8" fill="' + col[1] + '" fill-opacity="0.85"/>'; });
+    r.F.forEach(function (p) { s += '<circle cx="' + X(2, p.d) + '" cy="' + Y(p.m) + '" r="8" fill="' + col[2] + '" fill-opacity="0.85"/>'; });
+    return s + '</svg>';
+  }
+  function setAll(sel, txt) { [].forEach.call(document.querySelectorAll(sel), function (e) { e.textContent = txt; }); }
+  var last = null;
+  function paint(rows) {
+    var P = pairs(rows), r = analyse(P);
+    setAll("#room-two-numbers .rs-count", P.length ? P.length + " of you " + (P.length === 1 ? "has" : "have") + " sent both numbers" : "");
+    var host = document.querySelector("#room-slices .rs-plot"), wait = document.querySelector("#room-slices .rs-wait");
+    if (!host) return r;
+    if (!r.ready) {
+      host.innerHTML = ""; last = null;
+      if (wait) { wait.style.display = ""; wait.textContent = "Waiting for both numbers from at least " + MIN_N + " of you" + (P.length ? " (" + P.length + " so far)." : "."); }
+      return r;
+    }
+    var key = P.map(function (p) { return p.d + "," + p.m; }).join("|");
+    if (key === last) return r;
+    last = key;
+    if (wait) wait.style.display = "none";
+    host.innerHTML = plot(r);
+    return r;
+  }
+  window.RoomSlices = { pairs: pairs, analyse: analyse, paint: paint };   // planted-data tests; never writes
+
+  var SU = "https://dpntbrsorgbivmntwmod.supabase.co";
+  var SK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
+  // On the reveal slide it reads this course's LATEST session with enough pairs, not only today's (a meeting that
+  // types the numbers and reveals them on different days still works; same idea as 3916's room-slice).
+  function bestSession(rows) {
+    var by = {};
+    rows.forEach(function (r) { var k = String(r.session_key || ""); (by[k] = by[k] || []).push(r); });
+    var keys = Object.keys(by).sort().reverse(), pick = keys[0] || "";
+    for (var i = 0; i < keys.length; i++) { if (pairs(by[keys[i]]).length >= MIN_N) { pick = keys[i]; break; } }
+    return { key: pick, rows: by[pick] || [] };
+  }
+  function fetchRows() {
+    if (location.protocol === "file:") return;
+    var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+    var today = window.Poll ? Poll.q() : "";
+    var latest = !!(s && s.id === "room-slices" && today);
+    var url = SU + "/rest/v1/poll_votes?poll_id=in.(" + ID_D + "," + ID_M + ")&select=poll_id,choice,voter_id,created_at" +
+              (latest ? ",session_key&session_key=like.*-" + today.split("-").pop() : today);
+    fetch(url, { headers: { apikey: SK, Authorization: "Bearer " + SK, "Cache-Control": "no-cache, no-store" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) { if (!rows) return; paint(latest ? bestSession(rows).rows : rows); })
+      .catch(function () {});
+  }
+  var HERE = ["room-two-numbers", "room-slices"];
+  function onRoom() { var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(); return !!(s && HERE.indexOf(s.id) >= 0); }
+  setInterval(function () { if (!document.hidden && onRoom()) fetchRows(); }, 4000);
+  if (window.Reveal && Reveal.on) Reveal.on("slidechanged", function () { if (onRoom()) fetchRows(); });
+  setTimeout(fetchRows, 900);
+})();
+</script>
   <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
