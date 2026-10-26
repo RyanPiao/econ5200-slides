@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=cb551dd05179c7b205e27c6d4b55f58f">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=4ca42c923c736e10508f3334f7870bba">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Correlation & Causality: Causal Logic and DAGs</title>
@@ -345,7 +345,7 @@ y2 = 1.4*u + rng.normal(0,1,n)
       </section>
       <section id="examples-rule" style="padding: 28px 50px;">
         <h2><i class="fa-solid fa-scale-balanced" style="color: var(--accent-color);"></i> Control for the U&rsquo;s. Never the M&rsquo;s or the C&rsquo;s.</h2>
-        <p style="font-size:14.5pt; margin:6px 0 12px;">Holding the middle fixed <strong>closes</strong> a chain or a fork and <strong>opens</strong> a collider. The Three-Question Test (page 32) gives the same answer: only the confounder passes all three.</p>
+        <p style="font-size:14.5pt; margin:6px 0 12px;">Holding the middle fixed <strong>closes</strong> a chain or a fork and <strong>opens</strong> a collider. The Three-Question Test (page 29) gives the same answer: only the confounder passes all three.</p>
         <table style="width:100%; border-collapse:collapse; font-size:14.5pt;">
           <thead><tr style="background:#f3f1ec;"><th style="padding:9px 14px; text-align:left;">Variable</th><th style="padding:9px 14px;">Causes the treatment?</th><th style="padding:9px 14px;">Causes the outcome?</th><th style="padding:9px 14px;">Came before the treatment?</th><th style="padding:9px 14px;">Verdict</th></tr></thead>
           <tbody><tr><td style="padding:9px 14px; border-top:1px solid #e5e1da;">U &middot; confounder (temperature)<br/><span style="font-size:11.5pt; color:#6b645e;">causes both D and Y</span></td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&#10003;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&#10003;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&#10003;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;"><strong style="color:#2f7d4f;">control</strong></td></tr><tr><td style="padding:9px 14px; border-top:1px solid #e5e1da;">M &middot; mediator (homework)<br/><span style="font-size:11.5pt; color:#6b645e;">sits between: D &rarr; M &rarr; Y</span></td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&ndash;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&#10003;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&ndash;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;"><strong style="color:#a8545a;">don&rsquo;t</strong></td></tr><tr><td style="padding:9px 14px; border-top:1px solid #e5e1da;">C &middot; collider (people visit)<br/><span style="font-size:11.5pt; color:#6b645e;">caused by both: &rarr; C &larr;</span></td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&ndash;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&ndash;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;">&ndash;</td><td style="padding:9px 14px; border-top:1px solid #e5e1da; text-align:center;"><strong style="color:#a8545a;">don&rsquo;t</strong></td></tr></tbody>
@@ -488,60 +488,6 @@ y2 = 1.4*u + rng.normal(0,1,n)
       </section>
     </section>
 
-    <section id="adjustment-theorem" style="padding: 30px 55px;">
-      <h2><span style="font-size: 13pt; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase;">Advanced Treatment</span><br><i class="fa-solid fa-square-root-variable" style="color: var(--secondary-color);"></i> The Backdoor Adjustment Theorem</h2>
-      <div class="content">
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 15px 24px; border-left: 4px solid var(--success-color);">
-          <p style="font-size: 14.5pt; margin-bottom: 6px;"><strong>Theorem.</strong> Let \(\mathbf{S}\) satisfy &nbsp;(a) no element of \(\mathbf{S}\) is in \(\text{de}(D)\); &nbsp;(b) \(\mathbf{S}\) blocks every path between \(D\) and \(Y\) containing an arrow <em>into</em> \(D\). Then</p>
-          <p style="font-size: 14pt; text-align: center; margin: 0;">$$P(Y = y \mid do(D = d)) = \sum_{\mathbf{s}} P(Y = y \mid D = d, \mathbf{S} = \mathbf{s})\, P(\mathbf{S} = \mathbf{s})$$</p>
-        </div>
-        <div style="background: #f0f5f8; border-radius: 8px; padding: 14px 22px; margin-top: 13px;">
-          <p style="font-size: 14.5pt;"><strong>Where:</strong> \(do(D=d)\) denotes an <em>intervention</em> that sets \(D\) to \(d\) for everyone &mdash; as opposed to merely <em>observing</em> \(D = d\).</p>
-        </div>
-        <div class="fragment fade-up" style="background: #fdf0ed; border-left: 5px solid var(--accent-color); border-radius: 8px; padding: 15px 22px; margin-top: 13px;">
-          <p style="font-size: 15.5pt;"><strong>In English, before that symbol is used again.</strong> The left-hand side is a <em>counterfactual</em>: outcomes in a world where we reached in and assigned the treatment. The right-hand side contains <em>only conditional probabilities you can estimate from data you already have</em>. The theorem states the exact conditions under which those two objects are the same number.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="mutilation-proof" style="padding: 26px 45px;">
-      <h2><i class="fa-solid fa-scissors" style="color: var(--danger-color);"></i> Proof Sketch: Graph Surgery</h2>
-      <div class="content">
-        <img src="figures/figure_003_mutilated_graph.png" alt="Two DAGs side by side: G, the observed world in which S and U both point into D and into Y, and the mutilated graph G-D-bar in which every arrow into D has been deleted, leaving only the causal arrow from D to Y and the arrows into Y" style="width: 100%; max-width: 950px; margin: 0 auto; display: block;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px;">
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 18px;">
-            <p style="font-size: 13.5pt;"><strong>(a)</strong> No descendants of \(D\) in \(\mathbf{S}\) \(\Rightarrow\) \(\mathbf{S}\)&rsquo;s own distribution is unaffected: \(P(\mathbf{s} \mid do(d)) = P(\mathbf{s})\).</p>
-          </div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 18px;">
-            <p style="font-size: 13.5pt;"><strong>(b)</strong> Backdoors blocked \(\Rightarrow\) \(Y \perp D \mid \mathbf{S}\) <em>in the mutilated graph</em>, so \(P(y \mid do(d), \mathbf{s}) = P(y \mid d, \mathbf{s})\). Marginalise. \(\blacksquare\)</p>
-          </div>
-        </div>
-        <div class="fragment fade-up key-result" style="margin-top: 10px;">
-          <p style="font-size: 15.5pt;"><strong>Take the proof, not just the result.</strong> Randomization is <em>literally</em> the right-hand picture. An RCT constructs \(G_{\overline{D}}\) exactly, by physically deleting every arrow into the treatment.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="ignorability-equiv" style="padding: 32px 55px;">
-      <h2><span style="font-size: 13pt; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase;">Advanced Treatment</span><br><i class="fa-solid fa-arrows-left-right" style="color: var(--secondary-color);"></i> This Is Conditional Ignorability, Restated</h2>
-      <div class="content">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
-          <div style="background: #f0f5f8; border-radius: 8px; padding: 15px 20px; border-left: 4px solid var(--secondary-color);">
-            <p style="font-size: 14.5pt; margin-bottom: 8px;"><strong>Condition (b) is exactly</strong></p>
-            <p style="font-size: 14pt; text-align: center; margin: 0;">$$\{Y_i(1), Y_i(0)\} \perp\!\!\!\perp D_i \mid \mathbf{S}_i$$</p>
-          </div>
-          <div style="background: #f0f5f8; border-radius: 8px; padding: 15px 20px; border-left: 4px solid var(--success-color);">
-            <p style="font-size: 14.5pt; margin-bottom: 8px;"><strong>Populated strata is exactly</strong></p>
-            <p style="font-size: 14pt; text-align: center; margin: 0;">$$0 < P(D_i = 1 \mid \mathbf{S}_i = \mathbf{s}) < 1$$</p>
-          </div>
-        </div>
-        <p class="text-lg" style="margin-top: 16px; line-height: 1.65;"><strong>The two frameworks state the same identifying assumption.</strong> Neither is stronger. What differs is procedure: potential outcomes <em>states</em> the condition and leaves satisfying it to the researcher&rsquo;s judgment; the graph supplies an <strong>algorithm for finding an \(\mathbf{S}\) that satisfies it</strong>.</p>
-        <div class="fragment fade-up key-result" style="margin-top: 14px;">
-          <p style="font-size: 16pt;">That distinction is worth nothing with four candidate controls, and everything with four hundred &mdash; which is precisely the Chapter 24 situation.</p>
-        </div>
-      </div>
-    </section>
-
     <section id="divider-3" class="section-divider" data-state="is-section-divider">
       <h1>3 &nbsp;&bull;&nbsp; The LaLonde Debate, as a Graph</h1>
       <p style="font-size: 17pt; color: var(--muted-color); font-style: italic; margin-top: 14px;">Forty years of argument, restated as one unblocked path</p>
@@ -656,6 +602,57 @@ re74, educ, U:      True</code></pre>
           <div><div class="fragment" data-fragment-index="1" style="background:#f8f6f3; border-left:5px solid #4f7f52; border-radius:8px; padding:8px 14px; margin:0 0 9px;"><p style="font-size:13.5pt; line-height:1.45; margin:0;"><strong>1. Within each street,</strong> good minus bad: <strong>+100</strong> on the busy corner and <strong>+100</strong> on the side street. That is &ldquo;compute within each stratum&rdquo;.</p></div><div class="fragment" data-fragment-index="2" style="background:#f8f6f3; border-left:5px solid #4f7f52; border-radius:8px; padding:8px 14px; margin:0 0 9px;"><p style="font-size:13.5pt; line-height:1.45; margin:0;"><strong>2. Weight by how common each street is</strong> (120 of 300 = 0.4, 180 of 300 = 0.6): E[Y(good)] = 500 &times; 0.4 + 250 &times; 0.6 = <strong>350</strong>; E[Y(bad)] = 400 &times; 0.4 + 150 &times; 0.6 = <strong>250</strong>. The effect of good food: <strong>+100</strong> customers a week.</p></div><div class="fragment" data-fragment-index="3" style="background:#f8f6f3; border-left:5px solid #a94442; border-radius:8px; padding:8px 14px; margin:0 0 9px;"><p style="font-size:13.5pt; line-height:1.45; margin:0;"><strong>3. The naive citywide comparison:</strong> 80 of the 100 good-food places sit on busy corners (80%), but only 40 of the 200 bad-food ones (20%). Good-food mean 0.8 &times; 500 + 0.2 &times; 250 = 450; bad-food mean 0.2 &times; 400 + 0.8 &times; 150 = 200. Naive gap <strong>+250</strong>: 150 of it is location, through the backdoor.</p></div><div class="fragment" data-fragment-index="4" style="background:#f8f6f3; border-left:5px solid #5d6d7e; border-radius:8px; padding:8px 14px; margin:0 0 9px;"><p style="font-size:13.5pt; line-height:1.45; margin:0;"><strong>4. The two caveats.</strong> Overlap: if no bad-food place ever sat on a busy corner, that cell is empty and no arithmetic fills it. Dimensionality: add cuisine, price and parking, and the cells multiply faster than restaurants exist.</p></div></div>
         </div>
       </section>
+      <section id="adjustment-theorem" style="padding: 30px 55px;">
+      <h2><span style="font-size: 13pt; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase;">Advanced Treatment</span><br><i class="fa-solid fa-square-root-variable" style="color: var(--secondary-color);"></i> The Backdoor Adjustment Theorem</h2>
+      <div class="content">
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 15px 24px; border-left: 4px solid var(--success-color);">
+          <p style="font-size: 14.5pt; margin-bottom: 6px;"><strong>Theorem.</strong> Let \(\mathbf{S}\) satisfy &nbsp;(a) no element of \(\mathbf{S}\) is in \(\text{de}(D)\); &nbsp;(b) \(\mathbf{S}\) blocks every path between \(D\) and \(Y\) containing an arrow <em>into</em> \(D\). Then</p>
+          <p style="font-size: 14pt; text-align: center; margin: 0;">$$P(Y = y \mid do(D = d)) = \sum_{\mathbf{s}} P(Y = y \mid D = d, \mathbf{S} = \mathbf{s})\, P(\mathbf{S} = \mathbf{s})$$</p>
+        </div>
+        <div style="background: #f0f5f8; border-radius: 8px; padding: 14px 22px; margin-top: 13px;">
+          <p style="font-size: 14.5pt;"><strong>Where:</strong> \(do(D=d)\) denotes an <em>intervention</em> that sets \(D\) to \(d\) for everyone &mdash; as opposed to merely <em>observing</em> \(D = d\).</p>
+        </div>
+        <div class="fragment fade-up" style="background: #fdf0ed; border-left: 5px solid var(--accent-color); border-radius: 8px; padding: 15px 22px; margin-top: 13px;">
+          <p style="font-size: 15.5pt;"><strong>In English, before that symbol is used again.</strong> The left-hand side is a <em>counterfactual</em>: outcomes in a world where we reached in and assigned the treatment. The right-hand side contains <em>only conditional probabilities you can estimate from data you already have</em>. The theorem states the exact conditions under which those two objects are the same number.</p>
+        </div>
+      </div>
+    </section>
+      <section id="mutilation-proof" style="padding: 26px 45px;">
+      <h2><i class="fa-solid fa-scissors" style="color: var(--danger-color);"></i> Proof Sketch: Graph Surgery</h2>
+      <div class="content">
+        <img src="figures/figure_003_mutilated_graph.png" alt="Two DAGs side by side: G, the observed world in which S and U both point into D and into Y, and the mutilated graph G-D-bar in which every arrow into D has been deleted, leaving only the causal arrow from D to Y and the arrows into Y" style="width: 100%; max-width: 950px; margin: 0 auto; display: block;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px;">
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 18px;">
+            <p style="font-size: 13.5pt;"><strong>(a)</strong> No descendants of \(D\) in \(\mathbf{S}\) \(\Rightarrow\) \(\mathbf{S}\)&rsquo;s own distribution is unaffected: \(P(\mathbf{s} \mid do(d)) = P(\mathbf{s})\).</p>
+          </div>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 18px;">
+            <p style="font-size: 13.5pt;"><strong>(b)</strong> Backdoors blocked \(\Rightarrow\) \(Y \perp D \mid \mathbf{S}\) <em>in the mutilated graph</em>, so \(P(y \mid do(d), \mathbf{s}) = P(y \mid d, \mathbf{s})\). Marginalise. \(\blacksquare\)</p>
+          </div>
+        </div>
+        <div class="fragment fade-up key-result" style="margin-top: 10px;">
+          <p style="font-size: 15.5pt;"><strong>Take the proof, not just the result.</strong> Randomization is <em>literally</em> the right-hand picture. An RCT constructs \(G_{\overline{D}}\) exactly, by physically deleting every arrow into the treatment.</p>
+        </div>
+      </div>
+    </section>
+      <section id="ignorability-equiv" style="padding: 32px 55px;">
+      <h2><span style="font-size: 13pt; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase;">Advanced Treatment</span><br><i class="fa-solid fa-arrows-left-right" style="color: var(--secondary-color);"></i> This Is Conditional Ignorability, Restated</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          <div style="background: #f0f5f8; border-radius: 8px; padding: 15px 20px; border-left: 4px solid var(--secondary-color);">
+            <p style="font-size: 14.5pt; margin-bottom: 8px;"><strong>Condition (b) is exactly</strong></p>
+            <p style="font-size: 14pt; text-align: center; margin: 0;">$$\{Y_i(1), Y_i(0)\} \perp\!\!\!\perp D_i \mid \mathbf{S}_i$$</p>
+          </div>
+          <div style="background: #f0f5f8; border-radius: 8px; padding: 15px 20px; border-left: 4px solid var(--success-color);">
+            <p style="font-size: 14.5pt; margin-bottom: 8px;"><strong>Populated strata is exactly</strong></p>
+            <p style="font-size: 14pt; text-align: center; margin: 0;">$$0 < P(D_i = 1 \mid \mathbf{S}_i = \mathbf{s}) < 1$$</p>
+          </div>
+        </div>
+        <p class="text-lg" style="margin-top: 16px; line-height: 1.65;"><strong>The two frameworks state the same identifying assumption.</strong> Neither is stronger. What differs is procedure: potential outcomes <em>states</em> the condition and leaves satisfying it to the researcher&rsquo;s judgment; the graph supplies an <strong>algorithm for finding an \(\mathbf{S}\) that satisfies it</strong>.</p>
+        <div class="fragment fade-up key-result" style="margin-top: 14px;">
+          <p style="font-size: 16pt;">That distinction is worth nothing with four candidate controls, and everything with four hundred &mdash; which is precisely the Chapter 24 situation.</p>
+        </div>
+      </div>
+    </section>
     </section>
 
     <section id="positivity" style="padding: 32px 55px;">
@@ -988,7 +985,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
           <p style="font-size: 15pt; line-height: 1.45; margin: 0;"><strong>Example.</strong> 15 of 100 treated people and 10 of 100 controls get the outcome: \(RR = 0.15 / 0.10 = 1.5\). The outcome is 1.5 times as likely in the treatment group, 50% more.</p>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px;"><div style="background:#f8f6f3; border-left:4px solid #5d6d7e; border-radius:8px; padding:10px 16px;"><p style="font-size:14pt; line-height:1.4; margin:0;"><strong>\(RR = 1\):</strong> no difference between the groups.</p></div><div style="background:#fdf0ea; border-left:4px solid #c0612b; border-radius:8px; padding:10px 16px;"><p style="font-size:14pt; line-height:1.4; margin:0;"><strong>\(RR &gt; 1\):</strong> more likely with the treatment.</p></div><div style="background:#eef5ee; border-left:4px solid #2f7d4f; border-radius:8px; padding:10px 16px;"><p style="font-size:14pt; line-height:1.4; margin:0;"><strong>\(RR &lt; 1\):</strong> less likely (protective). Flip it to read its strength: 0.5 counts like 2.</p></div></div>
-        <p style="font-size: 14pt; line-height: 1.45; margin-top: 12px;">Slide 46&rsquo;s ICU numbers: 10.7% against 16.1% gives \(RR \approx 0.66\), which looks protective. And \(RR\) is what you <em>found</em> in the data; it is not a rule you set before you look, the way you set \(\alpha\).</p>
+        <p style="font-size: 14pt; line-height: 1.45; margin-top: 12px;">Slide 43&rsquo;s ICU numbers: 10.7% against 16.1% gives \(RR \approx 0.66\), which looks protective. And \(RR\) is what you <em>found</em> in the data; it is not a rule you set before you look, the way you set \(\alpha\).</p>
       </div>
     </section>
       <section id="evalue" style="padding: 30px 50px;">
@@ -1011,7 +1008,7 @@ is_d_separator(..., {"W"})  # False</code></pre>
       <section id="e-value-examples" style="padding: 30px 55px;">
       <h2><i class="fa-solid fa-list-check" style="color: var(--secondary-color);"></i> Reading E-Values in Real Studies</h2>
       <div class="content">
-        <table style="width:100%; border-collapse:collapse; font-size:13.5pt;"><thead><tr style="background:#f3f1ec;"><th style="padding:8px 12px; text-align:left;">Study</th><th style="padding:8px 12px;">\(RR\)</th><th style="padding:8px 12px;">E-value</th><th style="padding:8px 12px; text-align:left;">How to read it</th></tr></thead><tbody><tr><td style="padding:7px 12px; border-top:1px solid #e5e1da;">COVID ICU deaths and nicotine (slide 47)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;">0.90 (11.4% vs 12.7%)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;"><strong>1.48</strong> <span style="font-size:.8em;color:#777">(the authors’)</span></td><td style="padding:7px 12px; border-top:1px solid #e5e1da;">fragile: a modest confounder could do it</td></tr><tr><td style="padding:7px 12px; border-top:1px solid #e5e1da;">Processed meat and colorectal cancer (IARC, 2015: +18% per 50 g a day)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;">1.18</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;"><strong>1.64</strong></td><td style="padding:7px 12px; border-top:1px solid #e5e1da;">easy to imagine: diet goes with exercise, smoking, income</td></tr><tr><td style="padding:7px 12px; border-top:1px solid #e5e1da;">Smoking and lung cancer (CDC: 15 to 30 times as likely)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;">15 to 30</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;"><strong>29.5 to 59.5</strong></td><td style="padding:7px 12px; border-top:1px solid #e5e1da;">no plausible hidden factor is that strong</td></tr></tbody></table>
+        <table style="width:100%; border-collapse:collapse; font-size:13.5pt;"><thead><tr style="background:#f3f1ec;"><th style="padding:8px 12px; text-align:left;">Study</th><th style="padding:8px 12px;">\(RR\)</th><th style="padding:8px 12px;">E-value</th><th style="padding:8px 12px; text-align:left;">How to read it</th></tr></thead><tbody><tr><td style="padding:7px 12px; border-top:1px solid #e5e1da;">COVID ICU deaths and nicotine (slide 44)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;">0.90 (11.4% vs 12.7%)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;"><strong>1.48</strong> <span style="font-size:.8em;color:#777">(the authors’)</span></td><td style="padding:7px 12px; border-top:1px solid #e5e1da;">fragile: a modest confounder could do it</td></tr><tr><td style="padding:7px 12px; border-top:1px solid #e5e1da;">Processed meat and colorectal cancer (IARC, 2015: +18% per 50 g a day)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;">1.18</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;"><strong>1.64</strong></td><td style="padding:7px 12px; border-top:1px solid #e5e1da;">easy to imagine: diet goes with exercise, smoking, income</td></tr><tr><td style="padding:7px 12px; border-top:1px solid #e5e1da;">Smoking and lung cancer (CDC: 15 to 30 times as likely)</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;">15 to 30</td><td style="padding:7px 12px; border-top:1px solid #e5e1da; text-align:center;"><strong>29.5 to 59.5</strong></td><td style="padding:7px 12px; border-top:1px solid #e5e1da;">no plausible hidden factor is that strong</td></tr></tbody></table>
         <div class="fragment" style="background: #f7eeee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 10px 18px; margin-top: 14px;">
           <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;"><strong>Bigger is harder to explain away, but it is not a pass mark.</strong> Observational studies of hormone therapy found \(RR = 0.61\) for heart disease (E-value 2.66); the randomized trial (Women&rsquo;s Health Initiative) found no protection. Women who chose the therapy were healthier to begin with.</p>
         </div>
