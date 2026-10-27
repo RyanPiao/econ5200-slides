@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=61063b6e0feeed4c0fe4584c61729db6">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=efa5530c0fa89867e029d06c0e4e0205">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Predictive Modeling: OLS as the Line of Best Fit</title>
@@ -44,10 +44,63 @@
       </div>
     </section>
 
+    <section id="room-trip" style="padding: 34px 50px;">
+      <h2><i class="fa-solid fa-person-walking" style="color: var(--secondary-color);"></i> Two Numbers About Your Trip Here</h2>
+      <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 22px; margin-top: 10px;"><p style="font-size: 15.5pt; line-height: 1.55; margin: 0;">Send two numbers. Rough is fine. We use them in two minutes.</p></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px;">
+        <div style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--secondary-color);">
+          <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">1. Minutes it took you to get here today</p>
+          <div class="poll-number" data-poll-id="ch11b-econ5200-poll-2" data-poll-voting data-min="0" data-max="180" data-step="1" data-unit="min"></div>
+        </div>
+        <div style="background: #fdf0ea; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--accent-color);">
+          <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">2. About how many miles you came</p>
+          <div class="poll-number" data-poll-id="ch11b-econ5200-poll-3" data-poll-voting data-min="0" data-max="100" data-step="0.1" data-unit="mi"></div>
+        </div>
+      </div>
+      <p class="rt-count" style="text-align: center; font-size: 13pt; color: var(--muted-color); margin-top: 16px;"></p>
+    </section>
+
+    <section id="room-mean" style="padding: 24px 46px;">
+      <h2><i class="fa-solid fa-ruler-horizontal" style="color: var(--secondary-color);"></i> Guess Everyone&rsquo;s Minutes With One Number</h2>
+      <div class="content">
+        <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 4px; color: #5d5d5d;">No miles yet. The best single guess is the room&rsquo;s <strong>mean</strong>. Each click draws one of you at random: how wrong is the mean for that person?</p>
+        <div class="rt-plot rt-mean mathjax_ignore tex2jax_ignore"></div>
+        <p class="rt-wait" style="font-size: 15pt; text-align: center; color: var(--muted-color); margin-top: 50px;">Waiting for both numbers from at least 8 of you.</p>
+        <div class="rt-readout mathjax_ignore tex2jax_ignore" style="font-size: 14.5pt; line-height: 1.45; margin-top: 4px;"></div>
+        <span class="fragment rt-step" data-step="1" style="display:none"></span><span class="fragment rt-step" data-step="2" style="display:none"></span><span class="fragment rt-step" data-step="3" style="display:none"></span><span class="fragment rt-step" data-step="4" style="display:none"></span>
+      </div>
+      <div class="footnote">Your numbers, read live. A miss is your minutes minus the guess; squaring makes every miss count as positive and big misses count most.</div>
+    </section>
+
+    <section>
+      <section id="room-line" style="padding: 24px 46px;">
+        <h2><i class="fa-solid fa-chart-line" style="color: var(--secondary-color);"></i> Now Use the Miles</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 4px; color: #5d5d5d;">The line through your points that makes the squared misses as small as they can be: <strong>least squares</strong>. Same three students, now guessed from their miles.</p>
+          <div class="rt-plot rt-line mathjax_ignore tex2jax_ignore"></div>
+          <p class="rt-wait" style="font-size: 15pt; text-align: center; color: var(--muted-color); margin-top: 50px;">Waiting for both numbers from at least 8 of you.</p>
+          <div class="rt-readout mathjax_ignore tex2jax_ignore" style="font-size: 14.5pt; line-height: 1.45; margin-top: 4px;"></div>
+          <span class="fragment rt-step" data-step="1" style="display:none"></span><span class="fragment rt-step" data-step="2" style="display:none"></span><span class="fragment rt-step" data-step="3" style="display:none"></span><span class="fragment rt-step" data-step="4" style="display:none"></span>
+        </div>
+        <div class="footnote">R² = (sum of squares around the mean − sum of squares around the line) ÷ sum of squares around the mean: the share of the mean&rsquo;s squared misses the miles remove.</div>
+      </section>
+      <section id="room-chance" style="padding: 24px 46px;">
+        <h2><i class="fa-solid fa-shuffle" style="color: var(--secondary-color);"></i> Could Chance Do This?</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 4px; color: #5d5d5d;">Shuffle the miles across the room, so they belong to nobody, and fit the line again. Do it 1,000 times. How often does chance reach an R² as big as ours?</p>
+          <div class="rt-plot rt-chance mathjax_ignore tex2jax_ignore"></div>
+          <p class="rt-wait" style="font-size: 15pt; text-align: center; color: var(--muted-color); margin-top: 50px;">Waiting for both numbers from at least 8 of you.</p>
+          <div class="rt-readout mathjax_ignore tex2jax_ignore" style="font-size: 14.5pt; line-height: 1.45; margin-top: 4px;"></div>
+        </div>
+        <div class="footnote">A permutation test: the share of shuffles at least as big is the p-value for R². Any two points give R² = 1, so R² alone is not evidence.</div>
+      </section>
+    </section>
+
+
     <section id="learning-objectives">
       <h2><i class="fa-solid fa-bullseye" style="color: var(--accent-color);"></i> What This Session Restores</h2>
       <div class="content">
-        <p style="font-size: 15pt; margin-bottom: 14px;">At Chapter 11 the book forked. ECON 3916 spent two chapters on OLS; you went to Difference-in-Differences. That was the right trade &mdash; and it left notation behind.</p>
+        <p style="font-size: 15pt; margin-bottom: 14px;">At Chapter 11 the book forked. ECON 3916 spends two chapters on OLS; you go straight to Difference-in-Differences. That was the right trade &mdash; and it left notation behind.</p>
         <div style="display: flex; flex-direction: column; gap: 11px;">
           <div style="display: grid; grid-template-columns: 60px 1fr; align-items: center; background: #f8f6f3; border-radius: 8px; padding: 13px 20px; border-left: 4px solid var(--secondary-color);">
             <p style="font-size: 20pt; font-weight: 700; color: var(--secondary-color);">1</p>
@@ -75,15 +128,15 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
           <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 18px 22px;">
             <p style="font-size: 15pt; font-weight: 600; margin-bottom: 8px;">Chapter 10 ran four regressions</p>
-            <p style="font-size: 14pt;">The collider demonstration printed 0.658 where the truth was 0. You read the coefficient as a number and drew the right conclusion &mdash; deliberately, without the algebra.</p>
+            <p style="font-size: 14pt;">The collider demonstration printed &minus;0.593 where the truth was 0. You read the coefficient as a number and drew the right conclusion &mdash; deliberately, without the algebra.</p>
           </div>
           <div style="background: #f5f0ec; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 18px 22px;">
-            <p style="font-size: 15pt; font-weight: 600; margin-bottom: 8px;">Chapter 11 ran one more</p>
-            <p style="font-size: 14pt;">The DiD interaction coefficient <em>is</em> the four-means calculation. The regression added standard errors and covariates &mdash; nothing conceptual.</p>
+            <p style="font-size: 15pt; font-weight: 600; margin-bottom: 8px;">Chapter 11 runs one more, next</p>
+            <p style="font-size: 14pt;">The DiD interaction coefficient <em>is</em> the four-means calculation. The regression adds standard errors and covariates &mdash; nothing conceptual.</p>
           </div>
         </div>
         <div style="background: #f8f6f3; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 16px 22px; margin-top: 20px;">
-          <p style="font-size: 15pt;"><strong>From Chapter 12 onward that courtesy stops.</strong> The weak-instrument diagnostics in &sect;12.4 and the local linear fit in Chapter 13 have no arithmetic version. Thirty minutes now, to avoid an hour of confusion then.</p>
+          <p style="font-size: 15pt;"><strong>From Chapter 12 onward that courtesy stops.</strong> The weak-instrument diagnostics in &sect;12.4 and the local linear fit in Chapter 13 have no arithmetic version. Twenty-five minutes now, to avoid an hour of confusion then.</p>
         </div>
       </div>
     </section>
@@ -177,7 +230,7 @@
           </div>
           <div style="background: #eef4ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 15px 20px;">
             <p style="font-size: 15pt; font-weight: 600; margin-bottom: 6px;">What the algebra gives you</p>
-            <p style="font-size: 14pt;"><em>What happens</em> once they are in it. Which is the next ten minutes.</p>
+            <p style="font-size: 14pt;"><em>What happens</em> once they are in it. That is the next few slides.</p>
           </div>
         </div>
         <p style="font-size: 15pt; margin-top: 16px;">They are not substitutes, and confusing them is the most expensive mistake in applied work.</p>
@@ -416,6 +469,183 @@
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
   <script src="../poll.js" data-checkin></script>
+<script>
+/* ============================================================
+   OLS bridge: THE ROOM'S REGRESSION (5200, 28 Oct 2026). y = minutes to get to class (ch11b-econ5200-poll-2,
+   0-180), x = miles (ch11b-econ5200-poll-3, 0-100). Mean guess vs least-squares line, SS around each, R^2, and a
+   1,000-shuffle permutation test. Click steps 1-3 draw a student (a hash of the room's numbers picks them, so the
+   speaker view and the room see the same student); step 4 shows the totals. Fewer than 8 pairs: a 'practice
+   numbers' set (made up, labelled) can be switched on with the Q key (or ?practice=1). Reads poll_votes; never writes.
+   window.RoomTrip.paint(rows) takes planted rows for a test.
+   ============================================================ */
+(function () {
+  "use strict";
+  var ID_Y = "ch11b-econ5200-poll-2", ID_X = "ch11b-econ5200-poll-3";
+  var NUM = /^\s*(?:[oe]\*?:)?\s*(-?\d+(?:\.\d+)?)\s*$/;
+  var MIN_N = 8, RANGE = {}; RANGE[ID_Y] = [0, 180]; RANGE[ID_X] = [0, 100];
+  // made-up practice numbers (minutes, miles), shown only when the room has not sent enough and P is pressed
+  var PRACTICE = [[12,0.6],[25,3],[40,8],[8,0.3],[55,12],[30,4.5],[20,2],[65,20],[15,1],[35,6],[45,3],[10,0.8],[28,5],[25,15],[18,2.5],[70,25],[40,1.5]];
+  var practice = false, rows0 = [], last = null;
+
+  function pairs(rows) {
+    var first = {};
+    (rows || []).slice().sort(function (a, b) { return String(a.created_at || "") < String(b.created_at || "") ? -1 : 1; })
+      .forEach(function (r) {
+        if (!r || !RANGE[r.poll_id]) return;
+        var m = NUM.exec(String(r.choice)); if (!m) return;
+        var v = +m[1], rg = RANGE[r.poll_id]; if (v < rg[0] || v > rg[1]) return;
+        var f = first[r.voter_id] = first[r.voter_id] || {};
+        if (f[r.poll_id] === undefined) f[r.poll_id] = v;
+      });
+    return Object.keys(first).sort().filter(function (k) { return first[k][ID_Y] !== undefined && first[k][ID_X] !== undefined; })
+      .map(function (k) { return { y: first[k][ID_Y], x: first[k][ID_X] }; });
+  }
+  function mean(a) { var t = 0; a.forEach(function (v) { t += v; }); return t / a.length; }
+  function fit(P) {
+    var mx = mean(P.map(function (p) { return p.x; })), my = mean(P.map(function (p) { return p.y; })), sxy = 0, sxx = 0;
+    P.forEach(function (p) { sxy += (p.x - mx) * (p.y - my); sxx += (p.x - mx) * (p.x - mx); });
+    var b = sxx > 0 ? sxy / sxx : 0, a = my - b * mx, ssm = 0, ssf = 0;
+    P.forEach(function (p) { ssm += (p.y - my) * (p.y - my); var e = p.y - (a + b * p.x); ssf += e * e; });
+    return { n: P.length, mx: mx, my: my, a: a, b: b, ssm: ssm, ssf: ssf, r2: ssm > 0 ? (ssm - ssf) / ssm : 0, ok: sxx > 0 && ssm > 0 };
+  }
+  function hash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(seed) { var t = seed >>> 0; return function () { t += 0x6D2B79F5; var r = Math.imul(t ^ (t >>> 15), 1 | t); r ^= r + Math.imul(r ^ (r >>> 7), 61 | r); return ((r ^ (r >>> 14)) >>> 0) / 4294967296; }; }
+  function picks(P) {                        // three different students, the same in every window
+    var key = P.map(function (p) { return p.y + ":" + p.x; }).join("|"), g = rng(hash(key)), out = [];
+    while (out.length < Math.min(3, P.length)) { var i = Math.floor(g() * P.length); if (out.indexOf(i) < 0) out.push(i); }
+    return out;
+  }
+  function shuffles(P, F) {                  // 1,000 shuffles of x across the room; R^2 of each
+    var g = rng(hash("shuffle|" + P.length + "|" + F.ssm.toFixed(6))), xs = P.map(function (p) { return p.x; }), out = [];
+    for (var k = 0; k < 1000; k++) {
+      for (var i = xs.length - 1; i > 0; i--) { var j = Math.floor(g() * (i + 1)), t = xs[i]; xs[i] = xs[j]; xs[j] = t; }
+      out.push(fit(P.map(function (p, i) { return { y: p.y, x: xs[i] }; })).r2);
+    }
+    return out;
+  }
+  function f1(v) { return (Math.round(v * 10) / 10).toFixed(1).replace("-", "−"); }
+  function f0(v) { return Math.round(v).toLocaleString("en-US").replace("-", "−"); }
+  function f2(v) { return v.toFixed(2).replace("-", "−"); }
+
+  var W = 1100, H = 300, L = 70, R = 1080, T = 18, B = 260;
+  function axes(xmax, ymax, xlab, ylab, withX) {
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="' + ylab + (withX ? ' against ' + xlab : '') + '">';
+    s += '<rect x="' + L + '" y="' + T + '" width="' + (R - L) + '" height="' + (B - T) + '" fill="#fbfaf8" stroke="#d9d4cb"/>';
+    for (var k = 0; k <= 4; k++) {
+      var yv = ymax * k / 4, yy = B - (B - T) * k / 4;
+      s += '<line x1="' + L + '" x2="' + R + '" y1="' + yy + '" y2="' + yy + '" stroke="#ece8e1"/><text x="' + (L - 8) + '" y="' + (yy + 5) + '" text-anchor="end" font-size="14" fill="#777">' + f0(yv) + '</text>';
+      if (withX) { var xv = xmax * k / 4, xx = L + (R - L) * k / 4; s += '<text x="' + xx + '" y="' + (B + 20) + '" text-anchor="middle" font-size="14" fill="#777">' + f1(xv) + '</text>'; }
+    }
+    s += '<text transform="translate(18 ' + ((T + B) / 2) + ') rotate(-90)" text-anchor="middle" font-size="14" fill="#555">' + ylab + '</text>';
+    if (withX) s += '<text x="' + ((L + R) / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="14" fill="#555">' + xlab + '</text>';
+    return s;
+  }
+  function plotMean(P, F, step, pk) {
+    var ymax = Math.max(10, Math.ceil(Math.max.apply(null, P.map(function (p) { return p.y; })) / 20) * 20);
+    var Y = function (v) { return B - (B - T) * v / ymax; }, X = function (i) { return L + 30 + (R - L - 60) * (i + 0.5) / P.length; };
+    var s = axes(1, ymax, "", "minutes to get here", false);
+    s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(F.my) + '" y2="' + Y(F.my) + '" stroke="#2c3e50" stroke-width="2.5"/><text x="' + (R - 6) + '" y="' + (Y(F.my) - 8) + '" text-anchor="end" font-size="15" font-weight="700" fill="#2c3e50">mean = ' + f1(F.my) + ' min</text>';
+    var order = P.map(function (p, i) { return i; }).sort(function (a, b) { return P[a].y - P[b].y; });
+    order.forEach(function (i, r) {
+      var lit = pk.slice(0, Math.min(step, 3)).indexOf(i) >= 0, all = step >= 4;
+      if (lit || all) s += '<line x1="' + X(r) + '" x2="' + X(r) + '" y1="' + Y(P[i].y) + '" y2="' + Y(F.my) + '" stroke="#b22222" stroke-width="' + (lit ? 3 : 1.5) + '" opacity="' + (lit ? 0.9 : 0.45) + '"/>';
+      s += '<circle cx="' + X(r) + '" cy="' + Y(P[i].y) + '" r="' + (lit ? 9 : 7) + '" fill="' + (lit ? "#b22222" : "#2f4f4f") + '" fill-opacity="' + (lit ? 0.9 : 0.55) + '"/>';
+    });
+    return s + '</svg>';
+  }
+  function plotLine(P, F, step, pk) {
+    var ymax = Math.max(10, Math.ceil(Math.max.apply(null, P.map(function (p) { return p.y; })) / 20) * 20);
+    var xmax = Math.max(4, Math.ceil(Math.max.apply(null, P.map(function (p) { return p.x; })) / 4) * 4);
+    var X = function (v) { return L + (R - L) * v / xmax; }, Y = function (v) { return B - (B - T) * Math.max(0, Math.min(ymax, v)) / ymax; };
+    var s = axes(xmax, ymax, "miles you came", "minutes to get here", true);
+    s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(F.my) + '" y2="' + Y(F.my) + '" stroke="#2c3e50" stroke-width="2" stroke-dasharray="7 5" opacity="0.7"/>';
+    s += '<line x1="' + X(0) + '" x2="' + X(xmax) + '" y1="' + Y(F.a) + '" y2="' + Y(F.a + F.b * xmax) + '" stroke="#1f6fb2" stroke-width="3"/>';
+    P.forEach(function (p, i) {
+      var lit = pk.slice(0, Math.min(step, 3)).indexOf(i) >= 0, all = step >= 4;
+      if (lit || all) s += '<line x1="' + X(p.x) + '" x2="' + X(p.x) + '" y1="' + Y(p.y) + '" y2="' + Y(F.a + F.b * p.x) + '" stroke="#1f6fb2" stroke-width="' + (lit ? 3 : 1.5) + '" opacity="' + (lit ? 0.9 : 0.45) + '"/>';
+      s += '<circle cx="' + X(p.x) + '" cy="' + Y(p.y) + '" r="' + (lit ? 9 : 7) + '" fill="' + (lit ? "#b22222" : "#2f4f4f") + '" fill-opacity="' + (lit ? 0.9 : 0.55) + '"/>';
+    });
+    return s + '</svg>';
+  }
+  function plotChance(F, R2s) {
+    var bins = 25, cnt = new Array(bins).fill(0); R2s.forEach(function (v) { cnt[Math.min(bins - 1, Math.floor(v * bins))]++; });
+    var cmax = Math.max.apply(null, cnt), bw = (R - L) / bins;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="Histogram of R squared from 1,000 shuffles, with the room\'s R squared marked">';
+    s += '<rect x="' + L + '" y="' + T + '" width="' + (R - L) + '" height="' + (B - T) + '" fill="#fbfaf8" stroke="#d9d4cb"/>';
+    cnt.forEach(function (c, k) { var h = (B - T) * c / cmax; s += '<rect x="' + (L + k * bw + 1) + '" y="' + (B - h) + '" width="' + (bw - 2) + '" height="' + h + '" fill="' + ((k + 0.5) / bins >= F.r2 ? "#b22222" : "#9aaab8") + '" opacity="0.85"/>'; });
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (t) { s += '<text x="' + (L + (R - L) * t) + '" y="' + (B + 20) + '" text-anchor="middle" font-size="14" fill="#777">' + t + '</text>'; });
+    var xo = L + (R - L) * F.r2;
+    s += '<line x1="' + xo + '" x2="' + xo + '" y1="' + T + '" y2="' + B + '" stroke="#b22222" stroke-width="3"/><text x="' + (xo + 6) + '" y="' + (T + 18) + '" font-size="15" font-weight="700" fill="#b22222">our R² = ' + f2(F.r2) + '</text>';
+    s += '<text x="' + ((L + R) / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="14" fill="#555">R² of the line after the miles were shuffled across the room</text>';
+    return s + '</svg>';
+  }
+  function stepOf(sec) { return sec ? sec.querySelectorAll(".rt-step.visible").length : 0; }
+  function draw(rows) {
+    if (rows) rows0 = rows;
+    var P = practice ? PRACTICE.map(function (q) { return { y: q[0], x: q[1] }; }) : pairs(rows0);
+    var F = P.length >= MIN_N ? fit(P) : null;
+    [].forEach.call(document.querySelectorAll(".rt-count"), function (e) {
+      e.textContent = P.length ? P.length + (practice ? " practice pairs (made up)" : " of you " + (P.length === 1 ? "has" : "have") + " sent both numbers") : ""; });
+    [["room-mean", "mean"], ["room-line", "line"], ["room-chance", "chance"]].forEach(function (pr) {
+      var sec = document.getElementById(pr[0]); if (!sec) return;
+      var host = sec.querySelector(".rt-plot"), out = sec.querySelector(".rt-readout"), wait = sec.querySelector(".rt-wait");
+      if (!F || !F.ok) { host.innerHTML = ""; out.innerHTML = ""; if (wait) { wait.style.display = ""; wait.textContent = "Waiting for both numbers from at least " + MIN_N + " of you" + (P.length ? " (" + P.length + " so far)." : ".") + " Q switches on practice numbers."; } return; }
+      if (wait) wait.style.display = "none";
+      var step = stepOf(sec), pk = picks(P), tag = practice ? ' <span style="color:#a06000">(practice numbers, made up)</span>' : "";
+      if (pr[1] === "mean") {
+        host.innerHTML = plotMean(P, F, step, pk);
+        var lines = pk.slice(0, Math.min(step, 3)).map(function (i, k) { var e = P[i].y - F.my; return "Draw " + (k + 1) + ": " + f0(P[i].y) + " min, the mean guesses " + f1(F.my) + ": miss " + f1(e) + ", squared " + f0(e * e); });
+        if (step >= 4) lines.push("<strong>All " + F.n + " of you: sum of squares around the mean = " + f0(F.ssm) + "</strong>");
+        out.innerHTML = (lines.join("<br>") || "Click to draw a student.") + tag;
+      } else if (pr[1] === "line") {
+        host.innerHTML = plotLine(P, F, step, pk);
+        var l2 = pk.slice(0, Math.min(step, 3)).map(function (i, k) { var g = F.a + F.b * P[i].x, e = P[i].y - g, e0 = P[i].y - F.my; return "Draw " + (k + 1) + ": " + f1(P[i].x) + " mi, " + f0(P[i].y) + " min. Mean misses by " + f1(e0) + "; the line guesses " + f1(g) + ", misses by " + f1(e); });
+        if (step >= 4) l2.push("<strong>Sum of squares: around the mean " + f0(F.ssm) + ", around the line " + f0(F.ssf) + ". R² = (" + f0(F.ssm) + " − " + f0(F.ssf) + ") ÷ " + f0(F.ssm) + " = " + f2(F.r2) + "</strong>",
+                               "Line: minutes ≈ " + f1(F.a) + " + " + f1(F.b) + " × miles. Each extra mile " + (F.b >= 0 ? "adds about " + f1(F.b) : "takes off about " + f1(-F.b)) + " minutes.");
+        out.innerHTML = (l2.join("<br>") || "Click to draw the same students again.") + tag;
+      } else {
+        var R2s = shuffles(P, F), ge = R2s.filter(function (v) { return v >= F.r2; }).length;
+        host.innerHTML = plotChance(F, R2s);
+        out.innerHTML = "<strong>" + ge + " of 1,000</strong> shuffles reached R² ≥ " + f2(F.r2) + ": p " + (ge === 0 ? "below 0.001" : "≈ " + (ge / 1000).toFixed(3)) + "." + tag;
+      }
+    });
+  }
+  window.RoomTrip = { pairs: pairs, fit: fit, paint: function (rows) { draw(rows); } };
+
+  var SU = "https://dpntbrsorgbivmntwmod.supabase.co";
+  var SK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
+  function bestSession(rows) {
+    var by = {};
+    rows.forEach(function (r) { var k = String(r.session_key || ""); (by[k] = by[k] || []).push(r); });
+    var keys = Object.keys(by).sort().reverse(), pick = keys[0] || "";
+    for (var i = 0; i < keys.length; i++) { if (pairs(by[keys[i]]).length >= MIN_N) { pick = keys[i]; break; } }
+    return by[pick] || [];
+  }
+  var HERE = ["room-trip", "room-mean", "room-line", "room-chance"];
+  function onRoom() { var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(); return !!(s && HERE.indexOf(s.id) >= 0); }
+  function fetchRows() {
+    if (location.protocol === "file:") return;
+    var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+    var today = window.Poll ? Poll.q() : "";
+    var latest = !!(s && s.id !== "room-trip" && today);
+    var url = SU + "/rest/v1/poll_votes?poll_id=in.(" + ID_Y + "," + ID_X + ")&select=poll_id,choice,voter_id,created_at" +
+              (latest ? ",session_key&session_key=like.*-" + today.split("-").pop() : today);
+    fetch(url, { headers: { apikey: SK, Authorization: "Bearer " + SK, "Cache-Control": "no-cache, no-store" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) { if (rows) draw(latest ? bestSession(rows) : rows); })
+      .catch(function () {});
+  }
+  setInterval(function () { if (!document.hidden && onRoom()) fetchRows(); }, 4000);
+  if (window.Reveal && Reveal.on) {
+    Reveal.on("slidechanged", function () { if (onRoom()) { fetchRows(); draw(); } });
+    ["fragmentshown", "fragmenthidden"].forEach(function (ev) { Reveal.on(ev, function () { if (onRoom()) draw(); }); });
+  }
+  document.addEventListener("keydown", function (e) {           // Q: practice numbers on/off (P is Reveal's "previous")
+    var t = e.target; if ((e.key === "q" || e.key === "Q") && onRoom() && !(t && t.closest && t.closest("input,textarea"))) { practice = !practice; draw(); } });
+  if (/[?&]practice=1/.test(location.search)) practice = true;
+  setTimeout(fetchRows, 900);
+})();
+</script>
   <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
