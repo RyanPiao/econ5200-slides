@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=165314e55e4e2f0d30d779b7e271632d">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=fc1aaf654a59fcee26a23a71eb4d8843">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identification Strategy & Difference-in-Differences</title>
@@ -838,12 +838,31 @@
         </div></div>
       </section>
 
+      <section>
       <section id="honest-did" style="padding: 30px 45px;">
         <h2><i class="fa-solid fa-arrows-left-right-to-line" style="color: var(--secondary-color);"></i> Honest DiD: The Breakdown Point</h2>
         <p style="font-size: 13.5pt; margin-top: 6px; line-height: 1.45;">Rambachan and Roth (2023): instead of assuming parallel trends <em>exactly</em>, allow the trend after treatment to break by up to <strong>M&#772; times the largest break you can already see before treatment</strong>, and report every effect still consistent with the data. <span style="color:#8C8580">(Illustration: an estimate of +6%.)</span></p>
         <div class="hd-plot mathjax_ignore tex2jax_ignore" style="margin-top: 4px;"></div>
         <div class="hd-readout mathjax_ignore tex2jax_ignore" style="font-size: 14.5pt; line-height: 1.45; margin: 2px 10px 0; min-height: 2.9em;"></div>
         <span class="fragment hd-step" data-step="1" style="display:none"></span><span class="fragment hd-step" data-step="2" style="display:none"></span><span class="fragment hd-step" data-step="3" style="display:none"></span><span class="fragment hd-step" data-step="4" style="display:none"></span>
+      </section>
+      <section id="honest-did-figure" style="padding: 24px 45px;">
+        <h2><i class="fa-solid fa-chart-area" style="color: var(--secondary-color);"></i> Honest DiD: The Whole Band</h2>
+        <div style="display: grid; grid-template-columns: 58% 42%; gap: 18px; margin-top: 6px; align-items: center;">
+          <div style="display: flex; justify-content: center;">
+            <img alt="Honest DiD identified set widening as M-bar increases, with the point estimate at plus 6 percent and the identified set first including zero at a breakdown point of M-bar equal to 1.78" src="figures/figure_008_honest_did.png" style="max-height: 430px; max-width: 100%; object-fit: contain;">
+          </div>
+          <div>
+            <p style="font-size: 13.5pt; margin: 0 0 10px;">The same estimate, <strong>+6%</strong>, read at three values of M&#772;. Every effect inside the band is consistent with the data.</p>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
+              <div style="background: #f8f6f3; border-top: 4px solid var(--success-color); border-radius: 8px; padding: 8px 12px; text-align: center;"><p style="font-size: 12pt; margin: 0; color: var(--muted-color);">M&#772; = 0</p><p style="font-size: 18pt; font-weight: 700; margin: 2px 0;">[4.9, 7.1]</p><p style="font-size: 11.5pt; margin: 0; color: var(--muted-color);">standard DiD: excludes 0</p></div>
+              <div class="fragment fade-up"><div style="background: #f8f6f3; border-top: 4px solid var(--secondary-color); border-radius: 8px; padding: 8px 12px; text-align: center;"><p style="font-size: 12pt; margin: 0; color: var(--muted-color);">M&#772; = 1</p><p style="font-size: 18pt; font-weight: 700; margin: 2px 0;">[2.2, 9.9]</p><p style="font-size: 11.5pt; margin: 0; color: var(--muted-color);">breaks as big as the largest pre-trend: still excludes 0</p></div></div>
+              <div class="fragment fade-up"><div style="background: #f8f6f3; border-top: 4px solid var(--danger-color, #A85C5C); border-radius: 8px; padding: 8px 12px; text-align: center;"><p style="font-size: 12pt; margin: 0; color: var(--muted-color);">M&#772; = 1.78</p><p style="font-size: 18pt; font-weight: 700; margin: 2px 0;">[0.0, 12.0]</p><p style="font-size: 11.5pt; margin: 0; color: var(--muted-color);">0 just enters: the breakdown point</p></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="fragment fade-up" style="font-size: 13.5pt; margin-top: 12px;"><strong>Report the 1.78, not a pre-test.</strong> It says how much worse than anything seen before treatment the trend would have to break before the +6% could be zero. <span style="color:#8C8580">(Illustration.)</span></p>
+      </section>
       </section>
 
       <section id="two-period" style="padding: 34px 55px;">
