@@ -1,0 +1,508 @@
+{
+ "byPoll": {
+  "ch00-econ5200-orientation-method-experience": "0-1",
+  "ch01-econ5200-poll-1": "1-1",
+  "ch01-econ5200-poll-2": "1-2",
+  "ch01-econ5200-poll-3": "1-3",
+  "ch02-econ5200-poll-1": "2-1",
+  "ch02-econ5200-poll-3": "2-2",
+  "ch02-econ5200-poll-4": "2-3",
+  "ch03-econ5200-poll-1": "3-1",
+  "ch03-econ5200-poll-2": "3-2",
+  "ch03-econ5200-poll-3": "3-3",
+  "ch03-econ5200-poll-4": "3-4",
+  "ch04-econ5200-poll-0": "4-1",
+  "ch04-econ5200-poll-1": "4-2",
+  "ch04-econ5200-poll-2": "4-3",
+  "ch04-econ5200-poll-3": "4-4",
+  "ch04-econ5200-poll-4": "4-5",
+  "ch05-econ5200-poll-1": "5-2",
+  "ch05-econ5200-poll-2": "5-4",
+  "ch05-econ5200-poll-5": "5-5",
+  "ch05-econ5200-poll-6": "5-3",
+  "ch05-econ5200-poll-7": "5-1",
+  "ch06-econ5200-poll-2": "6-3",
+  "ch06-econ5200-poll-3": "6-4",
+  "ch06-econ5200-poll-4": "6-5",
+  "ch06-econ5200-poll-5": "6-2",
+  "ch06-econ5200-poll-6": "6-1",
+  "ch07-econ5200-poll-1": "7-3",
+  "ch07-econ5200-poll-2": "7-4",
+  "ch07-econ5200-poll-3": "7-5",
+  "ch07-econ5200-poll-4": "7-6",
+  "ch07-econ5200-poll-5": "7-1",
+  "ch07-econ5200-poll-6": "7-2",
+  "ch08-econ5200-poll-1": "8-3",
+  "ch08-econ5200-poll-2": "8-4",
+  "ch08-econ5200-poll-3": "8-5",
+  "ch08-econ5200-poll-4": "8-6",
+  "ch08-econ5200-poll-5": "8-1",
+  "ch08-econ5200-poll-6": "8-2",
+  "ch09-econ5200-poll-1": "9-3",
+  "ch09-econ5200-poll-2": "9-4",
+  "ch09-econ5200-poll-3": "9-5",
+  "ch09-econ5200-poll-4": "9-6",
+  "ch09-econ5200-poll-5": "9-1",
+  "ch09-econ5200-poll-6": "9-2",
+  "ch10-econ5200-poll-1": "10-2",
+  "ch10-econ5200-poll-2": "10-3",
+  "ch10-econ5200-poll-3": "10-6",
+  "ch10-econ5200-poll-4": "10-7",
+  "ch10-econ5200-poll-5": "10-1",
+  "ch10-econ5200-poll-6": "10-4",
+  "ch10-econ5200-poll-7": "10-5",
+  "ch11-econ5200-poll-1": "11-1",
+  "ch11-econ5200-poll-2": "11-2",
+  "ch11-econ5200-poll-3": "11-3",
+  "ch11-econ5200-poll-4": "11-4",
+  "ch11b-econ5200-poll-1": "11b-3",
+  "ch11b-econ5200-poll-2": "11b-1",
+  "ch11b-econ5200-poll-3": "11b-2",
+  "ch12-econ5200-poll-1": "12-1",
+  "ch12-econ5200-poll-2": "12-2",
+  "ch12-econ5200-poll-3": "12-3",
+  "ch12-econ5200-poll-4": "12-4",
+  "ch13-econ5200-poll-1": "13-1",
+  "ch13-econ5200-poll-2": "13-2",
+  "ch13-econ5200-poll-3": "13-3",
+  "ch14-econ5200-poll-1": "14-1",
+  "ch14-econ5200-poll-2": "14-2",
+  "ch14-econ5200-poll-3": "14-3",
+  "ch14-econ5200-poll-4": "14-4",
+  "ch15-econ5200-poll-1": "15-1",
+  "ch15-econ5200-poll-2": "15-2",
+  "ch15-econ5200-poll-3": "15-3",
+  "ch16-econ5200-poll-1": "16-1",
+  "ch16-econ5200-poll-2": "16-2",
+  "ch16-econ5200-poll-3": "16-3",
+  "ch16-econ5200-poll-4": "16-4",
+  "ch17-econ5200-poll-1": "17-1",
+  "ch17-econ5200-poll-2": "17-2",
+  "ch17-econ5200-poll-3": "17-3",
+  "ch17-econ5200-poll-4": "17-4",
+  "ch18-econ5200-poll-1": "18-1",
+  "ch18-econ5200-poll-2": "18-2",
+  "ch18-econ5200-poll-3": "18-3",
+  "ch18-econ5200-poll-4": "18-4",
+  "ch21-econ5200-poll-1": "21-1",
+  "ch21-econ5200-poll-2": "21-2",
+  "ch21-econ5200-poll-3": "21-3",
+  "ch22-econ5200-poll1": "22-1",
+  "ch22-econ5200-poll2": "22-2",
+  "ch23-econ5200-poll1": "23-1",
+  "ch23-econ5200-poll2": "23-2",
+  "ch23-econ5200-poll3": "23-3",
+  "ch24-econ5200-poll1": "24-1",
+  "ch24-econ5200-poll2": "24-2",
+  "ch24-econ5200-poll3": "24-3",
+  "ch25-econ5200-poll1": "25-1",
+  "ch25-econ5200-poll2": "25-2",
+  "ch25-econ5200-poll3": "25-3",
+  "ch26-econ5200-poll-1": "26-1",
+  "ch26-econ5200-poll-2": "26-2"
+ },
+ "codes": {
+  "0-1": [
+   "ch00-course-orientation",
+   "ch00-econ5200-orientation-method-experience"
+  ],
+  "1-1": [
+   "ch01-the-data-portfolio-the-economic-lens",
+   "ch01-econ5200-poll-1"
+  ],
+  "1-2": [
+   "ch01-the-data-portfolio-the-economic-lens",
+   "ch01-econ5200-poll-2"
+  ],
+  "1-3": [
+   "ch01-the-data-portfolio-the-economic-lens",
+   "ch01-econ5200-poll-3"
+  ],
+  "10-1": [
+   "ch10-correlation-causality",
+   "ch10-econ5200-poll-5"
+  ],
+  "10-2": [
+   "ch10-correlation-causality",
+   "ch10-econ5200-poll-1"
+  ],
+  "10-3": [
+   "ch10-correlation-causality",
+   "ch10-econ5200-poll-2"
+  ],
+  "10-4": [
+   "ch10-correlation-causality",
+   "ch10-econ5200-poll-6"
+  ],
+  "10-5": [
+   "ch10-correlation-causality",
+   "ch10-econ5200-poll-7"
+  ],
+  "10-6": [
+   "ch10-correlation-causality",
+   "ch10-econ5200-poll-3"
+  ],
+  "10-7": [
+   "ch10-correlation-causality",
+   "ch10-econ5200-poll-4"
+  ],
+  "11-1": [
+   "ch11-identification-did",
+   "ch11-econ5200-poll-1"
+  ],
+  "11-2": [
+   "ch11-identification-did",
+   "ch11-econ5200-poll-2"
+  ],
+  "11-3": [
+   "ch11-identification-did",
+   "ch11-econ5200-poll-3"
+  ],
+  "11-4": [
+   "ch11-identification-did",
+   "ch11-econ5200-poll-4"
+  ],
+  "11b-1": [
+   "ch11b-ols-line-of-best-fit",
+   "ch11b-econ5200-poll-2"
+  ],
+  "11b-2": [
+   "ch11b-ols-line-of-best-fit",
+   "ch11b-econ5200-poll-3"
+  ],
+  "11b-3": [
+   "ch11b-ols-line-of-best-fit",
+   "ch11b-econ5200-poll-1"
+  ],
+  "12-1": [
+   "ch12-instrumental-variables",
+   "ch12-econ5200-poll-1"
+  ],
+  "12-2": [
+   "ch12-instrumental-variables",
+   "ch12-econ5200-poll-2"
+  ],
+  "12-3": [
+   "ch12-instrumental-variables",
+   "ch12-econ5200-poll-3"
+  ],
+  "12-4": [
+   "ch12-instrumental-variables",
+   "ch12-econ5200-poll-4"
+  ],
+  "13-1": [
+   "ch13-regression-discontinuity",
+   "ch13-econ5200-poll-1"
+  ],
+  "13-2": [
+   "ch13-regression-discontinuity",
+   "ch13-econ5200-poll-2"
+  ],
+  "13-3": [
+   "ch13-regression-discontinuity",
+   "ch13-econ5200-poll-3"
+  ],
+  "14-1": [
+   "ch14-ols-diagnostics",
+   "ch14-econ5200-poll-1"
+  ],
+  "14-2": [
+   "ch14-ols-diagnostics",
+   "ch14-econ5200-poll-2"
+  ],
+  "14-3": [
+   "ch14-ols-diagnostics",
+   "ch14-econ5200-poll-3"
+  ],
+  "14-4": [
+   "ch14-ols-diagnostics",
+   "ch14-econ5200-poll-4"
+  ],
+  "15-1": [
+   "ch15-bias-variance-tradeoff",
+   "ch15-econ5200-poll-1"
+  ],
+  "15-2": [
+   "ch15-bias-variance-tradeoff",
+   "ch15-econ5200-poll-2"
+  ],
+  "15-3": [
+   "ch15-bias-variance-tradeoff",
+   "ch15-econ5200-poll-3"
+  ],
+  "16-1": [
+   "ch16-regularization",
+   "ch16-econ5200-poll-1"
+  ],
+  "16-2": [
+   "ch16-regularization",
+   "ch16-econ5200-poll-2"
+  ],
+  "16-3": [
+   "ch16-regularization",
+   "ch16-econ5200-poll-3"
+  ],
+  "16-4": [
+   "ch16-regularization",
+   "ch16-econ5200-poll-4"
+  ],
+  "17-1": [
+   "ch17-classification",
+   "ch17-econ5200-poll-1"
+  ],
+  "17-2": [
+   "ch17-classification",
+   "ch17-econ5200-poll-2"
+  ],
+  "17-3": [
+   "ch17-classification",
+   "ch17-econ5200-poll-3"
+  ],
+  "17-4": [
+   "ch17-classification",
+   "ch17-econ5200-poll-4"
+  ],
+  "18-1": [
+   "ch18-model-evaluation",
+   "ch18-econ5200-poll-1"
+  ],
+  "18-2": [
+   "ch18-model-evaluation",
+   "ch18-econ5200-poll-2"
+  ],
+  "18-3": [
+   "ch18-model-evaluation",
+   "ch18-econ5200-poll-3"
+  ],
+  "18-4": [
+   "ch18-model-evaluation",
+   "ch18-econ5200-poll-4"
+  ],
+  "2-1": [
+   "ch02-measurement-indexes-nominal-vs-real",
+   "ch02-econ5200-poll-1"
+  ],
+  "2-2": [
+   "ch02-measurement-indexes-nominal-vs-real",
+   "ch02-econ5200-poll-3"
+  ],
+  "2-3": [
+   "ch02-measurement-indexes-nominal-vs-real",
+   "ch02-econ5200-poll-4"
+  ],
+  "21-1": [
+   "ch21-time-series-prophet-arima-structural-breaks",
+   "ch21-econ5200-poll-1"
+  ],
+  "21-2": [
+   "ch21-time-series-prophet-arima-structural-breaks",
+   "ch21-econ5200-poll-2"
+  ],
+  "21-3": [
+   "ch21-time-series-prophet-arima-structural-breaks",
+   "ch21-econ5200-poll-3"
+  ],
+  "22-1": [
+   "ch22-unsupervised-learning-clustering-economies",
+   "ch22-econ5200-poll1"
+  ],
+  "22-2": [
+   "ch22-unsupervised-learning-clustering-economies",
+   "ch22-econ5200-poll2"
+  ],
+  "23-1": [
+   "ch23-nlp-for-economists-text-as-data",
+   "ch23-econ5200-poll1"
+  ],
+  "23-2": [
+   "ch23-nlp-for-economists-text-as-data",
+   "ch23-econ5200-poll2"
+  ],
+  "23-3": [
+   "ch23-nlp-for-economists-text-as-data",
+   "ch23-econ5200-poll3"
+  ],
+  "24-1": [
+   "ch24-causal-machine-learning-double-ml",
+   "ch24-econ5200-poll1"
+  ],
+  "24-2": [
+   "ch24-causal-machine-learning-double-ml",
+   "ch24-econ5200-poll2"
+  ],
+  "24-3": [
+   "ch24-causal-machine-learning-double-ml",
+   "ch24-econ5200-poll3"
+  ],
+  "25-1": [
+   "ch25-ai-literacy-generative-tools",
+   "ch25-econ5200-poll1"
+  ],
+  "25-2": [
+   "ch25-ai-literacy-generative-tools",
+   "ch25-econ5200-poll2"
+  ],
+  "25-3": [
+   "ch25-ai-literacy-generative-tools",
+   "ch25-econ5200-poll3"
+  ],
+  "26-1": [
+   "ch26-capstone-from-question-to-recommendation",
+   "ch26-econ5200-poll-1"
+  ],
+  "26-2": [
+   "ch26-capstone-from-question-to-recommendation",
+   "ch26-econ5200-poll-2"
+  ],
+  "3-1": [
+   "ch03-eda-the-art-and-ethics-of-visualization",
+   "ch03-econ5200-poll-1"
+  ],
+  "3-2": [
+   "ch03-eda-the-art-and-ethics-of-visualization",
+   "ch03-econ5200-poll-2"
+  ],
+  "3-3": [
+   "ch03-eda-the-art-and-ethics-of-visualization",
+   "ch03-econ5200-poll-3"
+  ],
+  "3-4": [
+   "ch03-eda-the-art-and-ethics-of-visualization",
+   "ch03-econ5200-poll-4"
+  ],
+  "4-1": [
+   "ch04-robust-statistics-robustness-in-a-skewed-world",
+   "ch04-econ5200-poll-0"
+  ],
+  "4-2": [
+   "ch04-robust-statistics-robustness-in-a-skewed-world",
+   "ch04-econ5200-poll-1"
+  ],
+  "4-3": [
+   "ch04-robust-statistics-robustness-in-a-skewed-world",
+   "ch04-econ5200-poll-2"
+  ],
+  "4-4": [
+   "ch04-robust-statistics-robustness-in-a-skewed-world",
+   "ch04-econ5200-poll-3"
+  ],
+  "4-5": [
+   "ch04-robust-statistics-robustness-in-a-skewed-world",
+   "ch04-econ5200-poll-4"
+  ],
+  "5-1": [
+   "ch05-probability-and-simulation",
+   "ch05-econ5200-poll-7"
+  ],
+  "5-2": [
+   "ch05-probability-and-simulation",
+   "ch05-econ5200-poll-1"
+  ],
+  "5-3": [
+   "ch05-probability-and-simulation",
+   "ch05-econ5200-poll-6"
+  ],
+  "5-4": [
+   "ch05-probability-and-simulation",
+   "ch05-econ5200-poll-2"
+  ],
+  "5-5": [
+   "ch05-probability-and-simulation",
+   "ch05-econ5200-poll-5"
+  ],
+  "6-1": [
+   "ch06-sampling-and-bias",
+   "ch06-econ5200-poll-6"
+  ],
+  "6-2": [
+   "ch06-sampling-and-bias",
+   "ch06-econ5200-poll-5"
+  ],
+  "6-3": [
+   "ch06-sampling-and-bias",
+   "ch06-econ5200-poll-2"
+  ],
+  "6-4": [
+   "ch06-sampling-and-bias",
+   "ch06-econ5200-poll-3"
+  ],
+  "6-5": [
+   "ch06-sampling-and-bias",
+   "ch06-econ5200-poll-4"
+  ],
+  "7-1": [
+   "ch07-estimation-and-bootstrapping",
+   "ch07-econ5200-poll-5"
+  ],
+  "7-2": [
+   "ch07-estimation-and-bootstrapping",
+   "ch07-econ5200-poll-6"
+  ],
+  "7-3": [
+   "ch07-estimation-and-bootstrapping",
+   "ch07-econ5200-poll-1"
+  ],
+  "7-4": [
+   "ch07-estimation-and-bootstrapping",
+   "ch07-econ5200-poll-2"
+  ],
+  "7-5": [
+   "ch07-estimation-and-bootstrapping",
+   "ch07-econ5200-poll-3"
+  ],
+  "7-6": [
+   "ch07-estimation-and-bootstrapping",
+   "ch07-econ5200-poll-4"
+  ],
+  "8-1": [
+   "ch08-hypothesis-testing-t-tests",
+   "ch08-econ5200-poll-5"
+  ],
+  "8-2": [
+   "ch08-hypothesis-testing-t-tests",
+   "ch08-econ5200-poll-6"
+  ],
+  "8-3": [
+   "ch08-hypothesis-testing-t-tests",
+   "ch08-econ5200-poll-1"
+  ],
+  "8-4": [
+   "ch08-hypothesis-testing-t-tests",
+   "ch08-econ5200-poll-2"
+  ],
+  "8-5": [
+   "ch08-hypothesis-testing-t-tests",
+   "ch08-econ5200-poll-3"
+  ],
+  "8-6": [
+   "ch08-hypothesis-testing-t-tests",
+   "ch08-econ5200-poll-4"
+  ],
+  "9-1": [
+   "ch09-causal-inference-ab-testing",
+   "ch09-econ5200-poll-5"
+  ],
+  "9-2": [
+   "ch09-causal-inference-ab-testing",
+   "ch09-econ5200-poll-6"
+  ],
+  "9-3": [
+   "ch09-causal-inference-ab-testing",
+   "ch09-econ5200-poll-1"
+  ],
+  "9-4": [
+   "ch09-causal-inference-ab-testing",
+   "ch09-econ5200-poll-2"
+  ],
+  "9-5": [
+   "ch09-causal-inference-ab-testing",
+   "ch09-econ5200-poll-3"
+  ],
+  "9-6": [
+   "ch09-causal-inference-ab-testing",
+   "ch09-econ5200-poll-4"
+  ]
+ },
+ "course": "econ5200",
+ "v": 1
+}
