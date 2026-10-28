@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=7f562403dd2878de7b9b9e37da5e757f">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=3c4b24cf27d9601026f8da10bb0a5964">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identification Strategy & Difference-in-Differences</title>
@@ -83,22 +83,23 @@
       </section>
 
       <section id="hook" style="padding: 38px 60px;">
-        <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> The Regression That Misleads</h2>
-        <p class="text-lg" style="margin-top: 14px;">You evaluate a policy that helped <strong>everyone it touched</strong>. Clean panel, staggered rollout across states, and the standard specification since the early 1990s: outcome on a treatment indicator with unit and time fixed effects.</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px;">
-          <div style="background: #f8f6f3; border-left: 4px solid var(--muted-color); border-radius: 8px; padding: 16px 20px;">
+        <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> A Standard Regression That Gets It Wrong</h2>
+        <p class="text-lg" style="margin-top: 14px;">A policy starts in different states in different years, and it <strong>helps every state it reaches</strong>. We know the true average effect, because we built the data.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 16px;">
+          <div style="background: #f8f6f3; border-left: 4px solid var(--muted-color); border-radius: 8px; padding: 14px 20px;">
             <p style="font-size: 13pt; color: var(--muted-color); text-transform: uppercase; letter-spacing: 2px;">The truth</p>
             <p style="font-size: 30pt; font-weight: 700; color: var(--primary-color);">+8.65</p>
           </div>
-          <div class="fragment fade-up" style="background: #f7efee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 16px 20px;">
-            <p style="font-size: 13pt; color: var(--danger-color); text-transform: uppercase; letter-spacing: 2px;">What the regression reports</p>
+          <div class="fragment fade-up" style="background: #f7efee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 20px;">
+            <p style="font-size: 13pt; color: var(--danger-color); text-transform: uppercase; letter-spacing: 2px;">The usual regression reports</p>
             <p style="font-size: 30pt; font-weight: 700; color: var(--danger-color);">+4.70 <span style="font-size: 14pt; font-weight: 400;">(SE 0.27)</span></p>
+            <p style="font-size: 12.5pt; color: #5d5d5d; margin-top: 4px;">Outcome on &ldquo;treated yet?&rdquo; with state and year fixed effects. About half the truth, and it looks precise.</p>
           </div>
         </div>
-        <div class="fragment fade-up" style="background: #f7efee; border-radius: 8px; padding: 14px 22px; margin-top: 16px;">
-          <p style="font-size: 15pt;">Nothing is wrong with the data or the code. <strong>The truth is more than fourteen standard errors away.</strong> And when every unit is eventually treated &mdash; which describes a great many real rollouts &mdash; the same specification returns <strong style="color: var(--danger-color);">&minus;0.97</strong> for a policy whose true effect is <strong>+9.56</strong>.</p>
+        <div class="fragment fade-up" style="background: #f7efee; border-radius: 8px; padding: 12px 22px; margin-top: 14px;">
+          <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Why:</strong> to judge the states treated later, it uses states treated <em>earlier</em> as the comparison, and those states are still changing from their own treatment. If every state is eventually treated, it gets worse: <strong style="color: var(--danger-color);">&minus;0.97</strong> for a true effect of <strong>+9.56</strong>, the wrong sign.</p>
         </div>
-        <p class="fragment fade-up text-lg" style="margin-top: 14px; color: var(--accent-color); font-weight: 700;">Today's main point: identification is an argument, not a function call.</p>
+        <p class="fragment fade-up text-lg" style="margin-top: 12px; color: var(--accent-color); font-weight: 700;">Today: before you trust a regression, ask which comparisons it makes.</p>
       </section>
 
       <section class="section-divider" data-state="is-section-divider" id="divider-canonical">

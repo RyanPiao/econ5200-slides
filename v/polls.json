@@ -55,9 +55,10 @@
   "ch11-econ5200-poll-2": "11-2",
   "ch11-econ5200-poll-3": "11-3",
   "ch11-econ5200-poll-4": "11-4",
-  "ch11b-econ5200-poll-1": "11b-3",
+  "ch11b-econ5200-poll-1": "11b-4",
   "ch11b-econ5200-poll-2": "11b-1",
   "ch11b-econ5200-poll-3": "11b-2",
+  "ch11b-econ5200-poll-4": "11b-3",
   "ch12-econ5200-poll-1": "12-1",
   "ch12-econ5200-poll-2": "12-2",
   "ch12-econ5200-poll-3": "12-3",
@@ -171,6 +172,10 @@
    "ch11b-econ5200-poll-3"
   ],
   "11b-3": [
+   "ch11b-ols-line-of-best-fit",
+   "ch11b-econ5200-poll-4"
+  ],
+  "11b-4": [
    "ch11b-ols-line-of-best-fit",
    "ch11b-econ5200-poll-1"
   ],

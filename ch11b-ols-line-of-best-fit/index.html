@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=efa5530c0fa89867e029d06c0e4e0205">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=5b0b86f464e45cbbad30eb1efa6fe290">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predictive Modeling: OLS as the Line of Best Fit</title>
+  <title>Pre-11 · OLS, the Line of Best Fit</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -84,6 +84,17 @@
         </div>
         <div class="footnote">R² = (sum of squares around the mean − sum of squares around the line) ÷ sum of squares around the mean: the share of the mean&rsquo;s squared misses the miles remove.</div>
       </section>
+      <section id="room-outlier" style="padding: 24px 46px;">
+        <h2><i class="fa-solid fa-person-circle-exclamation" style="color: var(--danger-color);"></i> One More Student</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 4px; color: #5d5d5d;">Same points, same line. Now one more student joins: the shortest trip in the room, and it took far longer than anyone else&rsquo;s. Watch the mean and the line.</p>
+          <div class="rt-plot rt-outlier mathjax_ignore tex2jax_ignore"></div>
+          <p class="rt-wait" style="font-size: 15pt; text-align: center; color: var(--muted-color); margin-top: 50px;">Waiting for both numbers from at least 8 of you.</p>
+          <div class="rt-readout mathjax_ignore tex2jax_ignore" style="font-size: 14.5pt; line-height: 1.45; margin-top: 4px;"></div>
+          <span class="fragment rt-step" data-step="1" style="display:none"></span><span class="fragment rt-step" data-step="2" style="display:none"></span>
+        </div>
+        <div class="footnote">The mean and least squares both square the misses, so one far point pulls hard. The median barely moves: Topic 4&rsquo;s breakdown point, now in a regression.</div>
+      </section>
       <section id="room-chance" style="padding: 24px 46px;">
         <h2><i class="fa-solid fa-shuffle" style="color: var(--secondary-color);"></i> Could Chance Do This?</h2>
         <div class="content">
@@ -95,6 +106,53 @@
         <div class="footnote">A permutation test: the share of shuffles at least as big is the p-value for R². Any two points give R² = 1, so R² alone is not evidence.</div>
       </section>
     </section>
+
+    <section id="predict-or-cause" style="padding: 30px 50px;">
+      <h2><i class="fa-solid fa-code-branch" style="color: var(--accent-color);"></i> Your Line Can Answer One of Two Questions</h2>
+      <div class="content mathjax_ignore tex2jax_ignore">
+        <p style="font-size: 14pt; margin: 0 0 12px; color: #5d5d5d;">Your line: minutes &asymp; <span data-rt="a">a</span> + <span data-rt="b">b</span> &times; miles.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div style="background: #f0f5f8; border-radius: 12px; padding: 16px 22px; border-left: 4px solid var(--secondary-color);">
+            <p style="font-size: 18pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 6px;">&ldquo;What will Y be?&rdquo; &nbsp;&rarr; &nbsp;y&#770;</p>
+            <p style="font-size: 14pt; line-height: 1.5; margin: 0 0 8px;">A new classmate lives <span data-rt="m">a few</span> miles away. Your line guesses <strong><span data-rt="yhat">?</span> minutes</strong>.</p>
+            <p style="font-size: 13pt; line-height: 1.5; margin: 0; color: #444;"><strong>Deliverable:</strong> a predicted value. <strong>Judged by:</strong> the typical miss on people the line has not seen. <strong>Which variables?</strong> Whatever predicts well and is known in time.</p>
+          </div>
+          <div style="background: #fdf0ea; border-radius: 12px; padding: 16px 22px; border-left: 4px solid var(--accent-color);">
+            <p style="font-size: 18pt; font-weight: 700; color: var(--accent-color); margin: 0 0 6px;">&ldquo;What is the effect of X on Y?&rdquo; &nbsp;&rarr; &nbsp;&beta;&#770;</p>
+            <p style="font-size: 14pt; line-height: 1.5; margin: 0 0 8px;">If you moved one mile farther away, would your trip take <strong><span data-rt="b">b</span> more minutes</strong>?</p>
+            <p style="font-size: 13pt; line-height: 1.5; margin: 0; color: #444;"><strong>Deliverable:</strong> a coefficient. <strong>Judged by:</strong> whether it is unbiased. <strong>Which variables?</strong> Whatever the DAG requires, and nothing that sits after the move.</p>
+          </div>
+        </div>
+        <div class="key-result" style="margin-top: 14px;"><p style="font-size: 14.5pt; line-height: 1.5; margin: 0;">Same regression, two jobs. Topic 11 onward (DiD, then IV and RD) is about the right-hand question.</p></div>
+      </div>
+      <div class="footnote">Shmueli (2010), &ldquo;To explain or to predict?&rdquo;; Mullainathan &amp; Spiess (2017) call it a &beta;&#770; problem versus a y&#770; problem. ECON 3916 Topic 12 opens the same way.</div>
+    </section>
+
+    <section>
+      <section id="poll-4">
+        <h2><i class="fa-solid fa-chart-bar" style="color: var(--secondary-color);"></i> Class Poll</h2>
+        <div class="content" style="justify-content: center;">
+          <p style="font-size: 17pt; text-align: center; margin-bottom: 8px;" class="mathjax_ignore tex2jax_ignore"><strong>Your line says each extra mile goes with about <span data-rt="b">b</span> more minutes.</strong></p>
+          <p style="font-size: 15pt; text-align: center; color: var(--muted-color); margin-bottom: 22px;">Which of these can the line do, as it stands?</p>
+          <div class="poll-grid" data-poll-id="ch11b-econ5200-poll-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; font-size: 15pt;">
+            <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><p style="font-size: 19pt; font-weight: 700; color: var(--secondary-color); margin:0 0 6px;">A</p><p style="font-size: 14pt; margin:0;">Guess how long a new classmate&rsquo;s trip takes, from their miles</p></div>
+            <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><p style="font-size: 19pt; font-weight: 700; color: var(--secondary-color); margin:0 0 6px;">B</p><p style="font-size: 14pt; margin:0;">Tell a classmate that moving a mile farther will add that many minutes</p></div>
+            <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><p style="font-size: 19pt; font-weight: 700; color: var(--secondary-color); margin:0 0 6px;">C</p><p style="font-size: 14pt; margin:0;">Both</p></div>
+            <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><p style="font-size: 19pt; font-weight: 700; color: var(--secondary-color); margin:0 0 6px;">D</p><p style="font-size: 14pt; margin:0;">Neither, until R&sup2; is above 0.9</p></div>
+          </div>
+        <p style="text-align: center; margin-top: 22px;"><span class="timer-badge"><i class="fa-solid fa-clock"></i> 60 seconds &bull; then defend it to a neighbour</span></p>
+        </div>
+      </section>
+      <section id="poll-4-reveal">
+        <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> A &mdash; It Predicts</h2>
+        <div class="poll-results-chart" data-poll-id="ch11b-econ5200-poll-4" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:150px; margin:10px 60px 22px;"></div>
+        <div class="content">
+          <p style="font-size: 15pt; line-height: 1.55;">A guess for a new classmate only needs the pattern in this room to hold for people like them. B asks what would happen if one thing changed and nothing else did. Miles travel with <strong>how</strong> you come (walk, bus, car) and <strong>where</strong> you can afford to live, and those change the minutes too.</p>
+          <p style="font-size: 15pt; line-height: 1.55; margin-top: 10px;">R&sup2; does not decide it: a line can fit well and still answer B wrongly. Getting B needs a design, and DiD, IV and RD are three of them.</p>
+        </div>
+      </section>
+    </section>
+
 
 
     <section id="learning-objectives">
@@ -155,14 +213,14 @@
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
           <div style="background: #f8f6f3; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 14px 18px;">
-            <p style="font-size: 14pt;"><strong>$\mathbf{X}$</strong> &mdash; the <em>design matrix</em>, $n \times (p+1)$. One row per observation, one column per predictor, plus a leading column of ones.</p>
+            <p style="font-size: 14pt;"><strong>\(\mathbf{X}\)</strong> &mdash; the <em>design matrix</em>, \(n \times (p+1)\). One row per observation, one column per predictor, plus a leading column of ones.</p>
           </div>
           <div style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 14px 18px;">
-            <p style="font-size: 14pt;"><strong>$\hat{\beta}_j$</strong> &mdash; a <em>partial effect</em>. The change in $y$ per unit of $x_j$, holding the other columns fixed.</p>
+            <p style="font-size: 14pt;"><strong>\(\hat{\beta}_j\)</strong> &mdash; a <em>partial effect</em>. The change in \(y\) per unit of \(x_j\), holding the other columns fixed.</p>
           </div>
         </div>
         <div style="background: #f5efe9; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 18px; margin-top: 16px;">
-          <p style="font-size: 14pt;"><strong>Squared, not absolute.</strong> Squaring is what makes the solution linear in $y$ and gives that closed form. It also means one extreme observation moves the line more than fifty ordinary ones &mdash; which is why Chapter 14 spends a section on leverage.</p>
+          <p style="font-size: 14pt;"><strong>Squared, not absolute.</strong> Squaring is what makes the solution linear in \(y\) and gives that closed form. It also means one extreme observation moves the line more than fifty ordinary ones &mdash; which is why Chapter 14 spends a section on leverage.</p>
         </div>
       </div>
     </section>
@@ -172,18 +230,18 @@
       <div class="content">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
           <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 18px 22px;">
-            <p style="font-size: 19pt; font-weight: 700; color: var(--secondary-color); font-family: var(--heading-font); margin-bottom: 8px;">$R^2$</p>
-            <p style="font-size: 14pt;">Share of variance in $y$ explained <strong>in-sample</strong>.</p>
+            <p style="font-size: 19pt; font-weight: 700; color: var(--secondary-color); font-family: var(--heading-font); margin-bottom: 8px;">\(R^2\)</p>
+            <p style="font-size: 14pt;">Share of variance in \(y\) explained <strong>in-sample</strong>.</p>
             <p style="font-size: 14pt; margin-top: 8px;">It <strong>cannot decrease</strong> when you add a predictor &mdash; including a column of pure noise. So it can never tell you a variable was a bad idea.</p>
           </div>
           <div style="background: #eef4ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 18px 22px;">
             <p style="font-size: 19pt; font-weight: 700; color: var(--success-color); font-family: var(--heading-font); margin-bottom: 8px;">RMSE</p>
-            <p style="font-size: 14pt;">The typical size of a prediction error, <strong>in the units of $y$</strong>.</p>
+            <p style="font-size: 14pt;">The typical size of a prediction error, <strong>in the units of \(y\)</strong>.</p>
             <p style="font-size: 14pt; margin-top: 8px;">Dollars, percentage points, people. Reportable to someone who does not know what a variance is.</p>
           </div>
         </div>
         <div style="background: #f8f6f3; border-left: 4px solid var(--muted-color); border-radius: 8px; padding: 14px 20px; margin-top: 18px;">
-          <p style="font-size: 14pt;"><strong>Why it matters in your Chapter 12.</strong> The first-stage $R^2$ is nearly useless and the first-stage $F$ is what decides whether your instrument is usable at all. That distinction only makes sense once you know what $R^2$ is doing.</p>
+          <p style="font-size: 14pt;"><strong>Why it matters in your Chapter 12.</strong> The first-stage \(R^2\) is nearly useless and the first-stage \(F\) is what decides whether your instrument is usable at all. That distinction only makes sense once you know what \(R^2\) is doing.</p>
         </div>
       </div>
     </section>
@@ -294,7 +352,7 @@
             <div style="background: #f5efe9; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 13px 16px; margin-bottom: 10px;">
               <p style="font-size: 14pt;">Omit tenure: <strong>&minus;8,412</strong><br>Include it: <strong>&minus;5,907</strong></p>
             </div>
-            <p style="font-size: 14pt;">The gap between them is $\beta_2 \times \delta$ &mdash; exactly, not approximately.</p>
+            <p style="font-size: 14pt;">The gap between them is \(\beta_2 \times \delta\) &mdash; exactly, not approximately.</p>
           </div>
         </div>
         <div style="background: #f5efe9; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 13px 18px; margin-top: 14px;">
@@ -322,9 +380,9 @@
         <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> A &mdash; Biased Upward</h2>
         <div class="poll-results-chart" data-poll-id="ch11b-econ5200-poll-1" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:160px; margin:10px 60px 22px;"></div>
         <div class="content">
-          <p style="font-size: 15pt;">Both correlations are positive: motivation raises enrolment, and motivation raises earnings. The bias term $\beta_2 \times \delta$ is positive, so the training coefficient absorbs the motivation effect and reads too high.</p>
+          <p style="font-size: 15pt;">Both correlations are positive: motivation raises enrolment, and motivation raises earnings. The bias term \(\beta_2 \times \delta\) is positive, so the training coefficient absorbs the motivation effect and reads too high.</p>
           <div style="background: #eef4ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 14px 20px; margin-top: 14px;">
-            <p style="font-size: 14pt;"><strong>Why D deserves credit.</strong> In the wild you rarely know the sign of $\delta$. &ldquo;Cannot say without more&rdquo; is the right reflex the moment the question stops handing you the correlations.</p>
+            <p style="font-size: 14pt;"><strong>Why D deserves credit.</strong> In the wild you rarely know the sign of \(\delta\). &ldquo;Cannot say without more&rdquo; is the right reflex the moment the question stops handing you the correlations.</p>
           </div>
           <div style="background: #f5efe9; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 20px; margin-top: 12px;">
             <p style="font-size: 14pt;"><strong>If you said C</strong> &mdash; that is the heteroscedasticity answer: unbiased estimate, wrong standard error. Chapter 14 is organised around keeping those two apart.</p>
@@ -347,7 +405,7 @@
             <p style="font-size: 14pt;"><strong>Ch 11 &mdash; DiD.</strong> The interaction coefficient <em>is</em> the four-means calculation. Regression adds standard errors, nothing conceptual.</p>
           </div>
           <div style="background: #f5efe9; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 18px;">
-            <p style="font-size: 14pt;"><strong>Ch 12 &mdash; IV.</strong> The first-stage $F$. Here $R^2$ misleads and $F$ decides whether the instrument is usable at all.</p>
+            <p style="font-size: 14pt;"><strong>Ch 12 &mdash; IV.</strong> The first-stage \(F\). Here \(R^2\) misleads and \(F\) decides whether the instrument is usable at all.</p>
           </div>
           <div style="background: #f5efe9; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 18px;">
             <p style="font-size: 14pt;"><strong>Ch 13 &mdash; RD.</strong> Local linear regression with a kernel weight. No four-means version exists &mdash; weighted least squares or nothing.</p>
@@ -372,7 +430,7 @@
           </div>
           <div style="display: grid; grid-template-columns: 44px 1fr; align-items: start; background: #eef4ee; border-radius: 8px; padding: 14px 18px; border-left: 4px solid var(--success-color);">
             <p style="font-size: 20pt;"><i class="fa-solid fa-ruler" style="color: var(--success-color);"></i></p>
-            <p style="font-size: 14pt;"><strong>$R^2$ and RMSE answer different questions.</strong> One cannot fall when you add noise; the other is in the units your stakeholder thinks in.</p>
+            <p style="font-size: 14pt;"><strong>\(R^2\) and RMSE answer different questions.</strong> One cannot fall when you add noise; the other is in the units your stakeholder thinks in.</p>
           </div>
           <div style="display: grid; grid-template-columns: 44px 1fr; align-items: start; background: #f5efe9; border-radius: 8px; padding: 14px 18px; border-left: 4px solid var(--danger-color);">
             <p style="font-size: 20pt;"><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i></p>
@@ -579,6 +637,24 @@
     s += '<text x="' + ((L + R) / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="14" fill="#555">R² of the line after the miles were shuffled across the room</text>';
     return s + '</svg>';
   }
+  function plotOutlier(P, F, F2, O, step) {
+    var all = P.concat(step >= 1 ? [O] : []);
+    var ymax = Math.max(10, Math.ceil(Math.max.apply(null, all.map(function (p) { return p.y; })) / 20) * 20);
+    var xmax = Math.max(4, Math.ceil(Math.max.apply(null, all.map(function (p) { return p.x; })) / 4) * 4);
+    var X = function (v) { return L + (R - L) * v / xmax; }, Y = function (v) { return B - (B - T) * Math.max(0, Math.min(ymax, v)) / ymax; };
+    var s = axes(xmax, ymax, "miles you came", "minutes to get here", true);
+    var old = step >= 2 ? ' stroke-dasharray="7 5" opacity="0.45"' : '';
+    s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(F.my) + '" y2="' + Y(F.my) + '" stroke="#2c3e50" stroke-width="2"' + (step >= 2 ? old : ' stroke-dasharray="7 5" opacity="0.7"') + '/>';
+    s += '<line x1="' + X(0) + '" x2="' + X(xmax) + '" y1="' + Y(F.a) + '" y2="' + Y(F.a + F.b * xmax) + '" stroke="#1f6fb2" stroke-width="3"' + old + '/>';
+    if (step >= 2) {
+      s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(F2.my) + '" y2="' + Y(F2.my) + '" stroke="#b22222" stroke-width="2" stroke-dasharray="7 5"/>';
+      s += '<line x1="' + X(0) + '" x2="' + X(xmax) + '" y1="' + Y(F2.a) + '" y2="' + Y(F2.a + F2.b * xmax) + '" stroke="#b22222" stroke-width="3"/>';
+      s += '<text x="' + (R - 6) + '" y="' + (Y(F2.my) - 8) + '" text-anchor="end" font-size="15" font-weight="700" fill="#b22222">new mean = ' + f1(F2.my) + ' min</text>';
+    }
+    P.forEach(function (p) { s += '<circle cx="' + X(p.x) + '" cy="' + Y(p.y) + '" r="7" fill="#2f4f4f" fill-opacity="0.55"/>'; });
+    if (step >= 1) s += '<circle cx="' + X(O.x) + '" cy="' + Y(O.y) + '" r="11" fill="#b22222" fill-opacity="0.9"/><text x="' + (X(O.x) + 16) + '" y="' + (Y(O.y) + 5) + '" font-size="15" font-weight="700" fill="#b22222">one more student</text>';
+    return s + '</svg>';
+  }
   function stepOf(sec) { return sec ? sec.querySelectorAll(".rt-step.visible").length : 0; }
   function draw(rows) {
     if (rows) rows0 = rows;
@@ -586,7 +662,7 @@
     var F = P.length >= MIN_N ? fit(P) : null;
     [].forEach.call(document.querySelectorAll(".rt-count"), function (e) {
       e.textContent = P.length ? P.length + (practice ? " practice pairs (made up)" : " of you " + (P.length === 1 ? "has" : "have") + " sent both numbers") : ""; });
-    [["room-mean", "mean"], ["room-line", "line"], ["room-chance", "chance"]].forEach(function (pr) {
+    [["room-mean", "mean"], ["room-line", "line"], ["room-outlier", "outlier"], ["room-chance", "chance"]].forEach(function (pr) {
       var sec = document.getElementById(pr[0]); if (!sec) return;
       var host = sec.querySelector(".rt-plot"), out = sec.querySelector(".rt-readout"), wait = sec.querySelector(".rt-wait");
       if (!F || !F.ok) { host.innerHTML = ""; out.innerHTML = ""; if (wait) { wait.style.display = ""; wait.textContent = "Waiting for both numbers from at least " + MIN_N + " of you" + (P.length ? " (" + P.length + " so far)." : ".") + " Q switches on practice numbers."; } return; }
@@ -601,13 +677,35 @@
         host.innerHTML = plotLine(P, F, step, pk);
         var l2 = pk.slice(0, Math.min(step, 3)).map(function (i, k) { var g = F.a + F.b * P[i].x, e = P[i].y - g, e0 = P[i].y - F.my; return "Draw " + (k + 1) + ": " + f1(P[i].x) + " mi, " + f0(P[i].y) + " min. Mean misses by " + f1(e0) + "; the line guesses " + f1(g) + ", misses by " + f1(e); });
         if (step >= 4) l2.push("<strong>Sum of squares: around the mean " + f0(F.ssm) + ", around the line " + f0(F.ssf) + ". R² = (" + f0(F.ssm) + " − " + f0(F.ssf) + ") ÷ " + f0(F.ssm) + " = " + f2(F.r2) + "</strong>",
+                               "Typical miss (root of the average squared miss): the mean " + f1(Math.sqrt(F.ssm / F.n)) + " min, the line " + f1(Math.sqrt(F.ssf / F.n)) + " min.",
                                "Line: minutes ≈ " + f1(F.a) + " + " + f1(F.b) + " × miles. Each extra mile " + (F.b >= 0 ? "adds about " + f1(F.b) : "takes off about " + f1(-F.b)) + " minutes.");
         out.innerHTML = (l2.join("<br>") || "Click to draw the same students again.") + tag;
+      } else if (pr[1] === "outlier") {
+        var xs = P.map(function (p) { return p.x; }), ys = P.map(function (p) { return p.y; });
+        var O = { x: Math.min.apply(null, xs), y: Math.min(180, Math.max(Math.round(2.5 * Math.max.apply(null, ys)), Math.max.apply(null, ys) + 30)) };
+        var F2 = fit(P.concat([O]));
+        host.innerHTML = plotOutlier(P, F, F2, O, step);
+        var med = function (a) { var s = a.slice().sort(function (u, v) { return u - v; }), k = s.length; return k % 2 ? s[(k - 1) / 2] : (s[k / 2 - 1] + s[k / 2]) / 2; };
+        var rm = function (G) { return Math.sqrt(G.ssf / G.n); };
+        var l3 = [];
+        if (step === 0) l3.push("Your points, your mean and your line, as on the last slide. Click to add one more student.");
+        if (step >= 1) l3.push("One more student: " + f1(O.x) + " mi, " + f0(O.y) + " min: an outlier we made up, so nobody in the room is singled out.");
+        if (step >= 2) l3.push("<strong>Mean: " + f1(F.my) + " &rarr; " + f1(F2.my) + " min. Median: " + f1(med(ys)) + " &rarr; " + f1(med(ys.concat([O.y]))) + " min.</strong>",
+                               "<strong>Slope: " + f1(F.b) + " &rarr; " + f1(F2.b) + " min per mile</strong>; intercept " + f1(F.a) + " &rarr; " + f1(F2.a) + ".",
+                               "R&sup2;: " + f2(F.r2) + " &rarr; " + f2(F2.r2) + ". Typical miss of the line: " + f1(rm(F)) + " &rarr; " + f1(rm(F2)) + " min.");
+        out.innerHTML = l3.join("<br>") + tag;
       } else {
         var R2s = shuffles(P, F), ge = R2s.filter(function (v) { return v >= F.r2; }).length;
         host.innerHTML = plotChance(F, R2s);
         out.innerHTML = "<strong>" + ge + " of 1,000</strong> shuffles reached R² ≥ " + f2(F.r2) + ": p " + (ge === 0 ? "below 0.001" : "≈ " + (ge / 1000).toFixed(3)) + "." + tag;
       }
+    });
+    [].forEach.call(document.querySelectorAll("[data-rt]"), function (e) {   // the room's line, in words, on predict-or-cause and poll-4
+      if (!e.hasAttribute("data-rt0")) e.setAttribute("data-rt0", e.textContent);
+      if (!F || !F.ok) { e.textContent = e.getAttribute("data-rt0"); return; }
+      var xs = P.map(function (p) { return p.x; }).sort(function (u, v) { return u - v; }), m0 = Math.max(1, Math.round(xs[Math.floor(xs.length / 2)]));
+      var k = e.getAttribute("data-rt");
+      e.textContent = k === "a" ? f1(F.a) : k === "b" ? f1(F.b) : k === "m" ? String(m0) : k === "yhat" ? f0(F.a + F.b * m0) : e.textContent;
     });
   }
   window.RoomTrip = { pairs: pairs, fit: fit, paint: function (rows) { draw(rows); } };
@@ -621,7 +719,7 @@
     for (var i = 0; i < keys.length; i++) { if (pairs(by[keys[i]]).length >= MIN_N) { pick = keys[i]; break; } }
     return by[pick] || [];
   }
-  var HERE = ["room-trip", "room-mean", "room-line", "room-chance"];
+  var HERE = ["room-trip", "room-mean", "room-line", "room-outlier", "room-chance", "predict-or-cause", "poll-4"];
   function onRoom() { var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(); return !!(s && HERE.indexOf(s.id) >= 0); }
   function fetchRows() {
     if (location.protocol === "file:") return;
