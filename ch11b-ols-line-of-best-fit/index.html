@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=4020b912e4c50e29c85b1e1cff17c2aa">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=88344dcbcf99370aac2c14963978f309">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pre-11 · OLS, the Line of Best Fit</title>
@@ -21,6 +21,7 @@
                svg: {fontCache: 'global'}};
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="../mock-cell.css">
 </head>
 <body>
   <div class="reveal">
@@ -298,27 +299,27 @@
     <section id="fwl">
       <h2>Frisch&ndash;Waugh&ndash;Lovell</h2>
       <div class="content">
-        <div style="display: grid; grid-template-columns: 2fr 3fr; gap: 24px; align-items: center;">
-          <div>
-            <p style="font-size: 14pt; margin-bottom: 12px;">&ldquo;Controlling for&rdquo; is a three-step procedure you can run.</p>
-            <div style="background: #f8f6f3; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 11px 15px; margin-bottom: 9px;">
-              <p style="font-size: 13pt;"><strong>1.</strong> Strip the controls out of the <strong>outcome</strong>.</p>
-            </div>
-            <div style="background: #f8f6f3; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 11px 15px; margin-bottom: 9px;">
-              <p style="font-size: 13pt;"><strong>2.</strong> Strip them out of the <strong>predictor of interest</strong>.</p>
-            </div>
-            <div style="background: #f8f6f3; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 11px 15px;">
-              <p style="font-size: 13pt;"><strong>3.</strong> Regress <strong>leftover on leftover</strong>.</p>
-            </div>
+        <p style="font-size: 14pt; margin: 0 0 8px;">Two routes to the same coefficient on training, holding experience fixed:</p>
+        <div style="display: grid; grid-template-columns: 42% 58%; gap: 14px; align-items: start;"><div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 9px 14px;">
+            <p style="font-size: 13.5pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 6px;">Route 1: one regression</p>
+            <p style="font-size: 13pt; margin: 0;">\(\text{wage} = \beta_0 + \beta_1\,\text{train} + \beta_2\,\text{exper} + \varepsilon\)</p>
+            <p style="font-size: 12.5pt; margin: 6px 0 0; color: #555;">read off \(\hat\beta_1\)</p>
           </div>
-          <div style="min-width: 0;">
-            <img src="figures/figure_004_fwl_partial.png" alt="FWL partialling out" style="width: 100%; border-radius: 8px;">
+          <div style="background: #eef4ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 9px 14px;">
+            <p style="font-size: 13.5pt; font-weight: 700; color: var(--success-color); margin: 0 0 6px;">Route 2: three regressions (FWL)</p>
+            <p style="font-size: 12.5pt; margin: 0; line-height: 1.55;">1. \(\text{wage} = a + b\,\text{exper} + \tilde w\) &nbsp;<span style="color:#777">(control out of the outcome)</span><br>
+               2. \(\text{train} = c + d\,\text{exper} + \tilde t\) &nbsp;<span style="color:#777">(control out of the predictor)</span><br>
+               3. \(\tilde w = \beta_1\,\tilde t + u\) &nbsp;<span style="color:#777">(leftover on leftover: the same \(\hat\beta_1\))</span></p>
           </div>
         </div>
-        <div style="background: #eef4ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 13px 18px; margin-top: 14px;">
-          <p style="font-size: 14pt;"><strong>Identical to the multivariate coefficient</strong>, to floating-point precision. A coefficient uses <em>only the variation the other predictors cannot account for.</em></p>
+        <div class="mock colab" data-src="cells/ch11b.json" data-cell="fwl" data-lines="4-6,9-10,12-15,18-22" data-size="9pt" data-live="off"></div>
+        </div>
+        <div class="after-mock-fwl" style="background: #eef4ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 9px 14px; margin-top: 8px;">
+          <p style="font-size: 13.5pt; margin: 0;"><strong>Identical, to floating-point precision.</strong> A coefficient uses <em>only the variation in training that experience cannot account for.</em> Leave experience out and the coefficient is 2.17, not 1.47.</p>
         </div>
       </div>
+    
     </section>
 
     <section id="fwl-caveat">
@@ -527,6 +528,22 @@
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
   <script src="../poll.js" data-checkin></script>
+<script>
+/* Pre-11, fwl: the closing box waits for the mocked cell's own clicks (mock-cell.js adds them late). */
+(function () {
+  var tries = 0;
+  (function wait() {
+    var sec = document.getElementById("fwl"); if (!sec) return;
+    if (sec.querySelectorAll(".mk-step").length >= 2 || tries++ > 60) {
+      [].forEach.call(sec.querySelectorAll(".after-mock-fwl"), function (e) { e.classList.add("fragment", "fade-up"); });
+      try { Reveal.syncFragments(); } catch (e) {}
+      return;
+    }
+    setTimeout(wait, 200);
+  })();
+})();
+</script>
+  <script src="../mock-cell.js"></script>
 <script>
 /* ============================================================
    OLS bridge: THE ROOM'S REGRESSION (5200, 28 Oct 2026). y = minutes to get to class (ch11b-econ5200-poll-2,
