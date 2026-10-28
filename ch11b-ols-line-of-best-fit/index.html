@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=5b0b86f464e45cbbad30eb1efa6fe290">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=4020b912e4c50e29c85b1e1cff17c2aa">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pre-11 · OLS, the Line of Best Fit</title>
@@ -380,14 +380,14 @@
         <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> A &mdash; Biased Upward</h2>
         <div class="poll-results-chart" data-poll-id="ch11b-econ5200-poll-1" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:160px; margin:10px 60px 22px;"></div>
         <div class="content">
-          <p style="font-size: 15pt;">Both correlations are positive: motivation raises enrolment, and motivation raises earnings. The bias term \(\beta_2 \times \delta\) is positive, so the training coefficient absorbs the motivation effect and reads too high.</p>
+          <p style="font-size: 15pt;">Both links are positive: motivation raises enrolment, and motivation raises earnings. The bias, \(\beta_2 \times \delta\), is positive, so the training coefficient picks up part of motivation&rsquo;s effect and reads too high.</p>
           <div style="background: #eef4ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 14px 20px; margin-top: 14px;">
-            <p style="font-size: 14pt;"><strong>Why D deserves credit.</strong> In the wild you rarely know the sign of \(\delta\). &ldquo;Cannot say without more&rdquo; is the right reflex the moment the question stops handing you the correlations.</p>
+            <p style="font-size: 14pt;"><strong>D is a good habit, not today&rsquo;s answer.</strong> This question told you both signs, so you can work out the direction. In real data you often do not know one of them, and then &ldquo;cannot say without more&rdquo; is the honest reply.</p>
           </div>
           <div style="background: #f5efe9; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 20px; margin-top: 12px;">
-            <p style="font-size: 14pt;"><strong>If you said C</strong> &mdash; that is the heteroscedasticity answer: unbiased estimate, wrong standard error. Chapter 14 is organised around keeping those two apart.</p>
+            <p style="font-size: 14pt;"><strong>If you said C:</strong> C describes a different problem, a fine estimate with the wrong standard error (Chapter 14). Leaving out motivation moves the estimate itself.</p>
           </div>
-          <p style="font-size: 15pt; margin-top: 14px;"><strong>And this is why your track exists.</strong> No diagnostic fixes this. No test can rule out an omitted confounder; only the research design can.</p>
+          <p style="font-size: 15pt; margin-top: 14px;"><strong>No test in the data can rule out an omitted confounder;</strong> only the research design can. That is what DiD, IV and RD are for.</p>
         </div>
       </section>
     </section>

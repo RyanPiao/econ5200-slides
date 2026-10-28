@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=3c4b24cf27d9601026f8da10bb0a5964">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=16367ec3efe9565a49a7c78f3ca5ad67">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identification Strategy & Difference-in-Differences</title>
@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="fragment fade-up" style="background: #f7efee; border-radius: 8px; padding: 12px 22px; margin-top: 14px;">
-          <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Why:</strong> to judge the states treated later, it uses states treated <em>earlier</em> as the comparison, and those states are still changing from their own treatment. If every state is eventually treated, it gets worse: <strong style="color: var(--danger-color);">&minus;0.97</strong> for a true effect of <strong>+9.56</strong>, the wrong sign.</p>
+          <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Why:</strong> to judge the states treated later, it uses states treated <em>earlier</em> as the comparison, and those states are still changing from their own treatment. If every state is eventually treated, it gets worse: <strong style="color: var(--danger-color);">&minus;0.96</strong> for a true effect of <strong>+9.56</strong>, the wrong sign.</p>
         </div>
         <p class="fragment fade-up text-lg" style="margin-top: 12px; color: var(--accent-color); font-weight: 700;">Today: before you trust a regression, ask which comparisons it makes.</p>
       </section>
@@ -174,7 +174,8 @@
         </div>
       </section>
 
-      <section id="regression-form" style="padding: 34px 55px;">
+      <section>
+    <section id="regression-form" style="padding: 34px 55px;">
         <h2><i class="fa-solid fa-equals" style="color: var(--secondary-color);"></i> The Regression Form</h2>
         <div style="background: #f8f6f3; border-radius: 10px; padding: 12px 22px; margin-top: 10px;">
           <p style="font-size: 15pt;">$$Y_{it} = \alpha + \beta G_i + \gamma\,\text{Post}_t + \delta\,(G_i \times \text{Post}_t) + \varepsilon_{it}$$</p>
@@ -192,6 +193,114 @@
           <p style="font-size: 14pt; margin-top: 8px;">This is why <em>"the groups aren't comparable"</em> is usually a misdirected criticism &mdash; and why <em>"employment in your control state was already trending differently"</em> is a devastating one.</p>
         </div>
       </section>
+    <section id="did-room-before" style="padding: 30px 60px;">
+      <h2><i class="fa-solid fa-mobile-screen" style="color: var(--secondary-color);"></i> Room Poll: Before</h2>
+      <div class="content">
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 16px 24px; margin-top: 6px;">
+          <p style="font-size: 17pt; line-height: 1.5; margin: 0;">A state raises its minimum wage by <strong>10%</strong>. By what percent does employment at its fast-food restaurants change? Type a number: <strong>negative</strong> means fewer jobs, <strong>positive</strong> more, <strong>0</strong> no change.</p>
+        </div>
+        <div class="poll-number" data-poll-id="ch11-econ5200-poll-5" data-poll-voting data-min="-30" data-max="30" data-step="0.5" data-unit="%" data-arm="nuid-parity" style="margin-top: 22px;"></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px;"><div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>odd</strong> digit: group <strong style="color: #C47B5A;">Odd</strong></p></div><div style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>even</strong> digit: group <strong style="color: #6B8BA4;">Even</strong></p></div></div>
+        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">A rough guess is fine. You will get the same question again in two minutes.</p>
+      </div>
+    </section>
+    <section id="did-room-read" style="padding: 26px 60px;">
+      <h2><i class="fa-solid fa-book-open" style="color: var(--secondary-color);"></i> Read Your Paragraph</h2>
+      <div class="content">
+        <div data-arm="nuid-parity" style="margin-top: 8px;">
+          <div class="arm-block" data-arm-version="room">
+            <div style="display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: center;">
+              <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 16px 22px;">
+                <p style="font-size: 17pt; margin: 0 0 10px;"><strong>Scan to open this slide on your phone.</strong> Your phone shows one short paragraph. Odd and even NUIDs get <strong>different</strong> paragraphs.</p>
+                <p style="font-size: 15pt; margin: 0; color: var(--muted-color);">Read it once, keep it to yourself, then answer the same question again on the next slide.</p>
+              </div>
+              <div><div class="did-qr" data-url="https://ryanpiao.github.io/econ5200-slides/ch11-identification-did/#/did-room-read" style="width: 280px; height: 280px;"></div>
+                <p style="font-size: 10.5pt; margin: 6px 0 0; color: var(--muted-color); word-break: break-all;">https://ryanpiao.github.io/econ5200-slides/ch11-identification-did/#/did-room-read</p></div>
+            </div>
+          </div>
+          <div class="arm-block" data-arm-version="pending" hidden>
+            <div style="background: #f8f6f3; border-radius: 8px; padding: 16px 22px;">
+              <p style="font-size: 16pt; margin: 0 0 10px;">Check in with your NUID to see your paragraph.</p>
+              <button type="button" data-arm-checkin class="arm-checkin">Check in</button>
+            </div>
+          </div>
+          <div class="arm-block" data-arm-version="odd" hidden><p class="arm-label">Odd NUID &middot; the evidence paragraph</p>
+            <div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 16px 22px;"><p style="font-size: 17pt; line-height: 1.5; margin: 0;">On 1 April 1992 New Jersey raised its minimum wage from \$4.25 to \$5.05. Pennsylvania, next door, did not. Two economists surveyed about 400 fast-food restaurants on both sides of the border, before the rise and after it. Employment in the New Jersey restaurants did not fall compared with the Pennsylvania ones.</p></div></div>
+          <div class="arm-block" data-arm-version="even" hidden><p class="arm-label">Even NUID &middot; the neutral paragraph</p>
+            <div style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 16px 22px;"><p style="font-size: 17pt; line-height: 1.5; margin: 0;">The federal minimum wage has been \$7.25 an hour since July 2009. States may set a higher one, and most of the country now lives in a state that does: Massachusetts has been at \$15.00 since January 2023. Fast-food and restaurant jobs are among the most common minimum-wage jobs in the country.</p></div></div>
+        </div>
+      </div>
+      <script>(function () {
+        function draw() {
+          var el = document.querySelector("#did-room-read .did-qr");
+          if (!el || el.__done || !window.qrcode) return;
+          var q = window.qrcode(0, "M"); q.addData(el.getAttribute("data-url")); q.make();
+          el.innerHTML = q.createSvgTag({ cellSize: 6, margin: 1, scalable: true }); el.__done = 1;
+          var svg = el.querySelector("svg"); if (svg) { svg.style.width = "100%"; svg.style.height = "100%"; }
+        }
+        if (window.qrcode) draw();
+        else { var s = document.createElement("script");
+          s.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
+          s.onload = draw; document.head.appendChild(s); }
+      })();</script>
+    </section>
+    <section id="did-room-after" style="padding: 30px 60px;">
+      <h2><i class="fa-solid fa-mobile-screen" style="color: var(--secondary-color);"></i> Room Poll: After</h2>
+      <div class="content">
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 16px 24px; margin-top: 6px;">
+          <p style="font-size: 17pt; line-height: 1.5; margin: 0;">A state raises its minimum wage by <strong>10%</strong>. By what percent does employment at its fast-food restaurants change? Type a number: <strong>negative</strong> means fewer jobs, <strong>positive</strong> more, <strong>0</strong> no change.</p>
+        </div>
+        <div class="poll-number" data-poll-id="ch11-econ5200-poll-6" data-poll-voting data-min="-30" data-max="30" data-step="0.5" data-unit="%" data-arm="nuid-parity" style="margin-top: 22px;"></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px;"><div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>odd</strong> digit: group <strong style="color: #C47B5A;">Odd</strong></p></div><div style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>even</strong> digit: group <strong style="color: #6B8BA4;">Even</strong></p></div></div>
+        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">The same question. Answer what you think now: changing your answer is fine, and so is keeping it.</p>
+      </div>
+    </section>
+    <section id="did-room-reveal" style="padding: 22px 50px;">
+      <h2 style="font-size: 22pt;"><i class="fa-solid fa-table-cells" style="color: var(--accent-color);"></i> Your Room, Two Differences</h2>
+      <div class="content">
+        <style>
+          #did-room-reveal table.did { border-collapse: collapse; width: 100%; font-size: 17pt; margin-top: 6px; }
+          #did-room-reveal table.did th, #did-room-reveal table.did td { padding: 8px 14px; text-align: center; border-bottom: 1px solid #e3ded5; }
+          #did-room-reveal table.did th { font-size: 13pt; color: #6b635c; font-weight: 700; }
+          #did-room-reveal td.did-v { font-weight: 700; font-variant-numeric: tabular-nums; }
+          #did-room-reveal td.chg { background: #f6f2ec; }
+          #did-room-reveal td.did-big { font-size: 26pt; color: #1F7A5A; background: #eef6f1; }
+          #did-room-reveal .row-odd td:first-child { color: #C47B5A; font-weight: 700; text-align: left; }
+          #did-room-reveal .row-even td:first-child { color: #6B8BA4; font-weight: 700; text-align: left; }
+        </style>
+        <table class="did">
+          <tr><th style="text-align:left;">mean answer, %</th><th>Before</th><th>After</th><th>Change</th></tr>
+          <tr class="row-odd"><td>Odd &middot; read the evidence</td><td class="did-v " data-did="ob">&mdash;</td><td class="did-v " data-did="oa">&mdash;</td><td class="did-v chg" data-did="od">&mdash;</td></tr>
+          <tr class="row-even"><td>Even &middot; read the neutral text</td><td class="did-v " data-did="eb">&mdash;</td><td class="did-v " data-did="ea">&mdash;</td><td class="did-v chg" data-did="ed">&mdash;</td></tr>
+          <tr><td style="text-align:left; font-weight:700;">Difference-in-differences</td><td></td><td></td><td class="did-v did-big" data-did="did">&mdash;</td></tr>
+        </table>
+        <p style="font-size: 12pt; color: var(--muted-color); margin: 6px 0 0;">n before: odd <span data-poll-fill="ch11-econ5200-poll-5" data-key="n.odd">&mdash;</span>, even <span data-poll-fill="ch11-econ5200-poll-5" data-key="n.even">&mdash;</span> &middot; n after: odd <span data-poll-fill="ch11-econ5200-poll-6" data-key="n.odd">&mdash;</span>, even <span data-poll-fill="ch11-econ5200-poll-6" data-key="n.even">&mdash;</span></p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+          <div class="fragment fade-up" style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 10px 16px;">
+            <p style="font-size: 14.5pt; margin: 0;"><strong>The even row is the counterfactual:</strong> what being asked twice does to an answer, with no evidence. Taking it away removes everything both groups share.</p></div>
+          <div class="fragment fade-up" style="background: #eef6f1; border-left: 4px solid #1F7A5A; border-radius: 8px; padding: 10px 16px;">
+            <p style="font-size: 14.5pt; margin: 0;"><strong>Parallel trends, by design:</strong> the split was a coin flip on your NUID, so without the paragraph both rows would have moved alike. Card and Krueger had to argue it.</p></div>
+        </div>
+      </div>
+      <script>(function () {
+        var IDS = { before: "ch11-econ5200-poll-5", after: "ch11-econ5200-poll-6" }, D = {};
+        function mean(a) { return a && a.length ? a.reduce(function (s, x) { return s + x; }, 0) / a.length : null; }
+        function f(x) { return (x === null || !isFinite(x)) ? "\u2014" : x.toFixed(1).replace(/^-/, "\u2212"); }
+        function sub(a, b) { return (a === null || b === null) ? null : a - b; }
+        function paint() {
+          var b = D[IDS.before], a = D[IDS.after];
+          var v = { ob: b ? mean(b.odd) : null, eb: b ? mean(b.even) : null, oa: a ? mean(a.odd) : null, ea: a ? mean(a.even) : null };
+          v.od = sub(v.oa, v.ob); v.ed = sub(v.ea, v.eb); v.did = sub(v.od, v.ed);
+          [].forEach.call(document.querySelectorAll("#did-room-reveal [data-did]"), function (td) {
+            td.textContent = f(v[td.getAttribute("data-did")]); });
+        }
+        document.addEventListener("pollnumbers", function (e) {
+          var d = e.detail; if (!d) return;
+          if (d.pollId === IDS.before || d.pollId === IDS.after) { D[d.pollId] = d.data; paint(); }
+        });
+      })();</script>
+    </section>
+    </section>
 
       <section id="card-krueger" style="padding: 32px 50px;">
         <h2><i class="fa-solid fa-burger" style="color: var(--accent-color);"></i> Card &amp; Krueger (1994)</h2>
@@ -229,9 +338,9 @@
           <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> Answer: C &mdash; slopes, not levels</h2>
           <div class="poll-results-chart" data-poll-id="ch11-econ5200-poll-1" style="display: flex; gap: 20px; align-items: flex-end; justify-content: center; height: 165px; margin: 12px 60px;"></div>
           <div style="padding: 4px 50px;">
-            <p style="font-size: 14.5pt; line-height: 1.6;">Any time-invariant difference is differenced away by the group fixed effect. The <em>devastating</em> version of this criticism is about slopes: <strong>"PA employment was already trending differently."</strong> That one you must answer.</p>
+            <p style="font-size: 14.5pt; line-height: 1.6;">A gap in levels is not a problem: the group fixed effect removes any difference that stays the same over time (PA&rsquo;s 23.33 against NJ&rsquo;s 20.44 on the last slide). A gap in <em>slopes</em> would be: <strong>"PA employment was already trending differently."</strong> That objection you must answer.</p>
             <div style="background: #f0f5ef; border-left: 4px solid var(--success-color); padding: 14px 20px; border-radius: 8px; margin-top: 12px;">
-              <p style="font-size: 13.5pt; margin: 0;"><strong>Why B and D are tempting:</strong> they import a matching intuition from selection-on-observables designs, where balance on levels really does matter. DiD gets identification differently. The balance requirement travels with the design you came from, not the one you are using.</p>
+              <p style="font-size: 13.5pt; margin: 0;"><strong>Why B and D are tempting:</strong> they make the two groups look alike in levels, which is what matching needs. DiD does not need equal levels. It compares changes, so what it needs is equal changes had there been no treatment.</p>
             </div>
           </div>
         </section>
@@ -353,47 +462,42 @@
 
       <section id="twfe-spec" style="padding: 34px 55px;">
         <h2><i class="fa-solid fa-layer-group" style="color: var(--secondary-color);"></i> Two-Way Fixed Effects</h2>
-        <p style="font-size: 15pt; margin-top: 8px;">Real policies do not roll out everywhere at once. States adopt at different times; firms enter a programme in waves. This is <strong>staggered adoption</strong>, and for thirty years the standard response was to extend the two-by-two:</p>
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 12px 22px; margin-top: 12px;">
-          <p style="font-size: 15pt;">$$Y_{it} = \alpha_i + \gamma_t + \delta D_{it} + \varepsilon_{it}$$</p>
+        <p style="font-size: 14.5pt; margin-top: 8px;">Real policies roll out in waves: states adopt at different times. This is <strong>staggered adoption</strong>, and for thirty years the standard response was to extend the two-by-two:</p>
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 10px 22px; margin-top: 10px;"><p class="mathjax_ignore tex2jax_ignore" style="font-family: 'STIX Two Math', 'Cambria Math', 'Times New Roman', serif; font-size: 27pt; text-align: center; margin: 0; letter-spacing: .5px;"><i>Y</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>it</i></sub> = <span class="fragment highlight-current-blue" data-fragment-index="1"><i>&alpha;</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>i</i></sub></span> + <span class="fragment highlight-current-blue" data-fragment-index="2"><i>&gamma;</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>t</i></sub></span> + <span class="fragment highlight-current-red" data-fragment-index="4"><i>&delta;</i></span>&thinsp;<span class="fragment highlight-current-red" data-fragment-index="3"><i>D</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>it</i></sub></span> + <i>&epsilon;</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>it</i></sub></p></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+          <div class="fragment fade-in" data-fragment-index="1" style="background: #eef4f8; border-left: 4px solid #2f6fa0; border-radius: 8px; padding: 9px 14px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: #2f6fa0;">&alpha;<sub style="vertical-align:-0.3em;font-size:.62em">i</sub>, unit fixed effect</strong> &mdash; each unit&rsquo;s own level. PA employing more than NJ every period: absorbed.</p></div>
+          <div class="fragment fade-in" data-fragment-index="2" style="background: #eef4f8; border-left: 4px solid #2f6fa0; border-radius: 8px; padding: 9px 14px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: #2f6fa0;">&gamma;<sub style="vertical-align:-0.3em;font-size:.62em">t</sub>, period fixed effect</strong> &mdash; whatever hits every unit in the same period: a recession, a season.</p></div>
+          <div class="fragment fade-in" data-fragment-index="3" style="background: #fbeeee; border-left: 4px solid #B22222; border-radius: 8px; padding: 9px 14px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: #B22222;">D<sub style="vertical-align:-0.3em;font-size:.62em">it</sub>, treated yet?</strong> &mdash; 0 before unit <i>i</i> adopts, 1 from then on.</p><table class="mathjax_ignore tex2jax_ignore" style="border-collapse:collapse;font-size:10.5pt;margin-top:5px;text-align:center"><tr><td style="padding:1px 6px 1px 0;text-align:right;color:#8C8580">period</td><td style="padding:1px 3px;color:#8C8580">1</td><td style="padding:1px 3px;color:#8C8580">2</td><td style="padding:1px 3px;color:#8C8580">3</td><td style="padding:1px 3px;color:#8C8580">4</td><td style="padding:1px 3px;color:#8C8580">5</td><td style="padding:1px 3px;color:#8C8580">6</td><td style="padding:1px 3px;color:#8C8580">7</td><td style="padding:1px 3px;color:#8C8580">8</td><td style="padding:1px 3px;color:#8C8580">9</td><td style="padding:1px 3px;color:#8C8580">10</td><td style="padding:1px 3px;color:#8C8580">11</td><td style="padding:1px 3px;color:#8C8580">12</td></tr><tr><td style="padding:1px 6px 1px 0;text-align:right;white-space:nowrap">Early (from 4)</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td></tr><tr><td style="padding:1px 6px 1px 0;text-align:right;white-space:nowrap">Late (from 8)</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td><td style="padding:1px 3px;background:#E7CDBF;color:#9a5a3c;font-weight:700">1</td></tr><tr><td style="padding:1px 6px 1px 0;text-align:right;white-space:nowrap">Never</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td><td style="padding:1px 3px;color:#999">0</td></tr></table></div>
+          <div class="fragment fade-in" data-fragment-index="4" style="background: #fbeeee; border-left: 4px solid #B22222; border-radius: 8px; padding: 9px 14px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: #B22222;">&delta;</strong> &mdash; the one number read off as &ldquo;the&rdquo; effect of treatment. What is it, exactly, when units adopt at different times?</p></div>
         </div>
-        <p style="font-size: 14pt; margin-top: 10px;"><strong>In words:</strong> $D_{it} = 1$ once unit $i$ is treated and thereafter. Unit fixed effects $\alpha_i$ absorb time-invariant differences; time fixed effects $\gamma_t$ absorb common shocks; $\delta$ is read as "the" average treatment effect.</p>
-        <p style="font-size: 14pt; margin-top: 10px;">It is one of the most-run regressions in the discipline &mdash; in every applied paper, every problem set, and probably your last employer's measurement dashboard.</p>
-        <div class="fragment fade-up" style="background: #f7efee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 16px 22px; margin-top: 16px;">
-          <p style="font-size: 15.5pt;"><strong>Goodman-Bacon (2021) asked what $\hat{\delta}$ actually <em>is</em>.</strong></p>
-          <p style="font-size: 14.5pt; margin-top: 8px;">It is a weighted average of <strong>every available two-by-two comparison in the panel</strong>, with weights determined by group sizes and treatment-timing variance &mdash; not by anything the researcher chose.</p>
+        <div class="fragment fade-up" data-fragment-index="5" style="background: #f7efee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 12px 20px; margin-top: 10px;">
+          <p style="font-size: 14.5pt;"><strong>Goodman-Bacon (2021) asked what $\hat{\delta}$ actually <em>is</em>:</strong> a weighted average of <strong>every two-by-two comparison in the panel</strong>, with weights set by group sizes and timing, not by anything the researcher chose.</p>
         </div>
       </section>
 
       <section id="bacon-timeline" style="padding: 32px 45px;">
         <h2><i class="fa-solid fa-timeline" style="color: var(--secondary-color);"></i> Four Comparisons Live In This Panel</h2>
-        <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
-          <img alt="Goodman-Bacon timeline with an early cohort treated at period 4, a late cohort at period 8, and a never-treated group, showing the four available two-by-two comparison windows with the fourth marked forbidden" src="figures/figure_004_bacon_timeline.png" style="max-height: 470px; max-width: 92%; object-fit: contain;">
-        </div>
-        <p style="font-size: 14pt; margin-top: 8px; text-align: center;">Three groups &mdash; early-treated, late-treated, never-treated. TWFE forms and weights <strong>all four</strong> of these, whether or not you meant it to.</p>
+        <div class="bt-plot mathjax_ignore tex2jax_ignore" style="margin-top: 6px;"></div>
+        <div class="bt-readout mathjax_ignore tex2jax_ignore" style="font-size: 15.5pt; line-height: 1.45; margin: 6px 20px 0; min-height: 2.9em;"></div>
+        <span class="fragment bt-step" data-step="1" style="display:none"></span><span class="fragment bt-step" data-step="2" style="display:none"></span><span class="fragment bt-step" data-step="3" style="display:none"></span><span class="fragment bt-step" data-step="4" style="display:none"></span><span class="fragment bt-step" data-step="5" style="display:none"></span>
       </section>
 
       <section id="forbidden" style="padding: 34px 55px;">
         <h2><i class="fa-solid fa-circle-xmark" style="color: var(--danger-color);"></i> The Forbidden Comparison</h2>
-        <div style="display: flex; flex-direction: column; gap: 9px; margin-top: 14px;">
-          <div style="background: #eef2f5; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--secondary-color);"><p style="font-size: 14.5pt;"><strong>1.</strong> Early vs never-treated &mdash; <span style="color: var(--success-color); font-weight: 700;">valid</span></p></div>
-          <div style="background: #eef2f5; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--secondary-color);"><p style="font-size: 14.5pt;"><strong>2.</strong> Late vs never-treated &mdash; <span style="color: var(--success-color); font-weight: 700;">valid</span></p></div>
-          <div style="background: #eef2f5; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--secondary-color);"><p style="font-size: 14.5pt;"><strong>3.</strong> Early vs late, in the window where early is treated and late is not &mdash; <span style="color: var(--success-color); font-weight: 700;">valid</span></p></div>
-          <div style="background: #f7efee; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--danger-color);"><p style="font-size: 14.5pt;"><strong>4.</strong> <strong style="color: var(--danger-color);">Late vs early, in the window where both are treated &mdash; FORBIDDEN</strong></p></div>
-        </div>
-        <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 10px; padding: 15px 22px; margin-top: 16px;">
-          <p style="font-size: 14.5pt;">Comparison 4 uses the <strong>already-treated early group as a control</strong> for the newly-treated late group. That is legitimate only if the early group's treatment effect has <em>stopped changing</em>.</p>
-          <p style="font-size: 14.5pt; margin-top: 8px;">If the effect is still growing &mdash; as effects usually are &mdash; then the "control" group's outcome is rising for reasons that have nothing to do with the late group, and the comparison <strong>subtracts that growth from the estimate</strong>.</p>
-        </div>
-        <p class="fragment fade-up" style="font-size: 15pt; margin-top: 14px; color: var(--danger-color); font-weight: 700;">Its weight is positive. The two-by-two itself is pulled down, often below zero.</p>
+        <p style="font-size: 14.5pt; margin-top: 10px; line-height: 1.5;">Comparison 4 uses the <strong>already-treated early group as the control</strong> for the late group, over periods 4&ndash;12. It is fair only if the early group&rsquo;s effect has <em>stopped changing</em>. A toy example, numbers made up:</p>
+        <div class="fb-plot mathjax_ignore tex2jax_ignore" style="margin-top: 4px;"></div>
+        <div class="fb-readout mathjax_ignore tex2jax_ignore" style="font-size: 14.5pt; line-height: 1.45; margin: 2px 10px 0; min-height: 2.9em;"></div>
+        <span class="fragment fb-step" data-step="1" style="display:none"></span><span class="fragment fb-step" data-step="2" style="display:none"></span>
+        <p class="fragment fade-up" style="font-size: 15pt; margin-top: 8px; color: var(--danger-color); font-weight: 700;">Its weight is positive. The two-by-two itself is pulled down, here below zero.</p>
       </section>
 
       <section id="bacon-formal" style="padding: 34px 55px;">
         <h2><i class="fa-solid fa-scale-unbalanced" style="color: var(--secondary-color);"></i> TWFE Chooses Its Own Weights</h2>
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 12px 22px; margin-top: 12px;">
-          <p style="font-size: 15pt;">$$\hat{\delta}^{TWFE} = \sum_{k} w_k \, \hat{\delta}_k, \qquad \sum_k w_k = 1$$</p>
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 10px 22px; margin-top: 12px;"><p class="mathjax_ignore tex2jax_ignore" style="font-family: 'STIX Two Math', 'Cambria Math', 'Times New Roman', serif; font-size: 27pt; text-align: center; margin: 0;"><i>&delta;&#770;</i><sup style="font-size:.5em">TWFE</sup> = <span style="font-size:1.25em">&Sigma;</span><sub style="vertical-align:-0.3em;font-size:.62em"><i>k</i></sub> <span class="fragment highlight-current-blue" data-fragment-index="2"><i>w</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>k</i></sub></span>&thinsp;<span class="fragment highlight-current-red" data-fragment-index="1"><i>&delta;&#770;</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>k</i></sub></span>, &nbsp; <span style="font-size:.7em">&Sigma;<sub style="vertical-align:-0.3em;font-size:.62em"><i>k</i></sub> <i>w</i><sub style="vertical-align:-0.3em;font-size:.62em"><i>k</i></sub> = 1</span></p></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+          <div class="fragment fade-in" data-fragment-index="1" style="background: #fbeeee; border-left: 4px solid #B22222; border-radius: 8px; padding: 9px 14px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: #B22222;">&delta;&#770;<sub style="vertical-align:-0.3em;font-size:.62em">k</sub></strong> &mdash; the estimate from the <i>k</i>-th two-by-two: slide 21&rsquo;s comparisons 1 to 4, each its own difference-in-differences.</p></div>
+          <div class="fragment fade-in" data-fragment-index="2" style="background: #eef4f8; border-left: 4px solid #2f6fa0; border-radius: 8px; padding: 9px 14px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: #2f6fa0;">w<sub style="vertical-align:-0.3em;font-size:.62em">k</sub>, its Bacon weight</strong> &mdash; set by how big that subsample is and how much treatment varies inside it. You did not choose it, and you cannot see it without decomposing.</p></div>
         </div>
-        <p style="font-size: 14pt; margin-top: 10px;"><strong>In words:</strong> $\hat{\delta}_k$ is the estimate from the $k$-th two-by-two; $w_k$ is its <strong>Bacon weight</strong>, set by subsample size and the variance of treatment within it. TWFE is a weighted average whose weights <em>you did not choose and cannot see without decomposing</em>.</p>
         <div class="fragment fade-up" style="background: #eef2f5; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 14px 22px; margin-top: 14px;">
           <p style="font-size: 14.5pt;"><strong>Why it lasted thirty years.</strong> Under <strong>homogeneous, constant</strong> treatment effects, every $\hat{\delta}_k$ equals the same $\delta$, the weights sum to one, and TWFE is exactly fine. The forbidden comparison is harmless when there is nothing moving for it to subtract.</p>
         </div>
@@ -420,9 +524,9 @@
           <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> Answer: B &mdash; dynamic effects</h2>
           <div class="poll-results-chart" data-poll-id="ch11-econ5200-poll-2" style="display: flex; gap: 20px; align-items: flex-end; justify-content: center; height: 165px; margin: 12px 60px;"></div>
           <div style="padding: 4px 50px;">
-            <p style="font-size: 14.5pt; line-height: 1.6;">The already-treated "control" only misleads if its <em>own</em> effect is still moving. Constant effects make the forbidden comparison harmless &mdash; which is exactly why TWFE looked fine for thirty years.</p>
+            <p style="font-size: 14.5pt; line-height: 1.6;">The already-treated "control" misleads only if its <em>own</em> effect is still changing. If effects stay constant, the forbidden comparison is harmless, which is why TWFE looked fine for thirty years.</p>
             <div style="background: #f0f5ef; border-left: 4px solid var(--success-color); padding: 14px 20px; border-radius: 8px; margin-top: 12px;">
-              <p style="font-size: 13.5pt; margin: 0;"><strong>Why A and D are tempting:</strong> both change the <em>weights</em>, and that matters. But weights only bite once the underlying $\hat{\delta}_k$ differ from each other. <strong>Dynamics are what make them differ.</strong></p>
+              <p style="font-size: 13.5pt; margin: 0;"><strong>Why A and D are tempting:</strong> both change how much <em>weight</em> each comparison gets. But if every comparison gave the same answer, the weights would not matter. <strong>Growing effects are what make comparison 4 give a different, wrong answer.</strong></p>
             </div>
           </div>
         </section>
@@ -436,17 +540,14 @@
 
       <section id="simulation" style="padding: 32px 50px;">
         <h2><i class="fa-solid fa-flask" style="color: var(--accent-color);"></i> A Panel Where We Know the Answer</h2>
-        <p style="font-size: 14.5pt; margin-top: 8px;"><strong>Design.</strong> 300 units over 12 periods. Roughly 35% first treated at $t{=}4$, 35% at $t{=}8$, 30% never. The effect <strong>grows by 2.0 for every period a unit has been treated</strong> &mdash; the dynamic pattern that breaks TWFE, and the pattern most real policies exhibit.</p>
-        <pre style="margin-top: 10px;"><code style="font-size: 11.5pt; line-height: 1.45;">first_treat = rng.choice([4, 8, 0], n_units, p=[0.35, 0.35, 0.30])   # 0 = never
-effect = 2.0 * (t - g + 1) if (g &gt; 0 and t &gt;= g) else 0.0
-y = 10 + unit_fe[i] + 0.5 * t + effect + rng.normal(0, 1)
-
-true_att = panel.loc[panel.treated == 1, "true_effect"].mean()
-# True ATT on the treated:    8.65</code></pre>
-        <pre class="fragment fade-up" style="margin-top: 10px;"><code style="font-size: 11.5pt; line-height: 1.45;">twfe = smf.ols("y ~ treated + C(unit) + C(period)", data=panel).fit(
-    cov_type="cluster", cov_kwds={"groups": panel["unit"]})
-# TWFE estimate:              4.70   (SE 0.27)</code></pre>
-        <p class="fragment fade-up" style="font-size: 14.5pt; margin-top: 12px; color: var(--danger-color);"><strong>Write 8.65 down before you look at the next slide.</strong> Then compute how many standard errors away the truth is.</p>
+        <div style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 10px 18px; margin-top: 8px;">
+          <p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong>The story</strong> (made up; simulated data, so we know the truth): broadband reaches <strong>300 counties</strong> in waves over 12 years: 35% in year 4, 35% in year 8, 30% never. Outcome: new businesses per 10,000 people. The effect <strong>grows by 2.0 a year</strong> after broadband arrives, as firms learn to use it.</p>
+        </div>
+        <div class="content" style="margin-top: 6px;">
+          <div class="mock colab" data-src="cells/ch11sim.json" data-cell="sim" data-lines="9,18-19,27-28" data-size="10.5pt" data-live="off" style="max-width: 1120px;"></div>
+          <div class="mock colab" data-src="cells/ch11sim.json" data-cell="twfe" data-size="10.5pt" data-live="off" style="max-width: 1120px; margin-top: 6px;"></div>
+        </div>
+        <p class="after-mock" style="font-size: 14pt; margin-top: 8px; color: var(--danger-color);"><strong>Write 8.65 down before you look at the next slide.</strong> Then compute how many standard errors away the truth is.</p>
       </section>
 
       <section id="twfe-result" style="padding: 32px 50px;">
@@ -468,38 +569,28 @@ true_att = panel.loc[panel.treated == 1, "true_effect"].mean()
 
       <section id="bacon-weights" style="padding: 30px 45px;">
         <h2><i class="fa-solid fa-magnifying-glass-chart" style="color: var(--secondary-color);"></i> Decomposing It</h2>
-        <div style="display: grid; grid-template-columns: 40% 60%; gap: 24px; margin-top: 6px; align-items: start;">
+        <div style="display: grid; grid-template-columns: 56% 44%; gap: 16px; margin-top: 6px; align-items: start;">
+          <div class="mock colab" data-src="cells/ch11sim.json" data-cell="bacon" data-size="9pt" data-live="off"></div>
           <div>
-            <pre style="margin: 0;"><code style="font-size: 10.5pt; line-height: 1.4;">bacon = BaconDecomposition().fit(
-    panel, outcome="y", unit="unit",
-    time="period",
-    first_treat="first_treat")</code></pre>
-            <p style="font-size: 13.5pt; margin-top: 12px;"><strong>Read the third row.</strong> The forbidden comparisons carry <strong>24.3%</strong> of the weight and return an average "effect" of <strong style="color: var(--danger-color);">&minus;3.05</strong> &mdash; negative, in data where every true effect is positive and growing.</p>
-            <p style="font-size: 13.5pt; margin-top: 10px;">The clean comparisons against never-treated units return <strong>7.68</strong>, close to the truth. They are dragged down by comparisons that should never have been made.</p>
-            <div class="fragment fade-up" style="background: #eef2f5; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 12px 16px; margin-top: 12px;">
-              <p style="font-size: 13pt;">The decomposition is <strong>exact</strong> &mdash; the weighted sum reproduces the TWFE estimate to machine precision. It is not an approximation. <strong>It is exactly what the regression computed.</strong></p>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; justify-content: center;">
-            <img alt="Bacon decomposition: never-treated comparisons carry 61.2 percent of the weight with an average effect of plus 7.68, earlier versus later 14.5 percent at plus 5.09, and the forbidden comparisons 24.2 percent at minus 3.05, contributing minus 0.74 to a total of 4.70" src="figures/figure_006_bacon_weights.png" style="max-height: 490px; max-width: 100%; object-fit: contain;">
+            <div class="bw-plot mathjax_ignore tex2jax_ignore"></div>
+            <div class="bw-readout mathjax_ignore tex2jax_ignore" style="font-size: 13.5pt; line-height: 1.45; margin-top: 4px;"></div>
           </div>
         </div>
+        <span class="bw-pending" data-step="1" style="display:none"></span><span class="bw-pending" data-step="2" style="display:none"></span><span class="bw-pending" data-step="3" style="display:none"></span><span class="bw-pending" data-step="4" style="display:none"></span>
       </section>
 
       <section>
       <section id="sign-flip" style="padding: 32px 50px;">
         <h2><i class="fa-solid fa-arrows-turn-to-dots" style="color: var(--danger-color);"></i> It Gets Worse Without a Never-Treated Group</h2>
         <div style="display: grid; grid-template-columns: 55% 45%; gap: 22px; margin-top: 8px; align-items: start;">
-          <div style="display: flex; align-items: center; justify-content: center;">
-            <img alt="Two staggered designs compared: with 30 percent never-treated the true effect is plus 8.65 and TWFE returns plus 4.70, while with everyone eventually treated the true effect is plus 9.56 and TWFE returns minus 0.97" src="figures/figure_009_sign_flip.png" style="max-height: 430px; max-width: 100%; object-fit: contain;">
-          </div>
+          <div class="mock colab" data-src="cells/ch11sim.json" data-cell="flip" data-lines="1,3,9,12,14-23" data-size="9.5pt" data-live="off"></div>
           <div>
             <p style="font-size: 14pt;">In our panel, 30% of units are never treated and those clean comparisons carry <strong>61%</strong> of the weight &mdash; which holds the damage to an understatement.</p>
-            <p style="font-size: 14pt; margin-top: 10px;">Re-run with <strong>every unit eventually treated</strong>: two cohorts, no never-treated group. The forbidden comparisons now carry <strong>75%</strong> of the weight.</p>
-            <div class="fragment fade-up" style="background: #f7efee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 18px; margin-top: 12px;">
-              <p style="font-size: 14pt;">TWFE returns <strong>&minus;0.97</strong> &mdash; precisely estimated and highly significant &mdash; for a policy whose true average effect is <strong>+9.56</strong>. <strong>The sign is wrong.</strong></p>
+            <p style="font-size: 14pt; margin-top: 10px;">Re-run with <strong>every unit eventually treated</strong>: two waves, in years 3 and 7, no never-treated group. The forbidden comparisons now carry <strong>75%</strong> of the weight.</p>
+            <div class="after-mock-sf" style="background: #f7efee; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 18px; margin-top: 12px;">
+              <p style="font-size: 14pt;">TWFE returns <strong>&minus;0.96</strong> &mdash; precisely estimated and highly significant &mdash; for a policy whose true average effect is <strong>+9.56</strong>. <strong>The sign is wrong.</strong></p>
             </div>
-            <p class="fragment fade-up" style="font-size: 13.5pt; margin-top: 12px; color: var(--muted-color);">That design &mdash; everyone eventually treated &mdash; describes a great many real policy rollouts. It is also the design of <strong>Lab 11&rsquo;s Diagnosis 2</strong>: TWFE &minus;0.99 against a true +6.71.</p>
+            <p class="after-mock-sf" style="font-size: 13.5pt; margin-top: 12px; color: var(--muted-color);">That design &mdash; everyone eventually treated &mdash; describes a great many real policy rollouts. It is also the design of <strong>Lab 11&rsquo;s Diagnosis 2</strong>: TWFE &minus;0.99 against a true +6.71.</p>
           </div>
         </div>
       </section>
@@ -542,9 +633,9 @@ true_att = panel.loc[panel.treated == 1, "true_effect"].mean()
           <h2><i class="fa-solid fa-check-circle" style="color: var(--success-color);"></i> Answer: B &mdash; more confident, equally wrong</h2>
           <div class="poll-results-chart" data-poll-id="ch11-econ5200-poll-3" style="display: flex; gap: 20px; align-items: flex-end; justify-content: center; height: 165px; margin: 12px 60px;"></div>
           <div style="padding: 4px 50px;">
-            <p style="font-size: 14.5pt; line-height: 1.6;">The bias comes from the <strong>estimand the weights define</strong>, not from the sampling error. More data narrows the interval around the wrong number &mdash; and makes you more confident in it.</p>
+            <p style="font-size: 14.5pt; line-height: 1.6;">The problem is <strong>which comparisons the regression averages, and with what weights</strong>, not noise. Ten times the units shrinks the noise around the same wrong average: the interval tightens around 4.70, and you feel surer of it.</p>
             <div style="background: #f0f5ef; border-left: 4px solid var(--success-color); padding: 14px 20px; border-radius: 8px; margin-top: 12px;">
-              <p style="font-size: 13.5pt; margin: 0;"><strong>Why D is tempting:</strong> it imports the finite-sample-bias intuition from maximum likelihood, where more data really does help. This bias does not have that form. There is no $n$ at which the forbidden comparisons stop being forbidden.</p>
+              <p style="font-size: 13.5pt; margin: 0;"><strong>Why D is tempting:</strong> for many estimators the bias does shrink as $n$ grows. This one does not: comparison 4 is just as forbidden with 3,000 units as with 300.</p>
             </div>
           </div>
         </section>
@@ -558,27 +649,18 @@ true_att = panel.loc[panel.treated == 1, "true_effect"].mean()
 
       <section id="att-gt" style="padding: 34px 55px;">
         <h2><i class="fa-solid fa-table-cells" style="color: var(--success-color);"></i> Group-Time Average Treatment Effects</h2>
-        <p style="font-size: 14.5pt; margin-top: 8px;">Callaway and Sant'Anna (2021) define one parameter for every (cohort, period) pair:</p>
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 12px 22px; margin-top: 10px;">
-          <p style="font-size: 15pt;">$$\text{ATT}(g,t) = E\big[Y_{it}(g) - Y_{it}(0) \mid G_i = g\big]$$</p>
+        <p style="font-size: 14pt; margin-top: 6px;">Callaway and Sant&rsquo;Anna (2021): one effect for every cohort <em>g</em> and period <em>t</em>, each from its own clean two-by-two.</p>
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 4px 22px; margin-top: 6px;">
+          <p style="font-size: 14pt;">$$\text{ATT}(g,t) = E\big[Y_{it}(g) - Y_{it}(0) \mid G_i = g\big]$$</p>
         </div>
-        <p style="font-size: 14pt; margin-top: 10px;"><strong>In words:</strong> the average effect at calendar time $t$ for units first treated in cohort $g$. Each one is estimated from a <strong>clean two-by-two</strong>: cohort $g$ against a control group that is either <strong>never treated</strong> or <strong>not yet treated</strong> at $t$, using periods $g{-}1$ and $t$ as the two time points.</p>
-        <div class="fragment fade-up" style="background: #f0f5ef; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 14px 22px; margin-top: 14px;">
-          <p style="font-size: 15pt;"><strong>Already-treated units are never used as controls.</strong> The forbidden comparison is excluded <em>by construction</em> rather than by correction.</p>
-        </div>
-        <div class="fragment fade-up" style="background: #eef2f5; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 14px 22px; margin-top: 14px;">
-          <p style="font-size: 14.5pt;">That produces a great many parameters, aggregated into whatever summary the question calls for &mdash; an overall ATT, an effect by cohort, or a dynamic path by event time. The aggregation is an <strong>explicit choice with visible weights</strong>.</p>
-          <p style="font-size: 14.5pt; margin-top: 8px; color: var(--accent-color);"><strong>That is the essential difference from TWFE: the weights are yours.</strong></p>
-        </div>
+        <div class="ag-plot mathjax_ignore tex2jax_ignore" style="margin-top: 6px;"></div>
+        <div class="ag-readout mathjax_ignore tex2jax_ignore" style="font-size: 14.5pt; line-height: 1.45; margin: 4px 10px 0; min-height: 2.9em;"></div>
+        <span class="fragment ag-step" data-step="1" style="display:none"></span><span class="fragment ag-step" data-step="2" style="display:none"></span><span class="fragment ag-step" data-step="3" style="display:none"></span><span class="fragment ag-step" data-step="4" style="display:none"></span>
       </section>
 
       <section id="cs-result" style="padding: 34px 55px;">
         <h2><i class="fa-solid fa-circle-check" style="color: var(--success-color);"></i> The Same Data, The Right Answer</h2>
-        <pre style="margin-top: 12px;"><code style="font-size: 12pt; line-height: 1.45;">cs = CallawaySantAnna(control_group="never_treated").fit(
-    panel, outcome="y", unit="unit", time="period",
-    first_treat="first_treat")
-overall = cs.aggregate("simple")
-# Callaway-Sant'Anna:         8.49   (SE 0.18)</code></pre>
+        <div class="mock colab" data-src="cells/ch11sim.json" data-cell="cs" data-size="10pt" data-live="off" style="margin-top: 8px;"></div>
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px;">
           <div style="background: #f8f6f3; border-left: 4px solid var(--muted-color); border-radius: 8px; padding: 16px 18px;">
             <p style="font-size: 12.5pt; color: var(--muted-color); text-transform: uppercase; letter-spacing: 2px;">Truth</p>
@@ -588,12 +670,12 @@ overall = cs.aggregate("simple")
             <p style="font-size: 12.5pt; color: var(--danger-color); text-transform: uppercase; letter-spacing: 2px;">TWFE</p>
             <p style="font-size: 26pt; font-weight: 700; color: var(--danger-color);">4.70</p>
           </div>
-          <div class="fragment fade-up" style="background: #f0f5ef; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 16px 18px;">
+          <div class="after-mock-cs" style="background: #f0f5ef; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 16px 18px;">
             <p style="font-size: 12.5pt; color: var(--success-color); text-transform: uppercase; letter-spacing: 2px;">Callaway&ndash;Sant'Anna</p>
             <p style="font-size: 26pt; font-weight: 700; color: var(--success-color);">8.49</p>
           </div>
         </div>
-        <p class="fragment fade-up" style="font-size: 15pt; margin-top: 20px;">Estimate <strong>8.49</strong> with a standard error of <strong>0.18</strong>; the truth sits comfortably inside the interval. <strong>The same data that produced 4.70 under TWFE produces 8.49 once the forbidden comparisons are removed.</strong></p>
+        <p class="after-mock-cs" style="font-size: 15pt; margin-top: 20px;">Estimate <strong>8.49</strong>; the chapter&rsquo;s package run gives a standard error of <strong>0.18</strong>, so the truth sits comfortably inside the interval. <strong>The same data that produced 4.70 under TWFE produces 8.49 once the forbidden comparisons are removed.</strong></p>
       </section>
 
       <section id="cs-event-study" style="padding: 30px 45px;">
@@ -684,7 +766,7 @@ overall = cs.aggregate("simple")
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px;">
             <div style="background: #eef2f5; border-radius: 10px; padding: 16px; text-align: center;"><p style="font-size: 13pt; color: var(--muted-color);">Callaway&ndash;Sant'Anna</p><p style="font-size: 24pt; font-weight: 700; color: var(--secondary-color);">+6.1</p></div>
             <div style="background: #eef2f5; border-radius: 10px; padding: 16px; text-align: center;"><p style="font-size: 13pt; color: var(--muted-color);">Sun&ndash;Abraham</p><p style="font-size: 24pt; font-weight: 700; color: var(--secondary-color);">+5.8</p></div>
-            <div style="background: #f7efee; border-radius: 10px; padding: 16px; text-align: center;"><p style="font-size: 13pt; color: var(--muted-color);">Borusyak+</p><p style="font-size: 24pt; font-weight: 700; color: var(--danger-color);">+1.4</p></div>
+            <div style="background: #f7efee; border-radius: 10px; padding: 16px; text-align: center;"><p style="font-size: 13pt; color: var(--muted-color);">Borusyak et al.</p><p style="font-size: 24pt; font-weight: 700; color: var(--danger-color);">+1.4</p></div>
           </div>
           <p style="font-size: 15.5pt; font-weight: 600; margin-top: 18px;">What do you do &mdash; and what do you write?</p>
           <p style="font-size: 13.5pt; margin-top: 10px; color: var(--muted-color);">Whole class, hands. Two minutes.</p>
@@ -782,7 +864,7 @@ overall = cs.aggregate("simple")
           </div>
           <div class="poll-grid" data-poll-id="ch11-econ5200-poll-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; font-size: 14.5pt;">
             <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 16px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">A) The estimate is robust &mdash; it survives violations up to 40% of the pre-trend</div>
-            <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 16px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">B) The result is fragile &mdash; a violation smaller than half the largest pre-trend already admits zero</div>
+            <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 16px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">B) The result is fragile &mdash; a violation less than half the largest pre-trend is enough to make zero possible</div>
             <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 16px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">C) The pre-trend test was significant at the 40% level</div>
             <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 16px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;">D) 40% of the Bacon weight sits on forbidden comparisons</div>
           </div>
@@ -805,7 +887,7 @@ overall = cs.aggregate("simple")
           <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 20px; border-left: 4px solid var(--secondary-color);"><p style="font-size: 13.5pt;"><strong>1.</strong> DiD gets identification from <strong>structure rather than measurement</strong>: it permits arbitrary unobserved heterogeneity provided the two groups' untreated outcome <em>paths</em> would have moved in parallel.</p></div>
           <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 20px; border-left: 4px solid var(--secondary-color);"><p style="font-size: 13.5pt;"><strong>2.</strong> Parallel trends is a claim about an unobserved counterfactual and is therefore <strong>untestable</strong>. A flat pre-trend is necessary, weakly informative, and routinely over-interpreted &mdash; failing to reject often reflects low power, not an absent violation.</p></div>
           <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 20px; border-left: 4px solid var(--danger-color);"><p style="font-size: 13.5pt;"><strong>3.</strong> Under staggered adoption, TWFE is a <strong>variance-weighted average of every available 2&times;2</strong> &mdash; and some of those use already-treated units as controls. The <strong>forbidden comparison</strong> enters with a positive weight on a two-by-two that can be negative.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 20px; border-left: 4px solid var(--danger-color);"><p style="font-size: 13.5pt;"><strong>4.</strong> With dynamic effects that bias is <strong>structural, not statistical</strong>: 4.70 against a true 8.65 with SE 0.27 &mdash; and with no never-treated group, <strong>&minus;0.97 against +9.56</strong>.</p></div>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 20px; border-left: 4px solid var(--danger-color);"><p style="font-size: 13.5pt;"><strong>4.</strong> With dynamic effects that bias is <strong>structural, not statistical</strong>: 4.70 against a true 8.65 with SE 0.27 &mdash; and with no never-treated group, <strong>&minus;0.96 against +9.56</strong>.</p></div>
           <div style="background: #f8f6f3; border-radius: 8px; padding: 12px 20px; border-left: 4px solid var(--success-color);"><p style="font-size: 13.5pt;"><strong>5.</strong> Heterogeneity-robust estimators build only legitimate comparisons and aggregate with <strong>weights you choose</strong>; sensitivity analysis then replaces the untestable assumption with a <strong>breakdown point</strong> a domain expert can evaluate.</p></div>
         </div>
       </section>
@@ -948,6 +1030,306 @@ overall = cs.aggregate("simple")
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
   <script src="../poll.js" data-checkin></script>
+<script>
+/* ============================================================
+   Topic 11, att-gt: the ATT(g,t) grid from the mocked cell's JSON (cells/ch11sim.json 'cs'), four clicks.
+   cs-result: its boxes and closing line wait for the mock's own clicks (mock-cell.js adds them late).
+   ============================================================ */
+(function () {
+  "use strict";
+  var att = null;
+  function parse(j) {
+    var c = j.cells.filter(function (x) { return x.name === "cs"; })[0]; if (!c) return null;
+    var A = {};
+    c.output.split("\n").forEach(function (l) {
+      var m = /^ATT\((\d+), t\), t = (\d+)\.\.12:\s+(.*)$/.exec(l);
+      if (m) m[3].trim().split(/\s+/).forEach(function (v, k) { A[m[1] + "," + (+m[2] + k)] = v; });
+    });
+    return A;
+  }
+  function draw() {
+    var sec = document.getElementById("att-gt"); if (!sec) return;
+    var step = sec.querySelectorAll(".ag-step.visible").length, A = att || {};
+    var W = 1120, H = 250, X0 = 200, CW = 74, RH = 54, T = 30;
+    var rows = [["4", "cohort 4"], ["8", "cohort 8"], ["0", "never treated"]];
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="Grid of group-time effects">';
+    for (var t = 1; t <= 12; t++) s += '<text x="' + (X0 + (t - 0.5) * CW) + '" y="' + (T - 10) + '" text-anchor="middle" font-size="15" fill="#8C8580">' + t + '</text>';
+    s += '<text x="' + (X0 - 12) + '" y="' + (T - 10) + '" text-anchor="end" font-size="13" fill="#8C8580">period</text>';
+    var hiT = step === 1 ? [3, 6] : [];
+    rows.forEach(function (r, ri) {
+      var y = T + ri * RH, g = +r[0];
+      s += '<text x="' + (X0 - 12) + '" y="' + (y + RH / 2 + 6) + '" text-anchor="end" font-size="17" fill="#3A3632">' + r[1] + '</text>';
+      for (var t = 1; t <= 12; t++) {
+        var x = X0 + (t - 1) * CW, treated = g > 0 && t >= g, key = g + "," + t;
+        var fill = treated ? "#E7CDBF" : "#F6F3EE", txt = "";
+        if (treated && step >= 2 && A[key]) { var v = parseFloat(A[key]); fill = "rgba(196,123,90," + (0.15 + 0.85 * Math.min(1, v / 18)) + ")"; txt = A[key]; }
+        if (step === 1 && key === "4,6") { fill = "#C47B5A"; txt = A[key] || ""; }
+        var dim = step === 1 && !(hiT.indexOf(t) >= 0 && (g === 4 || g === 0));
+        s += '<rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="' + (CW - 4) + '" height="' + (RH - 4) + '" rx="4" fill="' + fill + '" opacity="' + (dim ? 0.35 : 1) + '"/>';
+        if (step === 1 && hiT.indexOf(t) >= 0 && (g === 4 || g === 0))
+          s += '<rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="' + (CW - 4) + '" height="' + (RH - 4) + '" rx="4" fill="none" stroke="' + (g === 0 ? "#4F7FA3" : "#C47B5A") + '" stroke-width="4"/>';
+        if (txt) s += '<text x="' + (x + CW / 2) + '" y="' + (y + RH / 2 + 6) + '" text-anchor="middle" font-size="16" font-weight="700" fill="' + (step === 1 ? "#fff" : "#3A3632") + '">' + txt + '</text>';
+        if (step >= 3 && g > 0 && treated) {}
+      }
+    });
+    if (step >= 3) {
+      var y = T + 2 * RH;
+      s += '<rect x="' + (X0) + '" y="' + (y) + '" width="' + (12 * CW) + '" height="' + RH + '" rx="6" fill="none" stroke="#2e7d32" stroke-width="4"/>';
+      s += '<text x="' + (X0 + 12 * CW - 8) + '" y="' + (y + RH + 20) + '" text-anchor="end" font-size="15" font-weight="700" fill="#2e7d32">the only controls: never treated (or not yet treated)</text>';
+    }
+    sec.querySelector(".ag-plot").innerHTML = s + '</svg>';
+    var say = [
+      "Each shaded cell is one effect to estimate: a cohort, in a period after it was treated. <span style='color:#8C8580'>Click: how one cell is computed.</span>",
+      "<strong>ATT(4, 6)</strong> = cohort 4&rsquo;s change from period 3 to period 6, minus the never-treated group&rsquo;s change over the same periods = <strong>" + (A["4,6"] || "?") + "</strong>. One clean two-by-two.",
+      "<strong>Every cell, the same way.</strong> The effects climb by about 2 a period since adoption, the dynamic we built in: " + (A["4,4"] || "?") + " in a cohort&rsquo;s first period, " + (A["4,12"] || "?") + " nine periods in.",
+      "<strong>Already-treated units are never used as controls.</strong> The forbidden comparison is excluded by construction, not corrected afterwards.",
+      "Then you choose how to average the cells: one overall number, by cohort, or by time since adoption. <strong style='color:#C47B5A'>The weights are yours</strong>, not the regression&rsquo;s."];
+    sec.querySelector(".ag-readout").innerHTML = say[step];
+  }
+  fetch("cells/ch11sim.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) { if (j) { att = parse(j); draw(); } }).catch(function () {});
+  if (window.Reveal && Reveal.on) ["slidechanged", "fragmentshown", "fragmenthidden", "ready"].forEach(function (ev) { Reveal.on(ev, draw); });
+  draw();
+  var tries = 0;
+  (function wait() {
+    var sec = document.getElementById("cs-result"); if (!sec) return;
+    if (sec.querySelectorAll(".mk-step").length >= 2 || tries++ > 60) {
+      [].forEach.call(sec.querySelectorAll(".after-mock-cs"), function (e) { e.classList.add("fragment", "fade-up"); });
+      try { Reveal.syncFragments(); } catch (e) {}
+      return;
+    }
+    setTimeout(wait, 200);
+  })();
+})();
+</script>
+<script>
+/* Topic 11, sign-flip: its two fragments wait for the mocked cell's own clicks (mock-cell.js adds them late). */
+(function () {
+  var tries = 0;
+  (function wait() {
+    var sec = document.getElementById("sign-flip"); if (!sec) return;
+    if (sec.querySelectorAll(".mk-step").length >= 2 || tries++ > 60) {
+      [].forEach.call(sec.querySelectorAll(".after-mock-sf"), function (e) { e.classList.add("fragment", "fade-up"); });
+      try { Reveal.syncFragments(); } catch (e) {}
+      return;
+    }
+    setTimeout(wait, 200);
+  })();
+})();
+</script>
+<script>
+/* ============================================================
+   Topic 11, bacon-weights: a waterfall of the Bacon decomposition, drawn from the mocked cell's own JSON
+   (cells/ch11sim.json, cells 'bacon' and 'sim'), one bar per click (.bw-step fragments, after the cell's own two
+   clicks). Nothing typed: every number is parsed from the runner's printed output.
+   ============================================================ */
+(function () {
+  "use strict";
+  var data = null;
+  function parse(j) {
+    var get = function (n) { return (j.cells.filter(function (c) { return c.name === n; })[0] || {}).output || ""; };
+    var rows = [], out = get("bacon");
+    out.split("\n").forEach(function (l) {
+      var m = /^(.+?)\s+(\d+\.\d)%\s+([+-]\d+\.\d+)\s+([+-]\d+\.\d+)\s*$/.exec(l);
+      if (m) rows.push({ name: m[1].trim(), w: +m[2], avg: +m[3], add: +m[4] });
+    });
+    var num = function (re, s) { var m = re.exec(s); return m ? +m[1] : null; };
+    return { rows: rows, sum: num(/sum of weight x estimate\s+([+-]\d+\.\d+)/, out), twfe: num(/TWFE coefficient\s+([+-]\d+\.\d+)/, out),
+             diff: (/difference:\s*(\S+)/.exec(out) || [])[1], truth: num(/True ATT on the treated:\s+([\d.]+)/, get("sim")) };
+  }
+  function f2(v) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2); }
+  function svg(D, step) {
+    var W = 520, H = 380, L = 20, R = 515, T = 16, B = 300, Y1 = 9.8, Y0 = -0.4;
+    var Y = function (v) { return B - (B - T) * (v - Y0) / (Y1 - Y0); };
+    var cols = ["#4F7FA3", "#7FA6C4", "#B22222", "#2D2D2D"], labs = ["vs never", "earlier vs later", "forbidden", "TWFE total"];
+    var bw = (R - L) / 4, s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="Waterfall of the Bacon decomposition">';
+    s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(0) + '" y2="' + Y(0) + '" stroke="#999"/>';
+    if (D.truth !== null && step >= 4) {
+      s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(D.truth) + '" y2="' + Y(D.truth) + '" stroke="#8C8580" stroke-dasharray="7 5"/>';
+      s += '<text x="' + (L + 6) + '" y="' + (Y(D.truth) - 7) + '" font-size="14" fill="#8C8580">truth ' + D.truth.toFixed(2) + '</text>';
+    }
+    var run = 0;
+    for (var k = 0; k < 4; k++) {
+      var x = L + k * bw + 10, w = bw - 20, show = step > k, a, b, lab, top;
+      if (k < 3) { var r = D.rows[k]; a = run; b = run + r.add; run = b; lab = f2(r.add); top = r.w.toFixed(1) + "% · avg " + f2(r.avg); }
+      else { a = 0; b = D.twfe; lab = f2(D.twfe); top = "= TWFE"; }
+      s += '<text x="' + (x + w / 2) + '" y="' + (B + 22) + '" text-anchor="middle" font-size="15" font-weight="700" fill="' + (k === 2 ? "#B22222" : "#555") + '">' + labs[k] + '</text>';
+      if (show) s += '<text x="' + (x + w / 2) + '" y="' + (B + 42) + '" text-anchor="middle" font-size="12.5" fill="#666">' + top + '</text>';
+      if (!show) continue;
+      var y0 = Y(Math.max(a, b)), h = Math.max(2, Math.abs(Y(a) - Y(b)));
+      s += '<rect x="' + x + '" y="' + y0 + '" width="' + w + '" height="' + h + '" fill="' + cols[k] + '" opacity="' + (k === step - 1 ? 1 : 0.55) + '"/>';
+      s += '<text x="' + (x + w / 2) + '" y="' + (y0 - 8) + '" text-anchor="middle" font-size="16" font-weight="700" fill="' + cols[k] + '">' + lab + '</text>';
+      if (k < 3) s += '<line x1="' + (x + w) + '" x2="' + (x + bw) + '" y1="' + Y(b) + '" y2="' + Y(b) + '" stroke="#bbb" stroke-dasharray="3 3"/>';
+    }
+    return s + '</svg>';
+  }
+  var SAY = [
+    "Run the cell, then walk the bars one click at a time.",
+    "<strong>Against never-treated units:</strong> {w0}% of the weight, average {a0}, close to the truth. They add <strong>{d0}</strong>.",
+    "<strong>Earlier against later</strong>, while later is still untreated: {w1}% of the weight, average {a1}. Adds <strong>{d1}</strong>.",
+    "<strong style='color:#B22222'>Later against earlier, the forbidden one:</strong> {w2}% of the weight, and its average is <strong style='color:#B22222'>{a2}</strong> in data where every true effect is positive. It takes off <strong>{d2}</strong>.",
+    "<strong>Sum of weight &times; estimate: {sum} = the TWFE coefficient</strong> (difference {diff}). Exact, not an approximation: it is what the regression computed, and the truth is {truth}."];
+  function draw() {
+    var sec = document.getElementById("bacon-weights"); if (!sec || !data) return;
+    var step = sec.querySelectorAll(".bw-step.visible").length, D = data;
+    if (D.rows.length !== 3 || D.twfe === null) { sec.querySelector(".bw-readout").textContent = "(decomposition output not found)"; return; }
+    sec.querySelector(".bw-plot").innerHTML = svg(D, step);
+    var t = SAY[step], R = D.rows;
+    t = t.replace("{w0}", R[0].w.toFixed(1)).replace("{a0}", f2(R[0].avg)).replace("{d0}", f2(R[0].add))
+         .replace("{w1}", R[1].w.toFixed(1)).replace("{a1}", f2(R[1].avg)).replace("{d1}", f2(R[1].add))
+         .replace("{w2}", R[2].w.toFixed(1)).replace("{a2}", f2(R[2].avg)).replace("{d2}", f2(R[2].add))
+         .replace("{sum}", f2(D.sum)).replace("{diff}", D.diff || "").replace("{truth}", D.truth !== null ? D.truth.toFixed(2) : "");
+    sec.querySelector(".bw-readout").innerHTML = t;
+  }
+  // The mock adds its two click steps after its JSON loads, and Reveal files late fragments after the ones it already
+  // knows. So steps that must come AFTER a mock's clicks are made fragments only once the mock's steps exist.
+  function afterMocks(id, sel, cls) {
+    var tries = 0;
+    (function wait() {
+      var sec = document.getElementById(id); if (!sec) return;
+      var mk = sec.querySelectorAll(".mock").length, st = sec.querySelectorAll(".mk-step").length;
+      if (st >= 2 * mk || tries++ > 60) {
+        [].forEach.call(sec.querySelectorAll(sel), function (e) { e.classList.add("fragment"); cls.split(" ").forEach(function (c) { if (c) e.classList.add(c); }); });
+        try { Reveal.syncFragments(); } catch (e) {}
+        draw(); return;
+      }
+      setTimeout(wait, 200);
+    })();
+  }
+  afterMocks("bacon-weights", ".bw-pending", "bw-step");
+  afterMocks("simulation", ".after-mock", "fade-up");
+  fetch("cells/ch11sim.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) { if (j) { data = parse(j); draw(); } }).catch(function () {});
+  if (window.Reveal && Reveal.on) ["slidechanged", "fragmentshown", "fragmenthidden", "ready"].forEach(function (ev) { Reveal.on(ev, draw); });
+})();
+</script>
+<script>
+/* ============================================================
+   Topic 11, forbidden: comparison 4 alone, a toy example (28 Oct 2026). Outcome with the common trend removed, so a
+   line is the group's treatment effect so far. Click 1: constant effects (5 from adoption). Click 2: effects growing
+   by 1 per period since adoption. Steps are empty .fb-step fragments, so both windows draw the same step.
+   ============================================================ */
+(function () {
+  "use strict";
+  var W = 1120, H = 330, L = 120, R = 1060, T = 20, B = 270, Y0 = -1, Y1 = 10;
+  var EARLY = "#C47B5A", LATE = "#4F7FA3", MUT = "#8C8580";
+  function eff(t, g, grow) { return t < g ? 0 : (grow ? t - g + 1 : 5); }
+  function mean(a) { var s = 0; a.forEach(function (v) { s += v; }); return s / a.length; }
+  var PRE = [4, 5, 6, 7], POST = [8, 9, 10, 11, 12];
+  function X(t) { return L + (R - L) * (t - 3.5) / 9; }
+  function Y(v) { return B - (B - T) * (v - Y0) / (Y1 - Y0); }
+  function f1(v) { return (Math.round(v * 10) / 10).toFixed(1).replace("-", "−"); }
+  function sg(v) { return (v >= 0 ? "+" : "") + f1(v); }
+  function draw() {
+    var sec = document.getElementById("forbidden"); if (!sec) return;
+    var step = sec.querySelectorAll(".fb-step.visible").length, grow = step >= 2;
+    var host = sec.querySelector(".fb-plot"), out = sec.querySelector(".fb-readout");
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="Toy example of comparison 4">';
+    s += '<rect x="' + X(3.5) + '" y="' + T + '" width="' + (X(7.5) - X(3.5)) + '" height="' + (B - T) + '" fill="#F6F3EE"/>';
+    s += '<text x="' + ((X(3.5) + X(7.5)) / 2) + '" y="' + (T + 18) + '" text-anchor="middle" font-size="15" fill="' + MUT + '">before (late not yet treated)</text>';
+    s += '<text x="' + ((X(7.5) + X(12.5)) / 2) + '" y="' + (T + 18) + '" text-anchor="middle" font-size="15" fill="' + MUT + '">after (late treated from 8)</text>';
+    s += '<line x1="' + X(7.5) + '" x2="' + X(7.5) + '" y1="' + T + '" y2="' + B + '" stroke="#2D2D2D" stroke-dasharray="3 4"/>';
+    s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(0) + '" y2="' + Y(0) + '" stroke="#d9d4cb"/>';
+    for (var t = 4; t <= 12; t++) s += '<text x="' + X(t) + '" y="' + (B + 22) + '" text-anchor="middle" font-size="15" fill="' + MUT + '">' + t + '</text>';
+    s += '<text x="' + ((L + R) / 2) + '" y="' + (B + 44) + '" text-anchor="middle" font-size="14" fill="' + MUT + '">period</text>';
+    s += '<text transform="translate(28 ' + ((T + B) / 2) + ') rotate(-90)" text-anchor="middle" font-size="14" fill="' + MUT + '">effect so far (trend removed)</text>';
+    if (step === 0) {
+      out.innerHTML = "<span style='color:#8C8580'>Click: first with effects that stay the same once they start.</span>";
+      host.innerHTML = s + '</svg>'; return;
+    }
+    var groups = [["early", 4, EARLY, "early (the “control”)"], ["late", 8, LATE, "late (treated group)"]], m = {};
+    groups.forEach(function (gr) {
+      var pts = [], pre = PRE.map(function (t) { return eff(t, gr[1], grow); }), post = POST.map(function (t) { return eff(t, gr[1], grow); });
+      m[gr[0]] = { pre: mean(pre), post: mean(post) };
+      for (var t = 4; t <= 12; t++) pts.push(X(t) + "," + Y(eff(t, gr[1], grow)));
+      s += '<polyline points="' + pts.join(" ") + '" fill="none" stroke="' + gr[2] + '" stroke-width="3.5"/>';
+      for (t = 4; t <= 12; t++) s += '<circle cx="' + X(t) + '" cy="' + Y(eff(t, gr[1], grow)) + '" r="5" fill="' + gr[2] + '"/>';
+      [[PRE, m[gr[0]].pre], [POST, m[gr[0]].post]].forEach(function (w) {
+        s += '<line x1="' + X(w[0][0] - 0.4) + '" x2="' + X(w[0][w[0].length - 1] + 0.4) + '" y1="' + Y(w[1]) + '" y2="' + Y(w[1]) + '" stroke="' + gr[2] + '" stroke-width="2" stroke-dasharray="8 5" opacity="0.8"/>';
+      });
+      s += '<text x="' + (X(12) + 12) + '" y="' + (Y(eff(12, gr[1], grow)) + 5) + '" font-size="15" font-weight="700" fill="' + gr[2] + '">' + gr[3].split(" ")[0] + '</text>';
+    });
+    host.innerHTML = s + '</svg>';
+    var dl = m.late.post - m.late.pre, de = m.early.post - m.early.pre, est = dl - de, truth = m.late.post;
+    out.innerHTML = (grow ? "<strong>Effects that keep growing.</strong> " : "<strong>Effects that stay constant.</strong> ") +
+      "Late changes by <span style='color:" + LATE + "'><strong>" + sg(dl) + "</strong></span>; the early &ldquo;control&rdquo; changes by <span style='color:" + EARLY + "'><strong>" + sg(de) + "</strong></span>" +
+      (grow ? ", because its own effect is still growing" : "") + ". Comparison 4 says " + sg(dl) + " &minus; (" + sg(de) + ") = <strong style='color:" + (Math.abs(est - truth) > 0.05 ? "#B22222" : "#2e7d32") + "'>" + sg(est) + "</strong>; late&rsquo;s true average effect is <strong>" + sg(truth) + "</strong>." +
+      " <span style='color:#8C8580'>(dashed: each group&rsquo;s average before and after)</span>";
+  }
+  if (window.Reveal && Reveal.on) ["slidechanged", "fragmentshown", "fragmenthidden", "ready"].forEach(function (ev) { Reveal.on(ev, draw); });
+  draw();
+})();
+</script>
+<script>
+/* ============================================================
+   Topic 11, bacon-timeline: the four two-by-two comparisons, one per click (28 Oct 2026). Steps are empty
+   .bt-step fragments, so both windows draw the same step. Early cohort treated from period 4, late from 8.
+   ============================================================ */
+(function () {
+  "use strict";
+  var W = 1120, H = 450, X0 = 250, X1 = 1080, P0 = 0.5, P1 = 12.5;
+  var ROWS = { never: 44, late: 172, early: 300 }, BH = 84;
+  var TR = "#C47B5A", CT = "#4F7FA3", BAD = "#B22222", MUT = "#8C8580";
+  var COMPS = [
+    { n: 1, tr: ["early", 1, 12], ct: ["never", 1, 12], win: null,
+      say: "<strong>1 &middot; Early against never-treated.</strong> The control is never treated: <span style='color:#2e7d32'>valid</span>." },
+    { n: 2, tr: ["late", 1, 12], ct: ["never", 1, 12], win: null,
+      say: "<strong>2 &middot; Late against never-treated.</strong> The control is never treated: <span style='color:#2e7d32'>valid</span>." },
+    { n: 3, tr: ["early", 1, 7], ct: ["late", 1, 7], win: [1, 7],
+      say: "<strong>3 &middot; Early against late, periods 1&ndash;7.</strong> Late is not treated yet, so it is a fair control: <span style='color:#2e7d32'>valid</span>." },
+    { n: 4, tr: ["late", 4, 12], ct: ["early", 4, 12], win: [4, 12], bad: true,
+      say: "<strong>4 &middot; Late against early, periods 4&ndash;12.</strong> Late switches on at 8. The &ldquo;control&rdquo; is the early group, <span style='color:#B22222'>treated since period 4</span>. Is it still a fair control?" }
+  ];
+  function X(p) { return X0 + (X1 - X0) * (p - P0) / (P1 - P0); }
+  function rect(x, y, w, h, a) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" ' + a + '/>'; }
+  function txt(x, y, s, a) { return '<text x="' + x + '" y="' + y + '" ' + a + '>' + s + '</text>'; }
+  function span(row, from, to, color, label, dash) {
+    var y = ROWS[row] - 6, x = X(from - 0.5), w = X(to + 0.5) - x;
+    var s = rect(x, y, w, BH + 12, 'rx="6" fill="none" stroke="' + color + '" stroke-width="5"' + (dash ? ' stroke-dasharray="12 7"' : ''));
+    return s + txt(x + w - 10, y - 8, label, 'text-anchor="end" font-size="19" font-weight="700" fill="' + color + '"');
+  }
+  function svg(step) {
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="Timeline of three groups: early treated from period 4, late from period 8, never treated">';
+    var c = step >= 1 && step <= 4 ? COMPS[step - 1] : null;
+    if (c && c.win) s += rect(X(c.win[0] - 0.5), 22, X(c.win[1] + 0.5) - X(c.win[0] - 0.5), 382, 'fill="' + (c.bad ? "#fbeaea" : "#eef4f8") + '"');
+    [["never", "Never treated", null], ["late", "Late cohort (from 8)", 8], ["early", "Early cohort (from 4)", 4]].forEach(function (r) {
+      var y = ROWS[r[0]], dim = c && c.tr[0] !== r[0] && c.ct[0] !== r[0];
+      s += '<g opacity="' + (dim ? 0.35 : 1) + '">';
+      s += txt(X0 - 14, y + BH / 2 + 6, r[1], 'text-anchor="end" font-size="21" fill="#3A3632"');
+      s += rect(X(0.5), y, X(12.5) - X(0.5), BH, 'fill="#F6F3EE" stroke="#D5CEC7"');
+      if (r[2]) {
+        s += rect(X(r[2] - 0.5), y, X(12.5) - X(r[2] - 0.5), BH, 'fill="#E7CDBF"');
+        s += txt((X(r[2] - 0.5) + X(12.5)) / 2, y + BH / 2 + 6, "treated", 'text-anchor="middle" font-size="16" fill="#9a5a3c"');
+        s += '<line x1="' + X(r[2] - 0.5) + '" x2="' + X(r[2] - 0.5) + '" y1="' + y + '" y2="' + (y + BH) + '" stroke="' + TR + '" stroke-width="4"/>';
+      }
+      s += '</g>';
+    });
+    if (c) {
+      s += span(c.tr[0], c.tr[1], c.tr[2], TR, "treated group");
+      s += span(c.ct[0], c.ct[1], c.ct[2], c.bad ? BAD : CT, c.bad ? "control? already treated" : "control", c.bad);
+    }
+    for (var p = 1; p <= 12; p++) {
+      s += '<line x1="' + X(p) + '" x2="' + X(p) + '" y1="400" y2="408" stroke="#bbb"/>';
+      s += txt(X(p), 430, p, 'text-anchor="middle" font-size="' + (p === 1 || p === 4 || p === 8 || p === 12 ? 17 : 13) + '" fill="' + (p === 4 || p === 8 ? TR : MUT) + '"' + (p === 4 || p === 8 ? ' font-weight="700"' : ''));
+    }
+    s += txt(X0 - 14, 430, "period", 'text-anchor="end" font-size="15" fill="' + MUT + '"');
+    return s + '</svg>';
+  }
+  function draw() {
+    var sec = document.getElementById("bacon-timeline"); if (!sec) return;
+    var step = sec.querySelectorAll(".bt-step.visible").length;
+    var host = sec.querySelector(".bt-plot"), out = sec.querySelector(".bt-readout");
+    host.innerHTML = svg(step);
+    if (step === 0) out.innerHTML = "Three groups, twelve periods. The early cohort is treated from period 4, the late cohort from period 8, and one group never is. <span style='color:#8C8580'>Click: the comparisons, one at a time.</span>";
+    else if (step <= 4) out.innerHTML = COMPS[step - 1].say;
+    else out.innerHTML = "<strong>Two-way fixed effects forms all four and averages them, with weights</strong>, whether or not you meant it to: 1 valid &middot; 2 valid &middot; 3 valid &middot; <span style='color:#B22222'>4 ?</span> Next: what goes wrong in number 4.";
+  }
+  if (window.Reveal && Reveal.on) {
+    ["slidechanged", "fragmentshown", "fragmenthidden", "ready"].forEach(function (ev) { Reveal.on(ev, draw); });
+  }
+  draw();
+})();
+</script>
   <script src="../mock-cell.js"></script>
   <script>
   (function(){

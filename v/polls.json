@@ -51,10 +51,12 @@
   "ch10-econ5200-poll-5": "10-1",
   "ch10-econ5200-poll-6": "10-4",
   "ch10-econ5200-poll-7": "10-5",
-  "ch11-econ5200-poll-1": "11-1",
-  "ch11-econ5200-poll-2": "11-2",
-  "ch11-econ5200-poll-3": "11-3",
-  "ch11-econ5200-poll-4": "11-4",
+  "ch11-econ5200-poll-1": "11-3",
+  "ch11-econ5200-poll-2": "11-4",
+  "ch11-econ5200-poll-3": "11-5",
+  "ch11-econ5200-poll-4": "11-6",
+  "ch11-econ5200-poll-5": "11-1",
+  "ch11-econ5200-poll-6": "11-2",
   "ch11b-econ5200-poll-1": "11b-4",
   "ch11b-econ5200-poll-2": "11b-1",
   "ch11b-econ5200-poll-3": "11b-2",
@@ -149,17 +151,25 @@
   ],
   "11-1": [
    "ch11-identification-did",
-   "ch11-econ5200-poll-1"
+   "ch11-econ5200-poll-5"
   ],
   "11-2": [
    "ch11-identification-did",
-   "ch11-econ5200-poll-2"
+   "ch11-econ5200-poll-6"
   ],
   "11-3": [
    "ch11-identification-did",
-   "ch11-econ5200-poll-3"
+   "ch11-econ5200-poll-1"
   ],
   "11-4": [
+   "ch11-identification-did",
+   "ch11-econ5200-poll-2"
+  ],
+  "11-5": [
+   "ch11-identification-did",
+   "ch11-econ5200-poll-3"
+  ],
+  "11-6": [
    "ch11-identification-did",
    "ch11-econ5200-poll-4"
   ],
