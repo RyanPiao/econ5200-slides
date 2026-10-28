@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=99f98b334c7da4526b7644fa883b9984">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=0e8d47005ea78598b15df70846f883ac">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identification Strategy & Difference-in-Differences</title>
@@ -202,6 +202,7 @@
         <div class="poll-number" data-poll-id="ch11-econ5200-poll-5" data-poll-voting data-min="-30" data-max="30" data-step="0.5" data-unit="%" data-arm="nuid-parity" style="margin-top: 22px;"></div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px;"><div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>odd</strong> digit: group <strong style="color: #C47B5A;">Odd</strong></p></div><div style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>even</strong> digit: group <strong style="color: #6B8BA4;">Even</strong></p></div></div>
         <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">A rough guess is fine. You will get the same question again in two minutes.</p>
+        <p style="font-size: 12.5pt; margin-top: 6px; text-align: center; color: var(--muted-color);">Answers so far: odd <strong data-poll-fill="ch11-econ5200-poll-5" data-key="n.odd">&mdash;</strong> &middot; even <strong data-poll-fill="ch11-econ5200-poll-5" data-key="n.even">&mdash;</strong></p>
       </div>
     </section>
     <section id="did-room-read" style="padding: 26px 60px;">
@@ -253,6 +254,7 @@
         <div class="poll-number" data-poll-id="ch11-econ5200-poll-6" data-poll-voting data-min="-30" data-max="30" data-step="0.5" data-unit="%" data-arm="nuid-parity" style="margin-top: 22px;"></div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px;"><div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>odd</strong> digit: group <strong style="color: #C47B5A;">Odd</strong></p></div><div style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 10px 18px;"><p style="font-size: 14pt; margin: 0;">NUID ends in an <strong>even</strong> digit: group <strong style="color: #6B8BA4;">Even</strong></p></div></div>
         <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">The same question. Answer what you think now: changing your answer is fine, and so is keeping it.</p>
+        <p style="font-size: 12.5pt; margin-top: 6px; text-align: center; color: var(--muted-color);">Answers so far: odd <strong data-poll-fill="ch11-econ5200-poll-6" data-key="n.odd">&mdash;</strong> &middot; even <strong data-poll-fill="ch11-econ5200-poll-6" data-key="n.even">&mdash;</strong></p>
       </div>
     </section>
     <section id="did-room-reveal" style="padding: 22px 50px;">
@@ -261,7 +263,7 @@
         <style>
           #did-room-reveal table.did { border-collapse: collapse; width: 100%; font-size: 17pt; margin-top: 6px; }
           #did-room-reveal table.did th, #did-room-reveal table.did td { padding: 8px 14px; text-align: center; border-bottom: 1px solid #e3ded5; }
-          #did-room-reveal table.did th { font-size: 13pt; color: #6b635c; font-weight: 700; }
+          #did-room-reveal table.did th { font-size: 13pt; color: #4a4f57; font-weight: 700; background: transparent; border-bottom: 2px solid #c9c2b8; }
           #did-room-reveal td.did-v { font-weight: 700; font-variant-numeric: tabular-nums; }
           #did-room-reveal td.chg { background: #f6f2ec; }
           #did-room-reveal td.did-big { font-size: 26pt; color: #1F7A5A; background: #eef6f1; }
@@ -292,7 +294,8 @@
           var v = { ob: b ? mean(b.odd) : null, eb: b ? mean(b.even) : null, oa: a ? mean(a.odd) : null, ea: a ? mean(a.even) : null };
           v.od = sub(v.oa, v.ob); v.ed = sub(v.ea, v.eb); v.did = sub(v.od, v.ed);
           [].forEach.call(document.querySelectorAll("#did-room-reveal [data-did]"), function (td) {
-            td.textContent = f(v[td.getAttribute("data-did")]); });
+            var k = td.getAttribute("data-did"), t = f(v[k]);
+            td.textContent = ({ od: 1, ed: 1, did: 1 }[k] && v[k] !== null && v[k] > 0.05) ? "+" + t : t; });
         }
         document.addEventListener("pollnumbers", function (e) {
           var d = e.detail; if (!d) return;
