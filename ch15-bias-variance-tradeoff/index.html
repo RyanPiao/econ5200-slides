@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=76b241fd75e26ebaaec7786646907fce">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=70ebec7964264b7d920eec026b8cccb5">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The ML Shift: Bias-Variance Tradeoff</title>
@@ -468,7 +468,7 @@
       <h2><i class="fa-solid fa-comments" style="color: var(--accent-color);"></i> Discussion &mdash; Diagnose and Prescribe</h2>
       <div class="content">
         <div class="discussion-prompt" style="background: #f8f6f3; border-left: 5px solid var(--accent-color); border-radius: 8px; padding: 22px 28px;">
-          <p class="bloom-level" style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px;">Bloom L4 &bull; Analyze &bull; 3 minutes, pairs</p>
+          <p class="bloom-level" style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px;">3 minutes, pairs</p>
           <p style="font-size: 18pt; line-height: 1.55;">A colleague reports <strong>train \(R^2 = 0.94\)</strong>, <strong>test \(R^2 = 0.61\)</strong>, and proposes fixing the shortfall by <strong>adding interaction terms</strong>.</p>
           <p style="font-size: 18pt; line-height: 1.55; margin-top: 12px;">Diagnose the model. Say what the proposal will do, and why.</p>
         </div>
@@ -821,7 +821,7 @@ scores = cross_val_score(pipe, X_train, y_train, cv=5)</code></pre>
       <h2><i class="fa-solid fa-comments" style="color: var(--accent-color);"></i> Discussion &mdash; The Immaculate Pipeline</h2>
       <div class="content">
         <div class="discussion-prompt" style="background: #f8f6f3; border-left: 5px solid var(--accent-color); border-radius: 8px; padding: 22px 28px;">
-          <p class="bloom-level" style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px;">Bloom L4 &bull; Analyze &bull; 3 minutes, pairs</p>
+          <p class="bloom-level" style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px;">3 minutes, pairs</p>
           <p style="font-size: 18pt; line-height: 1.55;">You are handed a model with an <strong>immaculate <code>Pipeline</code></strong>, <strong>correct <code>GroupKFold</code></strong>, and a <strong>test set touched exactly once</strong>.</p>
           <p style="font-size: 18pt; line-height: 1.55; margin-top: 12px;">Name a way its validation score could <em>still</em> be wrong about deployment.</p>
         </div>
@@ -890,7 +890,7 @@ scores = cross_val_score(pipe, X_train, y_train, cv=5)</code></pre>
       <h2><i class="fa-solid fa-comments" style="color: var(--accent-color);"></i> Discussion &mdash; Design an Evaluation You Would Defend</h2>
       <div class="content">
         <div class="discussion-prompt" style="background: #f8f6f3; border-left: 5px solid var(--accent-color); border-radius: 8px; padding: 22px 28px;">
-          <p class="bloom-level" style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px;">Bloom L6 &bull; Create &bull; 3 minutes, pairs</p>
+          <p class="bloom-level" style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px;">3 minutes, pairs</p>
           <p style="font-size: 18pt; line-height: 1.55;">Pick one setting: <strong>lending</strong>, <strong>bail</strong>, <strong>hiring</strong>, or <strong>ad targeting</strong>.</p>
           <p style="font-size: 18pt; line-height: 1.55; margin-top: 12px;">Design an evaluation whose score you would <strong>defend to a regulator</strong>. Then name what it costs.</p>
         </div>
