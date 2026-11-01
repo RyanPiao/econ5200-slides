@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=86e0cae746889003ae7091c14848a9be">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=7f0128beab915636ecb05d7e65e4fe80">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -18,6 +18,7 @@
     MathJax = {tex: {inlineMath: [['$','$']], displayMath: [['$$','$$'], ['\\[','\\]']]}, svg: {fontCache: 'global'}, options: {ignoreHtmlClass: 'tex2jax_ignore', processHtmlClass: 'tex2jax_process'}};
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="../mock-cell.css">
 </head>
 <body>
   <div class="reveal">
@@ -86,26 +87,112 @@
         </div>
       </section>
 
-      <section id="hook" style="padding: 32px 50px;">
+      <section>
+    <section id="hook" style="padding: 32px 50px;">
         <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> A Confident Number, Pointing the Wrong Way</h2>
         <div class="content">
           <div style="display: grid; grid-template-columns: 1.05fr 1fr; gap: 26px; align-items: start;">
             <div>
               <p style="font-size: 15pt; line-height: 1.6;">Ten thousand simulated households. Free tuition below <strong><span class="tex2jax_ignore">&#36;75,000</span></strong>. I built the data, so I know the answer exactly: eligibility raises first-year retention by <strong>exactly 5 percentage points</strong>.</p>
               <p style="font-size: 15pt; line-height: 1.6; margin-top: 12px;">Here is the industry-standard package, called <em>correctly</em>, on that data:</p>
-              <pre style="margin-top: 10px;"><code style="font-size: 14pt;">Conventional coef = -0.0553
-Robust      coef  = -0.0556</code></pre>
-              <p style="font-size: 14.5pt; margin-top: 12px; color: var(--muted-color);">SE = 0.003. The plot looks clean. Every diagnostic passes.</p>
+              <pre style="margin-top: 10px;"><code style="font-size: 14pt;">Conventional coef = -0.0541
+Robust      coef  = -0.0548</code></pre>
+              <p style="font-size: 14.5pt; margin-top: 12px; color: var(--muted-color);">SE = 0.0032. The plot looks clean. Every diagnostic passes.</p>
             </div>
             <div style="background: #fdf3f0; border-radius: 10px; padding: 22px 24px; border-left: 5px solid var(--danger-color);">
               <p style="font-size: 20pt; font-weight: 700; color: var(--danger-color); line-height: 1.3;">Negative.</p>
               <p style="font-size: 15pt; margin-top: 12px; line-height: 1.6;">The programme built to help students appears to <em>hurt</em> them &mdash; by almost exactly the magnitude of the benefit.</p>
               <p style="font-size: 15pt; margin-top: 14px; line-height: 1.6;"><strong>Nothing is wrong except the sign, and the sign is the entire finding.</strong></p>
-              <p style="font-size: 13.5pt; margin-top: 14px; color: var(--muted-color); font-style: italic;">We resolve this in about fifteen minutes. Write your guesses down.</p>
+              <p style="font-size: 13.5pt; margin-top: 14px; color: var(--muted-color); font-style: italic;">We resolve this in Section 2. Write your guesses down.</p>
             </div>
           </div>
         </div>
       </section>
+    <section id="rd-room-card" style="padding: 26px 60px;">
+      <h2><i class="fa-solid fa-id-card" style="color: var(--secondary-color);"></i> Your Card, by Your Number</h2>
+      <div class="content">
+        <p style="font-size: 17pt; margin: 6px 0 12px;">The question on the next slide: <strong>in what year did the Boston Tea Party happen?</strong> Your running variable is the <strong>last two digits of your NUID</strong>, 00 to 99.</p>
+        <div class="rd-arm" data-cut="50">
+          <div class="rd-block" data-v="room">
+            <div style="display: grid; grid-template-columns: 1fr 280px; gap: 28px; align-items: center;">
+              <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 16px 22px;">
+                <p style="font-size: 17pt; margin: 0 0 10px;"><strong>Scan to open this slide on your phone.</strong> At <strong>50 or above</strong> your phone shows a hint; below 50 it does not.</p>
+                <p style="font-size: 15pt; margin: 0; color: var(--muted-color);">Read your card, keep it to yourself, then answer on the next slide.</p>
+              </div>
+              <div><div class="rd-qr" data-url="https://ryanpiao.github.io/econ5200-slides/ch13-regression-discontinuity/#/rd-room-card" style="width: 260px; height: 260px;"></div>
+                <p style="font-size: 10.5pt; margin: 6px 0 0; color: var(--muted-color); word-break: break-all;">https://ryanpiao.github.io/econ5200-slides/ch13-regression-discontinuity/#/rd-room-card</p></div>
+            </div>
+          </div>
+          <div class="rd-block" data-v="pending" hidden>
+            <div style="background: #f8f6f3; border-radius: 8px; padding: 16px 22px;">
+              <p style="font-size: 16pt; margin: 0 0 10px;">Check in with your NUID to see your card.</p>
+              <button type="button" class="rd-checkin arm-checkin">Check in</button>
+            </div>
+          </div>
+          <div class="rd-block" data-v="above" hidden><p class="arm-label">50 or above &middot; treated</p>
+            <div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 16px 22px;"><p style="font-size: 18pt; line-height: 1.5; margin: 0;"><strong>You get the hint.</strong> It happened three years before the Declaration of Independence, which was signed in 1776. Please do not search.</p></div></div>
+          <div class="rd-block" data-v="below" hidden><p class="arm-label">Below 50 &middot; not treated</p>
+            <div style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 16px 22px;"><p style="font-size: 18pt; line-height: 1.5; margin: 0;"><strong>No hint for you.</strong> Answer from memory, and please do not search: a rough guess is fine.</p></div></div>
+        </div>
+      </div>
+      <script>(function () {
+        var sec = document.getElementById("rd-room-card"); if (!sec) return;
+        var Q = location.search, PROJ = /[?&]presenter(&|=|$)/.test(Q), BOTH = /[?&](instructor|receiver)(&|=|$)/.test(Q) || /[?&]showNotes/.test(Q);
+        function show(which) {
+          [].forEach.call(sec.querySelectorAll(".rd-block"), function (b) {
+            var v = b.getAttribute("data-v"); b.hidden = which.indexOf(v) < 0; });
+        }
+        function apply() {
+          if (PROJ) return show(["room"]);
+          if (BOTH) return show(["above", "below"]);
+          var n = window.Poll && Poll.nuid ? Poll.nuid() : null;
+          if (!n) return show(["pending"]);
+          var r = parseInt(String(n).slice(-2), 10);
+          sec.querySelector(".rd-arm").setAttribute("data-assigned", r >= 50 ? "above" : "below");
+          show([r >= 50 ? "above" : "below"]);
+        }
+        var b = sec.querySelector(".rd-checkin");
+        if (b) b.addEventListener("click", function (e) { e.stopPropagation(); if (window.Poll && Poll.checkIn) Poll.checkIn(); });
+        apply(); setInterval(apply, 1500);
+        function draw() {
+          var el = sec.querySelector(".rd-qr");
+          if (!el || el.__done || !window.qrcode) return;
+          var q = window.qrcode(0, "M"); q.addData(el.getAttribute("data-url")); q.make();
+          el.innerHTML = q.createSvgTag({ cellSize: 6, margin: 1, scalable: true }); el.__done = 1;
+          var svg = el.querySelector("svg"); if (svg) { svg.style.width = "100%"; svg.style.height = "100%"; }
+        }
+        if (window.qrcode) draw();
+        else { var s = document.createElement("script");
+          s.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
+          s.onload = draw; document.head.appendChild(s); }
+      })();</script>
+    </section>
+    <section id="rd-room-answer" style="padding: 26px 60px;">
+      <h2><i class="fa-solid fa-mobile-screen" style="color: var(--secondary-color);"></i> Your Answers</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px;">
+          <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
+            <p style="font-size: 16pt; margin: 0;"><strong>1.</strong> The last two digits of your NUID, 0 to 99.</p>
+            <div class="poll-number" data-poll-id="ch13-econ5200-poll-4" data-poll-voting data-min="0" data-max="99" data-step="1" style="margin-top: 8px;"></div>
+            <p class="rd-mine" style="font-size: 12.5pt; margin: 6px 0 0; color: #1F7A5A;" hidden></p>
+            <script>(function () {
+              var p = document.currentScript.previousElementSibling, Q = location.search;
+              if (/[?&](presenter|instructor|receiver)(&|=|$)/.test(Q)) return;
+              function tell() { var n = window.Poll && Poll.nuid ? Poll.nuid() : null; if (!n) return;
+                p.textContent = "Your NUID ends in " + String(n).slice(-2) + ": type that."; p.hidden = false; }
+              tell(); setInterval(tell, 2000);
+            })();</script>
+          </div>
+          <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
+            <p style="font-size: 16pt; margin: 0;"><strong>2.</strong> In what year did the Boston Tea Party happen?</p>
+            <div class="poll-number" data-poll-id="ch13-econ5200-poll-5" data-poll-voting data-min="1700" data-max="1800" data-step="1" style="margin-top: 8px;"></div>
+          </div>
+        </div>
+        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">Answer both. Box 1 is your running variable; the line on the reveal is drawn through these pairs.</p>
+        <p style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: digits <strong data-poll-fill="ch13-econ5200-poll-4" data-key="n">&mdash;</strong> &middot; year <strong data-poll-fill="ch13-econ5200-poll-5" data-key="n">&mdash;</strong></p>
+      </div>
+    </section>
+    </section>
 
       <section id="divider-1" class="section-divider" data-state="is-section-divider">
         <h1>A Line Instead of a Lever</h1>
@@ -165,7 +252,7 @@ Robust      coef  = -0.0556</code></pre>
             <p style="font-size: 16pt; line-height: 1.6;">RD does <strong>not</strong> assume the treated and untreated groups are similar. It assumes the conditional expectation function is <strong>smooth through the cutoff</strong>.</p>
             <p style="font-size: 14.5pt; line-height: 1.6; margin-top: 10px; color: var(--muted-color);">Richer families may have systematically higher retention &mdash; fine, if the relationship is smooth. Confounders may be arbitrarily strong &mdash; fine, if they vary smoothly with income. You are not claiming the groups are alike. You are claiming that whatever makes them differ does so <em>gradually</em>.</p>
           </div>
-          <p style="font-size: 14pt; margin-top: 16px; color: var(--muted-color); font-style: italic;">It fails in exactly two identifiable ways &mdash; and we test for both after the break:</p>
+          <p style="font-size: 14pt; margin-top: 16px; color: var(--muted-color); font-style: italic;">It fails in two identifiable ways &mdash; we test for the first after the break; the second no test detects:</p>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px;">
             <div class="fragment fade-up" style="background: #fdf3f0; border-radius: 8px; padding: 15px 20px; border-left: 4px solid var(--danger-color);">
               <p style="font-size: 15pt; font-weight: 700; color: var(--danger-color);">Manipulation</p>
@@ -226,7 +313,7 @@ Robust      coef  = -0.0556</code></pre>
                 <td>ATE / ATT</td>
                 <td>ATT</td>
                 <td>LATE (compliers)</td>
-                <td style="background: #f6f9fb; color: var(--danger-color);"><strong>LATE (at the cutoff)</strong></td>
+                <td style="background: #f6f9fb; color: var(--danger-color);"><strong>Effect at the cutoff</strong></td>
               </tr>
             </tbody>
           </table>
@@ -250,7 +337,7 @@ Robust      coef  = -0.0556</code></pre>
           <div class="poll-grid" data-poll-id="ch13-econ5200-poll-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; font-size: 14.5pt;">
             <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>A.</strong> Households just above and just below the cutoff are similar on observables</div>
             <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>B.</strong> The conditional expectation of the outcome is smooth through the cutoff</div>
-            <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>C.</strong> Treatment is randomly assigned within the bandwidth</div>
+            <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>C.</strong> Treatment is randomly assigned within a narrow window around the cutoff</div>
             <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>D.</strong> The running variable is uncorrelated with the outcome</div>
           </div>
           <button class="reset-btn" onclick="clearPoll('ch13-econ5200-poll-1')" style="margin-top: 12px; padding: 6px 14px; font-size: 12pt; cursor: pointer;">Reset Poll</button>
@@ -264,7 +351,7 @@ Robust      coef  = -0.0556</code></pre>
               <p style="font-size: 13.5pt; line-height: 1.55;"><strong>A is the tempting one.</strong> It is the matching intuition &mdash; and note that it is <em>stronger</em> than what RD needs, not weaker.</p>
             </div>
             <div style="background: #fdf3f0; border-left: 4px solid var(--danger-color); padding: 13px 18px; border-radius: 8px;">
-              <p style="font-size: 13.5pt; line-height: 1.55;"><strong>C</strong> is what RD <em>approximates</em>, not what it assumes. <strong>D</strong> is false and would be fatal &mdash; the running variable is <em>supposed</em> to predict the outcome.</p>
+              <p style="font-size: 13.5pt; line-height: 1.55;"><strong>C</strong> is what RD <em>approximates</em>, not what it assumes. <strong>D</strong> is not required. A running variable that predicts nothing makes the job easier, as the room&rsquo;s flat lines show; RD only needs no jump in the rest.</p>
             </div>
           </div>
         </section>
@@ -275,10 +362,11 @@ Robust      coef  = -0.0556</code></pre>
         <p class="subtitle">Where the hook is resolved &mdash; and why local beats global</p>
       </section>
 
-      <section id="sign-convention" style="padding: 24px 44px;">
+      <section>
+    <section id="sign-convention" style="padding: 24px 44px;">
         <h2><i class="fa-solid fa-arrow-right-arrow-left" style="color: var(--danger-color);"></i> Right Minus Left &mdash; Always</h2>
         <div class="content">
-          <img src="figures/figure_002_sign_convention.png" alt="Two panels of the same threshold programme: with the raw running variable the treated units sit on the left and the estimate is minus 0.0553, and re-centred so treatment lies above zero the estimate is plus 0.0541" style="width: 88%; margin: 0 auto; display: block; border-radius: 6px;">
+          <img src="figures/figure_002_sign_convention.png" alt="Two panels of the same threshold programme: with the raw running variable the treated units sit on the left and the estimate is minus 0.0541, and re-centred so treatment lies above zero the estimate is plus 0.0541" style="width: 88%; margin: 0 auto; display: block; border-radius: 6px;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 12px; align-items: start;">
             <div style="background: #fdf3f0; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--danger-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;">Our programme covers tuition <strong>at or below <span class="tex2jax_ignore">&#36;75,000</span></strong>. Written the natural way &mdash; <code>R = income - 75_000</code>, <code>D = (R &lt;= 0)</code> &mdash; it is substantively correct and <strong>gives the wrong sign</strong>. <code>rdrobust</code> estimates $\lim_{r \downarrow c} - \lim_{r \uparrow c}$: it reports the jump as you cross <em>upward into ineligibility</em>.</p>
@@ -291,6 +379,104 @@ eligible = (R &gt;= 0).astype(int)</code></pre>
           </div>
         </div>
       </section>
+    <section id="rd-room-jump" style="padding: 22px 50px;">
+      <h2 style="font-size: 22pt;"><i class="fa-solid fa-chart-line" style="color: var(--accent-color);"></i> Your Room&rsquo;s Jump</h2>
+      <div class="content">
+        <div class="rd-plot" style="margin-top: 4px;"></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; align-items: stretch;">
+          <div style="background: #eef6f1; border-left: 4px solid #1F7A5A; border-radius: 8px; padding: 9px 16px;">
+            <p style="font-size: 14.5pt; margin: 0;"><strong>Right minus left at 50</strong> = <span class="rd-v" data-rd="right">&mdash;</span> &minus; <span class="rd-v" data-rd="left">&mdash;</span> = <span class="rd-v" data-rd="jump" style="font-size: 22pt; color: #1F7A5A;">&mdash;</span> years of miss</p>
+            <p style="font-size: 12.5pt; margin: 3px 0 0; color: var(--muted-color);">Each side&rsquo;s line, walked in to the cutoff: the difference of limits.</p></div>
+          <div class="fragment fade-up" style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 9px 16px;">
+            <p style="font-size: 14.5pt; margin: 0;"><strong>Plain difference in means</strong> = <span class="rd-v" data-rd="dm">&mdash;</span> &nbsp;<span style="font-size: 12.5pt; color: var(--muted-color);">(n = <span class="rd-v" data-rd="nl">&mdash;</span> left, <span class="rd-v" data-rd="nr">&mdash;</span> right)</span></p>
+            <p style="font-size: 12.5pt; margin: 3px 0 0; color: var(--muted-color);">Median miss: <span class="rd-v" data-rd="ml">&mdash;</span> left, <span class="rd-v" data-rd="mr">&mdash;</span> right. With about eight a side, one wild guess moves a line; the median barely moves.</p>
+            <p style="font-size: 12.5pt; margin: 3px 0 0; color: var(--muted-color);">Close to the jump here: NUID digits do not predict a miss, so both lines are flat. In a real RD the running variable predicts the outcome (a test score, an age), the lines slope, and only the jump at the cutoff is clean.</p></div>
+        </div>
+      </div>
+      <script>(function () {
+        "use strict";
+        var SU = "https://dpntbrsorgbivmntwmod.supabase.co", SK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
+        var RUN = "ch13-econ5200-poll-4", YEAR = "ch13-econ5200-poll-5", TRUE = 1773, CUT = 50;
+        var NUM = /^\s*(?:[oe]\*?:)?\s*(-?\d+(?:\.\d+)?)\s*$/, RANGE = {}; RANGE[RUN] = [0, 99]; RANGE[YEAR] = [1700, 1800];
+        var sec = document.getElementById("rd-room-jump"); if (!sec) return;
+        function pairs(rows) {
+          var first = {};
+          (rows || []).slice().sort(function (a, b) { return String(a.created_at || "") < String(b.created_at || "") ? -1 : 1; })
+            .forEach(function (r) {
+              if (!r || !RANGE[r.poll_id]) return;
+              var m = NUM.exec(String(r.choice)); if (!m) return;
+              var v = +m[1], g = RANGE[r.poll_id]; if (v < g[0] || v > g[1]) return;
+              var f = first[r.voter_id] = first[r.voter_id] || {};
+              if (f[r.poll_id] === undefined) f[r.poll_id] = v;
+            });
+          return Object.keys(first).filter(function (k) { return first[k][RUN] !== undefined && first[k][YEAR] !== undefined; })
+            .map(function (k) { return { x: first[k][RUN], y: Math.abs(first[k][YEAR] - TRUE) }; });
+        }
+        function median(a) { if (!a.length) return null; var s = a.slice().sort(function (x, y) { return x - y; }), k = s.length >> 1;
+          return s.length % 2 ? s[k] : (s[k - 1] + s[k]) / 2; }
+        function mean(a) { return a.length ? a.reduce(function (s, v) { return s + v; }, 0) / a.length : null; }
+        function line(P) {                       // least squares of the miss on the digits, on one side
+          if (!P.length) return null;
+          var mx = mean(P.map(function (p) { return p.x; })), my = mean(P.map(function (p) { return p.y; })), sxy = 0, sxx = 0;
+          P.forEach(function (p) { sxy += (p.x - mx) * (p.y - my); sxx += (p.x - mx) * (p.x - mx); });
+          var b = sxx > 0 ? sxy / sxx : 0;          // one point, or all at one x: a flat line at the mean
+          return { a: my - b * mx, b: b, n: P.length, my: my };
+        }
+        function f1(v) { return (v === null || !isFinite(v)) ? "\u2014" : (v > 0.05 ? "+" : "") + v.toFixed(1).replace(/^-/, "\u2212"); }
+        function g1(v) { return (v === null || !isFinite(v)) ? "\u2014" : v.toFixed(1).replace(/^-/, "\u2212"); }
+        var W = 1100, H = 300, L = 70, R = 1080, T = 14, B = 258;
+        function plot(P, Lf, Rf) {
+          var ymax = Math.max(10, Math.ceil(Math.max.apply(null, [10].concat(P.map(function (p) { return p.y; }))) / 10) * 10);
+          var X = function (v) { return L + (R - L) * v / 99; }, Y = function (v) { return B - (B - T) * v / ymax; };
+          var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block" role="img" aria-label="miss in years against the last two NUID digits, with a line on each side of 50">';
+          s += '<rect x="' + L + '" y="' + T + '" width="' + (R - L) + '" height="' + (B - T) + '" fill="#fbfaf8" stroke="#d9d4cb"/>';
+          s += '<rect x="' + X(CUT) + '" y="' + T + '" width="' + (R - X(CUT)) + '" height="' + (B - T) + '" fill="#fdf0ea" opacity="0.55"/>';
+          for (var k = 0; k <= 4; k++) {
+            var yv = ymax * k / 4, yy = Y(yv);
+            s += '<line x1="' + L + '" x2="' + R + '" y1="' + yy + '" y2="' + yy + '" stroke="#ece8e1"/><text x="' + (L - 8) + '" y="' + (yy + 5) + '" text-anchor="end" font-size="14" fill="#777">' + Math.round(yv) + '</text>';
+          }
+          [0, 25, 50, 75, 99].forEach(function (xv) { s += '<text x="' + X(xv) + '" y="' + (B + 20) + '" text-anchor="middle" font-size="14" fill="#777">' + xv + '</text>'; });
+          s += '<line x1="' + X(CUT) + '" x2="' + X(CUT) + '" y1="' + T + '" y2="' + B + '" stroke="#C47B5A" stroke-width="2" stroke-dasharray="6 5"/>';
+          s += '<text x="' + (X(CUT) + 8) + '" y="' + (T + 18) + '" font-size="14" fill="#C47B5A">hint from 50</text>';
+          s += '<text transform="translate(18 ' + ((T + B) / 2) + ') rotate(-90)" text-anchor="middle" font-size="14" fill="#555">miss, years from 1773</text>';
+          s += '<text x="' + ((L + R) / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="14" fill="#555">last two digits of your NUID</text>';
+          function seg(F, x0, x1, col) { if (!F) return ""; return '<line x1="' + X(x0) + '" x2="' + X(x1) + '" y1="' + Y(F.a + F.b * x0) + '" y2="' + Y(F.a + F.b * x1) + '" stroke="' + col + '" stroke-width="3"/>'; }
+          s += seg(Lf, 0, CUT, "#6B8BA4") + seg(Rf, CUT, 99, "#C47B5A");
+          if (Lf && Rf) s += '<line x1="' + X(CUT) + '" x2="' + X(CUT) + '" y1="' + Y(Lf.a + Lf.b * CUT) + '" y2="' + Y(Rf.a + Rf.b * CUT) + '" stroke="#1F7A5A" stroke-width="5"/>';
+          P.forEach(function (p) { s += '<circle cx="' + X(p.x) + '" cy="' + Y(Math.min(p.y, ymax)) + '" r="7" fill="' + (p.x >= CUT ? "#C47B5A" : "#6B8BA4") + '" fill-opacity="0.75" stroke="#fff" stroke-width="1.5"/>'; });
+          if (!P.length) s += '<text x="' + ((L + R) / 2) + '" y="' + ((T + B) / 2) + '" text-anchor="middle" font-size="18" fill="#999">waiting for the room&rsquo;s pairs</text>';
+          return s + '</svg>';
+        }
+        function paint(rows) {
+          var P = pairs(rows), left = P.filter(function (p) { return p.x < CUT; }), right = P.filter(function (p) { return p.x >= CUT; });
+          var Lf = line(left), Rf = line(right);
+          var lv = Lf ? Lf.a + Lf.b * CUT : null, rv = Rf ? Rf.a + Rf.b * CUT : null;
+          var out = { left: g1(lv), right: g1(rv), jump: (lv === null || rv === null) ? "\u2014" : f1(rv - lv),
+                      dm: (Lf && Rf) ? f1(Rf.my - Lf.my) : "\u2014", nl: String(left.length), nr: String(right.length),
+                      ml: g1(median(left.map(function (p) { return p.y; }))), mr: g1(median(right.map(function (p) { return p.y; }))) };
+          sec.querySelector(".rd-plot").innerHTML = plot(P, Lf, Rf);
+          [].forEach.call(sec.querySelectorAll("[data-rd]"), function (el) { el.textContent = out[el.getAttribute("data-rd")]; });
+          return { pairs: P.length, left: lv, right: rv, nl: left.length, nr: right.length };
+        }
+        window.RoomJump = { paint: paint };      // planted rows for a rehearsal: RoomJump.paint([{poll_id, choice, voter_id}])
+        function here() { var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(); return !!(s && s.id === "rd-room-jump"); }
+        function fetchRows() {
+          if (location.protocol === "file:" || window.__rdRehearsal) return;
+          var today = window.Poll ? Poll.q() : "";
+          var url = SU + "/rest/v1/poll_votes?poll_id=in.(" + RUN + "," + YEAR + ")&select=poll_id,choice,voter_id,created_at" + today;
+          var f = (window.Poll && Poll.liveFetch) ? Poll.liveFetch : fetch;
+          f(url, { headers: { apikey: SK, Authorization: "Bearer " + SK, "Cache-Control": "no-cache, no-store" } })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (rows) { if (rows) paint(rows); })
+            .catch(function () {});
+        }
+        paint([]);
+        setInterval(function () { if (!document.hidden && here()) fetchRows(); }, 4000);
+        if (window.Reveal && Reveal.on) Reveal.on("slidechanged", function () { if (here()) fetchRows(); });
+        setTimeout(fetchRows, 900);
+      })();</script>
+    </section>
+    </section>
 
       <section id="sign-fix" style="padding: 28px 50px;">
         <h2><i class="fa-solid fa-check-double" style="color: var(--success-color);"></i> Same Data, Same Call, One Line Apart</h2>
@@ -364,6 +550,7 @@ n used: 2,112 left, 2,175 right</code></pre>
         <p class="subtitle">The bias&ndash;variance tradeoff, made literal &mdash; as a setting you choose</p>
       </section>
 
+      <section>
       <section id="bandwidth-knob" style="padding: 26px 46px;">
         <h2><i class="fa-solid fa-sliders" style="color: var(--secondary-color);"></i> How Far Are You Willing to Look?</h2>
         <div class="content">
@@ -400,6 +587,14 @@ n used: 2,112 left, 2,175 right</code></pre>
           </div>
         </div>
       </section>
+      <section id="lab-d1-cell" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Your Lab, Diagnosis 1: One Sample, Seven Bandwidths</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 6px; color: #5d5d5d;">Lab 13&rsquo;s grant at a need index of 50, true jump <strong>0.08</strong>, 4,000 students: the same local linear fit inside wider and wider windows.</p>
+          <div class="mock colab" data-src="cells/ch13.json" data-cell="9" data-lines="5-10,16-19" data-size="11.5pt" style="max-width: 1100px;"></div>
+        </div>
+      </section>
+    </section>
 
       <section id="bias-variance-figure" style="padding: 26px 46px;">
         <h2><i class="fa-solid fa-chart-area" style="color: var(--accent-color);"></i> Both Ends of the Grid Are Wrong</h2>
@@ -502,6 +697,7 @@ n used: 2,112 left, 2,175 right</code></pre>
         <p class="subtitle">Density, balance, placebos &mdash; and how to read a false positive</p>
       </section>
 
+      <section>
       <section id="density-test" style="padding: 22px 44px;">
         <h2><i class="fa-solid fa-magnifying-glass-chart" style="color: var(--danger-color);"></i> Test 1 &mdash; Manipulation, via the Density</h2>
         <div class="content">
@@ -516,6 +712,13 @@ n used: 2,112 left, 2,175 right</code></pre>
           </div>
         </div>
       </section>
+      <section id="lab-d2-cell" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Your Lab, Diagnosis 2: The Density Test, Both Ways</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 6px; color: #5d5d5d;">Test 1 on Lab 13&rsquo;s data: first the grant as simulated, then a population where 40% of those just above 50 move just below it.</p><div class="mock colab" data-src="cells/ch13.json" data-cell="15" data-lines="3-5" data-size="12pt" style="max-width: 1100px; margin-top: 8px;"></div><div class="mock colab" data-src="cells/ch13.json" data-cell="17" data-lines="3-6,8" data-size="12pt" style="max-width: 1100px; margin-top: 8px;"></div>
+        </div>
+      </section>
+    </section>
 
       <section id="covariate-balance" style="padding: 30px 50px;">
         <h2><i class="fa-solid fa-scale-unbalanced" style="color: var(--secondary-color);"></i> Test 2 &mdash; Covariate Balance at the Cutoff</h2>
@@ -526,7 +729,7 @@ n used: 2,112 left, 2,175 right</code></pre>
               <pre><code style="font-size: 12.5pt;">balance = rdrobust(y=hs_gpa, x=R,
                    c=0, p=1, kernel='tri')</code></pre>
               <pre style="margin-top: 10px;"><code style="font-size: 12.5pt;">HS GPA jump: +0.0286
-             (SE 0.0272)  p = 0.409</code></pre>
+             (SE 0.0272)  robust p = 0.409</code></pre>
               <div style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; margin-top: 12px; border-left: 4px solid var(--success-color);">
                 <p style="font-size: 14.5pt;">GPA does not jump. <strong>Retention does</strong>, large and precisely estimated.</p>
               </div>
@@ -556,7 +759,7 @@ n used: 2,112 left, 2,175 right</code></pre>
                 <p style="font-size: 14pt; line-height: 1.5; margin-top: 8px;"><strong>That is the point of the demonstration.</strong></p>
               </div>
               <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid #7C3A5F;">
-                <p style="font-size: 13.5pt; line-height: 1.5;"><strong>Ch 8, inside a robustness check.</strong> Four tests at the 5% level on null data reject about one time in five. Read placebos as a <em>pattern</em>, not a series of hypothesis tests.</p>
+                <p style="font-size: 13.5pt; line-height: 1.5;"><strong>Ch 8, inside a robustness check.</strong> Run four tests at the 5% level on null data and at least one rejects about one time in five. Read placebos as a <em>pattern</em>, not a series of hypothesis tests.</p>
                 <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 8px;">The question is not &ldquo;did any placebo reject?&rdquo; but &ldquo;is the real effect distinguishable from the distribution of fake ones?&rdquo; Here: <strong>+0.054</strong> against a spread of roughly <strong>&plusmn;0.01</strong>.</p>
               </div>
             </div>
@@ -768,7 +971,7 @@ density test p = 0.447</code></pre>
       <section id="lab-preview" style="padding: 28px 48px;">
         <h2><i class="fa-solid fa-flask-vial" style="color: var(--secondary-color);"></i> Lab 13 &mdash; Diagnosing a Jump</h2>
         <div class="content">
-          <p style="font-size: 14pt; color: var(--muted-color); font-style: italic;">120 min core + 30 min extension &nbsp;&bull;&nbsp; deliverable: <code>src/rd_tools.py</code> &nbsp;&bull;&nbsp; three diagnoses</p>
+          <p style="font-size: 14pt; color: var(--muted-color); font-style: italic;">120 min core + 30 min extension &nbsp;&bull;&nbsp; deliverables: <code>rd_by_hand</code> (required, written yourself) and <code>src/rd_tools.py</code> &nbsp;&bull;&nbsp; three diagnoses</p>
           <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 13px;">
             <div style="background: #f0f5f8; border-radius: 8px; padding: 13px 17px; border-left: 4px solid var(--secondary-color);">
               <p style="font-size: 14pt; font-weight: 700; color: var(--secondary-color);">1. The estimate that is a bandwidth</p>
@@ -888,6 +1091,7 @@ density test p = 0.447</code></pre>
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
   <script src="../poll.js" data-checkin></script>
+  <script src="../mock-cell.js"></script>
   <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";

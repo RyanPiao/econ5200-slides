@@ -61,13 +61,17 @@
   "ch11b-econ5200-poll-2": "11b-1",
   "ch11b-econ5200-poll-3": "11b-2",
   "ch11b-econ5200-poll-4": "11b-3",
-  "ch12-econ5200-poll-1": "12-1",
-  "ch12-econ5200-poll-2": "12-2",
-  "ch12-econ5200-poll-3": "12-3",
-  "ch12-econ5200-poll-4": "12-4",
-  "ch13-econ5200-poll-1": "13-1",
-  "ch13-econ5200-poll-2": "13-2",
-  "ch13-econ5200-poll-3": "13-3",
+  "ch12-econ5200-poll-1": "12-3",
+  "ch12-econ5200-poll-2": "12-4",
+  "ch12-econ5200-poll-3": "12-5",
+  "ch12-econ5200-poll-4": "12-6",
+  "ch12-econ5200-poll-5": "12-1",
+  "ch12-econ5200-poll-6": "12-2",
+  "ch13-econ5200-poll-1": "13-3",
+  "ch13-econ5200-poll-2": "13-4",
+  "ch13-econ5200-poll-3": "13-5",
+  "ch13-econ5200-poll-4": "13-1",
+  "ch13-econ5200-poll-5": "13-2",
   "ch14-econ5200-poll-1": "14-1",
   "ch14-econ5200-poll-2": "14-2",
   "ch14-econ5200-poll-3": "14-3",
@@ -191,29 +195,45 @@
   ],
   "12-1": [
    "ch12-instrumental-variables",
-   "ch12-econ5200-poll-1"
+   "ch12-econ5200-poll-5"
   ],
   "12-2": [
    "ch12-instrumental-variables",
-   "ch12-econ5200-poll-2"
+   "ch12-econ5200-poll-6"
   ],
   "12-3": [
    "ch12-instrumental-variables",
-   "ch12-econ5200-poll-3"
+   "ch12-econ5200-poll-1"
   ],
   "12-4": [
+   "ch12-instrumental-variables",
+   "ch12-econ5200-poll-2"
+  ],
+  "12-5": [
+   "ch12-instrumental-variables",
+   "ch12-econ5200-poll-3"
+  ],
+  "12-6": [
    "ch12-instrumental-variables",
    "ch12-econ5200-poll-4"
   ],
   "13-1": [
    "ch13-regression-discontinuity",
-   "ch13-econ5200-poll-1"
+   "ch13-econ5200-poll-4"
   ],
   "13-2": [
    "ch13-regression-discontinuity",
-   "ch13-econ5200-poll-2"
+   "ch13-econ5200-poll-5"
   ],
   "13-3": [
+   "ch13-regression-discontinuity",
+   "ch13-econ5200-poll-1"
+  ],
+  "13-4": [
+   "ch13-regression-discontinuity",
+   "ch13-econ5200-poll-2"
+  ],
+  "13-5": [
    "ch13-regression-discontinuity",
    "ch13-econ5200-poll-3"
   ],

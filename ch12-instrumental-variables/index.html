@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=a9f5a0858475990405e44d9ca4c74eb0">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=c25c85c0cc190783724fb0422bb0a846">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instrumental Variables</title>
@@ -18,6 +18,7 @@
     MathJax = {tex: {inlineMath: [['$','$']], displayMath: [['$$','$$']]}, svg: {fontCache: 'global'}};
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="../mock-cell.css">
 </head>
 <body>
   <div class="reveal">
@@ -95,6 +96,7 @@
       </div>
     </section>
 
+    <section>
     <section id="hook-card" style="padding: 36px 60px;">
       <h2><i class="fa-solid fa-graduation-cap" style="color: var(--accent-color);"></i> Now the Most Famous Instrument in Labour Economics</h2>
       <div class="content">
@@ -111,8 +113,67 @@
             <p style="font-size: 13pt; color: var(--muted-color); margin-top: 6px;">correcting upward ability bias should push the estimate <em>down</em></p>
           </div>
         </div>
-        <p class="fragment fade-up" style="font-size: 16pt; margin-top: 20px; text-align: center; color: var(--primary-color);"><strong>That direction should trouble you.</strong> Hold onto it &mdash; we come back to it in 50 minutes with an explanation.</p>
+        <p class="fragment fade-up" style="font-size: 16pt; margin-top: 20px; text-align: center; color: var(--primary-color);"><strong>That direction should trouble you.</strong> Hold onto it &mdash; we come back to it in Section 2, with two explanations.</p>
       </div>
+    </section>
+    <section id="iv-room-card" style="padding: 26px 60px;">
+      <h2><i class="fa-solid fa-id-card" style="color: var(--secondary-color);"></i> Your Card</h2>
+      <div class="content">
+        <p style="font-size: 17pt; margin: 6px 0 12px;">The question on the next slide: <strong>in what year was Northeastern University founded?</strong></p>
+        <div data-arm="nuid-parity">
+          <div class="arm-block" data-arm-version="room">
+            <div style="display: grid; grid-template-columns: 1fr 280px; gap: 28px; align-items: center;">
+              <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 16px 22px;">
+                <p style="font-size: 17pt; margin: 0 0 10px;"><strong>Scan to open this slide on your phone.</strong> Your phone shows one short card. Odd and even NUIDs get <strong>different</strong> cards.</p>
+                <p style="font-size: 15pt; margin: 0; color: var(--muted-color);">Follow your card, keep it to yourself, then answer on the next slide.</p>
+              </div>
+              <div><div class="iv-qr" data-url="https://ryanpiao.github.io/econ5200-slides/ch12-instrumental-variables/#/iv-room-card" style="width: 260px; height: 260px;"></div>
+                <p style="font-size: 10.5pt; margin: 6px 0 0; color: var(--muted-color); word-break: break-all;">https://ryanpiao.github.io/econ5200-slides/ch12-instrumental-variables/#/iv-room-card</p></div>
+            </div>
+          </div>
+          <div class="arm-block" data-arm-version="pending" hidden>
+            <div style="background: #f8f6f3; border-radius: 8px; padding: 16px 22px;">
+              <p style="font-size: 16pt; margin: 0 0 10px;">Check in with your NUID to see your card.</p>
+              <button type="button" data-arm-checkin class="arm-checkin">Check in</button>
+            </div>
+          </div>
+          <div class="arm-block" data-arm-version="odd" hidden><p class="arm-label">Odd NUID &middot; the nudge</p>
+            <div style="background: #fdf0ea; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 16px 22px;"><p style="font-size: 18pt; line-height: 1.5; margin: 0;"><strong>You may look it up.</strong> Use your phone: a search takes about ten seconds. Then answer the question on the next slide.</p></div></div>
+          <div class="arm-block" data-arm-version="even" hidden><p class="arm-label">Even NUID &middot; no nudge</p>
+            <div style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 16px 22px;"><p style="font-size: 18pt; line-height: 1.5; margin: 0;"><strong>Answer from memory.</strong> Please do not search: a rough guess is fine. Then answer the question on the next slide.</p></div></div>
+        </div>
+      </div>
+      <script>(function () {
+        function draw() {
+          var el = document.querySelector("#iv-room-card .iv-qr");
+          if (!el || el.__done || !window.qrcode) return;
+          var q = window.qrcode(0, "M"); q.addData(el.getAttribute("data-url")); q.make();
+          el.innerHTML = q.createSvgTag({ cellSize: 6, margin: 1, scalable: true }); el.__done = 1;
+          var svg = el.querySelector("svg"); if (svg) { svg.style.width = "100%"; svg.style.height = "100%"; }
+        }
+        if (window.qrcode) draw();
+        else { var s = document.createElement("script");
+          s.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
+          s.onload = draw; document.head.appendChild(s); }
+      })();</script>
+    </section>
+    <section id="iv-room-answer" style="padding: 26px 60px;">
+      <h2><i class="fa-solid fa-mobile-screen" style="color: var(--secondary-color);"></i> Your Answer</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px;">
+          <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
+            <p style="font-size: 16pt; margin: 0;"><strong>1.</strong> In what year was Northeastern University founded?</p>
+            <div class="poll-number" data-poll-id="ch12-econ5200-poll-5" data-poll-voting data-min="1800" data-max="2026" data-step="1" data-arm="nuid-parity" style="margin-top: 8px;"></div>
+          </div>
+          <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
+            <p style="font-size: 16pt; margin: 0;"><strong>2.</strong> Did you look it up? Type <strong>1</strong> for yes, <strong>0</strong> for no.</p>
+            <div class="poll-number" data-poll-id="ch12-econ5200-poll-6" data-poll-voting data-min="0" data-max="1" data-step="1" data-arm="nuid-parity" style="margin-top: 8px;"></div>
+          </div>
+        </div>
+        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">Answer both. Be straight about box 2: nobody is graded on it, and the estimate needs it.</p>
+        <p style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: year <strong data-poll-fill="ch12-econ5200-poll-5" data-key="n">&mdash;</strong> &middot; looked up <strong data-poll-fill="ch12-econ5200-poll-6" data-key="n">&mdash;</strong></p>
+      </div>
+    </section>
     </section>
 
     <section id="divider-what-is-an-instrument" class="section-divider" data-state="is-section-divider">
@@ -277,6 +338,7 @@
       <p style="font-size: 17pt; color: var(--muted-color); margin-top: 18px; font-style: italic;">Four sample means, and then everything else.</p>
     </section>
 
+    <section>
     <section id="wald" style="padding: 36px 55px;">
       <h2><i class="fa-solid fa-calculator" style="color: var(--secondary-color);"></i> The Wald Estimator: Four Sample Means</h2>
       <div class="content">
@@ -293,6 +355,69 @@
         <p class="fragment fade-up" style="font-size: 16pt; margin-top: 16px; text-align: center;">And <code>IV2SLS</code> with no covariates returns <strong>0.1881</strong>, exactly. <strong>2SLS is the Wald estimator generalised.</strong></p>
       </div>
     </section>
+    <section id="iv-room-wald" style="padding: 22px 50px;">
+      <h2 style="font-size: 22pt;"><i class="fa-solid fa-table-cells" style="color: var(--accent-color);"></i> Your Room&rsquo;s Four Means</h2>
+      <div class="content">
+        <style>
+          #iv-room-wald table.iv { border-collapse: collapse; width: 100%; font-size: 17pt; margin-top: 4px; }
+          #iv-room-wald table.iv th, #iv-room-wald table.iv td { padding: 7px 14px; text-align: center; border-bottom: 1px solid #e3ded5; }
+          #iv-room-wald table.iv th { font-size: 13pt; color: #4a4f57; font-weight: 700; background: transparent; border-bottom: 2px solid #c9c2b8; }
+          #iv-room-wald td.iv-v { font-weight: 700; font-variant-numeric: tabular-nums; }
+          #iv-room-wald td.dif { background: #f6f2ec; }
+          #iv-room-wald .row-odd td:first-child { color: #C47B5A; font-weight: 700; text-align: left; }
+          #iv-room-wald .row-even td:first-child { color: #6B8BA4; font-weight: 700; text-align: left; }
+          #iv-room-wald .wald-out { font-size: 24pt; font-weight: 700; color: #1F7A5A; font-variant-numeric: tabular-nums; }
+        </style>
+        <table class="iv">
+          <tr><th style="text-align:left;"></th><th>Looked it up (share)</th><th>Miss, years from 1898</th><th>n</th></tr>
+          <tr class="row-odd"><td>Odd &middot; nudged (Z = 1)</td><td class="iv-v " data-iv="d1">&mdash;</td><td class="iv-v " data-iv="y1">&mdash;</td><td class="iv-v " data-iv="n1">&mdash;</td></tr>
+          <tr class="row-even"><td>Even &middot; not nudged (Z = 0)</td><td class="iv-v " data-iv="d0">&mdash;</td><td class="iv-v " data-iv="y0">&mdash;</td><td class="iv-v " data-iv="n0">&mdash;</td></tr>
+          <tr><td style="text-align:left; font-weight:700;">Difference</td><td class="iv-v dif" data-iv="fs">&mdash;</td><td class="iv-v dif" data-iv="rf">&mdash;</td><td></td></tr>
+        </table>
+        <p style="font-size: 13pt; margin: 6px 0 0; color: var(--muted-color);">Who moved? Even phones that looked it up anyway: <strong class="iv-v" data-iv="at">&mdash;</strong> (always-takers) &middot; odd phones that did not: <strong class="iv-v" data-iv="nt">&mdash;</strong> (never-takers) &middot; the rest, <strong class="iv-v" data-iv="cp">&mdash;</strong>, are the compliers</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; align-items: stretch;">
+          <div class="fragment fade-up" style="background: #eef6f1; border-left: 4px solid #1F7A5A; border-radius: 8px; padding: 10px 16px;">
+            <p style="font-size: 14.5pt; margin: 0;"><strong>Wald</strong> = reduced form &divide; first stage = <span data-iv="rf2">&mdash;</span> &divide; <span data-iv="fs2">&mdash;</span> = <span class="wald-out" data-iv="wald">&mdash;</span> years</p>
+            <p style="font-size: 12.5pt; margin: 4px 0 0; color: var(--muted-color);">What looking it up did to the miss, for the students the nudge moved.</p></div>
+          <div class="fragment fade-up" style="background: #f0f5f8; border-left: 4px solid #6B8BA4; border-radius: 8px; padding: 10px 16px;">
+            <p style="font-size: 14.5pt; margin: 0;"><strong>Is the lever strong?</strong> First-stage <em>F</em> = <span class="iv-v" data-iv="F">&mdash;</span></p>
+            <p style="font-size: 12.5pt; margin: 4px 0 0; color: var(--muted-color);">Section 4 asks how big this has to be. A small first stage makes the ratio explode.</p></div>
+        </div>
+      </div>
+      <script>(function () {
+        var IDS = { year: "ch12-econ5200-poll-5", look: "ch12-econ5200-poll-6" }, D = {}, TRUE = 1898;
+        function mean(a) { return a && a.length ? a.reduce(function (s, x) { return s + x; }, 0) / a.length : null; }
+        function vari(a, m) { return a.length > 1 ? a.reduce(function (s, x) { return s + (x - m) * (x - m); }, 0) / (a.length - 1) : null; }
+        function f(x, d) { return (x === null || !isFinite(x)) ? "\u2014" : x.toFixed(d).replace(/^-/, "\u2212"); }
+        function pc(x) { return (x === null || !isFinite(x)) ? "\u2014" : Math.round(100 * x) + "%"; }
+        function sub(a, b) { return (a === null || b === null) ? null : a - b; }
+        function paint() {
+          var y = D[IDS.year], l = D[IDS.look], v = {};
+          var e1 = y ? y.odd.map(function (x) { return Math.abs(x - TRUE); }) : null;
+          var e0 = y ? y.even.map(function (x) { return Math.abs(x - TRUE); }) : null;
+          v.y1 = e1 ? mean(e1) : null; v.y0 = e0 ? mean(e0) : null;
+          v.d1 = l ? mean(l.odd) : null; v.d0 = l ? mean(l.even) : null;
+          v.n1 = l ? l.odd.length : null; v.n0 = l ? l.even.length : null;
+          v.fs = sub(v.d1, v.d0); v.rf = sub(v.y1, v.y0);
+          v.wald = (v.fs === null || v.rf === null || Math.abs(v.fs) < 1e-9) ? null : v.rf / v.fs;
+          var F = null;
+          if (l && l.odd.length > 1 && l.even.length > 1) {
+            var s1 = vari(l.odd, v.d1), s0 = vari(l.even, v.d0), se2 = s1 / l.odd.length + s0 / l.even.length;
+            F = se2 > 0 ? (v.fs * v.fs) / se2 : null;
+          }
+          var out = { d1: f(v.d1, 2), d0: f(v.d0, 2), y1: f(v.y1, 1), y0: f(v.y0, 1), n1: v.n1 === null ? "\u2014" : String(v.n1),
+                      n0: v.n0 === null ? "\u2014" : String(v.n0), fs: f(v.fs, 2), rf: f(v.rf, 1), fs2: f(v.fs, 2), rf2: f(v.rf, 1),
+                      wald: f(v.wald, 1), at: pc(v.d0), nt: v.d1 === null ? "\u2014" : pc(1 - v.d1), cp: pc(v.fs), F: F === null ? (v.fs === null ? "\u2014" : "no spread") : f(F, 1) };
+          [].forEach.call(document.querySelectorAll("#iv-room-wald [data-iv]"), function (el) {
+            el.textContent = out[el.getAttribute("data-iv")]; });
+        }
+        document.addEventListener("pollnumbers", function (e) {
+          var d = e.detail; if (!d) return;
+          if (d.pollId === IDS.year || d.pollId === IDS.look) { D[d.pollId] = d.data; paint(); }
+        });
+      })();</script>
+    </section>
+    </section>
 
     <section id="tsls-mechanics" style="padding: 34px 55px;">
       <h2><i class="fa-solid fa-layer-group" style="color: var(--accent-color);"></i> 2SLS Mechanics</h2>
@@ -307,7 +432,7 @@
           <p style="font-size: 17pt; text-align: center; margin-top: 6px;">$Y_i = \alpha + \beta \hat D_i + \mathbf{X}_i'\boldsymbol\delta + \eta_i$</p>
           <p style="font-size: 14pt; color: var(--accent-color); margin-top: 6px;"><strong>Interpretation:</strong> $\hat D_i$ holds only the variation the instrument explains &mdash; the part that is, by assumption, unrelated to $\varepsilon_i$. Everything else has been thrown away.</p>
         </div>
-        <p class="fragment fade-up" style="font-size: 16pt; margin-top: 16px; text-align: center; color: var(--primary-color);">That discarding is <strong>why IV estimates are so much less precise than OLS</strong> &mdash; a cost Card makes vivid in two slides.</p>
+        <p class="fragment fade-up" style="font-size: 16pt; margin-top: 16px; text-align: center; color: var(--primary-color);">That discarding is <strong>why IV estimates are so much less precise than OLS</strong> &mdash; a cost the Card replication makes vivid.</p>
       </div>
     </section>
 
@@ -319,7 +444,7 @@
 linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
         <p style="font-size: 16pt; margin-top: 12px;">Identical coefficients. The manual standard error is <strong>16% too small</strong> (the right one is 20% larger), and $t$ inflated from 7.61 to 9.11.</p>
         <div class="fragment fade-up" style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 14px 22px; margin-top: 14px;">
-          <p style="font-size: 14.5pt;"><strong>Mechanism.</strong> The hand-rolled stage computes residuals as $Y_i - \hat D_i\hat\beta$, using the <em>fitted</em> treatment. The correct structural residual uses the <em>actual</em> one, $Y_i - D_i\hat\beta$. A projection has strictly less variance than what it projects &mdash; so the residuals are too small, the error variance is too small, and every standard error inherits it. <strong>The bias is always toward overconfidence.</strong></p>
+          <p style="font-size: 14.5pt;"><strong>Mechanism.</strong> The hand-rolled stage computes residuals as $Y_i - \hat D_i\hat\beta$, using the <em>fitted</em> treatment. The correct structural residual uses the <em>actual</em> one, $Y_i - D_i\hat\beta$. The two differ by $\hat\beta$ times the first-stage residual, so the error variance is wrong and every standard error inherits it. <strong>The direction depends on the data:</strong> on these two controls it is too small; with Lab 12&rsquo;s five controls it is slightly too large (0.0504 against 0.0492).</p>
         </div>
         <p class="fragment fade-up" style="font-size: 15pt; margin-top: 12px; text-align: center; color: var(--muted-color); font-style: italic;">Here it turns 7.6 into 9.1 and changes nothing. In a marginal case it produces a false discovery.</p>
       </div>
@@ -343,7 +468,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
         <h2><i class="fa-solid fa-circle-check" style="color: var(--success-color);"></i> Answer: B &mdash; The Wrong Residual</h2>
         <div class="poll-results-chart" data-poll-id="ch12-econ5200-poll-2" style="display:flex; gap:20px; align-items:flex-end; justify-content:center; height:170px; margin:12px 60px 22px;"></div>
         <div style="padding: 0 50px;">
-          <p style="font-size: 15pt; line-height: 1.65;">The projection $\hat D_i$ has less variance than $D_i$, so the manual residuals are too small, the estimated error variance is too small, and every standard error comes out too tight &mdash; always in the direction of overconfidence.</p>
+          <p style="font-size: 15pt; line-height: 1.65;">The manual residuals use $\hat D_i$ where the structural residual needs $D_i$. They differ by $\hat\beta$ times the first-stage residual, so the estimated error variance is wrong and every standard error inherits it: in Card&rsquo;s two-control data it comes out too tight.</p>
           <div style="background: #eef5ee; border-left: 4px solid var(--success-color); padding: 14px 20px; border-radius: 8px; margin-top: 14px;">
             <p style="font-size: 14pt; margin: 0;"><strong>Why A is tempting but wrong:</strong> the two estimators are algebraically identical for the <em>point estimate</em> &mdash; that is why the coefficients match to four decimals. The divergence is entirely in the variance formula.</p>
           </div>
@@ -558,7 +683,8 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
       </div>
     </section>
 
-    <section id="sim-table" style="padding: 30px 50px;">
+    <section>
+      <section id="sim-table" style="padding: 30px 50px;">
       <h2><i class="fa-solid fa-flask" style="color: var(--secondary-color);"></i> Build It: You Only Know Because You Simulated</h2>
       <div class="content">
         <p style="font-size: 14.5pt;">True effect $\beta = 1.0$. A confounder $U$ raises both treatment and outcome, so OLS is biased upward &mdash; toward <strong>2.0</strong> when the instrument is weak. Watch the OLS column drift down as $\pi$ rises: a stronger instrument explains more of $D$, so $U$'s share of its variance falls and the OLS bias shrinks with it. Measured, $n = 2{,}000$ &mdash; these are the numbers you will reproduce in Lab 12.</p>
@@ -571,8 +697,16 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
             <tr><td>0.01</td><td>2.018</td><td style="color: var(--danger-color); font-weight: 700;">3.949</td><td>7.620</td><td style="color: var(--danger-color);">worse than the OLS it replaced</td></tr>
           </tbody>
         </table>
-        <p class="fragment fade-up" style="font-size: 14pt; margin-top: 12px; text-align: center;">At a strong first stage 2SLS comes out at <strong>1.03</strong> and <strong>1.06</strong>, within one draw's sampling noise of the true 1.0.<br>The <strong>3.949</strong> is <em>one draw</em>. Over the 500 draws on the next slide the median 2SLS at $\pi = 0.01$ is <strong>2.038</strong> against a median OLS of <strong>1.998</strong> &mdash; weak 2SLS does not scatter wildly around the truth, it collapses <em>onto the bias it was meant to remove</em>. The mean is undefined: just-identified 2SLS has no finite moments.</p>
+        <p class="fragment fade-up" style="font-size: 14pt; margin-top: 12px; text-align: center;">At a strong first stage 2SLS comes out at <strong>1.03</strong> and <strong>1.06</strong>, within one draw's sampling noise of the true 1.0.<br>The <strong>3.949</strong> is <em>one draw</em>. Over 500 draws of the same simulation the median 2SLS at $\pi = 0.01$ is <strong>2.038</strong> against a median OLS of <strong>1.998</strong> &mdash; weak 2SLS does not scatter wildly around the truth, it collapses <em>onto the bias it was meant to remove</em>. The mean is undefined: just-identified 2SLS has no finite moments.</p>
       </div>
+    </section>
+      <section id="lab-d1-cell" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Your Lab, Diagnosis 1: One Sample at Each Strength</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 6px; color: #5d5d5d;">Lab 12&rsquo;s own cell, the table on the slide above: a true effect of 1.0, a confounder that biases OLS up, and <strong>pi</strong> setting how hard the instrument pushes.</p>
+          <div class="mock colab" data-src="cells/ch12.json" data-cell="5" data-lines="7-10,17-18" data-size="11pt" style="max-width: 1100px;"></div>
+        </div>
+      </section>
     </section>
 
     <section id="sim-figure" style="padding: 28px 50px;">
@@ -581,7 +715,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
         <div style="display: grid; grid-template-columns: 1.35fr 1fr; gap: 22px; align-items: start;">
           <img src="figures/figure_003_weak_instrument.png" alt="2SLS estimates plotted against first-stage strength: near the true effect of one when the first stage is strong, and rising past the OLS bias level to 3.949 as the first stage approaches zero" style="width: 100%; border-radius: 6px;">
           <div>
-            <p style="font-size: 15pt; line-height: 1.6;">OLS was biased by <strong>+1.0</strong>. The IV estimate meant to fix it is off by <strong>+2.9</strong>.</p>
+            <p style="font-size: 15pt; line-height: 1.6;">OLS was biased by <strong>+1.0</strong>. In this one draw, the IV estimate meant to fix it is off by <strong>+2.9</strong>; across 500 draws its median sits on the OLS bias.</p>
             <div style="background: #fdf0ea; border-radius: 8px; padding: 14px 18px; margin-top: 14px; border-left: 4px solid var(--danger-color);">
               <p style="font-size: 14.5pt;">A weak instrument does more than correct less: it gives a <strong>different, larger and harder-to-read error</strong>, reported in the language of causal identification.</p>
             </div>
@@ -634,7 +768,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
         <div style="padding: 0 50px;">
           <p style="font-size: 15pt; line-height: 1.65;">A weak instrument produces a <em>confident</em> wrong answer, not a visibly noisy one. That is exactly why these results survive peer review &mdash; nothing in the output looks broken.</p>
           <div style="background: #eef5ee; border-left: 4px solid var(--success-color); padding: 14px 20px; border-radius: 8px; margin-top: 14px;">
-            <p style="font-size: 14pt; margin: 0;"><strong>Why C is tempting but wrong:</strong> weak-instrument bias does not vanish with $n$. The bias is governed by the <em>concentration parameter</em>, and more data on a lever that does not move anything gives you nothing.</p>
+            <p style="font-size: 14pt; margin: 0;"><strong>Why C is tempting but wrong:</strong> weak-instrument bias is governed by the <em>concentration parameter</em>, roughly $n$ times the first stage&rsquo;s signal-to-noise. More data raises it only as fast as $n$, so a lever that barely moves anything needs an enormous sample to escape, and one that moves nothing never does.</p>
           </div>
         </div>
       </section>
@@ -691,7 +825,8 @@ Conventional Wald CI:  [0.1926, 0.3248]</code></pre>
       <p style="font-size: 17pt; color: var(--muted-color); margin-top: 18px; font-style: italic;">The third instance of one idea.</p>
     </section>
 
-    <section id="plausibly-exogenous" style="padding: 34px 55px;">
+    <section>
+      <section id="plausibly-exogenous" style="padding: 34px 55px;">
       <h2><i class="fa-solid fa-ruler-combined" style="color: var(--secondary-color);"></i> Plausibly Exogenous</h2>
       <div class="content">
         <p style="font-size: 15pt;">Every serious objection to an IV paper is an argument that exclusion fails <strong>a little</strong>. Not catastrophically &mdash; a little. The conventional response is to insist it holds exactly: a binary claim about an untestable assumption.</p>
@@ -705,6 +840,14 @@ Conventional Wald CI:  [0.1926, 0.3248]</code></pre>
           <p style="font-size: 15.5pt; margin-top: 8px; font-style: italic; color: var(--success-color);">&ldquo;Our conclusion survives any direct effect of the instrument on the outcome smaller than $\bar\gamma$.&rdquo;</p>
         </div>
       </div>
+    </section>
+      <section id="lab-d3-cell" style="padding: 24px 50px;">
+        <h2><i class="fa-solid fa-flask" style="color: var(--primary-color);"></i> Your Lab, Diagnosis 3: Sweeping the Missing Arrow</h2>
+        <div class="content">
+          <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 6px; color: #5d5d5d;"><i>Plausibly Exogenous</i> as Lab 12 runs it: Diagnosis 1&rsquo;s simulation with a strong instrument (pi = 0.5), 5,000 people, and a direct effect <strong>gamma</strong> of the instrument on the outcome.</p>
+          <div class="mock colab" data-src="cells/ch12.json" data-cell="19" data-lines="3-5" data-size="13pt" style="max-width: 1100px;"></div>
+        </div>
+      </section>
     </section>
 
     <section id="portable-pattern" style="padding: 34px 55px;">
@@ -785,7 +928,7 @@ Conventional Wald CI:  [0.1926, 0.3248]</code></pre>
           </div>
         </div>
         <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px; margin-top: 12px; text-align: center; border-left: 4px solid #7C3A5F;">
-          <p style="font-size: 15pt;"><i class="fa-solid fa-graduation-cap" style="color: #7C3A5F;"></i> <strong>Unless you saturate, 2SLS with covariates carries negative weights</strong> &mdash; Chapter 11's pathology in a second estimator. And: <em>when an assumption cannot be tested, bound it and report the breakdown value.</em></p>
+          <p style="font-size: 15pt;"><i class="fa-solid fa-graduation-cap" style="color: #7C3A5F;"></i> <strong>With covariates, 2SLS can carry negative weights unless the model is saturated</strong> &mdash; Chapter 11's pathology in a second estimator (reading: <em>The Saturation Problem</em>). And: <em>when an assumption cannot be tested, bound it and report the breakdown value.</em></p>
         </div>
       </div>
     </section>
@@ -810,7 +953,7 @@ Conventional Wald CI:  [0.1926, 0.3248]</code></pre>
       <h2><i class="fa-solid fa-road" style="color: var(--secondary-color);"></i> Next: Lab 12, and Chapter 13</h2>
       <div class="content">
         <div style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-left: 4px solid var(--secondary-color);">
-          <p style="font-size: 15pt;"><strong>Lab 12 &mdash; <code>lab-ch12-diagnostic.ipynb</code>.</strong> Three analyses that are wrong before you read them: the instrument that barely moves anything, the estimate that belongs to someone else, and exclusion that is only nearly true. You ship <code>src/iv_tools.py</code> &mdash; a module that <em>will not report a second stage without the first-stage diagnostics beside it.</em></p>
+          <p style="font-size: 15pt;"><strong>Lab 12 &mdash; <code>lab-ch12-diagnostic.ipynb</code>.</strong> Three analyses that are wrong before you read them: the instrument that barely moves anything, the estimate that belongs to someone else, and exclusion that is only nearly true. You run <code>src/iv_tools.py</code> &mdash; a given module that <em>will not report a second stage without the first-stage diagnostics beside it.</em></p>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 14px;">
           <div style="background: #eef5ee; border-radius: 10px; padding: 15px 20px; text-align: center;">
@@ -908,6 +1051,7 @@ Conventional Wald CI:  [0.1926, 0.3248]</code></pre>
     .reset-btn{display:none}body.instructor-mode .reset-btn{display:inline-block}
   </style>
   <script src="../poll.js" data-checkin></script>
+  <script src="../mock-cell.js"></script>
   <script>
   (function(){
     var SU="https://dpntbrsorgbivmntwmod.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
