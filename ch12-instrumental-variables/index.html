@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=ee3fbb7ff8c4378a03f110dc08405e72">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=70ed8da63bc4cd45111a3a31daac8e4f">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instrumental Variables</title>
@@ -367,21 +367,26 @@
     <section id="wald" style="padding: 36px 55px;">
       <h2><i class="fa-solid fa-calculator" style="color: var(--secondary-color);"></i> The Wald Estimator: Four Sample Means</h2>
       <div class="content">
-        <p style="font-size: 15pt;">When the instrument is binary, the ratio has an immediate sample analogue.</p>
+        <p style="font-size: 15pt;"><strong>What it is for:</strong> the IV estimate of $\beta$ when the instrument is <strong>binary</strong>, $Z = 1$ or $0$. In Card: $Z$ = grew up near a four-year college, $D$ = years of schooling, $Y$ = log wage.</p>
         <div style="background: #f0f5f8; border-radius: 10px; padding: 18px 26px; margin-top: 12px;">
           <p style="font-size: 19pt; text-align: center;">$\hat\beta^{Wald} = \dfrac{\bar Y_{Z=1} - \bar Y_{Z=0}}{\bar D_{Z=1} - \bar D_{Z=0}}$</p>
           <p style="font-size: 14pt; color: var(--accent-color); text-align: center; margin-top: 8px;"><strong>Interpretation:</strong> the difference in average outcomes between instrument groups, divided by the difference in average treatment. Four numbers. No matrix algebra.</p>
         </div>
-        <div class="fragment fade-up" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px;">
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 14px 18px; border-left: 3px solid var(--secondary-color);"><p style="font-size: 14pt;"><strong>Reduced form</strong> ($Z \to Y$)<br><span style="font-size: 20pt; color: var(--secondary-color);">0.1559</span></p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 14px 18px; border-left: 3px solid var(--success-color);"><p style="font-size: 14pt;"><strong>First stage</strong> ($Z \to D$)<br><span style="font-size: 20pt; color: var(--success-color);">0.8290</span></p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 14px 18px; border-left: 3px solid var(--accent-color);"><p style="font-size: 14pt;"><strong>Wald = RF / FS</strong><br><span style="font-size: 20pt; color: var(--accent-color);">0.1881</span></p></div>
+        <div class="fragment fade-up" style="display: grid; grid-template-columns: 1.9fr 1fr; gap: 16px; margin-top: 14px; align-items: center;">
+          <table style="border-collapse: collapse; width: 100%; font-size: 14pt;">
+            <tr><th style="text-align:left; padding: 4px 10px; font-size: 12pt; color:#4a4f57; border-bottom: 2px solid #c9c2b8; background: transparent;">Card&rsquo;s 3,010 men</th><th style="padding: 4px 10px; font-size: 12pt; color:#4a4f57; border-bottom: 2px solid #c9c2b8; background: transparent;">mean log wage $\bar Y$</th><th style="padding: 4px 10px; font-size: 12pt; color:#4a4f57; border-bottom: 2px solid #c9c2b8; background: transparent;">mean schooling $\bar D$</th></tr>
+            <tr><td style="text-align:left; padding: 4px 10px; border-bottom: 1px solid #e3ded5;">Near a college, $Z=1$ (2,053)</td><td style="text-align:center; padding: 4px 10px; border-bottom: 1px solid #e3ded5;">6.3114</td><td style="text-align:center; padding: 4px 10px; border-bottom: 1px solid #e3ded5;">13.527</td></tr>
+            <tr><td style="text-align:left; padding: 4px 10px; border-bottom: 1px solid #e3ded5;">Not near, $Z=0$ (957)</td><td style="text-align:center; padding: 4px 10px; border-bottom: 1px solid #e3ded5;">6.1555</td><td style="text-align:center; padding: 4px 10px; border-bottom: 1px solid #e3ded5;">12.698</td></tr>
+            <tr><td style="text-align:left; padding: 4px 10px; font-weight: 700;">Difference</td><td style="text-align:center; padding: 4px 10px; font-weight: 700; color: var(--secondary-color);">0.1559<br><span style="font-size: 11pt; font-weight: 400;">reduced form, $Z \to Y$</span></td><td style="text-align:center; padding: 4px 10px; font-weight: 700; color: var(--success-color);">0.8290<br><span style="font-size: 11pt; font-weight: 400;">first stage, $Z \to D$</span></td></tr>
+          </table>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 14px 18px; border-left: 3px solid var(--accent-color); text-align: center;"><p style="font-size: 14pt;"><strong>Wald = RF / FS</strong><br>0.1559 &divide; 0.8290<br><span style="font-size: 22pt; font-weight: 700; color: var(--accent-color);">0.1881</span></p></div>
         </div>
         <p class="fragment fade-up" style="font-size: 16pt; margin-top: 16px; text-align: center;">And <code>IV2SLS</code> with no covariates returns <strong>0.1881</strong>, exactly. <strong>2SLS is the Wald estimator generalised.</strong></p>
       </div>
     </section>
     <section id="iv-room-wald" style="padding: 22px 50px;">
       <h2 style="font-size: 22pt;"><i class="fa-solid fa-table-cells" style="color: var(--accent-color);"></i> Your Room&rsquo;s Four Means</h2>
+      <p class="iv-practice" style="display: none; position: absolute; top: 24px; right: 50px; margin: 0; background: #fff3cd; border: 1px solid #e0c36a; border-radius: 6px; padding: 4px 12px; font-size: 13pt; font-weight: 700; color: #7a5a00;">Practice numbers: 20 made-up students</p>
       <div class="content">
         <style>
           #iv-room-wald table.iv { border-collapse: collapse; width: 100%; font-size: 17pt; margin-top: 4px; }
@@ -411,13 +416,19 @@
       </div>
       <script>(function () {
         var IDS = { year: "ch12-econ5200-poll-5", look: "ch12-econ5200-poll-6" }, D = {}, TRUE = 1898;
+        // Q (or ?practice=1): made-up practice numbers, 10 odd and 10 even phones, for a room with no votes yet. Shown here only; never written.
+        // They give 0.80 / 0.20 looked it up, misses 2.7 / 13.4 years, Wald -17.8, F 10.1.
+        var PRACTICE = { year: { odd: [1898, 1898, 1898, 1897, 1898, 1898, 1900, 1898, 1913, 1889], even: [1898, 1899, 1876, 1916, 1905, 1890, 1921, 1884, 1868, 1909] },
+                         look: { odd: [1, 1, 1, 1, 1, 1, 1, 1, 0, 0], even: [1, 1, 0, 0, 0, 0, 0, 0, 0, 0] } };
+        var practice = /[?&]practice=1/.test(location.search);
         function mean(a) { return a && a.length ? a.reduce(function (s, x) { return s + x; }, 0) / a.length : null; }
         function vari(a, m) { return a.length > 1 ? a.reduce(function (s, x) { return s + (x - m) * (x - m); }, 0) / (a.length - 1) : null; }
         function f(x, d) { return (x === null || !isFinite(x)) ? "\u2014" : x.toFixed(d).replace(/^-/, "\u2212"); }
         function pc(x) { return (x === null || !isFinite(x)) ? "\u2014" : Math.round(100 * x) + "%"; }
         function sub(a, b) { return (a === null || b === null) ? null : a - b; }
         function paint() {
-          var y = D[IDS.year], l = D[IDS.look], v = {};
+          var y = practice ? PRACTICE.year : D[IDS.year], l = practice ? PRACTICE.look : D[IDS.look], v = {};
+          [].forEach.call(document.querySelectorAll("#iv-room-wald .iv-practice"), function (el) { el.style.display = practice ? "" : "none"; });
           var e1 = y ? y.odd.map(function (x) { return Math.abs(x - TRUE); }) : null;
           var e0 = y ? y.even.map(function (x) { return Math.abs(x - TRUE); }) : null;
           v.y1 = e1 ? mean(e1) : null; v.y0 = e0 ? mean(e0) : null;
@@ -436,6 +447,12 @@
           [].forEach.call(document.querySelectorAll("#iv-room-wald [data-iv]"), function (el) {
             el.textContent = out[el.getAttribute("data-iv")]; });
         }
+        document.addEventListener("keydown", function (e) {   // Q: practice numbers on/off (P is Reveal's "previous")
+          var t = e.target, s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+          if ((e.key === "q" || e.key === "Q") && !e.metaKey && !e.ctrlKey && !e.altKey && s && s.id === "iv-room-wald" &&
+              !(t && t.closest && t.closest("input,textarea"))) { practice = !practice; paint(); }
+        });
+        if (practice) paint();
         document.addEventListener("pollnumbers", function (e) {
           var d = e.detail; if (!d) return;
           if (d.pollId === IDS.year || d.pollId === IDS.look) { D[d.pollId] = d.data; paint(); }
@@ -722,7 +739,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
             <tr><td>0.01</td><td>2.018</td><td style="color: var(--danger-color); font-weight: 700;">3.949</td><td>7.620</td><td style="color: var(--danger-color);">worse than the OLS it replaced</td></tr>
           </tbody>
         </table>
-        <p class="fragment fade-up" style="font-size: 14pt; margin-top: 12px; text-align: center;">At a strong first stage 2SLS comes out at <strong>1.03</strong> and <strong>1.06</strong>, within one draw's sampling noise of the true 1.0.<br>The <strong>3.949</strong> is <em>one draw</em>. Over 500 draws of the same simulation the median 2SLS at $\pi = 0.01$ is <strong>2.038</strong> against a median OLS of <strong>1.998</strong> &mdash; weak 2SLS does not scatter wildly around the truth, it collapses <em>onto the bias it was meant to remove</em>. The mean is undefined: just-identified 2SLS has no finite moments.</p>
+        <p class="fragment fade-up" style="font-size: 14pt; margin-top: 12px; text-align: center;">At a strong first stage 2SLS comes out at <strong>1.03</strong> and <strong>1.06</strong>, within one draw's sampling noise of the true 1.0.<br>The <strong>3.949</strong> is <em>one draw</em>. Over 500 draws of the same simulation the median 2SLS at $\pi = 0.01$ is <strong>2.038</strong> against a median OLS of <strong>1.998</strong> &mdash; weak 2SLS centres <em>on the bias it was meant to remove</em>, not on the truth, and it scatters widely around it: the middle 80% of draws runs from &minus;2.06 to 5.54. The mean is undefined: just-identified 2SLS has no finite moments.</p>
       </div>
     </section>
       <section id="lab-d1-cell" style="padding: 24px 50px;">
