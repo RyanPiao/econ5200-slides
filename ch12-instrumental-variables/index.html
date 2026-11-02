@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=ddc38114a1691e7ac60af29951ddb31f">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=ee3fbb7ff8c4378a03f110dc08405e72">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instrumental Variables</title>
@@ -208,6 +208,7 @@
     </section>
     </section>
 
+    <section>
     <section id="the-trick" style="padding: 36px 60px;">
       <h2><i class="fa-solid fa-lever" style="color: var(--secondary-color);"></i> The Trick: Find a Lever</h2>
       <div class="content">
@@ -218,6 +219,16 @@
           <p style="font-size: 17pt;"><i class="fa-solid fa-scissors" style="color: var(--accent-color);"></i> An instrument <strong>discards</strong> most of your data, keeping only the variation you can defend, and paying for that defensibility in precision.</p>
         </div>
       </div>
+    </section>
+
+    <section id="trick-dag" style="padding: 30px 55px;">
+      <h2><i class="fa-solid fa-diagram-project" style="color: var(--secondary-color);"></i> Picture the Lever</h2>
+      <div class="content">
+        <p style="font-size: 15pt;">Ability pushes schooling and earnings together, so their link mixes the two. Proximity gives schooling a second push, one that ability does not drive.</p>
+        <div class="mathjax_ignore tex2jax_ignore" style="margin-top: 10px;"><svg viewBox="0 0 1160 420" width="100%" role="img" aria-label="Card&#8217;s lever as a diagram. Ability, unobserved, points into schooling and into earnings; schooling points into earnings. Click 1: growing up near a college points into schooling, plus 0.60 years, measured. Click 2: a crossed-out dashed arrow from growing up near a college straight to earnings, which must be missing and cannot be tested. Click 3: Stage 1 regresses schooling on Z and keeps predicted schooling; Stage 2 regresses earnings on predicted schooling, 25.9 percent a year against OLS 9.3 percent" xmlns="http://www.w3.org/2000/svg"><defs><marker id="tdag-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8C8580"/></marker><marker id="tdag-k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a3631"/></marker><marker id="tdag-e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f7a4f"/></marker><marker id="tdag-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b4553a"/></marker></defs><rect x="645.0" y="32" width="250" height="76" rx="12" fill="#ffffff" stroke="#8C8580" stroke-width="2" stroke-dasharray="8 5"/><text x="770" y="66" font-size="21" font-weight="700" text-anchor="middle" fill="#3a3631">Ability</text><text x="770" y="92" font-size="17" text-anchor="middle" fill="#6b6e75">unobserved</text><rect x="445.0" y="212" width="230" height="76" rx="12" fill="#f8f6f3" stroke="#3a3631" stroke-width="2"/><text x="560" y="246" font-size="21" font-weight="700" text-anchor="middle" fill="#3a3631">Schooling</text><text x="560" y="272" font-size="17" text-anchor="middle" fill="#6b6e75">years, D</text><rect x="875.0" y="212" width="230" height="76" rx="12" fill="#f8f6f3" stroke="#3a3631" stroke-width="2"/><text x="990" y="246" font-size="21" font-weight="700" text-anchor="middle" fill="#3a3631">Earnings</text><text x="990" y="272" font-size="17" text-anchor="middle" fill="#6b6e75">log wage, Y</text><line x1="715" y1="110" x2="610" y2="207" stroke="#8C8580" stroke-width="3" marker-end="url(#tdag-g)"/><line x1="825" y1="110" x2="935" y2="207" stroke="#8C8580" stroke-width="3" marker-end="url(#tdag-g)"/><line x1="677" y1="250" x2="870" y2="250" stroke="#3a3631" stroke-width="3.5" marker-end="url(#tdag-k)"/><text x="773" y="238" font-size="19" font-weight="700" text-anchor="middle" fill="#3a3631">&#946;?</text><text x="1000" y="120" font-size="17" text-anchor="middle" fill="#8C8580">the problem on slide 7</text><g class="fragment" data-fragment-index="1"><rect x="15.0" y="212" width="250" height="76" rx="12" fill="#eef5ee" stroke="#2f7a4f" stroke-width="2"/><text x="140" y="246" font-size="21" font-weight="700" text-anchor="middle" fill="#3a3631">Near a college</text><text x="140" y="272" font-size="17" text-anchor="middle" fill="#6b6e75">growing up, Z</text><line x1="267" y1="250" x2="440" y2="250" stroke="#2f7a4f" stroke-width="4" marker-end="url(#tdag-e)"/><text x="352" y="212" font-size="18" font-weight="700" text-anchor="middle" fill="#2f7a4f">+0.60 years</text><text x="352" y="234" font-size="17" text-anchor="middle" fill="#2f7a4f">measured: F = 59</text></g><g class="fragment" data-fragment-index="2"><path d="M 140 290 Q 565 440 990 290" fill="none" stroke="#b4553a" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#tdag-r)"/><g stroke="#b4553a" stroke-width="5" stroke-linecap="round"><line x1="551" y1="350" x2="579" y2="378"/><line x1="579" y1="350" x2="551" y2="378"/></g><text x="565" y="405" font-size="18" font-weight="700" text-anchor="middle" fill="#b4553a">must be missing: no road to earnings except through schooling</text></g><g class="fragment" data-fragment-index="3"><text x="352" y="160" font-size="18" font-weight="700" text-anchor="middle" fill="#2f7a4f">Stage 1: schooling on Z</text><text x="352" y="182" font-size="17" text-anchor="middle" fill="#2f7a4f">keep predicted schooling</text><text x="773" y="150" font-size="18" font-weight="700" text-anchor="middle" fill="#3a3631">Stage 2: earnings on</text><text x="773" y="171" font-size="17" text-anchor="middle" fill="#3a3631">predicted schooling</text><text x="773" y="202" font-size="18" font-weight="700" text-anchor="middle" fill="#2f7a4f">25.9% a year (OLS 9.3%)</text></g></svg></div>
+        <p class="fragment fade-up" data-fragment-index="4" style="font-size: 16pt; margin: 8px auto 0; max-width: 980px; text-align: center; color: var(--primary-color);">Green we can measure. Red has to be missing, and we can only argue it. The next slide names both.</p>
+      </div>
+    </section>
     </section>
 
     <section id="two-assumptions" style="padding: 36px 55px;">
