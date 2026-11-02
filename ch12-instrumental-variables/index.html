@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=bff3fdb4f2fd8c6f08f2ac0c9235a645">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=ddc38114a1691e7ac60af29951ddb31f">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instrumental Variables</title>
@@ -181,6 +181,7 @@
       <p style="font-size: 17pt; color: var(--muted-color); margin-top: 18px; font-style: italic;">Two assumptions. One you can test. One you must argue.</p>
     </section>
 
+    <section>
     <section id="endogeneity" style="padding: 36px 55px;">
       <h2><i class="fa-solid fa-link-slash" style="color: var(--danger-color);"></i> The Problem: Endogeneity</h2>
       <div class="content">
@@ -195,6 +196,16 @@
         </div>
         <p class="fragment fade-up" style="font-size: 16pt; margin-top: 16px; text-align: center; color: var(--primary-color);">More data estimates <strong>the wrong number</strong> more precisely. Ch 6's data defect identity, again.</p>
       </div>
+    </section>
+
+    <section id="endogeneity-picture" style="padding: 32px 55px;">
+      <h2><i class="fa-solid fa-chart-simple" style="color: var(--danger-color);"></i> Picture It: More Data, Same Wrong Answer</h2>
+      <div class="content">
+        <p style="font-size: 15pt;">A simulation built like Lab 12&rsquo;s. The true effect of $D$ on $Y$ is $\beta = 1$, and the unobserved $u$ raises both. Here $\text{Cov}(D_i,\varepsilon_i) = 2$ and $\text{Var}(D_i) = 2$.</p>
+        <div class="mathjax_ignore tex2jax_ignore" style="margin-top: 14px;"><svg viewBox="0 0 1160 330" width="100%" role="img" aria-label="OLS estimates from 500 simulated samples at each of three sample sizes. The true effect is 1.0. At n = 100 the middle 95 percent runs from 1.75 to 2.22; at n = 1,000 from 1.92 to 2.08; at n = 10,000 from 1.98 to 2.02. The bars shrink around 2.0 and never reach 1.0" xmlns="http://www.w3.org/2000/svg"><line x1="200" y1="262" x2="200" y2="270" stroke="#8C8580" stroke-width="1.5"/><text x="200" y="292" font-size="17" text-anchor="middle" fill="#6b6e75">0.5</text><line x1="420" y1="262" x2="420" y2="270" stroke="#8C8580" stroke-width="1.5"/><text x="420" y="292" font-size="17" text-anchor="middle" fill="#6b6e75">1.0</text><line x1="640" y1="262" x2="640" y2="270" stroke="#8C8580" stroke-width="1.5"/><text x="640" y="292" font-size="17" text-anchor="middle" fill="#6b6e75">1.5</text><line x1="860" y1="262" x2="860" y2="270" stroke="#8C8580" stroke-width="1.5"/><text x="860" y="292" font-size="17" text-anchor="middle" fill="#6b6e75">2.0</text><line x1="1080" y1="262" x2="1080" y2="270" stroke="#8C8580" stroke-width="1.5"/><text x="1080" y="292" font-size="17" text-anchor="middle" fill="#6b6e75">2.5</text><line x1="200" y1="262" x2="1080" y2="262" stroke="#8C8580" stroke-width="1.5"/><text x="640" y="322" font-size="17" text-anchor="middle" fill="#6b6e75">OLS estimate of &#946;, one per simulated sample</text><line x1="420" y1="42" x2="420" y2="262" stroke="#2f7a4f" stroke-width="2.5" stroke-dasharray="7 5"/><text x="420" y="28" font-size="19" font-weight="700" text-anchor="middle" fill="#2f7a4f">truth &#946; = 1.0</text><line x1="860" y1="42" x2="860" y2="262" stroke="#b4553a" stroke-width="2.5" stroke-dasharray="7 5"/><text x="860" y="28" font-size="19" font-weight="700" text-anchor="middle" fill="#b4553a">OLS settles at 1 + 2/2 = 2.0</text><text x="0" y="87" font-size="19" fill="#4a4540">n = 100</text><rect x="750.2" y="71" width="206.1" height="18" rx="9" fill="#e8c4b6"/><circle cx="858.6" cy="80" r="8" fill="#b4553a"/><text x="970.3" y="87" font-size="17" fill="#6b6e75">1.75 to 2.22</text><text x="0" y="157" font-size="19" fill="#4a4540">n = 1,000</text><rect x="826.9" y="141" width="66.4" height="18" rx="9" fill="#e8c4b6"/><circle cx="859.9" cy="150" r="8" fill="#b4553a"/><text x="907.3" y="157" font-size="17" fill="#6b6e75">1.92 to 2.08</text><text x="0" y="227" font-size="19" fill="#4a4540">n = 10,000</text><rect x="849.3" y="211" width="21.2" height="18" rx="9" fill="#e8c4b6"/><circle cx="859.9" cy="220" r="8" fill="#b4553a"/><text x="884.5" y="227" font-size="17" fill="#6b6e75">1.98 to 2.02</text></svg></div>
+        <p class="fragment fade-up" style="font-size: 16pt; margin-top: 12px; text-align: center; color: var(--primary-color);">Each bar holds the middle 95% of 500 estimates. The bars shrink with $n$, around 2.0. None of the 1,500 gets below 1.58.</p>
+      </div>
+    </section>
     </section>
 
     <section id="the-trick" style="padding: 36px 60px;">
