@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=c25c85c0cc190783724fb0422bb0a846">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=bff3fdb4f2fd8c6f08f2ac0c9235a645">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instrumental Variables</title>
@@ -200,9 +200,10 @@
     <section id="the-trick" style="padding: 36px 60px;">
       <h2><i class="fa-solid fa-lever" style="color: var(--secondary-color);"></i> The Trick: Find a Lever</h2>
       <div class="content">
-        <p class="text-lg" style="line-height: 1.6;">Suppose something pushes people into more schooling for a reason that has nothing to do with how much they would earn. <strong>Growing up within commuting distance of a college</strong>, say. It makes college cheaper, so more people go. It does not, by itself, make you a more productive worker.</p>
-        <p class="text-lg" style="line-height: 1.6; margin-top: 16px;">Then the variation in schooling <em>caused by</em> proximity is clean &mdash; as good as randomly assigned. Throw away all the other variation, the part driven by ability and ambition and family money, and use only that slice.</p>
-        <div class="fragment fade-up" style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 18px 24px; margin-top: 20px;">
+        <p class="text-lg" style="line-height: 1.55;">Suppose something pushes people into more schooling for a reason that has nothing to do with how much they would earn. <strong>Growing up within commuting distance of a college</strong>, say. It makes college cheaper, so more people go. It does not, by itself, make you a more productive worker.</p>
+        <p class="text-lg" style="line-height: 1.55; margin-top: 12px;">Then the variation in schooling <em>caused by</em> proximity is clean, as good as randomly assigned. Throw away all the rest and use only that slice.</p>
+        <div class="mathjax_ignore tex2jax_ignore" style="margin-top: 18px;"><svg viewBox="0 0 1160 150" width="100%" role="img" aria-label="Differences in schooling across Card's 3,010 men after experience: about 98 percent tangled up with ability, ambition, family money and luck is thrown away; about 2 percent, the part proximity explains, is kept" xmlns="http://www.w3.org/2000/svg"><text x="0" y="17" font-size="15" letter-spacing="1" fill="#6b6e75">DIFFERENCES IN SCHOOLING ACROSS CARD&#8217;S 3,010 MEN, AFTER EXPERIENCE</text><rect x="0" y="30" width="1138" height="54" fill="#ddd6cf"/><rect x="1138" y="30" width="22" height="54" fill="#2f7a4f"/><text x="569" y="63" font-size="19" text-anchor="middle" fill="#4a4540">ability &#183; ambition &#183; family money &#183; luck</text><line x1="1149" y1="86" x2="1149" y2="100" stroke="#2f7a4f" stroke-width="2"/><text x="0" y="122" font-size="19" fill="#8C8580">Thrown away: about 98%, tangled up with what you would earn</text><text x="1160" y="122" font-size="19" font-weight="700" text-anchor="end" fill="#2f7a4f">Kept: about 2%, the part proximity explains</text><text x="1160" y="144" font-size="15" text-anchor="end" fill="#8C8580">first-stage partial R&#178; = 0.019 (Card 1995 data, controlling for experience)</text></svg></div>
+        <div class="fragment fade-up" style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 14px 24px; margin-top: 14px;">
           <p style="font-size: 17pt;"><i class="fa-solid fa-scissors" style="color: var(--accent-color);"></i> An instrument <strong>discards</strong> most of your data, keeping only the variation you can defend, and paying for that defensibility in precision.</p>
         </div>
       </div>
@@ -217,12 +218,14 @@
             <p style="font-size: 17pt; text-align: center; margin: 12px 0;">$\text{Cov}(Z_i, D_i) \neq 0$</p>
             <p style="font-size: 14pt;"><strong>Interpretation:</strong> the instrument actually moves the treatment.</p>
             <p style="font-size: 15pt; margin-top: 10px; color: var(--success-color);"><strong>TESTABLE</strong> &mdash; you observe both $Z_i$ and $D_i$.</p>
+            <p style="font-size: 14pt; margin-top: 10px; border-top: 1px solid #cfe0cf; padding-top: 8px;"><strong>Proximity:</strong> men who grew up near a college got 0.60 more years of schooling. You can measure that: first-stage $F = 59$.</p>
           </div>
           <div style="background: #fdf0ea; border-radius: 10px; padding: 20px 22px; border-left: 4px solid var(--danger-color);">
             <p style="font-size: 17pt; font-weight: 700; color: var(--danger-color);">Exclusion (validity)</p>
             <p style="font-size: 17pt; text-align: center; margin: 12px 0;">$\text{Cov}(Z_i, \varepsilon_i) = 0$</p>
             <p style="font-size: 14pt;"><strong>Interpretation:</strong> $Z_i$ reaches $Y_i$ <em>only</em> through $D_i$.</p>
             <p style="font-size: 15pt; margin-top: 10px; color: var(--danger-color);"><strong>UNTESTABLE IN PRINCIPLE</strong> &mdash; $\varepsilon_i$ is unobservable by construction.</p>
+            <p style="font-size: 14pt; margin-top: 10px; border-top: 1px solid #f0d5c8; padding-top: 8px;"><strong>Proximity:</strong> college towns are also cities with better-paid jobs. Did proximity raise earnings that way too? No regression can say.</p>
           </div>
         </div>
         <div class="fragment fade-up" style="background: #f8f6f3; border-left: 4px solid #7C3A5F; border-radius: 8px; padding: 16px 22px; margin-top: 18px;">
@@ -244,7 +247,7 @@
           <p style="font-size: 14pt; color: var(--accent-color); text-align: center; margin-top: 6px;"><strong>Interpretation:</strong> the effect of the instrument on the outcome, divided by its effect on the treatment. That ratio is the entire method.</p>
         </div>
         <div class="fragment fade-up" style="background: #eef5ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 14px 22px; margin-top: 14px;">
-          <p style="font-size: 15pt;"><strong>Example.</strong> A nudge raises college attendance by 8pp and raises average earnings by 1.6%. If the nudge touches earnings <em>only</em> through college, the effect on those it moved is $0.016 / 0.08 = 20\%$. You scale the nudge's total effect by the fraction who actually complied.</p>
+          <p style="font-size: 15pt;"><strong>Example: Card's data.</strong> Men who grew up near a college have 0.60 more years of schooling and earn 15.5% more (holding experience fixed). If proximity touches earnings <em>only</em> through schooling:</p><div class="mathjax_ignore tex2jax_ignore" style="margin-top: 10px;"><svg viewBox="0 -5 1160 130" width="100%" role="img" aria-label="Reduced form plus 15.5 percent earnings, divided by first stage plus 0.60 years of schooling, equals 25.9 percent per year of schooling for the men proximity moved" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="310" height="120" rx="10" fill="#ffffff" stroke="#2E6DB4" stroke-width="2"/><text x="155" y="27" font-size="16" text-anchor="middle" letter-spacing="1" fill="#6b6e75">REDUCED FORM</text><text x="155" y="64" font-size="30" font-weight="700" text-anchor="middle" fill="#2E6DB4">+15.5%</text><text x="155" y="106" font-size="17" text-anchor="middle" fill="#2b2d33">average earnings</text><text x="365" y="72" font-size="44" text-anchor="middle" fill="#2b2d33">&#247;</text><rect x="425" y="0" width="310" height="120" rx="10" fill="#ffffff" stroke="#2E6DB4" stroke-width="2"/><text x="580" y="27" font-size="16" text-anchor="middle" letter-spacing="1" fill="#6b6e75">FIRST STAGE</text><text x="580" y="64" font-size="30" font-weight="700" text-anchor="middle" fill="#2E6DB4">+0.60 years</text><text x="580" y="106" font-size="17" text-anchor="middle" fill="#2b2d33">of schooling</text><text x="790" y="72" font-size="44" text-anchor="middle" fill="#2b2d33">=</text><rect x="850" y="0" width="310" height="120" rx="10" fill="#ffffff" stroke="#2f7a4f" stroke-width="2"/><text x="1005" y="27" font-size="16" text-anchor="middle" letter-spacing="1" fill="#6b6e75">PER YEAR OF SCHOOLING</text><text x="1005" y="64" font-size="30" font-weight="700" text-anchor="middle" fill="#2f7a4f">25.9%</text><text x="1005" y="106" font-size="17" text-anchor="middle" fill="#2b2d33">0.155 / 0.60</text></svg></div><p style="font-size: 15pt; margin-top: 8px;">The ratio is earnings per extra year of schooling, for the men proximity moved: Card's 2SLS estimate.</p>
         </div>
       </div>
     </section>
@@ -510,7 +513,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
             <p style="font-size: 14.5pt;"><strong>Story 2 &mdash; measurement error.</strong> Classical error in self-reported schooling attenuates OLS toward zero; IV corrects for it.</p>
           </div>
         </div>
-        <p style="font-size: 15pt; margin-top: 16px;">Both are respectable. But Lal, Lockhart, Xu &amp; Zu (2024) replicated <strong>67 IV studies</strong> and found 2SLS $\gg$ OLS in the majority &mdash; and something worse:</p>
+        <p style="font-size: 15pt; margin-top: 16px;">Both are respectable. But Lal, Lockhart, Xu &amp; Zu (2024) replicated <strong>67 political-science IV studies</strong> and found 2SLS $\gg$ OLS in the majority &mdash; and something worse:</p>
         <div class="fragment fade-up" style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 16px 22px; margin-top: 12px;">
           <p style="font-size: 16pt;"><i class="fa-solid fa-arrow-trend-down" style="color: var(--danger-color);"></i> <strong>The ratio is negatively correlated with instrument strength</strong> wherever the instrument was not experimentally generated. Under robust inference, roughly <strong>19&ndash;30%</strong> of published 2SLS estimates are underpowered.</p>
         </div>
@@ -582,7 +585,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
           </div>
         </div>
         <div class="fragment fade-up" style="background: #f8f6f3; border-left: 4px solid #7C3A5F; border-radius: 8px; padding: 16px 22px; margin-top: 18px;">
-          <p style="font-size: 15.5pt;"><strong>So a different instrument for the same treatment estimates a different parameter.</strong> Card's proximity moves people for whom distance was the binding constraint &mdash; plausibly poorer, liquidity-constrained, plausibly higher return. Angrist &amp; Krueger's quarter-of-birth moves people who wanted to leave at the minimum legal age &mdash; a very different group with plausibly a much lower return.</p>
+          <p style="font-size: 15.5pt;"><strong>So a different instrument for the same treatment estimates a different parameter.</strong> Card's proximity moves people for whom distance was the binding constraint &mdash; plausibly poorer, liquidity-constrained, plausibly higher return. Angrist &amp; Krueger's quarter-of-birth moves people who wanted to leave at the minimum legal age &mdash; a very different group with plausibly a different return.</p>
           <p style="font-size: 16pt; margin-top: 10px; color: #7C3A5F;"><strong>Two valid instruments, two different numbers, and neither is wrong.</strong> They are estimates of different estimands.</p>
         </div>
       </div>
@@ -597,7 +600,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
         </div>
         <p style="font-size: 15.5pt; margin-top: 16px;">Monotonicity is what makes the <strong>denominator interpretable</strong>. Without it the first stage is a <em>net</em> movement &mdash; some people pushed in, others pushed out &mdash; and the ratio no longer corresponds to any average effect at all.</p>
         <div class="fragment fade-up" style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 15px 22px; margin-top: 16px;">
-          <p style="font-size: 15pt;"><strong>Where this matters: judge-leniency designs.</strong> Cases are randomly assigned to decision-makers with different approval rates. Frandsen, Lefgren &amp; Leslie (2023) show that if judges are Bayesian decision-makers weighing multidimensional signals, average monotonicity is routinely violated &mdash; a lenient judge may deny a case a strict judge would grant, because they weight the evidence differently. When that happens the 2SLS estimate loses its causal interpretation <em>entirely</em>.</p>
+          <p style="font-size: 15pt;"><strong>Where this matters: judge-leniency designs.</strong> Cases are randomly assigned to decision-makers with different approval rates. Strict monotonicity is hard to believe when judges weigh evidence differently &mdash; a lenient judge may deny a case a strict judge would grant. Frandsen, Lefgren &amp; Leslie (2023) relax it to <em>average</em> monotonicity and test it jointly with exclusion. When that happens the 2SLS estimate loses its causal interpretation <em>entirely</em>.</p>
         </div>
       </div>
     </section>
@@ -666,7 +669,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
         <div style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 16px 22px; margin-top: 14px;">
           <p style="font-size: 16pt;">The problem is that its standard errors suggest more confidence than you have &mdash; and as the instrument gets very weak, the estimate itself slides <strong>toward OLS</strong>.</p>
         </div>
-        <p class="fragment fade-up" style="font-size: 15.5pt; margin-top: 16px; line-height: 1.6;">IV <strong>divides by the first stage</strong>. As the first stage approaches zero you are dividing by something small and noisy. Any tiny correlation between instrument and error &mdash; <em>any small breach of exclusion</em> &mdash; gets divided by that small number and blown up.</p>
+        <p class="fragment fade-up" style="font-size: 15.5pt; margin-top: 16px; line-height: 1.6;">IV <strong>divides by the first stage</strong>. As the first stage approaches zero you are dividing by something small and noisy. Any chance correlation between instrument and error in your sample, and <em>any small breach of exclusion</em>, gets divided by that small number and blown up.</p>
         <p class="fragment fade-up" style="font-size: 16pt; margin-top: 14px; text-align: center; color: var(--primary-color);">In the limit of a useless instrument, <strong>2SLS converges on the OLS estimate you were trying to escape.</strong></p>
       </div>
     </section>
@@ -785,7 +788,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
               <p style="font-size: 14pt;">Their <strong>$tF$ procedure</strong> gives an adjusted standard error as a smooth function of the first-stage $F$. Keep $F$ near 10 and you must inflate the critical value from <strong>1.96 to about 3.43</strong> to preserve valid inference.</p>
             </div>
             <div style="background: #eef5ee; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--success-color);">
-              <p style="font-size: 14pt;"><strong>And use an <em>effective</em> $F$.</strong> The conventional first-stage $F$ assumes homoskedastic, unclustered errors. Real data have neither. Montiel Olea&ndash;Pflueger (Andrews, Stock &amp; Sun 2019).</p>
+              <p style="font-size: 14pt;"><strong>And use an <em>effective</em> $F$.</strong> The conventional first-stage $F$ assumes homoskedastic, unclustered errors. Real data have neither. Montiel Olea &amp; Pflueger (2013); see Andrews, Stock &amp; Sun (2019).</p>
             </div>
           </div>
         </div>
@@ -810,8 +813,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
       <h2><i class="fa-solid fa-shield-halved" style="color: var(--success-color);"></i> Report a Weak-Instrument-Robust Confidence Set</h2>
       <div class="content">
         <p style="font-size: 15pt;">Anderson&ndash;Rubin sidesteps the whole problem by <strong>never dividing by the first stage</strong>. Under $H_0: \beta = \beta_0$, the restricted residual $Y_i - \beta_0 D_i$ must be uncorrelated with $Z_i$. Test that directly, sweep a grid of candidate $\beta_0$, and keep every value you cannot reject.</p>
-        <pre style="font-size: 14pt; background: #f8f6f3; border-radius: 8px; padding: 14px 20px; margin-top: 12px;"><code>Anderson-Rubin 95% CI: [0.2020, 0.3390]
-Conventional Wald CI:  [0.1926, 0.3248]</code></pre>
+        <div class="mathjax_ignore tex2jax_ignore" style="margin-top: 14px;"><svg viewBox="0 -5 1160 155" width="100%" role="img" aria-label="Card: Wald 95% interval 0.1926 to 0.3248; Anderson-Rubin 95% set 0.2020 to 0.3390, shifted up and about 4% wider" xmlns="http://www.w3.org/2000/svg"><text x="0" y="31" font-size="20" fill="#2b2d33">Wald (conventional)</text><rect x="403.1" y="14" width="444.2" height="24" rx="5" style="fill:var(--secondary-color)" opacity="0.85"/><text x="395.1" y="32" font-size="17" text-anchor="end" style="fill:var(--secondary-color)">0.1926</text><text x="855.3" y="32" font-size="17" text-anchor="start" style="fill:var(--secondary-color)">0.3248</text><text x="0" y="79" font-size="20" fill="#2b2d33">Anderson&#8211;Rubin</text><rect x="434.7" y="62" width="460.3" height="24" rx="5" style="fill:var(--success-color)" opacity="0.85"/><text x="426.7" y="80" font-size="17" text-anchor="end" style="fill:var(--success-color)">0.2020</text><text x="903.0" y="80" font-size="17" text-anchor="start" style="fill:var(--success-color)">0.3390</text><line x1="260" y1="112" x2="1100" y2="112" stroke="#8a8d93" stroke-width="1.5"/><line x1="260.0" y1="112" x2="260.0" y2="119" stroke="#8a8d93" stroke-width="1.5"/><text x="260.0" y="140" font-size="16" text-anchor="middle" fill="#6b6e75">0.15</text><line x1="428.0" y1="112" x2="428.0" y2="119" stroke="#8a8d93" stroke-width="1.5"/><text x="428.0" y="140" font-size="16" text-anchor="middle" fill="#6b6e75">0.20</text><line x1="596.0" y1="112" x2="596.0" y2="119" stroke="#8a8d93" stroke-width="1.5"/><text x="596.0" y="140" font-size="16" text-anchor="middle" fill="#6b6e75">0.25</text><line x1="764.0" y1="112" x2="764.0" y2="119" stroke="#8a8d93" stroke-width="1.5"/><text x="764.0" y="140" font-size="16" text-anchor="middle" fill="#6b6e75">0.30</text><line x1="932.0" y1="112" x2="932.0" y2="119" stroke="#8a8d93" stroke-width="1.5"/><text x="932.0" y="140" font-size="16" text-anchor="middle" fill="#6b6e75">0.35</text><line x1="1100.0" y1="112" x2="1100.0" y2="119" stroke="#8a8d93" stroke-width="1.5"/><text x="1100.0" y="140" font-size="16" text-anchor="middle" fill="#6b6e75">0.40</text></svg></div>
         <p style="font-size: 14.5pt; margin-top: 10px;">At Card's $F = 59$ the two are close &mdash; the AR set is shifted up and about 4% wider. That is the expected picture for a moderately strong instrument, and it is reassuring here.</p>
         <div class="fragment fade-up" style="background: #eef5ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 15px 22px; margin-top: 14px;">
           <p style="font-size: 15.5pt;">The value of AR is what it does when the instrument is <em>really</em> weak: the set becomes <strong>unbounded, or empty</strong> &mdash; the method correctly reporting that the data do not identify $\beta$.</p>
