@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=28aa295cd13bdb2b9fbc8302a12148d2">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=ae4ccc2aa86da6d2107c0b0046d6a12f">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instrumental Variables</title>
@@ -854,6 +854,7 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
       </div>
     </section>
 
+    <section>
     <section id="anderson-rubin" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-shield-halved" style="color: var(--success-color);"></i> Report a Weak-Instrument-Robust Confidence Set</h2>
       <div class="content">
@@ -865,6 +866,16 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
           <p style="font-size: 15.5pt; margin-top: 8px; color: var(--success-color);"><strong>A Wald interval never tells you that. An AR set does.</strong></p>
         </div>
       </div>
+    </section>
+
+    <section id="ar-strong-weak" style="padding: 30px 50px;">
+      <h2><i class="fa-solid fa-scale-balanced" style="color: var(--success-color);"></i> AR With a Strong Lever, and a Weak One</h2>
+      <div class="content">
+        <p style="font-size: 14.5pt; margin: 0;">Lab 12&rsquo;s simulation, true $\beta = 1$ (the dotted line), the same draws as the simulation table. The green curve is the AR statistic for each candidate $\beta_0$; the set keeps every $\beta_0$ below the dashed line.</p>
+        <img src="figures/figure_005_ar_strong_weak.png" alt="Two panels. Strong lever, pi 1, F 954: the AR curve dips below 3.84 only near 1, AR set 0.92 to 1.12, Wald 0.93 to 1.13. Weak lever, pi 0.05, F 2.4: the AR curve never reaches 3.84, so every beta fits and the set is unbounded, while Wald shows a finite interval from minus 0.09 to 3.25" style="width: 88%; display: block; margin: 6px auto 0; border-radius: 6px;">
+        <p class="fragment fade-up" style="font-size: 15.5pt; margin: 8px auto 0; max-width: 1040px; text-align: center; color: var(--primary-color);">Weak lever: Wald reports a tidy interval and a t of 1.86. AR reports that the data cannot tell you $\beta$.</p>
+      </div>
+    </section>
     </section>
 
     <section id="divider-nearly-true" class="section-divider" data-state="is-section-divider">
@@ -895,6 +906,15 @@ linearmodels  coef=0.2587  SE=0.0340  t=7.61   (classical)</code></pre>
           <div class="mock colab" data-src="cells/ch12.json" data-cell="19" data-lines="3-5" data-size="13pt" style="max-width: 1100px;"></div>
         </div>
       </section>
+
+    <section id="card-plausibly-exogenous" style="padding: 28px 50px;">
+      <h2><i class="fa-solid fa-sliders" style="color: var(--accent-color);"></i> Plausibly Exogenous, on Card</h2>
+      <div class="content">
+        <p style="font-size: 14.5pt; margin: 0;">Let growing up near a college raise wages directly by $\gamma$. Subtract $\gamma \times$ nearc4 from log wage and re-run 2SLS, for each $\gamma$. Each 0.01 lowers the estimate by $0.01 \div 0.60 \approx 0.017$.</p>
+        <img src="figures/figure_006_card_plausibly_exogenous.png" alt="Card with experience controls: the 2SLS return to schooling falls in a straight line from 25.9 percent at gamma 0, reaches OLS's 9.3 percent at gamma about 0.10, and its 95 percent interval reaches 0 at gamma about 0.125" style="width: 86%; display: block; margin: 6px auto 0; border-radius: 6px;">
+        <p class="fragment fade-up" style="font-size: 15.5pt; margin: 6px auto 0; max-width: 1040px; text-align: center; color: var(--primary-color);">IV stays above OLS unless proximity alone raises wages about 10%. Is 10% plausible?</p>
+      </div>
+    </section>
     </section>
 
     <section id="portable-pattern" style="padding: 34px 55px;">

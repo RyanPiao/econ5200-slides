@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=b68d29120311503e83d92186887f20e3">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=f029ef2f8d320df8a83f615d9d1d9cfa">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -603,7 +603,7 @@ n used: 2,112 left, 2,175 right</code></pre>
             <img src="figures/figure_004_bias_variance.png" alt="Absolute bias rising with bandwidth, Monte Carlo standard deviation falling, and the uniform-kernel RMSE forming a U-shape minimised at h equals 20; a dashed triangular-kernel RMSE curve, rdrobust&rsquo;s kernel, is lowest at h equals 23 and carries rdrobust&rsquo;s choice of 16.1" style="width: 100%; border-radius: 6px;">
             <div>
               <div style="background: #f0f5f8; border-radius: 8px; padding: 13px 18px; border-left: 4px solid var(--secondary-color);">
-                <p style="font-size: 14pt; line-height: 1.55;"><strong>At $h = 3$:</strong> bias is 0.3% of the truth &mdash; and the MC sd is <strong>0.031, nearly 40% of the jump itself</strong>. You could not distinguish the effect from zero in most single draws.</p>
+                <p style="font-size: 14pt; line-height: 1.55;"><strong>At $h = 3$:</strong> bias is 0.3% of the truth &mdash; and the MC sd is <strong>0.031, nearly 40% of the jump itself</strong>. About one draw in four is not significant at 5%.</p>
               </div>
               <div style="background: #fdf3f0; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--danger-color);">
                 <p style="font-size: 14pt; line-height: 1.55;"><strong>At $h = 50$:</strong> the sd has fallen to 0.007 and the estimate is <strong>barely half the truth</strong>. Precisely wrong.</p>
@@ -983,7 +983,7 @@ density test p = 0.447</code></pre>
             </div>
             <div style="background: #f0f5f8; border-radius: 8px; padding: 13px 17px; border-left: 4px solid var(--success-color);">
               <p style="font-size: 14pt; font-weight: 700; color: var(--success-color);">3. A real one</p>
-              <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 7px;"><strong>Lee, Moretti &amp; Butler (2004)</strong>, &ldquo;Do Voters Affect or Elect Policies?&rdquo;, <em>QJE</em> 119(3). US House, 1946&ndash;1995, at the 50% Democratic vote-share threshold.</p>
+              <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 7px;"><strong>Lee, Moretti &amp; Butler (2004)</strong>, &ldquo;Do Voters Affect or Elect Policies?&rdquo;, <em>QJE</em> 119(3). US House races at the 50% Democratic vote-share threshold; the lab&rsquo;s file covers 1948&ndash;1990.</p>
             </div>
           </div>
           <div style="background: #fdf3f0; border-radius: 8px; padding: 13px 20px; margin-top: 13px; border-left: 4px solid var(--danger-color);">
