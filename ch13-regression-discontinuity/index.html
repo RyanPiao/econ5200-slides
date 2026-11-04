@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=b7d6f38fbd5d287488044f95c86d9a65">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=e0178a6c0d35a890b8e1a601a83cb98d">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -220,11 +220,11 @@
         <h2><i class="fa-solid fa-chart-line" style="color: var(--secondary-color);"></i> Draw It Before You Write It</h2>
         <div class="content">
           <div style="display: grid; grid-template-columns: 1.55fr 1fr; gap: 22px; align-items: start;">
-            <img src="figures/figure_001_rd_design.png" alt="Scatter of first-year retention against household income with a vertical cutoff at 75,000 dollars, separate local linear fits either side, and an arrow marking the vertical gap between the two limits" style="width: 100%; border-radius: 6px;">
+            <div class="r-stack" style=""><img src="figures/figure_001_rd_design_s1.png" alt="Scatter of first-year retention against household income with a vertical cutoff at 75,000 dollars, separate local linear fits either side, and an arrow marking the vertical gap between the two limits" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_001_rd_design_s2.png" alt="" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="2" src="figures/figure_001_rd_design_s3.png" alt="" style="width: 100%; border-radius: 6px;"></div>
             <div>
               <p style="font-size: 14.5pt; line-height: 1.6;">Administrative rules are arbitrary at the margin. Nobody believes <strong><span class="tex2jax_ignore">&#36;74,999</span></strong> and <strong><span class="tex2jax_ignore">&#36;75,001</span></strong> describe meaningfully different families.</p>
               <p style="font-size: 14.5pt; line-height: 1.6; margin-top: 12px;">The number was chosen because a number had to be chosen. <strong>That arbitrariness is what the design uses.</strong></p>
-              <div class="fragment fade-up" style="background: #f0f5f8; border-radius: 8px; padding: 14px 16px; margin-top: 16px; border-left: 4px solid var(--accent-color);">
+              <div class="fragment fade-up" data-fragment-index="2" style="background: #f0f5f8; border-radius: 8px; padding: 14px 16px; margin-top: 16px; border-left: 4px solid var(--accent-color);">
                 <p style="font-size: 14pt; line-height: 1.55;">Fit each side separately. If the outcome is smooth in the running variable <em>except</em> for a jump at the threshold, <strong>the jump is the effect</strong> &mdash; because nothing else about people changes discontinuously at an arbitrary number.</p>
               </div>
             </div>
@@ -402,7 +402,7 @@
     <section id="sign-convention" style="padding: 24px 44px;">
         <h2><i class="fa-solid fa-arrow-right-arrow-left" style="color: var(--danger-color);"></i> Right Minus Left &mdash; Always</h2>
         <div class="content">
-          <img src="figures/figure_002_sign_convention.png" alt="Two panels of the same threshold programme: with the raw running variable the treated units sit on the left and the estimate is minus 0.0541, and re-centred so treatment lies above zero the estimate is plus 0.0541" style="width: 78%; margin: 0 auto; display: block; border-radius: 6px;">
+          <div class="r-stack" style="width: 78%; margin: 0 auto;"><img src="figures/figure_002_sign_convention_s1.png" alt="Two panels of the same threshold programme: with the raw running variable the treated units sit on the left and the estimate is minus 0.0541, and re-centred so treatment lies above zero the estimate is plus 0.0541" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_002_sign_convention_s2.png" alt="" style="width: 100%; border-radius: 6px;"></div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 12px; align-items: start;">
             <div style="background: #fdf3f0; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--danger-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;">Our programme covers tuition <strong>at or below <span class="tex2jax_ignore">&#36;75,000</span></strong>. Written the natural way &mdash; <code>R = income - 75_000</code>, <code>D = (R &lt;= 0)</code> &mdash; it is substantively correct and <strong>gives the wrong sign</strong>. <code>rdrobust</code> estimates $\lim_{r \downarrow c} - \lim_{r \uparrow c}$: it reports the jump as you cross <em>upward into ineligibility</em>.</p>
@@ -601,14 +601,14 @@
         <h2><i class="fa-solid fa-crosshairs" style="color: var(--accent-color);"></i> Why Local, and Not Global</h2>
         <div class="content">
           <div style="display: grid; grid-template-columns: 1.45fr 1fr; gap: 20px; align-items: start;">
-            <img src="figures/figure_003_global_vs_local.png" alt="An S-shaped outcome in which a global linear fit with a treatment dummy manufactures a negative jump at the cutoff while a local linear fit inside the bandwidth recovers the true positive jump" style="width: 100%; border-radius: 6px;">
+            <div class="r-stack" style=""><img src="figures/figure_003_global_vs_local_s1.png" alt="An S-shaped outcome in which a global linear fit with a treatment dummy manufactures a negative jump at the cutoff while a local linear fit inside the bandwidth recovers the true positive jump" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_003_global_vs_local_s2.png" alt="" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="2" src="figures/figure_003_global_vs_local_s3.png" alt="" style="width: 100%; border-radius: 6px;"></div>
             <div>
               <p style="font-size: 14pt; line-height: 1.55;">A global fit must explain the outcome across the <em>entire</em> support. Whatever form it adopts to fit households at <span class="tex2jax_ignore">&#36;45,000</span> and <span class="tex2jax_ignore">&#36;105,000</span> is then <strong>imposed at the cutoff</strong>, where you actually care.</p>
-              <p style="font-size: 14pt; line-height: 1.55; margin-top: 10px;">A straight line cannot bend to follow an S-curve, so it does the only thing it can: it explains the curvature by <strong>inventing a jump</strong>.</p>
-              <div class="fragment fade-up" style="background: #f0f5f8; border-radius: 8px; padding: 13px 17px; margin-top: 13px; border-left: 4px solid var(--secondary-color);">
+              <p class="fragment fade-up" data-fragment-index="1" style="font-size: 14pt; line-height: 1.55; margin-top: 10px;">A straight line cannot bend to follow an S-curve, so it does the only thing it can: it explains the curvature by <strong>inventing a jump</strong>.</p>
+              <div class="fragment fade-up" data-fragment-index="2" style="background: #f0f5f8; border-radius: 8px; padding: 13px 17px; margin-top: 13px; border-left: 4px solid var(--secondary-color);">
                 <p style="font-size: 13.5pt; line-height: 1.5;"><strong>RD is local twice over.</strong> Local in <em>estimation</em> &mdash; only observations inside $h$ contribute, nearer ones count more (<code>kernel='tri'</code>). Local in <em>interpretation</em> &mdash; the estimand is defined at the cutoff. You get a very clean answer to a very small question.</p>
               </div>
-              <p style="font-size: 13pt; line-height: 1.5; margin-top: 11px; color: var(--muted-color);">Gelman &amp; Imbens (2019): high-degree global polynomials are not the fix &mdash; degree three and above behave erratically near the data boundaries and give extreme weight to distant outliers.</p>
+              <p class="fragment fade-up" data-fragment-index="2" style="font-size: 13pt; line-height: 1.5; margin-top: 11px; color: var(--muted-color);">Gelman &amp; Imbens (2019): high-degree global polynomials are not the fix &mdash; degree three and above behave erratically near the data boundaries and give extreme weight to distant outliers.</p>
             </div>
           </div>
         </div>
@@ -670,15 +670,15 @@
         <h2><i class="fa-solid fa-chart-area" style="color: var(--accent-color);"></i> Both Ends of the Grid Are Wrong</h2>
         <div class="content">
           <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: start;">
-            <img src="figures/figure_004_bias_variance.png" alt="Absolute bias rising with bandwidth, Monte Carlo standard deviation falling, and the uniform-kernel RMSE forming a U-shape minimised at h equals 20; a dashed triangular-kernel RMSE curve, rdrobust&rsquo;s kernel, is lowest at h equals 23 and carries rdrobust&rsquo;s choice of 16.1" style="width: 100%; border-radius: 6px;">
+            <div class="r-stack" style=""><img src="figures/figure_004_bias_variance_s1.png" alt="Absolute bias rising with bandwidth, Monte Carlo standard deviation falling, and the uniform-kernel RMSE forming a U-shape minimised at h equals 20; a dashed triangular-kernel RMSE curve, rdrobust&rsquo;s kernel, is lowest at h equals 23 and carries rdrobust&rsquo;s choice of 16.1" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_004_bias_variance_s2.png" alt="" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="2" src="figures/figure_004_bias_variance_s3.png" alt="" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="3" src="figures/figure_004_bias_variance_s4.png" alt="" style="width: 100%; border-radius: 6px;"></div>
             <div>
               <div style="background: #f0f5f8; border-radius: 8px; padding: 13px 18px; border-left: 4px solid var(--secondary-color);">
                 <p style="font-size: 14pt; line-height: 1.55;"><strong>At $h = 3$:</strong> bias is 0.3% of the truth &mdash; and the MC sd is <strong>0.031, nearly 40% of the jump itself</strong>. About one draw in four is not significant at 5%.</p>
               </div>
-              <div style="background: #fdf3f0; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--danger-color);">
+              <div class="fragment fade-up" data-fragment-index="1" style="background: #fdf3f0; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--danger-color);">
                 <p style="font-size: 14pt; line-height: 1.55;"><strong>At $h = 50$:</strong> the sd has fallen to 0.007 and the estimate is <strong>barely half the truth</strong>. Precisely wrong.</p>
               </div>
-              <div style="background: #eef4ee; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--success-color);">
+              <div class="fragment fade-up" data-fragment-index="2" style="background: #eef4ee; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--success-color);">
                 <p style="font-size: 14pt; line-height: 1.55;"><strong>RMSE minimised near $h = 20$</strong> for this equal-weight table. <code>rdrobust</code> chose <strong>16.1</strong> with a triangular kernel, so the two numbers answer different questions.</p>
               </div>
             </div>
@@ -724,16 +724,16 @@
       <section id="curvature-placement" style="padding: 22px 44px;">
         <h2><i class="fa-solid fa-flask" style="color: var(--accent-color);"></i> Why the Lab's Curvature Sits <em>Off</em> the Cutoff</h2>
         <div class="content">
-          <img src="figures/figure_005_curvature_placement.png" alt="Left panel comparing a data-generating process with curvature centred at the cutoff against one whose curvature differs by side; right panel showing that the symmetric process gives zero bias at every bandwidth while the asymmetric one has bias growing with the bandwidth" style="width: 80%; margin: 0 auto; display: block; border-radius: 6px;">
+          <div class="r-stack" style="width: 80%; margin: 0 auto;"><img src="figures/figure_005_curvature_placement_s1.png" alt="Left panel comparing a data-generating process with curvature centred at the cutoff against one whose curvature differs by side; right panel showing that the symmetric process gives zero bias at every bandwidth while the asymmetric one has bias growing with the bandwidth" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_005_curvature_placement_s2.png" alt="" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="2" src="figures/figure_005_curvature_placement_s3.png" alt="" style="width: 100%; border-radius: 6px;"></div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 12px;">
-            <div style="background: #f0f5f8; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--secondary-color);">
+            <div class="fragment fade-up" data-fragment-index="1" style="background: #f0f5f8; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--secondary-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;">If both sides curve <strong>identically</strong>, widening $h$ biases the left limit and the right limit by <em>exactly the same amount</em> &mdash; and the bias cancels in the difference. Every bandwidth looks unbiased.</p>
             </div>
-            <div style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--success-color);">
+            <div class="fragment fade-up" data-fragment-index="2" style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--success-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;">The lab curves <strong>differently by side</strong> &mdash; <code>-6e-5&middot;x&sup2;</code> below, <code>+3e-5&middot;x&sup2;</code> above. That asymmetry is what makes widening the window actually cost you.</p>
             </div>
           </div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; margin-top: 11px; border-left: 4px solid #7C3A5F;">
+          <div class="fragment fade-up" data-fragment-index="2" style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; margin-top: 11px; border-left: 4px solid #7C3A5F;">
             <p style="font-size: 14pt;"><i class="fa-solid fa-graduation-cap" style="color: #7C3A5F;"></i> <strong>Think like an economist.</strong> When you build a simulation to study a method, ask what it has assumed away without saying so. A symmetric DGP makes the estimator look better than it is.</p>
           </div>
         </div>
@@ -771,12 +771,12 @@
       <section id="density-test" style="padding: 22px 44px;">
         <h2><i class="fa-solid fa-magnifying-glass-chart" style="color: var(--danger-color);"></i> Test 1 &mdash; Manipulation, via the Density</h2>
         <div class="content">
-          <img src="figures/figure_006_density_test.png" alt="Histograms of the running variable near the cutoff: clean data with a smooth density and a jackknife p-value of 0.759, and manipulated data with a hole just above the threshold, a pile-up just below it, and a p-value of 0.000" style="width: 90%; margin: 0 auto; display: block; border-radius: 6px;">
+          <div class="r-stack" style="width: 90%; margin: 0 auto;"><img src="figures/figure_006_density_test_s1.png" alt="Histograms of the running variable near the cutoff: clean data with a smooth density and a jackknife p-value of 0.759, and manipulated data with a hole just above the threshold, a pile-up just below it, and a p-value of 0.000" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_006_density_test_s2.png" alt="" style="width: 100%; border-radius: 6px;"></div>
           <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; margin-top: 12px;">
             <div style="background: #f0f5f8; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--secondary-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;">Sorting leaves a fingerprint: a pile-up on the favourable side, a hole on the other. McCrary (2008) required <em>binning</em>, and the bin width was a researcher degree of freedom. <strong>Cattaneo, Jansson &amp; Ma (2020)</strong> replaced it with a local polynomial density estimator on the raw variable &mdash; no binning.</p>
             </div>
-            <div style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--success-color);">
+            <div class="fragment fade-up" data-fragment-index="1" style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--success-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;"><strong>When manipulation is implausible, say <em>why</em>.</strong> Financial aid uses prior-prior-year tax data, so a family applying in 2026 cannot restructure its 2024 income. That argument is worth more than any $p$-value &mdash; and you get it by reading the programme's rules, not its data.</p>
             </div>
           </div>
@@ -821,16 +821,16 @@
         <h2><i class="fa-solid fa-vial" style="color: var(--accent-color);"></i> Test 3 &mdash; Placebo Cutoffs, and an Inconvenient One</h2>
         <div class="content">
           <div style="display: grid; grid-template-columns: 1.45fr 1fr; gap: 20px; align-items: start;">
-            <img src="figures/figure_007_placebo_cutoffs.png" alt="RD estimates with confidence intervals at four fake cutoffs and at the real cutoff; three fake cutoffs are null, the fake cutoff at minus ten thousand is a significant false positive, and the real cutoff is an order of magnitude larger than any of them" style="width: 100%; border-radius: 6px;">
+            <div class="r-stack" style=""><img src="figures/figure_007_placebo_cutoffs_s1.png" alt="RD estimates with confidence intervals at four fake cutoffs and at the real cutoff; three fake cutoffs are null, the fake cutoff at minus ten thousand is a significant false positive, and the real cutoff is an order of magnitude larger than any of them" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_007_placebo_cutoffs_s2.png" alt="" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="2" src="figures/figure_007_placebo_cutoffs_s3.png" alt="" style="width: 100%; border-radius: 6px;"></div>
             <div>
               <p style="font-size: 14pt; line-height: 1.55;">Run the analysis at thresholds where nothing happened. A design that finds effects at fake cutoffs is finding noise or misspecification.</p>
-              <div class="fragment fade-up" style="background: #fdf3f0; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--danger-color);">
+              <div class="fragment fade-up" data-fragment-index="1" style="background: #fdf3f0; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid var(--danger-color);">
                 <p style="font-size: 14pt; line-height: 1.5;">At $c = -10{,}000$: <strong>$p = 0.036$</strong>, on data where <em>by construction nothing whatsoever happened</em>.</p>
                 <p style="font-size: 14pt; line-height: 1.5; margin-top: 8px;"><strong>That is the point of the demonstration.</strong></p>
               </div>
-              <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid #7C3A5F;">
+              <div class="fragment fade-up" data-fragment-index="2" style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px; margin-top: 12px; border-left: 4px solid #7C3A5F;">
                 <p style="font-size: 13.5pt; line-height: 1.5;"><strong>Ch 8, inside a robustness check.</strong> Run four tests at the 5% level on null data and at least one rejects about one time in five. Read placebos as a <em>pattern</em>, not a series of hypothesis tests.</p>
-                <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 8px;">The question is not &ldquo;did any placebo reject?&rdquo; but &ldquo;is the real effect distinguishable from the distribution of fake ones?&rdquo; Here: <strong>+0.054</strong> against a spread of roughly <strong>&plusmn;0.01</strong>.</p>
+                <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 8px;">Ask whether the real effect stands out from the distribution of fake ones, rather than whether any one placebo rejected. Here: <strong>+0.054</strong> against a spread of roughly <strong>&plusmn;0.01</strong>.</p>
               </div>
             </div>
           </div>
