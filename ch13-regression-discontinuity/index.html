@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=f67286994074806d8ffcb28de20a81a0">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=5740c8fe080541e7063af119b57eea65">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -96,8 +96,7 @@
             <div>
               <p style="font-size: 15pt; line-height: 1.6;">Ten thousand simulated households. Free tuition below <strong><span class="tex2jax_ignore">&#36;75,000</span></strong>. I built the data, so I know the answer exactly: eligibility raises first-year retention by <strong>exactly 5 percentage points</strong>.</p>
               <p style="font-size: 15pt; line-height: 1.6; margin-top: 12px;">Here is the industry-standard package, called <em>correctly</em>, on that data:</p>
-              <pre style="margin-top: 10px;"><code style="font-size: 14pt;">Conventional coef = -0.0541
-Robust      coef  = -0.0548</code></pre>
+              <div class="mock colab" data-src="cells/ch13sim.json" data-cell="hook" data-lines="1-2" data-size="12pt" data-live="off" style="margin-top: 10px;"></div>
               <p style="font-size: 14.5pt; margin-top: 12px; color: var(--muted-color);">SE = 0.0032. The plot looks clean. Every diagnostic passes.</p>
             </div>
             <div style="background: #fdf3f0; border-radius: 10px; padding: 22px 24px; border-left: 5px solid var(--danger-color);">
@@ -403,21 +402,21 @@ Robust      coef  = -0.0548</code></pre>
     <section id="sign-convention" style="padding: 24px 44px;">
         <h2><i class="fa-solid fa-arrow-right-arrow-left" style="color: var(--danger-color);"></i> Right Minus Left &mdash; Always</h2>
         <div class="content">
-          <img src="figures/figure_002_sign_convention.png" alt="Two panels of the same threshold programme: with the raw running variable the treated units sit on the left and the estimate is minus 0.0541, and re-centred so treatment lies above zero the estimate is plus 0.0541" style="width: 88%; margin: 0 auto; display: block; border-radius: 6px;">
+          <img src="figures/figure_002_sign_convention.png" alt="Two panels of the same threshold programme: with the raw running variable the treated units sit on the left and the estimate is minus 0.0541, and re-centred so treatment lies above zero the estimate is plus 0.0541" style="width: 78%; margin: 0 auto; display: block; border-radius: 6px;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 12px; align-items: start;">
             <div style="background: #fdf3f0; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--danger-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;">Our programme covers tuition <strong>at or below <span class="tex2jax_ignore">&#36;75,000</span></strong>. Written the natural way &mdash; <code>R = income - 75_000</code>, <code>D = (R &lt;= 0)</code> &mdash; it is substantively correct and <strong>gives the wrong sign</strong>. <code>rdrobust</code> estimates $\lim_{r \downarrow c} - \lim_{r \uparrow c}$: it reports the jump as you cross <em>upward into ineligibility</em>.</p>
             </div>
             <div style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; border-left: 4px solid var(--success-color);">
               <p style="font-size: 13.5pt; line-height: 1.5;">The fix is one line. Define the running variable as <strong>distance below the threshold</strong>, so treatment lies above zero:</p>
-              <pre style="margin-top: 6px;"><code style="font-size: 12pt;">R = CUTOFF - income
-eligible = (R &gt;= 0).astype(int)</code></pre>
+              <div class="mock colab" data-src="cells/ch13sim.json" data-cell="flip" data-size="10.5pt" data-live="off" style="margin-top: 6px;"></div>
             </div>
           </div>
         </div>
       </section>
     <section id="rd-room-jump" style="padding: 22px 50px;">
       <h2 style="font-size: 22pt;"><i class="fa-solid fa-chart-line" style="color: var(--accent-color);"></i> Your Room&rsquo;s Jump</h2>
+      <p class="rd-practice" style="display: none; position: absolute; top: 24px; right: 50px; margin: 0; background: #fff3cd; border: 1px solid #e0c36a; border-radius: 6px; padding: 4px 12px; font-size: 13pt; font-weight: 700; color: #7a5a00;">Practice numbers: 20 made-up students</p>
       <div class="content">
         <div class="rd-plot" style="margin-top: 4px;"></div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; align-items: stretch;">
@@ -495,10 +494,32 @@ eligible = (R &gt;= 0).astype(int)</code></pre>
           [].forEach.call(sec.querySelectorAll("[data-rd]"), function (el) { el.textContent = out[el.getAttribute("data-rd")]; });
           return { pairs: P.length, left: lv, right: rv, nl: left.length, nr: right.length };
         }
+        // Q (or ?practice=1): made-up practice pairs, 10 below 50 and 10 at or above, for a room with no votes yet.
+        // Shown here only; never written. They give left 12.9, right 0.9, jump -12.0 = the difference in means
+        // (both lines flat: the digits predict nothing), medians 10.5 and 0.5.
+        var PRACTICE = (function () {
+          var L = [[3, 1746], [8, 1776], [14, 1760], [19, 1789], [23, 1773], [28, 1796], [33, 1770], [38, 1781], [42, 1765], [47, 1745]],
+              R = [[52, 1772], [57, 1773], [61, 1770], [66, 1773], [70, 1773], [74, 1774], [79, 1773], [85, 1776], [90, 1773], [96, 1774]], out = [];
+          L.concat(R).forEach(function (q, i) {
+            out.push({ poll_id: RUN, choice: String(q[0]), voter_id: "practice-" + i });
+            out.push({ poll_id: YEAR, choice: String(q[1]), voter_id: "practice-" + i });
+          });
+          return out;
+        })();
+        var practice = /[?&]practice=1/.test(location.search);
+        function showPractice() {
+          [].forEach.call(sec.querySelectorAll(".rd-practice"), function (el) { el.style.display = practice ? "" : "none"; });
+          if (practice) paint(PRACTICE); else { paint([]); fetchRows(); }
+        }
+        document.addEventListener("keydown", function (e) {   // Q: practice pairs on/off (P is Reveal's "previous")
+          var t = e.target;
+          if ((e.key === "q" || e.key === "Q") && !e.metaKey && !e.ctrlKey && !e.altKey && here() &&
+              !(t && t.closest && t.closest("input,textarea"))) { practice = !practice; showPractice(); }
+        });
         window.RoomJump = { paint: paint };      // planted rows for a rehearsal: RoomJump.paint([{poll_id, choice, voter_id}])
         function here() { var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(); return !!(s && s.id === "rd-room-jump"); }
         function fetchRows() {
-          if (location.protocol === "file:" || window.__rdRehearsal) return;
+          if (practice || location.protocol === "file:" || window.__rdRehearsal) return;
           var today = window.Poll ? Poll.q() : "";
           var url = SU + "/rest/v1/poll_votes?poll_id=in.(" + RUN + "," + YEAR + ")&select=poll_id,choice,voter_id,created_at" + today;
           var f = (window.Poll && Poll.liveFetch) ? Poll.liveFetch : fetch;
@@ -507,7 +528,7 @@ eligible = (R &gt;= 0).astype(int)</code></pre>
             .then(function (rows) { if (rows) paint(rows); })
             .catch(function () {});
         }
-        paint([]);
+        if (practice) showPractice(); else paint([]);
         setInterval(function () { if (!document.hidden && here()) fetchRows(); }, 4000);
         if (window.Reveal && Reveal.on) Reveal.on("slidechanged", function () { if (here()) fetchRows(); });
         setTimeout(fetchRows, 900);
@@ -520,15 +541,7 @@ eligible = (R &gt;= 0).astype(int)</code></pre>
         <div class="content">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start;">
             <div>
-              <pre><code style="font-size: 12.5pt;">out = rdrobust(y=Y, x=R, c=0,
-               p=1, kernel='tri')</code></pre>
-              <pre style="margin-top: 10px;"><code style="font-size: 12.5pt;">Conventional: +0.0541  (SE 0.0032)
-Robust:       +0.0548
-      95% CI [+0.0474, +0.0622]
-
-h (MSE-optimal):  8,381
-b (bias bw):     13,459
-n used: 2,112 left, 2,175 right</code></pre>
+              <div class="mock colab" data-src="cells/ch13sim.json" data-cell="fix" data-lines="1" data-size="11.5pt" data-live="off" style=""></div>
               <div style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; margin-top: 12px; border-left: 4px solid var(--success-color);">
                 <p style="font-size: 14.5pt;"><strong>True effect = 0.05.</strong> The interval contains it.</p>
               </div>
@@ -839,12 +852,7 @@ n used: 2,112 left, 2,175 right</code></pre>
                 <p style="font-size: 12pt; letter-spacing: 1.5px; color: var(--secondary-color); font-weight: 700;">DATA SNAPSHOT</p>
                 <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 7px;"><strong>U.S. Senate elections, 1914&ndash;2004.</strong> 1,297 state-level races. Running variable: the Democratic party's <strong>margin of victory in the previous election</strong> for that seat, centred at zero. Outcome: Democratic vote share in the <em>next</em> election for the same seat. Distributed with <code>rdrobust</code>; design descends from Lee (2008).</p>
               </div>
-              <pre style="margin-top: 11px;"><code style="font-size: 12pt;">Conventional: +7.414  (SE 1.459)
-Robust:       +7.507
-      95% CI [+4.094, +10.919]
-h = 17.75 margin points
-n used: 360 left, 323 right
-density test p = 0.447</code></pre>
+              <div class="mock colab" data-src="cells/ch13sim.json" data-cell="senate" data-lines="5,7,13" data-size="10.5pt" data-live="off" style="margin-top: 11px;"></div>
             </div>
             <div>
               <p style="font-size: 14pt; line-height: 1.55;">The naive comparison is hopeless: parties that won last time are stronger, better funded and more popular &mdash; and all of that persists and also predicts winning next time. Among races decided by a hair, which party ended up ahead is close to a coin flip.</p>
