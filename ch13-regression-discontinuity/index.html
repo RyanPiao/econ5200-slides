@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=5740c8fe080541e7063af119b57eea65">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=b7d6f38fbd5d287488044f95c86d9a65">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -557,6 +557,7 @@
         </div>
       </section>
 
+      <section>
       <section id="discussion-1" style="padding: 32px 52px;">
         <h2><i class="fa-solid fa-comments" style="color: var(--secondary-color);"></i> Discussion: Which Side Is Treated?</h2>
         <div class="content">
@@ -575,6 +576,25 @@
           </div>
           <p style="margin-top: 20px; text-align: center;"><span class="timer-badge"><i class="fa-solid fa-clock"></i> 2 min pairs &rarr; 3 min share</span></p>
         </div>
+      </section>
+      <section id="discussion-1-debrief" style="padding: 34px 55px;">
+        <h2><i class="fa-solid fa-lightbulb" style="color: var(--accent-color);"></i> Debrief: Which Side Is Treated?</h2>
+        <div style="background: #f0f5ef; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 14px 22px; margin-top: 10px;">
+          <p style="font-size: 15pt; line-height: 1.5; margin: 0;">Programmes that treat <strong>below</strong> a line are everywhere: Medicaid and CHIP income limits, SNAP, the Pell Grant&rsquo;s expected family contribution, school meals at 130% and 185% of the poverty line, insurance premium subsidies, credit approval below a risk score.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 14px;">
+          <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
+            <p style="font-size: 12.5pt; color: var(--muted-color); text-transform: uppercase; letter-spacing: 2px; margin: 0;">What <code>rdrobust</code> reports</p>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin-top: 6px;">Right minus left, every time. With the raw running variable it reports the jump as you cross <em>up</em> into ineligibility: the effect&rsquo;s size with the opposite sign, and a tight standard error.</p>
+            <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 8px; color: var(--muted-color);">Our tuition example: <strong>&minus;0.0541</strong> against a true <strong>+0.05</strong>.</p>
+          </div>
+          <div class="fragment fade-up" style="background: #fdf3f0; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--danger-color);">
+            <p style="font-size: 12.5pt; color: var(--danger-color); text-transform: uppercase; letter-spacing: 2px; margin: 0;">How you would know, without the truth</p>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin-top: 6px;">No statistic will flag it: the wrong-sign run passes every diagnostic. Look at the <strong>plot</strong>: if the programme helps, the treated side should sit higher at the cutoff. Check the <strong>sign</strong> against the direction the programme is meant to work.</p>
+            <p style="font-size: 13.5pt; line-height: 1.5; margin-top: 8px;">Then define <code>R</code> as distance below the threshold, so treatment lies above zero.</p>
+          </div>
+        </div>
+      </section>
       </section>
 
       <section id="global-vs-local" style="padding: 26px 46px;">
