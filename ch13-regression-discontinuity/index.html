@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=ccc0c037af27f5e84d076994940c0edc">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=385e1c3c6e66933afabb22a81bae0739">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -19,6 +19,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <link rel="stylesheet" href="../mock-cell.css">
+  <style>/* phone card (poll.js lifts the room card + answers out of the deck): hide the floating home / full-screen / pen buttons, which sit over the answer boxes and a stray tap on the pen starts drawing */ html.ec-phone-card-on #ti-home, html.ec-phone-card-on #ti-fs, html.ec-phone-card-on #ti-pen { display: none !important; }</style>
 </head>
 <body>
   <div class="reveal">
@@ -108,7 +109,7 @@ Robust      coef  = -0.0548</code></pre>
           </div>
         </div>
       </section>
-    <section id="rd-room-card" style="padding: 26px 60px;">
+    <section id="rd-room-card" data-phone-next="rd-room-answer" style="padding: 26px 60px;">
       <h2><i class="fa-solid fa-id-card" style="color: var(--secondary-color);"></i> Your Card, by Your Number</h2>
       <div class="content">
         <p style="font-size: 17pt; margin: 6px 0 12px;">The question on the next slide: <strong>in what year did the Boston Tea Party happen?</strong> Your running variable is the <strong>last two digits of your NUID</strong>, 00 to 99.</p>
@@ -172,7 +173,7 @@ Robust      coef  = -0.0548</code></pre>
       <div class="content">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px;">
           <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
-            <p style="font-size: 16pt; margin: 0;"><strong>1.</strong> The last two digits of your NUID, 0 to 99. Checked in? Your phone sends them for you.</p>
+            <p style="font-size: 16pt; margin: 0;"><strong>1.</strong> The last two digits of your NUID, 0 to 99.</p>
             <div class="poll-number" data-poll-id="ch13-econ5200-poll-4" data-poll-voting data-min="0" data-max="99" data-step="1" style="margin-top: 8px;"></div>
             <p class="rd-mine" style="font-size: 12.5pt; margin: 6px 0 0; color: #1F7A5A;" hidden></p>
             <script>(function () {
@@ -204,7 +205,7 @@ Robust      coef  = -0.0548</code></pre>
             <div class="poll-number" data-poll-id="ch13-econ5200-poll-5" data-poll-voting data-min="1700" data-max="1800" data-step="1" style="margin-top: 8px;"></div>
           </div>
         </div>
-        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">Type the year. Box 1 is your running variable, sent from your check-in; the line on the reveal is drawn through these pairs.</p>
+        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">Answer both. From the card page, a checked-in phone fills box 1 by itself. Box 1 is your running variable; the line on the reveal is drawn through these pairs.</p>
         <p style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: digits <strong data-poll-fill="ch13-econ5200-poll-4" data-key="n">&mdash;</strong> &middot; year <strong data-poll-fill="ch13-econ5200-poll-5" data-key="n">&mdash;</strong></p>
       </div>
     </section>
@@ -639,9 +640,9 @@ n used: 2,112 left, 2,175 right</code></pre>
             <p style="font-size: 16pt; line-height: 1.6;">From the Monte Carlo table &mdash; true jump +0.0800, 300 replications &mdash; which bandwidth would you <strong>actually use</strong>?</p>
           </div>
           <div class="poll-grid" data-poll-id="ch13-econ5200-poll-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; font-size: 14.5pt;">
-            <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>A.</strong> $h = 3$ &mdash; the bias is only 0.3% of the truth</div>
-            <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>B.</strong> $h = 20$ &mdash; RMSE is minimised there</div>
-            <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>C.</strong> $h = 50$ &mdash; the standard deviation is smallest</div>
+            <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>A.</strong> <i>h</i> = 3 &mdash; the bias is only 0.3% of the truth</div>
+            <div class="poll-option" data-choice="B" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>B.</strong> <i>h</i> = 20 &mdash; RMSE is minimised there</div>
+            <div class="poll-option" data-choice="C" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>C.</strong> <i>h</i> = 50 &mdash; the standard deviation is smallest</div>
             <div class="poll-option" data-choice="D" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>D.</strong> Whichever one <code>rdrobust</code> reports, without looking</div>
           </div>
           <button class="reset-btn" onclick="clearPoll('ch13-econ5200-poll-2')" style="margin-top: 12px; padding: 6px 14px; font-size: 12pt; cursor: pointer;">Reset Poll</button>
@@ -841,7 +842,7 @@ density test p = 0.447</code></pre>
         <section id="poll-3" style="padding: 34px 52px;">
           <h2><i class="fa-solid fa-square-poll-vertical" style="color: var(--secondary-color);"></i> Poll: Which Population?</h2>
           <div style="background: #f8f6f3; border-radius: 10px; padding: 18px 24px; margin-top: 12px;">
-            <p style="font-size: 16pt; line-height: 1.6;">The Senate estimate is <strong>+7.5 points</strong>, with $h = 17.75$ and 683 races inside the bandwidth. It is the causal effect of incumbency for which population?</p>
+            <p style="font-size: 16pt; line-height: 1.6;">The Senate estimate is <strong>+7.5 points</strong>, with <i>h</i> = 17.75 and 683 races inside the bandwidth. It is the causal effect of incumbency for which population?</p>
           </div>
           <div class="poll-grid" data-poll-id="ch13-econ5200-poll-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; font-size: 14.5pt;">
             <div class="poll-option" data-choice="A" style="background: #f0f5f8; padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 3px solid transparent;"><strong>A.</strong> All 1,297 Senate races in the sample</div>
