@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=385e1c3c6e66933afabb22a81bae0739">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=f67286994074806d8ffcb28de20a81a0">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -216,6 +216,7 @@ Robust      coef  = -0.0548</code></pre>
         <p class="subtitle">The design, the estimand, and the one assumption it needs</p>
       </section>
 
+      <section>
       <section id="rd-design" style="padding: 30px 46px;">
         <h2><i class="fa-solid fa-chart-line" style="color: var(--secondary-color);"></i> Draw It Before You Write It</h2>
         <div class="content">
@@ -230,6 +231,25 @@ Robust      coef  = -0.0548</code></pre>
             </div>
           </div>
         </div>
+      </section>
+      <section id="rd-yelp" style="padding: 30px 46px;">
+        <h2><i class="fa-solid fa-star-half-stroke" style="color: var(--secondary-color);"></i> A Real One: Yelp&rsquo;s Half Stars</h2>
+        <div class="content">
+          <p style="font-size: 15pt; line-height: 1.55; margin: 0 0 12px;">Yelp shows a restaurant&rsquo;s average rating <strong>rounded to the nearest half star</strong>. Two restaurants with almost the same reviews can show different stars.</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="background: #f0f5f8; border-radius: 8px; padding: 12px 16px; text-align: center;"><p style="font-size: 13pt; margin: 0; color: var(--muted-color);">Average of its reviews: 3.24</p><p style="font-size: 26pt; margin: 4px 0 0; letter-spacing: 2px;">&#9733;&#9733;&#9733;</p><p style="font-size: 14pt; margin: 2px 0 0;"><strong>shown: 3 stars</strong></p></div>
+            <div style="background: #fdf0ea; border-radius: 8px; padding: 12px 16px; text-align: center;"><p style="font-size: 13pt; margin: 0; color: var(--muted-color);">Average of its reviews: 3.25</p><p style="font-size: 26pt; margin: 4px 0 0; letter-spacing: 2px;">&#9733;&#9733;&#9733;&frac12;</p><p style="font-size: 14pt; margin: 2px 0 0;"><strong>shown: 3.5 stars</strong></p></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px;">
+            <div style="background: #f8f6f3; border-radius: 8px; padding: 10px 14px;"><p style="font-size: 12.5pt; margin: 0; color: var(--muted-color);">Running variable</p><p style="font-size: 14pt; margin: 3px 0 0; line-height: 1.4;">the unrounded average rating</p></div>
+            <div style="background: #f8f6f3; border-radius: 8px; padding: 10px 14px;"><p style="font-size: 12.5pt; margin: 0; color: var(--muted-color);">Cutoffs</p><p style="font-size: 14pt; margin: 3px 0 0; line-height: 1.4;">each rounding line: 3.25, 3.75, 4.25, &hellip;</p></div>
+            <div style="background: #f8f6f3; border-radius: 8px; padding: 10px 14px;"><p style="font-size: 12.5pt; margin: 0; color: var(--muted-color);">Outcome</p><p style="font-size: 14pt; margin: 3px 0 0; line-height: 1.4;">the restaurant&rsquo;s revenue</p></div>
+          </div>
+          <div class="fragment fade-up" style="background: #eef6f1; border-left: 4px solid #1F7A5A; border-radius: 8px; padding: 11px 16px; margin-top: 12px;">
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0;"><strong>Luca (2011):</strong> one more star means about <strong>5&ndash;9% more revenue</strong>, for independent restaurants; chains barely move. The cutoff is on a score, the rating, not on a date.</p>
+          </div>
+        </div>
+      </section>
       </section>
 
       <section id="sharp-rd-formal" style="padding: 28px 50px;">
