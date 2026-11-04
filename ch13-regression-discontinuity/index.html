@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=f029ef2f8d320df8a83f615d9d1d9cfa">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=ccc0c037af27f5e84d076994940c0edc">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -172,15 +172,31 @@ Robust      coef  = -0.0548</code></pre>
       <div class="content">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px;">
           <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
-            <p style="font-size: 16pt; margin: 0;"><strong>1.</strong> The last two digits of your NUID, 0 to 99.</p>
+            <p style="font-size: 16pt; margin: 0;"><strong>1.</strong> The last two digits of your NUID, 0 to 99. Checked in? Your phone sends them for you.</p>
             <div class="poll-number" data-poll-id="ch13-econ5200-poll-4" data-poll-voting data-min="0" data-max="99" data-step="1" style="margin-top: 8px;"></div>
             <p class="rd-mine" style="font-size: 12.5pt; margin: 6px 0 0; color: #1F7A5A;" hidden></p>
             <script>(function () {
-              var p = document.currentScript.previousElementSibling, Q = location.search;
+              // A checked-in phone casts box 1 itself (the reveal pairs the two polls by device, and the
+              // check-in NUID is not on the vote row). Not checked in, or on the vote page: type it.
+              var p = document.currentScript.previousElementSibling, box = p.previousElementSibling, Q = location.search;
               if (/[?&](presenter|instructor|receiver)(&|=|$)/.test(Q)) return;
-              function tell() { var n = window.Poll && Poll.nuid ? Poll.nuid() : null; if (!n) return;
-                p.textContent = "Your NUID ends in " + String(n).slice(-2) + ": type that."; p.hidden = false; }
-              tell(); setInterval(tell, 2000);
+              var PID = "ch13-econ5200-poll-4", done = false, busy = false;
+              function run() {
+                var n = window.Poll && Poll.nuid ? Poll.nuid() : null;
+                if (!n || done || busy || !Poll.cast) return;
+                var dd = String(n).slice(-2), d = parseInt(dd, 10);
+                if (!(d >= 0 && d <= 99)) return;
+                box.hidden = true; p.hidden = false;
+                p.textContent = "Your NUID ends in " + dd + ". Sending it as box 1\u2026";
+                busy = true;
+                Poll.cast(PID, String(d), function (r) {
+                  busy = false;
+                  if (r === "ok" || r === "dup") { done = true; p.textContent = "Box 1 is done: your NUID ends in " + dd + ", sent from your check-in. Now the year."; }
+                  else if (r === "closed") p.textContent = "Your NUID ends in " + dd + ". It is sent as soon as the poll opens.";
+                  else p.textContent = "Your NUID ends in " + dd + ". Could not send yet; trying again.";
+                });
+              }
+              run(); setInterval(run, 3000);
             })();</script>
           </div>
           <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
@@ -188,7 +204,7 @@ Robust      coef  = -0.0548</code></pre>
             <div class="poll-number" data-poll-id="ch13-econ5200-poll-5" data-poll-voting data-min="1700" data-max="1800" data-step="1" style="margin-top: 8px;"></div>
           </div>
         </div>
-        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">Answer both. Box 1 is your running variable; the line on the reveal is drawn through these pairs.</p>
+        <p style="font-size: 14.5pt; margin-top: 16px; text-align: center; color: var(--muted-color);">Type the year. Box 1 is your running variable, sent from your check-in; the line on the reveal is drawn through these pairs.</p>
         <p style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: digits <strong data-poll-fill="ch13-econ5200-poll-4" data-key="n">&mdash;</strong> &middot; year <strong data-poll-fill="ch13-econ5200-poll-5" data-key="n">&mdash;</strong></p>
       </div>
     </section>
