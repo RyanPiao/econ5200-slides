@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=f059a78517d87c756bc74d8062f1ec32">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=c707638c9fc68a4ddb0b7aa31f599cbf">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regression Discontinuity</title>
@@ -801,10 +801,7 @@
           <p style="font-size: 15.5pt; line-height: 1.6;">Under continuity, variables determined <strong>before</strong> treatment must not jump at the cutoff. So run the same RD with a pre-determined covariate as the outcome.</p>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; align-items: start;">
             <div>
-              <pre><code style="font-size: 12.5pt;">balance = rdrobust(y=hs_gpa, x=R,
-                   c=0, p=1, kernel='tri')</code></pre>
-              <pre style="margin-top: 10px;"><code style="font-size: 12.5pt;">HS GPA jump: +0.0286
-             (SE 0.0272)  robust p = 0.409</code></pre>
+              <div class="mock colab" data-src="cells/ch13sim.json" data-cell="balance" data-lines="1,4-5" data-size="10.5pt" data-live="off"></div>
               <div style="background: #eef4ee; border-radius: 8px; padding: 12px 18px; margin-top: 12px; border-left: 4px solid var(--success-color);">
                 <p style="font-size: 14.5pt;">GPA does not jump. <strong>Retention does</strong>, large and precisely estimated.</p>
               </div>
