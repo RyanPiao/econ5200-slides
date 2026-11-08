@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=0bd44532e1bb6a2886a8ca82801bb0f4">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=7e8f13b85324264d9980443450107b30">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OLS Diagnostics: When OLS Fails</title>
@@ -251,6 +251,7 @@
       <p style="font-size: 15pt; color: var(--muted-color); font-style: italic;">The sandwich, White's dimension argument, and where HC3 actually comes from</p>
     </section>
 
+    <section>
     <section id="spherical" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-circle-nodes" style="color: var(--secondary-color);"></i> Gauss&ndash;Markov: One Equation, Two Claims</h2>
       <div class="content">
@@ -269,6 +270,130 @@
         </div>
         <p data-fragment-index="2" class="fragment fade-up" style="font-size: 15pt; margin-top: 16px;">Under those conditions the classical estimator is valid: \(\widehat{\text{Var}}(\boldsymbol{\hat{\beta}}) = \hat{\sigma}^2 (\mathbf{X}'\mathbf{X})^{-1}\).</p>
       </div>
+    </section>
+
+    <section id="spherical-matrix" style="padding: 26px 50px;">
+      <h2><i class="fa-solid fa-table-cells" style="color: var(--secondary-color);"></i> The Square, Three Ways</h2>
+      <div class="content">
+        <div class="mathjax_ignore tex2jax_ignore"><svg viewBox="0 0 900 190" xmlns="http://www.w3.org/2000/svg" role="img" font-family="inherit" style="width:100%;max-height:200px;display:block" aria-label="Three six-by-six error covariance squares: equal diagonal with zeros elsewhere; a diagonal that grows down the square; equal diagonal with two shaded blocks off the diagonal"><text x="112.0" y="18" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2b2b">Spherical</text>
+<text x="112.0" y="34" text-anchor="middle" font-size="12.5" fill="#6b645e">same diagonal, zeros elsewhere</text>
+<rect x="40" y="40" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="64" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="88" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="112" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="136" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="160" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="40" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="64" y="64" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="88" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="112" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="136" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="160" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="40" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="64" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="88" y="88" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="112" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="136" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="160" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="40" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="64" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="88" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="112" y="112" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="136" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="160" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="40" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="64" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="88" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="112" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="136" y="136" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="160" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="40" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="64" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="88" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="112" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="136" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="160" y="160" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="40" y="40" width="144" height="144" fill="none" stroke="#8c8580" stroke-width="1.5"/><text x="442.0" y="18" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2b2b">Unequal diagonal (Section 14.2)</text>
+<text x="442.0" y="34" text-anchor="middle" font-size="12.5" fill="#6b645e">each row its own variance</text>
+<rect x="370" y="40" width="24" height="24" fill="#2E6DB4" fill-opacity="0.18" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="394" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="418" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="442" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="466" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="490" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="370" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="394" y="64" width="24" height="24" fill="#2E6DB4" fill-opacity="0.3" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="418" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="442" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="466" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="490" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="370" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="394" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="418" y="88" width="24" height="24" fill="#2E6DB4" fill-opacity="0.45" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="442" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="466" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="490" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="370" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="394" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="418" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="442" y="112" width="24" height="24" fill="#2E6DB4" fill-opacity="0.6" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="466" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="490" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="370" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="394" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="418" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="442" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="466" y="136" width="24" height="24" fill="#2E6DB4" fill-opacity="0.78" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="490" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="370" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="394" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="418" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="442" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="466" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="490" y="160" width="24" height="24" fill="#2E6DB4" fill-opacity="0.95" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="370" y="40" width="144" height="144" fill="none" stroke="#8c8580" stroke-width="1.5"/><text x="772.0" y="18" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2b2b">Off-diagonal blocks (Section 14.3)</text>
+<text x="772.0" y="34" text-anchor="middle" font-size="12.5" fill="#6b645e">errors in a group move together</text>
+<rect x="700" y="40" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="724" y="40" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="748" y="40" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="772" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="796" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="820" y="40" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="700" y="64" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="724" y="64" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="748" y="64" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="772" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="796" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="820" y="64" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="700" y="88" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="724" y="88" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="748" y="88" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="772" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="796" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="820" y="88" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="700" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="724" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="748" y="112" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="772" y="112" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="796" y="112" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="820" y="112" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="700" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="724" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="748" y="136" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="772" y="136" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="796" y="136" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="820" y="136" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="700" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="724" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="748" y="160" width="24" height="24" fill="#ffffff" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="772" y="160" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="796" y="160" width="24" height="24" fill="#C47B5A" fill-opacity="0.35" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="820" y="160" width="24" height="24" fill="#2E6DB4" fill-opacity="0.55" stroke="#d9d4cb" stroke-width="1"/>
+<rect x="700" y="40" width="144" height="144" fill="none" stroke="#8c8580" stroke-width="1.5"/></svg></div>
+        <table class="mathjax_ignore tex2jax_ignore" style="width: 100%; border-collapse: collapse; margin-top: 8px;"><tr><th style="padding: 6px 10px; font-size: 12.5pt; color: #ffffff; text-align: left;">The square</th><th style="padding: 6px 10px; font-size: 12.5pt; color: #ffffff; text-align: left;">Coefficient</th><th style="padding: 6px 10px; font-size: 12.5pt; color: #ffffff; text-align: left;">Standard error</th><th style="padding: 6px 10px; font-size: 12.5pt; color: #ffffff; text-align: left;">In this topic&rsquo;s numbers</th></tr><tr><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;"><strong>Spherical</strong></td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">Unbiased</td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">Classical formula is right</td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">&mdash;</td></tr><tr><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;"><strong>Unequal diagonal</strong></td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">Unbiased, the same number</td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">Classical is wrong; a robust formula</td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">AveRooms SE 0.0024 &rarr; 0.0121, <em>t</em> &minus;11.23 &rarr; &minus;2.25</td></tr><tr><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;"><strong>Off-diagonal blocks</strong></td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">Unbiased</td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">Classical far too small; cluster</td><td style="padding: 6px 10px; border-bottom: 1px solid #e3ded5; font-size: 13.5pt; vertical-align: top;">Region policy: SE 0.0260 &rarr; 0.2613, 10.1&times;</td></tr></table>
+        <p style="font-size: 13.5pt; margin-top: 10px; color: var(--muted-color);">The coefficient never needs the square. Every standard error, t and interval does: that is why breaking a claim breaks inference and leaves the estimate alone.</p>
+      </div>
+    </section>
     </section>
 
     <section id="sandwich-derivation" style="padding: 30px 55px;">
