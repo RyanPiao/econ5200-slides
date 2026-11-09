@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=a230b9c290b107abc764856f9893e843">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=e396380596fd515c56126bc208341af1">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OLS Diagnostics: When OLS Fails</title>
@@ -691,6 +691,7 @@
       </section>
       <section id="cl-room-2" style="padding: 30px 60px;">
         <h2><i class="fa-solid fa-users" style="color: var(--secondary-color);"></i> Now Talk to Your Group</h2>
+        <p class="cl-practice" style="display: none; position: absolute; top: 24px; right: 50px; margin: 0; background: #fff3cd; border: 1px solid #e0c36a; border-radius: 6px; padding: 4px 12px; font-size: 13pt; font-weight: 700; color: #7a5a00;">Practice numbers: 18 made-up students</p>
         <div class="content">
           <p style="font-size: 16pt; line-height: 1.5; margin: 4px 0 12px;"><strong>Sixty seconds:</strong> agree or argue with the people in your group about the first Boston Marathon. Then answer again.</p>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
@@ -704,7 +705,8 @@
             </div>
           </div>
           <p style="font-size: 14.5pt; margin-top: 14px; text-align: center; color: var(--muted-color);">Your group is your cluster. The reveal treats each group the way a regression treats a region.</p>
-          <p style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: year <strong data-poll-fill="ch14-econ5200-poll-6" data-key="n">&mdash;</strong> &middot; group <strong data-poll-fill="ch14-econ5200-poll-7" data-key="n">&mdash;</strong></p>
+          <p class="cl-live" style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: year <strong data-poll-fill="ch14-econ5200-poll-6" data-key="n">&mdash;</strong> &middot; group <strong data-poll-fill="ch14-econ5200-poll-7" data-key="n">&mdash;</strong></p>
+          <p class="cl-practice" style="display: none; font-size: 12.5pt; margin-top: 4px; text-align: center; color: #7a5a00;">Practice answers: year <strong>18</strong> &middot; group <strong>18</strong> &middot; 6 groups of 3. Round 2 by group: <span class="cl-practice-groups"></span></p>
         </div>
       </section>
       <section id="cl-room-reveal" style="padding: 22px 46px;">
@@ -730,6 +732,7 @@
         var R1 = "ch14-econ5200-poll-5", R2 = "ch14-econ5200-poll-6", ROW = "ch14-econ5200-poll-7", TRUE = 1897;
         var NUM = /^\s*(-?\d+(?:\.\d+)?)\s*$/, RANGE = {}; RANGE[R1] = [1800, 2000]; RANGE[R2] = [1800, 2000]; RANGE[ROW] = [1, 20];
         var sec = document.getElementById("cl-room-reveal"); if (!sec) return;
+        var vote = document.getElementById("cl-room-2");           // Q works on the vote slide too (Ryan, 9 Nov)
         // Q (or ?practice=1): 18 made-up students in 6 groups, for a room with no votes yet. Shown here only; never written.
         // Round 1 naive SE 6.11 vs clustered 6.12 (ratio 1.00); round 2 naive 3.66 vs clustered 6.72 (ratio 1.84, effective n 5.3 of 18).
         var P1 = {1: [1898, 1927, 1917], 2: [1876, 1903, 1888], 3: [1909, 1860, 1894], 4: [1911, 1892, 1945], 5: [1883, 1924, 1949], 6: [1928, 1882, 1949]};
@@ -805,8 +808,24 @@
             .then(function (rows) { if (rows) paint(rows); })
             .catch(function () {});
         }
+        function onVote() { var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(); return !!(s && s.id === "cl-room-2"); }
+        // On the vote slide poll.js binds Q to the QR size (document, capture). The window's capture phase runs first,
+        // so Q here shows the practice answers instead; the QR still shows by itself and still resizes on a click.
+        window.addEventListener("keydown", function (e) {
+          var t = e.target;
+          if ((e.key === "q" || e.key === "Q") && !e.metaKey && !e.ctrlKey && !e.altKey && onVote() &&
+              !(t && t.closest && t.closest("input,textarea"))) {
+            e.preventDefault(); e.stopImmediatePropagation(); practice = !practice; showPractice();
+          }
+        }, true);
         function showPractice() {
           [].forEach.call(sec.querySelectorAll(".cl-practice"), function (el) { el.style.display = practice ? "" : "none"; });
+          if (vote) {
+            [].forEach.call(vote.querySelectorAll(".cl-practice"), function (el) { el.style.display = practice ? "" : "none"; });
+            [].forEach.call(vote.querySelectorAll(".cl-live"), function (el) { el.style.display = practice ? "none" : ""; });
+            [].forEach.call(vote.querySelectorAll(".cl-practice-groups"), function (el) {
+              el.textContent = Object.keys(P2).map(function (g) { return g + ": " + P2[g].join(", "); }).join(" \u00b7 "); });
+          }
           if (practice) paint(PRACTICE); else { paint([]); fetchRows(); }
         }
         document.addEventListener("keydown", function (e) {   // Q: practice answers on/off (P is Reveal's "previous")
@@ -854,6 +873,7 @@
       </div>
     </section>
 
+    <section>
     <section id="formal-sketch-design" style="padding: 28px 55px;">
       <h2 style="margin-bottom: 6px;"><i class="fa-solid fa-square-root-variable" style="color: #7C3A5F;"></i> Formal Sketch: Why the Design Channel Is the Binding One</h2>
       <div class="content">
@@ -862,15 +882,35 @@
           <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--muted-color);">
             <p style="font-size: 13.5pt; font-weight: 700; color: var(--muted-color); letter-spacing: 1px; text-transform: uppercase; margin: 0 0 6px;">Sampling-based term</p>
             <p style="font-size: 14pt; margin: 0; line-height: 1.5;"><strong>Vanishes</strong> as the sampling fraction of clusters approaches one. You observe every state, so there is no cluster-level sampling uncertainty left.</p>
+            <p style="font-size: 12.5pt; margin: 8px 0 0; line-height: 1.45; color: #555;"><strong>Example:</strong> a wage survey of 10 of the 50 states. Another survey would draw other states, and their effects differ.</p>
           </div>
           <div style="background: #f6f1f4; border-radius: 10px; padding: 14px 20px; border-left: 4px solid #7C3A5F;">
             <p style="font-size: 13.5pt; font-weight: 700; color: #7C3A5F; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 6px;">Design-based term</p>
             <p style="font-size: 14pt; margin: 0; line-height: 1.5;"><strong>Does not vanish.</strong> It persists whenever treatment is assigned at the cluster level, because the counterfactual assignment could have differed for the entire cluster at once.</p>
+            <p style="font-size: 12.5pt; margin: 8px 0 0; line-height: 1.45; color: #555;"><strong>Example:</strong> a state minimum wage, as in Card &amp; Krueger (Lab 11). You see every store in both states, but the law could have passed in Pennsylvania instead, and every store would flip at once.</p>
           </div>
         </div>
         <p style="font-size: 14.5pt; margin: 12px 0 0; line-height: 1.5;">Clustering is required when <em>either</em> channel is active &mdash; and in most economic applications the design channel is the binding one. That is the whole content of the rule on the previous slide.</p>
         <p style="font-size: 12.5pt; color: var(--muted-color); font-style: italic; margin: 8px 0 0;">Abadie, Athey, Imbens &amp; Wooldridge (2023), <em>QJE</em> 138(1), 1&ndash;35.</p>
       </div>
+    </section>
+    <section id="formal-sketch-numbers" style="padding: 26px 50px;">
+      <h2 style="margin-bottom: 6px;"><i class="fa-solid fa-square-root-variable" style="color: #7C3A5F;"></i> The Two Terms, on Numbers</h2>
+      <div class="content">
+        <p style="font-size: 14pt; line-height: 1.5; margin: 0 0 10px;">A made-up country: 50 states, 200 workers each, and a treatment whose effect differs by state. Each study is run 2,000 times. Compare how much the estimate really moves with the standard error a plain regression reports.</p>
+        <table class="table-standard" style="width: 100%; font-size: 13.5pt;">
+          <thead><tr><th style="text-align: left;">Study</th><th>Term at work</th><th>Estimate really moves (SD)</th><th>Naive SE says</th><th>Really / says</th></tr></thead>
+          <tbody>
+            <tr><td style="text-align: left;"><strong>A.</strong> Survey 10 of the 50 states; treat half the workers in each</td><td>sampling</td><td>0.130</td><td>0.065</td><td><strong>2.0&times;</strong></td></tr>
+            <tr class="fragment fade-up" data-fragment-index="1"><td style="text-align: left;"><strong>B.</strong> All 50 states; treat half the workers in each</td><td>neither</td><td>0.020</td><td>0.030</td><td><strong>0.7&times;</strong></td></tr>
+            <tr class="fragment fade-up" data-fragment-index="2" style="background: #f6f1f4;"><td style="text-align: left;"><strong>C.</strong> All 50 states; a state law treats 25 whole states</td><td>design</td><td>0.316</td><td>0.030</td><td><strong>about 10&times;</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="fragment fade-up" data-fragment-index="3" style="background: #f6f1f4; border-left: 4px solid #7C3A5F; border-radius: 8px; padding: 11px 20px; margin-top: 12px;">
+          <p style="font-size: 14pt; margin: 0; line-height: 1.5;"><strong>A to B:</strong> seeing every state removes the sampling term, and the naive SE is no longer too small. <strong>B to C:</strong> the same 50 states, only now treatment is assigned by state, and the naive SE is about 10 times too small. Observing every cluster did nothing for the design term.</p>
+        </div>
+      </div>
+    </section>
     </section>
 
     <section id="moulton" style="padding: 22px 40px;">
