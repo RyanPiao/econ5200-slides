@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=bbbc4b91d1f1351ae5c34e291e11d619">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=1aa24f91ed07df9cbe85c424f9a08e1d">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OLS Diagnostics: When OLS Fails</title>
@@ -640,7 +640,7 @@
       <div class="content">
         <div class="r-stack" style="width: 55%; margin: 0 auto 8px;"><img src="figures/figure_004_coverage_s1.png" alt="Two panels of measured coverage of a nominal ninety-five percent confidence interval. Left, heteroskedasticity only: classical 92.4 percent, HC1 94.2 percent, HC3 94.4 percent. Right, errors shared within firm: classical 49.0 percent, HC3 50.3 percent, cluster-robust 93.7 percent" style="width: 100%; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_004_coverage_s2.png" alt="" style="width: 100%; border-radius: 6px;"></div>
         <div class="fragment fade-up" data-fragment-index="1" style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 12px 22px;">
-          <p style="font-size: 15.5pt; margin: 0; line-height: 1.55;"><strong>HC3 adds 1.3 percentage points of coverage against a 46-point shortfall.</strong> "Robust" names <em>one</em> violation; clustering by firm, which lets the errors inside a firm move together, is what brings coverage back. A reflex <code>cov_type='HC3'</code> on clustered data is a nominal 95% interval that covers about half the time.</p>
+          <p style="font-size: 15.5pt; margin: 0; line-height: 1.55;"><strong>HC3 moves coverage from 49.0% to 50.3%: against a 46-point shortfall, no real change.</strong> "Robust" names <em>one</em> violation; clustering by firm, which lets the errors inside a firm move together, is what brings coverage back. A reflex <code>cov_type='HC3'</code> on clustered data is a nominal 95% interval that covers about half the time.</p>
         </div>
       </div>
     </section>
