@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=385db9f3aac2abc3f985484265633596">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=3ca197610a1e0969497c0571c01f6446">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OLS Diagnostics: When OLS Fails</title>
@@ -88,20 +88,10 @@
     <section id="hook-collapse" style="padding: 34px 55px;">
       <h2><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> A Regression You Have Already Run</h2>
       <div class="content">
-        <p class="text-lg" style="line-height: 1.55;">California Housing. 20,640 census block groups. Median value on income, average rooms, house age. You met this dataset in Chapter 4.</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px;">
-          <div style="background: #f0f5f8; border-radius: 12px; padding: 20px 24px; border-left: 4px solid var(--secondary-color);">
-            <p style="font-size: 12pt; color: var(--muted-color); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">as reported</p>
-            <p style="font-family: 'SF Mono', Menlo, monospace; font-size: 13.5pt; line-height: 1.7;">AveRooms<br>coef &minus;0.0272<br>SE&nbsp;&nbsp;&nbsp;0.0024</p>
-            <p style="font-size: 34pt; font-weight: 700; color: var(--secondary-color); margin-top: 10px;">t = &minus;11.23</p>
-          </div>
-          <div class="fragment fade-up" style="background: #fdf0ea; border-radius: 12px; padding: 20px 24px; border-left: 4px solid var(--danger-color);">
-            <p style="font-size: 12pt; color: var(--muted-color); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">one formula changed</p>
-            <p style="font-family: 'SF Mono', Menlo, monospace; font-size: 13.5pt; line-height: 1.7;">AveRooms<br>coef &minus;0.0272<br>SE&nbsp;&nbsp;&nbsp;0.0121</p>
-            <p style="font-size: 34pt; font-weight: 700; color: var(--danger-color); margin-top: 10px;">t = &minus;2.25</p>
-          </div>
-        </div>
-        <p class="fragment fade-up" style="font-size: 15.5pt; margin-top: 16px; line-height: 1.5;">Same data, same model, same coefficient to the last digit. Only the formula used to compute the standard error.</p>
+        <p style="font-size: 15pt; margin: 0 0 10px;">California Housing, 20,640 block groups. You met this data set in Chapter 4.</p>
+        <div class="mock colab" data-frag-start="0" data-src="cells/ch14sim.json" data-cell="hook" data-size="11.5pt" data-live="off"></div>
+        <img class="fragment fade-up" src="figures/figure_010_hook_intervals.png" alt="The AveRooms coefficient, minus 0.0272, drawn twice with its 95 percent interval: minus 0.0319 to minus 0.0224 as reported, minus 0.0508 to minus 0.0035 with the standard-error formula changed" style="width: 60%; display: block; margin: 8px auto 0;">
+        <p class="fragment fade-up" style="font-size: 15pt; margin-top: 8px; line-height: 1.5;">Same data, same model, same coefficient to the last digit. Only the formula for the standard error changed.</p>
       </div>
     </section>
 
@@ -166,27 +156,56 @@
       <p style="font-size: 15pt; color: var(--muted-color); font-style: italic;">You went to IV and RD. This is what the shared track established while you were away &mdash; and one theorem Chapter 24 is built on.</p>
     </section>
 
-    <section id="beta-scorecards" style="padding: 32px 55px;">
-      <h2><i class="fa-solid fa-cube" style="color: var(--secondary-color);"></i> Three of the Four Things</h2>
+    <section>
+    <section id="beta-scorecards" style="padding: 26px 46px;">
+      <h2><i class="fa-solid fa-cube" style="color: var(--secondary-color);"></i> 1. Where the Coefficients Come From, Step by Step</h2>
       <div class="content">
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 16px 26px;">
-          <p style="font-size: 13pt; color: var(--muted-color); margin: 0 0 4px;">1. The coefficient vector</p>
-          <p style="font-size: 17pt; margin: 0;">$$\boldsymbol{\hat{\beta}} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{y}$$</p>
-          <p style="font-size: 14pt; margin: 4px 0 0;"><strong>Interpretation.</strong> Each \(\hat{\beta}_j\) is a <em>partial effect</em>: the change in \(y\) per unit of \(x_j\), holding the other columns fixed. <strong>Change the model and you change what the coefficient means.</strong></p>
+        <p style="font-size: 14.5pt; margin: 0 0 10px;">Four rows, one \(x\), and an intercept. Every regression&rsquo;s coefficients come from the same four steps: \(\boldsymbol{\hat{\beta}} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{y}\).</p>
+        <div style="display: grid; grid-template-columns: 1.25fr 1fr 0.8fr 1.15fr 0.85fr; gap: 10px; align-items: stretch;">
+          <div style="background: #f8f6f3; border-radius: 10px; padding: 10px 12px; text-align: center;"><p style="font-size: 12pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">The data</p><p style="font-size: 15pt; margin: 0;">\(\mathbf{X}=\begin{bmatrix}1&1\\1&2\\1&3\\1&4\end{bmatrix}\;\mathbf{y}=\begin{bmatrix}2\\3\\5\\6\end{bmatrix}\)</p><p style="font-size: 11.5pt; color: var(--muted-color); margin: 4px 0 0; line-height: 1.3;">the column of 1s is the intercept</p></div>
+          <div class="fragment fade-up" data-fragment-index="1" style="background: #f0f5f8; border-radius: 10px; padding: 10px 12px; text-align: center;"><p style="font-size: 12pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">Step 1 &middot; \(\mathbf{X}'\mathbf{X}\)</p><p style="font-size: 15pt; margin: 0;">\(\begin{bmatrix}4&10\\10&30\end{bmatrix}\)</p><p style="font-size: 11.5pt; color: var(--muted-color); margin: 4px 0 0; line-height: 1.3;">\(n\), \(\sum x\); \(\sum x\), \(\sum x^2\)</p></div>
+          <div class="fragment fade-up" data-fragment-index="2" style="background: #f0f5f8; border-radius: 10px; padding: 10px 12px; text-align: center;"><p style="font-size: 12pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">Step 2 &middot; \(\mathbf{X}'\mathbf{y}\)</p><p style="font-size: 15pt; margin: 0;">\(\begin{bmatrix}16\\47\end{bmatrix}\)</p><p style="font-size: 11.5pt; color: var(--muted-color); margin: 4px 0 0; line-height: 1.3;">\(\sum y\), \(\sum xy\)</p></div>
+          <div class="fragment fade-up" data-fragment-index="3" style="background: #fdf0ea; border-radius: 10px; padding: 10px 12px; text-align: center;"><p style="font-size: 12pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">Step 3 &middot; invert</p><p style="font-size: 15pt; margin: 0;">\(\tfrac{1}{20}\begin{bmatrix}30&-10\\-10&4\end{bmatrix}\)</p><p style="font-size: 11.5pt; color: var(--muted-color); margin: 4px 0 0; line-height: 1.3;">20 = 4&middot;30 &minus; 10&middot;10</p></div>
+          <div class="fragment fade-up" data-fragment-index="4" style="background: #eef5ee; border-radius: 10px; padding: 10px 12px; text-align: center;"><p style="font-size: 12pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">Step 4 &middot; multiply</p><p style="font-size: 15pt; margin: 0;">\(\boldsymbol{\hat{\beta}}=\begin{bmatrix}0.5\\1.4\end{bmatrix}\)</p><p style="font-size: 11.5pt; color: var(--muted-color); margin: 4px 0 0; line-height: 1.3;">intercept 0.5, slope 1.4</p></div>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
-          <div class="fragment fade-up" style="background: #f0f5f8; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--secondary-color);">
-            <p style="font-size: 13pt; color: var(--muted-color); margin: 0 0 4px;">2. Two scorecards</p>
-            <p style="font-size: 14pt; margin: 0; line-height: 1.5;">\(R^2\) is in-sample explained variance and <strong>cannot fall</strong> when you add a predictor &mdash; including a column of noise. <strong>RMSE</strong> is in the units of \(y\).</p>
+        <div class="fragment fade-up" data-fragment-index="4" style="display: grid; grid-template-columns: 0.6fr 1.9fr; gap: 20px; align-items: center; margin-top: 10px;">
+          <img src="figures/figure_015_beta_toy.png" alt="The four points (1, 2), (2, 3), (3, 5), (4, 6) and the fitted line y-hat = 0.5 + 1.4 x" style="width: 100%; max-height: 210px; object-fit: contain;">
+          <p style="font-size: 14.5pt; line-height: 1.5; margin: 0;">That is the line through the four points. California&rsquo;s coefficients are the same four steps with 20,640 rows and four columns. With more than one \(x\), each \(\hat{\beta}_j\) is a <strong>partial effect</strong>: the change in \(y\) per unit of \(x_j\), holding the other columns fixed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="r2-picture" style="padding: 24px 44px;">
+      <h2><i class="fa-solid fa-chart-column" style="color: var(--secondary-color);"></i> 2. R&sup2;: How Much Better Than the Mean?</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 22px; align-items: start;">
+          <div>
+            <div class="r-stack" style="width: 100%;"><img src="figures/figure_016_r2_toy_s1.png" alt="The four points with the mean line y-bar = 4 and their vertical distances to it: sum of squares 10" style="width: 100%;"><img class="fragment" data-fragment-index="1" src="figures/figure_016_r2_toy_s2.png" alt="The same four points with the fitted line and their residuals: sum of squares 0.2" style="width: 100%;"></div>
+            <p class="fragment fade-up" data-fragment-index="2" style="font-size: 15pt; margin: 8px 0 0; text-align: center;">\(R^2 = 1 - \dfrac{\text{left over}}{\text{total}} = 1 - \dfrac{0.2}{10} = 0.98\)</p>
+            <p class="fragment fade-up" data-fragment-index="2" style="font-size: 13.5pt; color: var(--muted-color); margin: 4px 0 0; text-align: center;">Unitless: the share of the spread around the mean that the line accounts for.</p>
           </div>
-          <div class="fragment fade-up" style="background: #eef5ee; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--success-color);">
-            <p style="font-size: 13pt; color: var(--muted-color); margin: 0 0 4px;">3. The train/test split</p>
-            <p style="font-size: 14pt; margin: 0; line-height: 1.5;">Report RMSE on data the model has not seen. In-sample fit measures <strong>flexibility</strong> as much as accuracy.</p>
+          <div class="fragment fade-up" data-fragment-index="3">
+            <img src="figures/figure_017_noise_r2.png" alt="R-squared of the California model rising from 0.5121 to 0.5142 as 0, 1, 5, 20 and 100 columns of pure noise are added; adjusted R-squared ends at 0.5117" style="width: 100%;">
+            <p style="font-size: 14pt; line-height: 1.5; margin: 6px 0 0;"><strong>It cannot fall.</strong> Add 100 columns of pure noise to the California model and \(R^2\) still climbs, 0.5121 &rarr; 0.5142. OLS can always set a useless column&rsquo;s coefficient to zero.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <section id="rmse-train-test" style="padding: 24px 44px;">
+      <h2><i class="fa-solid fa-ruler" style="color: var(--secondary-color);"></i> 3. RMSE and the Train/Test Split</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 10px 18px; border-left: 4px solid var(--secondary-color);"><p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>R&sup2; asks: better than the mean?</strong> Relative and unitless. 0.98 in the four-row example.</p></div>
+          <div style="background: #fdf0ea; border-radius: 10px; padding: 10px 18px; border-left: 4px solid var(--danger-color);"><p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>RMSE asks: wrong by how much?</strong> In \(y\)&rsquo;s units: \(\sqrt{\tfrac{1}{n}\sum (y_i-\hat{y}_i)^2}\) = \(\sqrt{0.2/4}\) = 0.22 in the example.</p></div>
+        </div>
+        <img class="fragment fade-up" data-fragment-index="1" src="figures/figure_018_overfitting.png" alt="Training RMSE falling slightly from 0.62 to 0.59 as the polynomial degree in income rises from 1 to 9, while test RMSE rises from 0.84 to 45.03" style="width: 62%; display: block; margin: 8px auto 0;">
+        <p class="fragment fade-up" data-fragment-index="2" style="font-size: 14.5pt; line-height: 1.5; margin: 6px 0 0;">Fit on 60 rows, scored on rows it never saw. Training error can only fall as the model bends more, and in-sample \(R^2\) can only rise. <strong>Test RMSE is the honest score</strong>: lowest at degree 1, 45.03 at degree 9.</p>
+      </div>
+    </section>
+    </section>
+
+    <section>
     <section id="fwl" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-layer-group" style="color: var(--accent-color);"></i> 4. Frisch&ndash;Waugh&ndash;Lovell: What "Controlling For" Means</h2>
       <div class="content">
@@ -210,6 +229,23 @@
           <p style="font-size: 15pt; margin: 0;"><strong>Interpretation.</strong> "Holding constant" means <em>using only the variation in \(x_j\) that the other variables cannot account for.</em> Everything else is discarded before the coefficient is computed.</p>
         </div>
       </div>
+    </section>
+
+    <section id="fwl-3d" style="padding: 26px 46px;">
+      <h2><i class="fa-solid fa-cube" style="color: var(--accent-color);"></i> Controlling For, Seen in 3-D</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; align-items: start;">
+          <div style="height: 470px; overflow: hidden; border-radius: 8px; border: 1px solid #e6e1d9;"><iframe data-src="figures/fwl_3d.html" title="Interactive: California Housing block groups as a 3-D cloud of income, rooms and house value with the fitted plane; buttons turn it to look along rooms and step through FWL: value on rooms, income on rooms, then the leftovers on each other, whose slope is the plane's income slope" loading="lazy" scrolling="no" style="width: 111%; height: 111%; border: none; overflow: hidden; transform: scale(0.9); transform-origin: top left;"></iframe></div>
+          <div>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0 0 8px;"><strong>The plane.</strong> Value on income and rooms. Every slice at fixed rooms has slope <strong>0.434</strong>: the multivariate answer.</p>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0 0 8px;"><strong>Step 1.</strong> Value on rooms. Keep what rooms cannot explain.</p>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0 0 8px;"><strong>Step 2.</strong> Income on rooms. Keep what rooms cannot explain.</p>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0 0 12px;"><strong>Step 3.</strong> Step 1&rsquo;s leftovers on step 2&rsquo;s. Slope <strong>0.434</strong> again.</p>
+            <div style="background: #f6f1f4; border-left: 4px solid #7C3A5F; border-radius: 8px; padding: 10px 16px;"><p style="font-size: 14pt; line-height: 1.5; margin: 0;">&ldquo;Controlling for rooms&rdquo; is the slope you see once rooms can no longer vary.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
     </section>
 
     <section id="fwl-to-dml" style="padding: 34px 60px;">
@@ -409,12 +445,16 @@
     <section id="sandwich-derivation" style="padding: 30px 55px;">
       <h2><i class="fa-solid fa-burger" style="color: var(--accent-color);"></i> The Sandwich, Derived</h2>
       <div class="content">
-        <p style="font-size: 14.5pt; margin: 0;">Begin from the estimator. Writing \(\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}\),</p>
-        <p style="font-size: 16pt; margin: 2px 0;">$$\boldsymbol{\hat{\beta}} - \boldsymbol{\beta} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\boldsymbol{\varepsilon}$$</p>
-        <p style="font-size: 14.5pt; margin: 0;">Condition on \(\mathbf{X}\) and take the variance of both sides:</p>
-        <p style="font-size: 15pt; margin: 2px 0;">$$\text{Var}(\boldsymbol{\hat{\beta}} \mid \mathbf{X}) = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}' \, E[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}' \mid \mathbf{X}] \, \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1} = \underbrace{(\mathbf{X}'\mathbf{X})^{-1}}_{\text{bread}}\underbrace{(\mathbf{X}'\boldsymbol{\Omega}\mathbf{X})}_{\text{filling}}\underbrace{(\mathbf{X}'\mathbf{X})^{-1}}_{\text{bread}}$$</p>
-        <div style="background: #f8f6f3; border-left: 4px solid var(--primary-color); border-radius: 8px; padding: 12px 22px; margin-top: 8px;">
-          <p style="font-size: 15pt; margin: 0;"><strong>Interpretation.</strong> This is <em>exact</em> and assumption-free beyond strict exogeneity. \(\boldsymbol{\Omega} = E[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}' \mid \mathbf{X}]\) is the true error covariance matrix, whatever it happens to be. <strong>The whole of robust inference is a set of different guesses at that filling.</strong></p>
+        <div style="display: grid; grid-template-columns: 1.45fr 1fr; gap: 22px; align-items: start;">
+          <div>
+            <div style="margin: 0 0 6px;"><p style="font-size: 14pt; margin: 0;"><strong style="color: var(--secondary-color);">Step 1 &middot; Substitute.</strong> \(\boldsymbol{\hat{\beta}} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{y}\) and \(\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}\), so</p><p style="font-size: 15pt; margin: 0;">$$\boldsymbol{\hat{\beta}} - \boldsymbol{\beta} = \underbrace{(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'}_{\mathbf{A}\text{: weights}}\,\boldsymbol{\varepsilon}$$</p><p style="font-size: 13pt; color: var(--muted-color); margin: 0;">The estimate misses the truth by a weighted sum of the errors.</p></div>
+            <div class="fragment fade-up" data-fragment-index="1" style="margin: 0 0 6px;"><p style="font-size: 14pt; margin: 0;"><strong style="color: var(--secondary-color);">Step 2 &middot; Take the variance.</strong> The weights come out on both sides, as \(\text{Var}(a\,e) = a\,\text{Var}(e)\,a\) for a number \(a\):</p><p style="font-size: 15pt; margin: 0;">$$\text{Var}(\boldsymbol{\hat{\beta}} \mid \mathbf{X}) = \mathbf{A}\,\boldsymbol{\Omega}\,\mathbf{A}', \qquad \boldsymbol{\Omega} = E[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}' \mid \mathbf{X}]$$</p></div>
+            <div class="fragment fade-up" data-fragment-index="2" style="margin: 0 0 6px;"><p style="font-size: 14pt; margin: 0;"><strong style="color: var(--secondary-color);">Step 3 &middot; Write A out.</strong> </p><p style="font-size: 15pt; margin: 0;">$$\text{Var}(\boldsymbol{\hat{\beta}} \mid \mathbf{X}) = (\mathbf{X}'\mathbf{X})^{-1}\;\mathbf{X}'\boldsymbol{\Omega}\mathbf{X}\;(\mathbf{X}'\mathbf{X})^{-1}$$</p></div>
+          </div>
+          <div class="fragment fade-up" data-fragment-index="2"><div class="mathjax_ignore tex2jax_ignore"><svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" font-family="inherit" style="width:100%;display:block" aria-label="A sandwich: top bread is X prime X inverse, the filling is X prime Omega X, bottom bread is X prime X inverse; the errors enter only through the filling"><rect x="40" y="18" width="340" height="62" rx="30" fill="#E8C9A0" stroke="#B98A55" stroke-width="2"/><text x="210" y="47" text-anchor="middle" font-size="22" font-weight="700" fill="#5A3E1E">(X′X)⁻¹</text><text x="210" y="69" text-anchor="middle" font-size="13" fill="#5A3E1E">bread: the data only</text><rect x="30" y="94" width="360" height="92" rx="12" fill="#F3D6CF" stroke="#A85C5C" stroke-width="2.5"/><text x="210" y="132" text-anchor="middle" font-size="24" font-weight="700" fill="#7A2E2E">X′ ΩX</text><text x="210" y="156" text-anchor="middle" font-size="13.5" fill="#7A2E2E">filling: the only place the errors enter</text><text x="210" y="175" text-anchor="middle" font-size="12.5" fill="#7A2E2E">Ω = the square from 13.2</text><rect x="40" y="200" width="340" height="62" rx="30" fill="#E8C9A0" stroke="#B98A55" stroke-width="2"/><text x="210" y="229" text-anchor="middle" font-size="22" font-weight="700" fill="#5A3E1E">(X′X)⁻¹</text><text x="210" y="251" text-anchor="middle" font-size="13" fill="#5A3E1E">bread: the data only</text><text x="210" y="290" text-anchor="middle" font-size="13" fill="#6b645e">Var(β̂ | X) = bread · filling · bread</text></svg></div></div>
+        </div>
+        <div class="fragment fade-up" data-fragment-index="3" style="background: #f8f6f3; border-left: 4px solid var(--primary-color); border-radius: 8px; padding: 10px 20px; margin-top: 6px;">
+          <p style="font-size: 14.5pt; margin: 0;"><strong>Exact</strong>, assuming nothing beyond strict exogeneity. Whatever \(\boldsymbol{\Omega}\) is, it enters only through the filling. <strong>Every robust formula is a different guess at the filling.</strong></p>
         </div>
       </div>
     </section>
@@ -575,7 +615,7 @@
     <section id="se-repricing" style="padding: 24px 44px;">
       <h2 style="margin-bottom: 6px;"><i class="fa-solid fa-scale-unbalanced" style="color: var(--accent-color);"></i> Robust Errors Are Not a Uniform Tax</h2>
       <div class="content">
-        <div class="mock colab" data-src="cells/ch14sim.json" data-cell="repricing" data-lines="1" data-size="10pt" data-live="off"></div>
+        <div class="mock colab" data-frag-start="0" data-src="cells/ch14sim.json" data-cell="repricing" data-lines="1" data-size="10pt" data-live="off"></div>
         <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: center;">
           <div class="r-stack" style="width: 100%;"><img src="figures/figure_002_se_repricing_s1.png" alt="Horizontal bars of the ratio of HC3 to classical standard error, with HouseAge at 1.24 times, MedInc at 2.06 times and AveRooms at 4.99 times, against a dashed line at one for no change" style="width: 100%; border-radius: 6px;"><img class="fragment" src="figures/figure_002_se_repricing_s2.png" alt="" style="width: 100%; border-radius: 6px;"><img class="fragment" src="figures/figure_002_se_repricing_s3.png" alt="" style="width: 100%; border-radius: 6px;"></div>
           <div>
@@ -1113,7 +1153,7 @@
         <div style="display: grid; grid-template-columns: 0.95fr 1fr; gap: 20px; align-items: center;">
           <div>
             <p style="font-size: 14pt; margin: 0 0 8px; line-height: 1.5;">The truth is \(3\log x\). Fit a line to 2,000 points:</p>
-            <div class="mock colab" data-src="cells/ch14sim.json" data-cell="funcform" data-lines="3,5" data-size="11pt" data-live="off"></div>
+            <div class="mock colab" data-frag-start="0" data-src="cells/ch14sim.json" data-cell="funcform" data-lines="3,5" data-size="11pt" data-live="off"></div>
             <p style="font-size: 14pt; margin: 10px 0 0; line-height: 1.5;">An \(R^2\) of 0.90 and a robust standard error of 0.006. <strong>Most analysts would ship this.</strong></p>
             <div style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 11px 18px; margin-top: 10px;">
               <p style="font-size: 14pt; margin: 0; line-height: 1.5;">The slope of 0.648 corresponds to nothing &mdash; the true relationship has no constant slope. Robust standard errors correct the <em>variance</em> and say nothing about whether the model is right.</p>
@@ -1198,6 +1238,7 @@
       </div>
     </section>
 
+    <section>
     <section id="workflow" style="padding: 24px 48px;">
       <h2 style="margin-bottom: 8px;"><i class="fa-solid fa-list-check" style="color: var(--success-color);"></i> A Diagnostic Workflow &mdash; the Slide to Photograph</h2>
       <div class="content">
@@ -1224,6 +1265,48 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="films-setup" style="padding: 22px 44px;">
+      <h2><i class="fa-solid fa-gamepad" style="color: var(--secondary-color);"></i> A Study You Have Already Met</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1.05fr 1fr; gap: 22px; align-items: start;">
+          <div>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0 0 8px;"><strong>Question.</strong> Do films based on video games score better with critics when the director was young when the game came out, young enough to have played it?</p>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0 0 8px;"><strong>Data.</strong> 57 films, 1993&ndash;2025: Wikipedia&rsquo;s list of films based on video games, directors&rsquo; birth dates from Wikidata, Rotten Tomatoes scores.</p>
+            <p style="font-size: 14.5pt; line-height: 1.5; margin: 0 0 4px;"><strong>Model.</strong> Release year and animation are confounders:</p>
+            <p style="font-size: 14pt; margin: 0 0 10px; text-align: center;">\(\text{RT}_i = \beta_0 + \beta_1\,\text{age}_i + \beta_2\,\text{year}_i + \beta_3\,\text{animated}_i + \varepsilon_i\)</p>
+            <div class="fragment fade-up" data-fragment-index="1" style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 10px 16px;"><p style="font-size: 14pt; line-height: 1.5; margin: 0;"><strong>Result.</strong> &minus;0.30 points per year of age, 95% CI &minus;0.79 to 0.19. Ten years younger: <strong>+3.0 points, CI &minus;1.9 to +7.9</strong>. The interval includes zero: a direction, not a magnitude.</p></div>
+          </div>
+          <div><img src="figures/figure_011_films_age_rt.png" alt="Scatter of Rotten Tomatoes score against the director's age when the game came out, 57 films based on video games, live-action and animated marked separately: the cloud tilts down" style="width: 100%; border: 1px solid #eee; border-radius: 6px;"></div>
+        </div>
+        <p class="fragment fade-up" data-fragment-index="2" style="font-size: 14.5pt; margin-top: 12px; color: var(--muted-color);">The first question about that interval is whether it is narrow enough. Topic 14 asks whether it is even right.</p>
+      </div>
+    </section>
+
+    <section id="films-residuals" style="padding: 20px 44px;">
+      <h2><i class="fa-solid fa-magnifying-glass-chart" style="color: var(--secondary-color);"></i> The Film Model, Through the Workflow</h2>
+      <div class="content">
+        <img src="figures/figure_012_films_residuals.png" alt="Two residual plots for the film model: residuals against fitted score and against age, no fan and no curve; Resident Evil: Damnation ringed at the top, the three Sonic films and The Super Mario Bros. Movie ringed on the age plot" style="width: 86%; display: block; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 10px;">
+          <div class="fragment fade-up" data-fragment-index="1"><div style="border-left: 4px solid #2E6DB4; padding: 4px 14px; margin: 0;"><p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong style="color: #2E6DB4;">Unequal variance (14.2).</strong> No fan. Breusch&ndash;Pagan p = 0.33, but 57 films give the test little power. HC3: SE 0.259 &rarr; 0.267. Robust costs nothing here, so report it.</p></div></div>
+          <div class="fragment fade-up" data-fragment-index="2"><div style="border-left: 4px solid #C47B5A; padding: 4px 14px; margin: 0;"><p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong style="color: #C47B5A;">Look first (14.4).</strong> The top Cook&rsquo;s D, 0.211, is <em>Resident Evil: Damnation</em>: 100% from 5 reviews. A real film with a noisy score. Without the 6 films under 20 reviews: &minus;0.34.</p></div></div>
+          <div class="fragment fade-up" data-fragment-index="3"><div style="border-left: 4px solid #6A3D9A; padding: 4px 14px; margin: 0;"><p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong style="color: #6A3D9A;">Functional form (14.5).</strong> No curve. Adding age&sup2; makes AIC 503.6 &rarr; 504.3 and held-out error 20.24 &rarr; 21.15: worse both ways. Keep the line.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="films-checks" style="padding: 22px 46px;">
+      <h2><i class="fa-solid fa-layer-group" style="color: var(--secondary-color);"></i> Two Checks the Project Did Not Run</h2>
+      <div class="content">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 14px 20px;"><p style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--muted-color); margin: 0 0 6px;">Clustering (14.3)</p><p style="font-size: 14.5pt; line-height: 1.5; margin: 0;"><strong>14 of 57 films are Capcom&rsquo;s</strong>, most of them <em>Resident Evil</em>. Films from one publisher can share a shock. Cluster by publisher, 28 groups with one large: <strong>SE 0.259 &rarr; 0.315</strong>, 1.21&times;.</p></div>
+          <div class="fragment fade-up" data-fragment-index="1" style="background: #fdf0ea; border-radius: 10px; padding: 14px 20px;"><p style="font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: var(--muted-color); margin: 0 0 6px;">Influence (14.4)</p><p style="font-size: 14.5pt; line-height: 1.5; margin: 0;"><strong>Three films carry 37%</strong> of the total Cook&rsquo;s distance: <em>Resident Evil: Damnation</em>, <em>Ratchet &amp; Clank</em>, <em>Sonic the Hedgehog 3</em>. Drop them: <strong>&minus;0.30 &rarr; &minus;0.20</strong>.</p></div>
+        </div>
+        <div class="r-stack" style="width: 64%; margin: 10px auto 0;"><img src="figures/figure_013_films_fwl_s1.png" alt="The film model as an FWL picture: score against age, each net of year and animated, with the fitted line of slope minus 0.30; Capcom's 14 films drawn as squares" style="width: 100%;"><img class="fragment" data-fragment-index="1" src="figures/figure_013_films_fwl_s2.png" alt="The same picture with the three most influential films ringed and a dashed line of slope minus 0.20 fitted without them" style="width: 100%;"></div>
+        <div class="fragment fade-up" data-fragment-index="2" style="background: #f6f1f4; border-left: 4px solid #7C3A5F; border-radius: 8px; padding: 10px 22px; margin-top: 10px;"><p style="font-size: 14.5pt; line-height: 1.5; margin: 0;"><strong>What the checks say.</strong> They do not rescue the result, and they do not break it. Every check leaves the interval around zero, a little wider. The fix is still more films, not a fancier model.</p></div>
+      </div>
+    </section>
     </section>
 
     <section id="reporting" style="padding: 40px 70px;">

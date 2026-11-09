@@ -1,9 +1,9 @@
 {
  "src": "ch14sim.py",
- "sha256": "b1ea0c0fcb4e918eb9908bce97c31e6ebf64aba67e35a462d2e242ccc8eb8861",
+ "sha256": "d6800b7af8fe35226e56e3fd7876be4ae0da2efa99f72c03d0d0fe4472dc0fc8",
  "notebook": "",
  "source": "",
- "generated": "2026-11-06T15:12:02-0500",
+ "generated": "2026-11-08T19:43:21-0500",
  "python": "3.12.11",
  "versions": {
   "pandas": "2.2.2",
@@ -575,6 +575,586 @@
    ]
   },
   {
+   "name": "hook",
+   "skin": "colab",
+   "code": "model = sm.OLS(df['MedHouseVal'],\n               sm.add_constant(df[['MedInc', 'AveRooms', 'HouseAge']]))\nas_reported = model.fit()\none_change  = model.fit(cov_type='HC3')\nfor name, fit in [('as reported', as_reported), ('one formula changed', one_change)]:\n    b, se = fit.params['AveRooms'], fit.bse['AveRooms']\n    print(f\"{name:<20} coef {b:.4f}   SE {se:.4f}   t {b / se:.2f}\")",
+   "stdout": "as reported          coef -0.0272   SE 0.0024   t -11.23\none formula changed  coef -0.0272   SE 0.0121   t -2.25\n",
+   "error": "",
+   "traceback": "",
+   "warnings": [],
+   "count": 2,
+   "tokens": [
+    [
+     "",
+     "model"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "="
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "sm"
+    ],
+    [
+     "",
+     "."
+    ],
+    [
+     "",
+     "OLS"
+    ],
+    [
+     "",
+     "("
+    ],
+    [
+     "",
+     "df"
+    ],
+    [
+     "",
+     "["
+    ],
+    [
+     "str",
+     "'MedHouseVal'"
+    ],
+    [
+     "",
+     "]"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     "\n"
+    ],
+    [
+     "",
+     "               "
+    ],
+    [
+     "",
+     "sm"
+    ],
+    [
+     "",
+     "."
+    ],
+    [
+     "",
+     "add_constant"
+    ],
+    [
+     "",
+     "("
+    ],
+    [
+     "",
+     "df"
+    ],
+    [
+     "",
+     "["
+    ],
+    [
+     "",
+     "["
+    ],
+    [
+     "str",
+     "'MedInc'"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "str",
+     "'AveRooms'"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "str",
+     "'HouseAge'"
+    ],
+    [
+     "",
+     "]"
+    ],
+    [
+     "",
+     "]"
+    ],
+    [
+     "",
+     ")"
+    ],
+    [
+     "",
+     ")"
+    ],
+    [
+     "",
+     "\n"
+    ],
+    [
+     "",
+     "as_reported"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "="
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "model"
+    ],
+    [
+     "",
+     "."
+    ],
+    [
+     "",
+     "fit"
+    ],
+    [
+     "",
+     "("
+    ],
+    [
+     "",
+     ")"
+    ],
+    [
+     "",
+     "\n"
+    ],
+    [
+     "",
+     "one_change"
+    ],
+    [
+     "",
+     "  "
+    ],
+    [
+     "",
+     "="
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "model"
+    ],
+    [
+     "",
+     "."
+    ],
+    [
+     "",
+     "fit"
+    ],
+    [
+     "",
+     "("
+    ],
+    [
+     "",
+     "cov_type"
+    ],
+    [
+     "",
+     "="
+    ],
+    [
+     "str",
+     "'HC3'"
+    ],
+    [
+     "",
+     ")"
+    ],
+    [
+     "",
+     "\n"
+    ],
+    [
+     "kw",
+     "for"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "name"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "fit"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "kw",
+     "in"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "["
+    ],
+    [
+     "",
+     "("
+    ],
+    [
+     "str",
+     "'as reported'"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "as_reported"
+    ],
+    [
+     "",
+     ")"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "("
+    ],
+    [
+     "str",
+     "'one formula changed'"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "one_change"
+    ],
+    [
+     "",
+     ")"
+    ],
+    [
+     "",
+     "]"
+    ],
+    [
+     "",
+     ":"
+    ],
+    [
+     "",
+     "\n"
+    ],
+    [
+     "",
+     "    "
+    ],
+    [
+     "",
+     "b"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "se"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "="
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "fit"
+    ],
+    [
+     "",
+     "."
+    ],
+    [
+     "",
+     "params"
+    ],
+    [
+     "",
+     "["
+    ],
+    [
+     "str",
+     "'AveRooms'"
+    ],
+    [
+     "",
+     "]"
+    ],
+    [
+     "",
+     ","
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "fit"
+    ],
+    [
+     "",
+     "."
+    ],
+    [
+     "",
+     "bse"
+    ],
+    [
+     "",
+     "["
+    ],
+    [
+     "str",
+     "'AveRooms'"
+    ],
+    [
+     "",
+     "]"
+    ],
+    [
+     "",
+     "\n"
+    ],
+    [
+     "",
+     "    "
+    ],
+    [
+     "",
+     "print"
+    ],
+    [
+     "",
+     "("
+    ],
+    [
+     "str",
+     "f\""
+    ],
+    [
+     "",
+     "{"
+    ],
+    [
+     "",
+     "name"
+    ],
+    [
+     "",
+     ":"
+    ],
+    [
+     "str",
+     "<20"
+    ],
+    [
+     "",
+     "}"
+    ],
+    [
+     "str",
+     " coef "
+    ],
+    [
+     "",
+     "{"
+    ],
+    [
+     "",
+     "b"
+    ],
+    [
+     "",
+     ":"
+    ],
+    [
+     "str",
+     ".4f"
+    ],
+    [
+     "",
+     "}"
+    ],
+    [
+     "str",
+     "   SE "
+    ],
+    [
+     "",
+     "{"
+    ],
+    [
+     "",
+     "se"
+    ],
+    [
+     "",
+     ":"
+    ],
+    [
+     "str",
+     ".4f"
+    ],
+    [
+     "",
+     "}"
+    ],
+    [
+     "str",
+     "   t "
+    ],
+    [
+     "",
+     "{"
+    ],
+    [
+     "",
+     "b"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "/"
+    ],
+    [
+     "",
+     " "
+    ],
+    [
+     "",
+     "se"
+    ],
+    [
+     "",
+     ":"
+    ],
+    [
+     "str",
+     ".2f"
+    ],
+    [
+     "",
+     "}"
+    ],
+    [
+     "str",
+     "\""
+    ],
+    [
+     "",
+     ")"
+    ]
+   ],
+   "kind": "text",
+   "output": "as reported          coef -0.0272   SE 0.0024   t -11.23\none formula changed  coef -0.0272   SE 0.0121   t -2.25\n",
+   "parts": [
+    {
+     "type": "stream",
+     "text": "as reported          coef -0.0272   SE 0.0024   t -11.23\none formula changed  coef -0.0272   SE 0.0121   t -2.25\n"
+    }
+   ]
+  },
+  {
    "name": "bp_white",
    "skin": "colab",
    "code": "bp = het_breuschpagan(classical.resid, X)\nwhite = het_white(classical.resid, X)\nprint(f\"Breusch-Pagan: LM = {bp[0]:,.1f}   p = {bp[1]:.3g}\")\nprint(f\"White test:    LM = {white[0]:,.1f}   p = {white[1]:.3g}\")",
@@ -582,7 +1162,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 2,
+   "count": 3,
    "tokens": [
     [
      "",
@@ -902,7 +1482,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 3,
+   "count": 4,
    "tokens": [
     [
      "",
@@ -1086,7 +1666,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 4,
+   "count": 5,
    "tokens": [
     [
      "kw",
@@ -1478,7 +2058,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 5,
+   "count": 6,
    "tokens": [
     [
      "",
@@ -2734,7 +3314,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 6,
+   "count": 7,
    "tokens": [
     [
      "kw",
@@ -4250,7 +4830,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 7,
+   "count": 8,
    "tokens": [
     [
      "kw",
@@ -4598,7 +5178,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 8,
+   "count": 9,
    "tokens": [
     [
      "",
@@ -5046,7 +5626,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 9,
+   "count": 10,
    "tokens": [
     [
      "",
@@ -5642,7 +6222,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 10,
+   "count": 11,
    "tokens": [
     [
      "",
@@ -5838,7 +6418,7 @@
    "error": "",
    "traceback": "",
    "warnings": [],
-   "count": 11,
+   "count": 12,
    "tokens": [
     [
      "",
