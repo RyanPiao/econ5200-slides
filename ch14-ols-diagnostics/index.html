@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=1aa24f91ed07df9cbe85c424f9a08e1d">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=a230b9c290b107abc764856f9893e843">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OLS Diagnostics: When OLS Fails</title>
@@ -146,6 +146,7 @@
           </tbody>
         </table>
         <p style="font-size: 15pt; margin-top: 16px; line-height: 1.55;">The first two rows are fixable with a better variance formula and <em>nothing else</em>. The last two are fixable by nothing in this topic &mdash; and we will come back to this exact table at the end to say so.</p>
+        <p style="font-size: 12pt; color: var(--muted-color); margin: 8px 0 0; line-height: 1.4;"><strong>Reading the symbols:</strong> <em>Heteroscedasticity</em>: the error spread differs across rows. <em>Clustered dependence</em>: errors inside a group move together. <em>Leverage</em>: a row extreme in \(x\). <em>Influence</em>: a row whose deletion moves the estimate. <em>Functional form</em>: the shape of the fitted line.</p>
       </div>
     </section>
 
@@ -301,7 +302,7 @@
       <div class="content">
         <p style="font-size: 15.5pt; line-height: 1.5;">OLS is the Best Linear Unbiased Estimator when the errors are <strong>spherical</strong>:</p>
         <p style="font-size: 17pt; margin: 4px 0;">$$E[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}' \mid \mathbf{X}] = \sigma^2 \mathbf{I}_n$$</p>
-        <p style="font-size: 13.5pt; color: var(--muted-color); margin: 0 0 12px;"><strong>Where:</strong> \(\mathbf{I}_n\) is the \(n \times n\) identity matrix and \(\sigma^2\) a single common error variance.</p>
+        <p style="font-size: 13.5pt; color: var(--muted-color); margin: 0 0 12px;"><strong>Where:</strong> \(\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}'\) is the \(n \times n\) table of error products (\(\varepsilon_i^2\) on the diagonal, \(\varepsilon_i\varepsilon_j\) off it), \(\mathbf{I}_n\) the identity matrix (1s on the diagonal, 0s elsewhere), and \(\sigma^2\) a single common error variance, estimated by \(\hat{\sigma}^2 = \sum e_i^2/(n-p-1)\).</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
           <div data-fragment-index="1" class="fragment fade-up" style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-left: 4px solid var(--secondary-color);">
             <p style="font-size: 14pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 6px;">The diagonal is constant</p>
@@ -446,13 +447,13 @@
         <div style="display: grid; grid-template-columns: 1.45fr 1fr; gap: 22px; align-items: start;">
           <div>
             <div style="margin: 0 0 6px;"><p style="font-size: 14pt; margin: 0;"><strong style="color: var(--secondary-color);">Step 1 &middot; Substitute.</strong> \(\boldsymbol{\hat{\beta}} = (\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{y}\) and \(\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}\), so</p><p style="font-size: 15pt; margin: 0;">$$\boldsymbol{\hat{\beta}} - \boldsymbol{\beta} = \underbrace{(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'}_{\mathbf{A}\text{: weights}}\,\boldsymbol{\varepsilon}$$</p><p style="font-size: 13pt; color: var(--muted-color); margin: 0;">The estimate misses the truth by a weighted sum of the errors.</p></div>
-            <div class="fragment fade-up" data-fragment-index="1" style="margin: 0 0 6px;"><p style="font-size: 14pt; margin: 0;"><strong style="color: var(--secondary-color);">Step 2 &middot; Take the variance.</strong> The weights come out on both sides, as \(\text{Var}(a\,e) = a\,\text{Var}(e)\,a\) for a number \(a\):</p><p style="font-size: 15pt; margin: 0;">$$\text{Var}(\boldsymbol{\hat{\beta}} \mid \mathbf{X}) = \mathbf{A}\,\boldsymbol{\Omega}\,\mathbf{A}', \qquad \boldsymbol{\Omega} = E[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}' \mid \mathbf{X}]$$</p></div>
+            <div class="fragment fade-up" data-fragment-index="1" style="margin: 0 0 6px;"><p style="font-size: 14pt; margin: 0;"><strong style="color: var(--secondary-color);">Step 2 &middot; Take the variance.</strong> The weights come out on both sides, as \(\text{Var}(a\,u) = a\,\text{Var}(u)\,a\) for a number \(a\) and any random \(u\):</p><p style="font-size: 15pt; margin: 0;">$$\text{Var}(\boldsymbol{\hat{\beta}} \mid \mathbf{X}) = \mathbf{A}\,\boldsymbol{\Omega}\,\mathbf{A}', \qquad \boldsymbol{\Omega} = E[\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}' \mid \mathbf{X}]$$</p></div>
             <div class="fragment fade-up" data-fragment-index="2" style="margin: 0 0 6px;"><p style="font-size: 14pt; margin: 0;"><strong style="color: var(--secondary-color);">Step 3 &middot; Write A out.</strong> </p><p style="font-size: 15pt; margin: 0;">$$\text{Var}(\boldsymbol{\hat{\beta}} \mid \mathbf{X}) = (\mathbf{X}'\mathbf{X})^{-1}\;\mathbf{X}'\boldsymbol{\Omega}\mathbf{X}\;(\mathbf{X}'\mathbf{X})^{-1}$$</p></div>
           </div>
           <div class="fragment fade-up" data-fragment-index="2"><div class="mathjax_ignore tex2jax_ignore"><svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" font-family="inherit" style="width:100%;display:block" aria-label="A sandwich: top bread is X prime X inverse, the filling is X prime Omega X, bottom bread is X prime X inverse; the errors enter only through the filling"><rect x="40" y="18" width="340" height="62" rx="30" fill="#E8C9A0" stroke="#B98A55" stroke-width="2"/><text x="210" y="47" text-anchor="middle" font-size="22" font-weight="700" fill="#5A3E1E">(X′X)⁻¹</text><text x="210" y="69" text-anchor="middle" font-size="13" fill="#5A3E1E">bread: the data only</text><rect x="30" y="94" width="360" height="92" rx="12" fill="#F3D6CF" stroke="#A85C5C" stroke-width="2.5"/><text x="210" y="132" text-anchor="middle" font-size="24" font-weight="700" fill="#7A2E2E">X′ ΩX</text><text x="210" y="156" text-anchor="middle" font-size="13.5" fill="#7A2E2E">filling: the only place the errors enter</text><text x="210" y="175" text-anchor="middle" font-size="12.5" fill="#7A2E2E">Ω = the square from 15.2</text><rect x="40" y="200" width="340" height="62" rx="30" fill="#E8C9A0" stroke="#B98A55" stroke-width="2"/><text x="210" y="229" text-anchor="middle" font-size="22" font-weight="700" fill="#5A3E1E">(X′X)⁻¹</text><text x="210" y="251" text-anchor="middle" font-size="13" fill="#5A3E1E">bread: the data only</text><text x="210" y="290" text-anchor="middle" font-size="13" fill="#6b645e">Var(β̂ | X) = bread · filling · bread</text></svg></div></div>
         </div>
         <div class="fragment fade-up" data-fragment-index="3" style="background: #f8f6f3; border-left: 4px solid var(--primary-color); border-radius: 8px; padding: 10px 20px; margin-top: 6px;">
-          <p style="font-size: 14.5pt; margin: 0;"><strong>Exact</strong>, assuming nothing beyond strict exogeneity. Whatever \(\boldsymbol{\Omega}\) is, it enters only through the filling. <strong>Every robust formula is a different guess at the filling.</strong></p>
+          <p style="font-size: 14.5pt; margin: 0;"><strong>Exact</strong>, assuming nothing beyond strict exogeneity, \(E[\boldsymbol{\varepsilon} \mid \mathbf{X}] = \mathbf{0}\): the errors average zero whatever the \(x\)'s are. Whatever \(\boldsymbol{\Omega}\) is, it enters only through the filling. <strong>Every robust formula is a different guess at the filling.</strong></p>
         </div>
       </div>
     </section>
@@ -523,6 +524,7 @@
               </tbody>
             </table>
             <p style="font-size: 13.5pt; margin-top: 12px; line-height: 1.5;">HC3 approximates the <strong>jackknife</strong> and performs best when a few observations have high leverage &mdash; precisely the case where getting it wrong matters most. MacKinnon &amp; White (1985).</p>
+            <p style="font-size: 12pt; color: var(--muted-color); margin: 8px 0 0; line-height: 1.4;"><strong>Reading the symbols:</strong> HC = heteroscedasticity-consistent. \(n\) rows, \(p\) slopes. \(h_{ii}\) is the leverage below. The bias: a residual shows only \((1-h_{ii})\) of its error's variance, so HC0 is too small where leverage is high.</p>
           </div>
         </div>
         <div style="background: #f6f1f4; border-left: 4px solid #7C3A5F; border-radius: 8px; padding: 11px 22px; margin-top: 12px;">
@@ -594,7 +596,7 @@
               <p style="font-size: 13.5pt; margin: 0;">One headline RMSE averages 0.712 with 0.890. If the model will be used on the expensive neighbourhoods, the reported accuracy is optimistic by roughly a quarter. <strong>Report error by segment.</strong></p>
             </div>
           </div>
-          <div class="r-stack" style="width: 100%;"><img src="figures/figure_001_funnel_s1.png" alt="Upper panel: California Housing residuals against fitted values with plus and minus residual standard deviation drawn as steps per fitted quintile, widening from 0.712 to 0.890. Lower panel: mean residual by quintile forming an arch, positive at both ends and negative in the middle" style="width: 100%; max-height: 560px; object-fit: contain; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_001_funnel_s2.png" alt="" style="width: 100%; max-height: 560px; object-fit: contain; border-radius: 6px;"><img class="fragment" data-fragment-index="2" src="figures/figure_001_funnel_s3.png" alt="" style="width: 100%; max-height: 560px; object-fit: contain; border-radius: 6px;"></div>
+          <div class="r-stack" style="width: 100%;"><img src="figures/figure_001_funnel_s1.png" alt="Upper panel: California Housing residuals against fitted values with plus and minus residual standard deviation drawn as steps per fitted quintile, widening from 0.712 to 0.890. Lower panel: mean residual by quintile forming a U, positive at both ends and negative in the middle" style="width: 100%; max-height: 560px; object-fit: contain; border-radius: 6px;"><img class="fragment" data-fragment-index="1" src="figures/figure_001_funnel_s2.png" alt="" style="width: 100%; max-height: 560px; object-fit: contain; border-radius: 6px;"><img class="fragment" data-fragment-index="2" src="figures/figure_001_funnel_s3.png" alt="" style="width: 100%; max-height: 560px; object-fit: contain; border-radius: 6px;"></div>
         </div>
       </div>
     </section>
@@ -718,7 +720,7 @@
             </table>
             <div class="fragment fade-up" style="background: #fdf3f0; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 9px 16px;">
               <p style="font-size: 13.5pt; line-height: 1.45; margin: 0;">After talking, groups moved together. The naive SE shrank as if the answers were more precise; the clustered SE did not. Round 2&rsquo;s <span data-cl="n2">&mdash;</span> answers carry the information of about <strong><span data-cl="e2">&mdash;</span></strong> independent ones, over <span data-cl="G">&mdash;</span> groups.</p>
-              <p style="font-size: 12.5pt; line-height: 1.4; margin: 6px 0 0; color: var(--muted-color);">The first Boston Marathon: <strong>1897</strong>. With this few groups the clustered SE is itself noisy: slide 33.</p>
+              <p style="font-size: 12.5pt; line-height: 1.4; margin: 6px 0 0; color: var(--muted-color);">The first Boston Marathon: <strong>1897</strong>. With this few groups the clustered SE is itself noisy: slide 35.</p>
             </div>
           </div>
         </div>
@@ -893,11 +895,11 @@
       <div class="content">
         <div style="background: #fdf0ea; border-radius: 10px; padding: 16px 24px; border-left: 4px solid var(--danger-color);">
           <p style="font-size: 15pt; font-weight: 700; color: var(--danger-color); margin: 0 0 6px;">1. Few clusters is the dangerous regime</p>
-          <p style="font-size: 14.5pt; margin: 0; line-height: 1.55;">Under roughly <strong>40 clusters</strong>, cluster-robust standard errors are <em>themselves</em> biased downward. Use the <strong>wild cluster bootstrap</strong> &mdash; Rademacher weights, null imposed, resampling whole clusters, which is Chapter 11's Tier B method &mdash; or the jackknife-based <strong>CRV3</strong> estimator.</p>
+          <p style="font-size: 14.5pt; margin: 0; line-height: 1.55;">Under roughly <strong>40 clusters</strong>, cluster-robust standard errors are <em>themselves</em> biased downward. Use the <strong>wild cluster bootstrap</strong> from Topic 11 (Chapter 11, Section 11.6): impose the null, flip the sign of each whole cluster's residuals at random (Rademacher, +1 or &minus;1), refit, and count how often the fake \(t\) beats the real one. In Lab 14's Extension, with 8 firms and no true effect, clustered SEs reject <strong>17.8%</strong> of the time and the wild bootstrap about <strong>7%</strong>, against a nominal 5%.</p>
         </div>
         <div data-fragment-index="1" class="fragment fade-up" style="background: #f0f5f8; border-radius: 10px; padding: 16px 24px; border-left: 4px solid var(--secondary-color); margin-top: 14px;">
           <p style="font-size: 15pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 6px;">2. Cluster-level leverage matters too</p>
-          <p style="font-size: 14.5pt; margin: 0; line-height: 1.55;">Exactly as observation-level leverage does &mdash; and we measure that in ten minutes. A single large or unusual cluster can dominate a cluster-robust variance estimate. The <code>summclust</code> diagnostics are built to expose it.</p>
+          <p style="font-size: 14.5pt; margin: 0; line-height: 1.55;">Exactly as observation-level leverage does, which we measure on slide 44. A single large or unusual cluster can dominate a cluster-robust variance estimate. The <code>summclust</code> diagnostics are built to expose it.</p>
         </div>
         <p data-fragment-index="1" class="fragment fade-up" style="font-size: 12.5pt; color: var(--muted-color); font-style: italic; margin-top: 14px;">MacKinnon, Nielsen &amp; Webb (2023), <em>Journal of Applied Econometrics</em> 38(5) and <em>Stata Journal</em> 23(4).</p>
       </div>
@@ -952,11 +954,11 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
           <div style="background: #f8f6f3; border-radius: 10px; padding: 13px 20px; border-left: 4px solid var(--muted-color);">
             <p style="font-size: 14pt; font-weight: 700; margin: 0 0 5px;">Durbin&ndash;Watson</p>
-            <p style="font-size: 13.5pt; margin: 0; line-height: 1.5;">0 to 4; 2 means no first-order correlation. Tests <strong>only AR(1)</strong>, and is <strong>invalid with a lagged dependent variable</strong> &mdash; which describes most dynamic economic models.</p>
+            <p style="font-size: 13.5pt; margin: 0; line-height: 1.5;">0 to 4; 2 means no first-order correlation. Tests <strong>only AR(1)</strong> (each error tracks the one in the row before), and is <strong>invalid with a lagged dependent variable</strong> (last period's \(y\) used as a predictor) &mdash; which describes most dynamic economic models.</p>
           </div>
           <div style="background: #eef5ee; border-radius: 10px; padding: 13px 20px; border-left: 4px solid var(--success-color);">
             <p style="font-size: 14pt; font-weight: 700; margin: 0 0 5px;">Breusch&ndash;Godfrey</p>
-            <p style="font-size: 13.5pt; margin: 0; line-height: 1.5;">An LM test: regress residuals on the predictors <em>plus</em> \(p\) lagged residuals, test joint significance. Arbitrary lag order, valid with lagged dependent variables. <strong>Use it.</strong></p>
+            <p style="font-size: 13.5pt; margin: 0; line-height: 1.5;">An LM (Lagrange multiplier) test: regress residuals on the predictors <em>plus</em> lagged residuals (3 here), and test them jointly; LM = \(n \times R^2\) of that regression. Arbitrary lag order, valid with lagged dependent variables. <strong>Use it.</strong></p>
           </div>
         </div>
         <p style="font-size: 15pt; margin: 14px 0 6px;">Now run both on our California Housing regression &mdash; <strong>cross-sectional data with no time dimension at all</strong>:</p>
@@ -1038,7 +1040,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
           <div style="background: #f0f5f8; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--secondary-color);">
             <p style="font-size: 14pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 5px;">Leverage \(h_{ii}\)</p>
-            <p style="font-size: 13.5pt; margin: 0; line-height: 1.5;">The \(i\)th diagonal of \(\mathbf{H} = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\) &mdash; <em>the same quantity HC3 divides by</em>. Averages \(p/n\); flag \(h_{ii} > 3p/n\).</p>
+            <p style="font-size: 13.5pt; margin: 0; line-height: 1.5;">The \(i\)th diagonal of \(\mathbf{H} = \mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\) &mdash; <em>the same quantity HC3 divides by</em>. Averages \(p/n\); flag \(h_{ii} > 3p/n\). Here \(p\) counts every coefficient, intercept included: 4 for California, so the average is 4/20,640 = 0.00019.</p>
           </div>
           <div style="background: #fdf0ea; border-radius: 10px; padding: 14px 20px; border-left: 4px solid var(--accent-color);">
             <p style="font-size: 14pt; font-weight: 700; color: var(--accent-color); margin: 0 0 5px;">Cook's distance \(D_i\)</p>
@@ -1275,7 +1277,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 10px;">
           <div class="fragment fade-up" data-fragment-index="1"><div style="border-left: 4px solid #2E6DB4; padding: 4px 14px; margin: 0;"><p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong style="color: #2E6DB4;">Unequal variance (14.2).</strong> No fan. Breusch&ndash;Pagan p = 0.33, but 57 films give the test little power. HC3: SE 0.259 &rarr; 0.267. Robust costs nothing here, so report it.</p></div></div>
           <div class="fragment fade-up" data-fragment-index="2"><div style="border-left: 4px solid #C47B5A; padding: 4px 14px; margin: 0;"><p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong style="color: #C47B5A;">Look first (14.4).</strong> The top Cook&rsquo;s D, 0.211, is <em>Resident Evil: Damnation</em>: 100% from 5 reviews. A real film with a noisy score. Without the 6 films under 20 reviews: &minus;0.34.</p></div></div>
-          <div class="fragment fade-up" data-fragment-index="3"><div style="border-left: 4px solid #6A3D9A; padding: 4px 14px; margin: 0;"><p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong style="color: #6A3D9A;">Functional form (14.5).</strong> No curve. Adding age&sup2; makes AIC 503.6 &rarr; 504.3 and held-out error 20.24 &rarr; 21.15: worse both ways. Keep the line.</p></div></div>
+          <div class="fragment fade-up" data-fragment-index="3"><div style="border-left: 4px solid #6A3D9A; padding: 4px 14px; margin: 0;"><p style="font-size: 13.5pt; line-height: 1.45; margin: 0;"><strong style="color: #6A3D9A;">Functional form (14.5).</strong> No curve. Adding age&sup2; makes AIC 503.6 &rarr; 504.3 and held-out error 20.24 &rarr; 21.15: worse both ways. (AIC: fit with a penalty per coefficient, lower is better. Held-out error: RMSE on films left out of the fit.) Keep the line.</p></div></div>
         </div>
       </div>
     </section>
@@ -1356,7 +1358,7 @@
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px;">
           <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 10px; padding: 13px 20px;">
-            <p style="font-size: 13.5pt; margin: 0;"><strong>Ch 16 &mdash; Regularization.</strong> The principled answer to multicollinearity.</p>
+            <p style="font-size: 13.5pt; margin: 0;"><strong>Ch 16 &mdash; Regularization.</strong> The principled answer to multicollinearity: predictors so correlated that \(\mathbf{X}'\mathbf{X}\) is close to having no inverse, and SEs balloon.</p>
           </div>
           <div class="fragment fade-up" style="background: #f6f1f4; border-radius: 10px; padding: 13px 20px;">
             <p style="font-size: 13.5pt; margin: 0;"><strong>Ch 24 &mdash; Causal ML.</strong> Double ML is the FWL procedure from Section 14.0 with machine-learning first stages.</p>
