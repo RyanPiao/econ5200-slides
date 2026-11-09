@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=7e8f13b85324264d9980443450107b30">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=385db9f3aac2abc3f985484265633596">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OLS Diagnostics: When OLS Fails</title>
@@ -233,6 +233,7 @@
       </div>
     </section>
 
+    <section>
     <section id="key-concept-residuals" style="padding: 40px 70px;">
       <h2><i class="fa-solid fa-key" style="color: var(--success-color);"></i> Key Concept</h2>
       <div class="content" style="justify-content: center;">
@@ -242,6 +243,15 @@
           <p style="font-size: 16pt; line-height: 1.65; margin: 14px 0 0;"><strong>Residuals are observable.</strong> So unlike the causal assumptions of Chapters 10&ndash;13, these assumptions are <strong>directly testable</strong> &mdash; and when they fail, the failure is in the standard error, not the coefficient.</p>
         </div>
       </div>
+    </section>
+
+    <section id="two-datasets" style="padding: 22px 42px;">
+      <h2 style="margin-bottom: 4px;"><i class="fa-solid fa-chart-simple" style="color: var(--secondary-color);"></i> The Picture Before the Algebra</h2>
+      <div class="content" style="text-align: center;">
+        <img src="figures/figure_009_two_datasets.png" alt="Two scatterplots with identical fitted lines and identical classical confidence bands: on the left every point sits about the same distance from the line, on the right points are tight at the left and scatter widely at the right" style="max-height: 400px; width: auto;">
+        <p style="font-size: 15pt; margin-top: 10px; text-align: left;">The line is equally good in both. But on the right, the observations at the right-hand end carry <strong>far less information</strong> than those on the left &mdash; and a formula that treats every observation as equally informative will <strong>overstate how much you know</strong>.</p>
+      </div>
+    </section>
     </section>
 
     <section class="section-divider" data-state="is-section-divider">
@@ -640,21 +650,21 @@
         </div>
       </section>
       <section id="cl-room-2" style="padding: 30px 60px;">
-        <h2><i class="fa-solid fa-users" style="color: var(--secondary-color);"></i> Now Talk to Your Row</h2>
+        <h2><i class="fa-solid fa-users" style="color: var(--secondary-color);"></i> Now Talk to Your Group</h2>
         <div class="content">
-          <p style="font-size: 16pt; line-height: 1.5; margin: 4px 0 12px;"><strong>Sixty seconds:</strong> agree or argue with the people in your row about the first Boston Marathon. Then answer again.</p>
+          <p style="font-size: 16pt; line-height: 1.5; margin: 4px 0 12px;"><strong>Sixty seconds:</strong> agree or argue with the people in your group about the first Boston Marathon. Then answer again.</p>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
             <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
               <p style="font-size: 16pt; margin: 0;"><strong>1.</strong> In what year was the first Boston Marathon run? (again)</p>
               <div class="poll-number" data-poll-id="ch14-econ5200-poll-6" data-poll-voting data-min="1800" data-max="2000" data-step="1" style="margin-top: 8px;"></div>
             </div>
             <div style="background: #f8f6f3; border-radius: 10px; padding: 14px 20px;">
-              <p style="font-size: 16pt; margin: 0;"><strong>2.</strong> Your row, counting from the front: 1, 2, 3&hellip;</p>
+              <p style="font-size: 16pt; margin: 0;"><strong>2.</strong> Your group number: 1, 2, 3&hellip;</p>
               <div class="poll-number" data-poll-id="ch14-econ5200-poll-7" data-poll-voting data-min="1" data-max="20" data-step="1" style="margin-top: 8px;"></div>
             </div>
           </div>
-          <p style="font-size: 14.5pt; margin-top: 14px; text-align: center; color: var(--muted-color);">Your row is your cluster. The reveal treats each row the way a regression treats a region.</p>
-          <p style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: year <strong data-poll-fill="ch14-econ5200-poll-6" data-key="n">&mdash;</strong> &middot; row <strong data-poll-fill="ch14-econ5200-poll-7" data-key="n">&mdash;</strong></p>
+          <p style="font-size: 14.5pt; margin-top: 14px; text-align: center; color: var(--muted-color);">Your group is your cluster. The reveal treats each group the way a regression treats a region.</p>
+          <p style="font-size: 12.5pt; margin-top: 4px; text-align: center; color: var(--muted-color);">Answers so far: year <strong data-poll-fill="ch14-econ5200-poll-6" data-key="n">&mdash;</strong> &middot; group <strong data-poll-fill="ch14-econ5200-poll-7" data-key="n">&mdash;</strong></p>
         </div>
       </section>
       <section id="cl-room-reveal" style="padding: 22px 46px;">
@@ -664,13 +674,13 @@
           <div class="cl-plot" style="margin-top: 2px;"></div>
           <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 14px; margin-top: 6px; align-items: start;">
             <table style="font-size: 13.5pt; border-collapse: collapse; width: 100%;">
-              <tr style="color: var(--muted-color); font-size: 12pt;"><td></td><td style="padding: 3px 12px; text-align: right;">students</td><td style="padding: 3px 12px; text-align: right;">naive SE</td><td style="padding: 3px 12px; text-align: right;">clustered by row</td><td style="padding: 3px 12px; text-align: right;">ratio</td></tr>
+              <tr style="color: var(--muted-color); font-size: 12pt;"><td></td><td style="padding: 3px 12px; text-align: right;">students</td><td style="padding: 3px 12px; text-align: right;">naive SE</td><td style="padding: 3px 12px; text-align: right;">clustered by group</td><td style="padding: 3px 12px; text-align: right;">ratio</td></tr>
               <tr><td style="padding: 3px 0;">Round 1, alone</td><td style="padding: 3px 12px; text-align: right;"><span data-cl="n1">&mdash;</span></td><td style="padding: 3px 12px; text-align: right;"><span data-cl="nv1">&mdash;</span></td><td style="padding: 3px 12px; text-align: right;"><span data-cl="cl1">&mdash;</span></td><td style="padding: 3px 12px; text-align: right;"><strong data-cl="r1">&mdash;</strong></td></tr>
               <tr><td style="padding: 3px 0;">Round 2, after talking</td><td style="padding: 3px 12px; text-align: right;"><span data-cl="n2">&mdash;</span></td><td style="padding: 3px 12px; text-align: right;"><span data-cl="nv2">&mdash;</span></td><td style="padding: 3px 12px; text-align: right;"><span data-cl="cl2">&mdash;</span></td><td style="padding: 3px 12px; text-align: right;"><strong data-cl="r2" style="color: #C47B5A;">&mdash;</strong></td></tr>
             </table>
             <div class="fragment fade-up" style="background: #fdf3f0; border-left: 4px solid #C47B5A; border-radius: 8px; padding: 9px 16px;">
-              <p style="font-size: 13.5pt; line-height: 1.45; margin: 0;">After talking, rows moved together. The naive SE shrank as if the answers were more precise; the clustered SE did not. Round 2&rsquo;s <span data-cl="n2">&mdash;</span> answers carry the information of about <strong><span data-cl="e2">&mdash;</span></strong> independent ones, over <span data-cl="G">&mdash;</span> rows.</p>
-              <p style="font-size: 12.5pt; line-height: 1.4; margin: 6px 0 0; color: var(--muted-color);">The first Boston Marathon: <strong>1897</strong>. With this few rows the clustered SE is itself noisy: slide 33.</p>
+              <p style="font-size: 13.5pt; line-height: 1.45; margin: 0;">After talking, groups moved together. The naive SE shrank as if the answers were more precise; the clustered SE did not. Round 2&rsquo;s <span data-cl="n2">&mdash;</span> answers carry the information of about <strong><span data-cl="e2">&mdash;</span></strong> independent ones, over <span data-cl="G">&mdash;</span> groups.</p>
+              <p style="font-size: 12.5pt; line-height: 1.4; margin: 6px 0 0; color: var(--muted-color);">The first Boston Marathon: <strong>1897</strong>. With this few groups the clustered SE is itself noisy: slide 33.</p>
             </div>
           </div>
         </div>
@@ -680,7 +690,7 @@
         var R1 = "ch14-econ5200-poll-5", R2 = "ch14-econ5200-poll-6", ROW = "ch14-econ5200-poll-7", TRUE = 1897;
         var NUM = /^\s*(-?\d+(?:\.\d+)?)\s*$/, RANGE = {}; RANGE[R1] = [1800, 2000]; RANGE[R2] = [1800, 2000]; RANGE[ROW] = [1, 20];
         var sec = document.getElementById("cl-room-reveal"); if (!sec) return;
-        // Q (or ?practice=1): 18 made-up students in 6 rows, for a room with no votes yet. Shown here only; never written.
+        // Q (or ?practice=1): 18 made-up students in 6 groups, for a room with no votes yet. Shown here only; never written.
         // Round 1 naive SE 6.11 vs clustered 6.12 (ratio 1.00); round 2 naive 3.66 vs clustered 6.72 (ratio 1.84, effective n 5.3 of 18).
         var P1 = {1: [1898, 1927, 1917], 2: [1876, 1903, 1888], 3: [1909, 1860, 1894], 4: [1911, 1892, 1945], 5: [1883, 1924, 1949], 6: [1928, 1882, 1949]};
         var P2 = {1: [1920, 1917, 1915], 2: [1885, 1887, 1886], 3: [1888, 1887, 1888], 4: [1916, 1918, 1917], 5: [1917, 1922, 1921], 6: [1920, 1921, 1919]};
@@ -721,11 +731,11 @@
           var lo = ys.length ? Math.min.apply(null, ys) : 1850, hi = ys.length ? Math.max.apply(null, ys) : 1950;
           lo = Math.floor((lo - 5) / 10) * 10; hi = Math.ceil((hi + 5) / 10) * 10; if (hi - lo < 40) { lo -= 20; hi += 20; }
           var X = function (g) { return L + (R - L) * (g - 0.5) / G; }, Y = function (v) { return B - (B - T) * (v - lo) / (hi - lo); };
-          var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block" role="img" aria-label="each student\'s two guesses, by row">';
+          var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block" role="img" aria-label="each student\'s two guesses, by group">';
           s += '<rect x="' + L + '" y="' + T + '" width="' + (R - L) + '" height="' + (B - T) + '" fill="#fbfaf8" stroke="#d9d4cb"/>';
           for (var k = 0; k <= 4; k++) { var v = lo + (hi - lo) * k / 4, yy = Y(v);
             s += '<line x1="' + L + '" x2="' + R + '" y1="' + yy + '" y2="' + yy + '" stroke="#ece8e1"/><text x="' + (L - 8) + '" y="' + (yy + 5) + '" text-anchor="end" font-size="13" fill="#777">' + Math.round(v) + '</text>'; }
-          for (var g = 1; g <= G; g++) s += '<text x="' + X(g) + '" y="' + (B + 18) + '" text-anchor="middle" font-size="13" fill="#777">row ' + g + '</text>';
+          for (var g = 1; g <= G; g++) s += '<text x="' + X(g) + '" y="' + (B + 18) + '" text-anchor="middle" font-size="13" fill="#777">group ' + g + '</text>';
           var seen = {};
           list.forEach(function (f) { var g = f[ROW], j = (seen[g] = (seen[g] || 0) + 1), dx = ((j % 5) - 2) * 7;
             if (f[R1] !== undefined) s += '<circle cx="' + (X(g) - 16 + dx) + '" cy="' + Y(f[R1]) + '" r="6" fill="none" stroke="#8C8580" stroke-width="2"/>';
