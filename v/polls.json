@@ -79,13 +79,15 @@
   "ch14-econ5200-poll-5": "14-1",
   "ch14-econ5200-poll-6": "14-4",
   "ch14-econ5200-poll-7": "14-5",
-  "ch15-econ5200-poll-1": "15-1",
-  "ch15-econ5200-poll-2": "15-2",
-  "ch15-econ5200-poll-3": "15-3",
-  "ch16-econ5200-poll-1": "16-1",
-  "ch16-econ5200-poll-2": "16-2",
-  "ch16-econ5200-poll-3": "16-3",
-  "ch16-econ5200-poll-4": "16-4",
+  "ch15-econ5200-poll-1": "15-2",
+  "ch15-econ5200-poll-2": "15-3",
+  "ch15-econ5200-poll-3": "15-4",
+  "ch15-econ5200-poll-4": "15-1",
+  "ch16-econ5200-poll-1": "16-2",
+  "ch16-econ5200-poll-2": "16-3",
+  "ch16-econ5200-poll-3": "16-4",
+  "ch16-econ5200-poll-4": "16-5",
+  "ch16-econ5200-poll-5": "16-1",
   "ch17-econ5200-poll-1": "17-1",
   "ch17-econ5200-poll-2": "17-2",
   "ch17-econ5200-poll-3": "17-3",
@@ -270,29 +272,37 @@
   ],
   "15-1": [
    "ch15-bias-variance-tradeoff",
-   "ch15-econ5200-poll-1"
+   "ch15-econ5200-poll-4"
   ],
   "15-2": [
    "ch15-bias-variance-tradeoff",
-   "ch15-econ5200-poll-2"
+   "ch15-econ5200-poll-1"
   ],
   "15-3": [
+   "ch15-bias-variance-tradeoff",
+   "ch15-econ5200-poll-2"
+  ],
+  "15-4": [
    "ch15-bias-variance-tradeoff",
    "ch15-econ5200-poll-3"
   ],
   "16-1": [
    "ch16-regularization",
-   "ch16-econ5200-poll-1"
+   "ch16-econ5200-poll-5"
   ],
   "16-2": [
    "ch16-regularization",
-   "ch16-econ5200-poll-2"
+   "ch16-econ5200-poll-1"
   ],
   "16-3": [
    "ch16-regularization",
-   "ch16-econ5200-poll-3"
+   "ch16-econ5200-poll-2"
   ],
   "16-4": [
+   "ch16-regularization",
+   "ch16-econ5200-poll-3"
+  ],
+  "16-5": [
    "ch16-regularization",
    "ch16-econ5200-poll-4"
   ],
