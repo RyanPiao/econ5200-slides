@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=6aa517d429da7975b9e573a15678b1ca">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=c044116cffe3d6d248efc9458d71a803">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The ML Shift: Bias-Variance Tradeoff</title>
@@ -553,18 +553,22 @@
     <section id="derivation-consequences" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-list-check" style="color: var(--accent-color);"></i> Three Things the Derivation Tells You</h2>
       <div class="content">
-        <div style="display: flex; flex-direction: column; gap: 13px;">
-          <div style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-left: 5px solid var(--secondary-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--secondary-color); margin-bottom: 5px;">1 &nbsp;It is <em>pointwise</em>.</p>
-            <p style="font-size: 14.5pt; line-height: 1.5;">It holds at each \(x_0\); the aggregate version integrates over the distribution of \(x\). So a model can be <strong>bias-dominated in one region and variance-dominated in another</strong>, and the aggregate hides that. Look at the degree-15 panel again: fine in the middle, wild at the edges.</p>
+        <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> What does the formula say that one error number hides?</p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 11px 20px; border-left: 5px solid var(--secondary-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">1 &nbsp;The split holds at each point \(x_0\), not just on average.</p>
+            <p style="font-size: 14pt; line-height: 1.45; margin: 0 0 3px;"><strong>Example.</strong> Degree 15&rsquo;s variance is 0.18 at the one point \(x_0 = 2.82\), but about 0.78 averaged over every \(x\) from &minus;3 to 3. Most of it comes from the two ends of the range.</p>
+            <p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>So:</strong> a model can be fine in the middle and wild at the edges. One overall error number hides where it fails.</p>
           </div>
-          <div style="background: #fdf0ea; border-radius: 10px; padding: 16px 22px; border-left: 5px solid var(--danger-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--danger-color); margin-bottom: 5px;">2 &nbsp;It is specific to <em>squared error</em>.</p>
-            <p style="font-size: 14.5pt; line-height: 1.5;">Extending it to 0&ndash;1 loss or general losses is non-trivial and required separate work (Domingos 2000; James 2003). <strong>For 0&ndash;1 loss the decomposition is not additive:</strong> where the model is biased, more variance can <em>lower</em> error. That is why Ch 17&ndash;18 change the machinery rather than reuse it.</p>
+          <div style="background: #fdf0ea; border-radius: 10px; padding: 11px 20px; border-left: 5px solid var(--danger-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--danger-color); margin: 0 0 4px;">2 &nbsp;The three pieces add up only for squared error.</p>
+            <p style="font-size: 14pt; line-height: 1.45; margin: 0 0 3px;"><strong>Example.</strong> Score a yes/no prediction as simply right or wrong, and the pieces no longer add up. When a model leans the wrong way on a case, a shakier model is sometimes right more often (Domingos 2000; James 2003).</p>
+            <p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>So:</strong> do not split accuracy or AUC into bias and variance this way. Chapters 17&ndash;18 use other tools.</p>
           </div>
-          <div style="background: #f3f1ee; border-radius: 10px; padding: 16px 22px; border-left: 5px solid var(--muted-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--muted-color); margin-bottom: 5px;">3 &nbsp;\(\sigma^2\) enters <em>additively and unconditionally</em>.</p>
-            <p style="font-size: 14.5pt; line-height: 1.5;">It does not interact with the model. That is the formal content of the word "irreducible": no choice you make about \(\hat f\) can move it.</p>
+          <div style="background: #f3f1ee; border-radius: 10px; padding: 11px 20px; border-left: 5px solid var(--muted-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--muted-color); margin: 0 0 4px;">3 &nbsp;The noise term \(\sigma^2\) is the same for every model.</p>
+            <p style="font-size: 14pt; line-height: 1.45; margin: 0 0 3px;"><strong>Example.</strong> 0.3025 (\(= 0.55^2\)) sits in every row of the decomposition table, for degree 1 and for degree 15.</p>
+            <p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>So:</strong> no choice of model can lower it. That is what &ldquo;irreducible&rdquo; means; only better data or a better-measured \(y\) can.</p>
           </div>
         </div>
       </div>
@@ -596,6 +600,7 @@
           </tbody>
         </table>
         <p style="margin-top: 16px; font-size: 15.5pt; line-height: 1.5;">Training error <strong>falls monotonically</strong>. It has to &mdash; exactly as \(R^2\) could never decrease in Ch 11b. <strong>Training error measures flexibility</strong>, and using it to choose a model always selects the most flexible one available.</p>
+        <p class="fragment fade-up" style="margin-top: 12px; font-size: 16pt; color: var(--accent-color); font-weight: 700;"><i class="fa-solid fa-arrow-right"></i> Choose degree 5: the lowest test error, tied with 7 (0.3648 against 0.3650), and the simpler of the two.</p>
       </div>
     </section>
 
