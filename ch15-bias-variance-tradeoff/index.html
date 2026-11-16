@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=df6d7940a157ff4116d01c3fa1ecb19c">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=bb44161c3d13e4805cd010619876d1f4">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The ML Shift: Bias-Variance Tradeoff</title>
@@ -1131,15 +1131,18 @@ cross_val_score(model, X, y, cv=cv, groups=df[<span class="t-str">&quot;driver_i
         <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> What if you only see outcomes for the cases someone chose?</p>
         <p style="font-size: 15pt; line-height: 1.5;">Back to Zillow: <strong>sellers</strong>, by accepting the offer or not, chose <em>which</em> houses the model was judged on.</p>
         <p class="fragment fade-up" style="font-size: 15pt; line-height: 1.45; margin: 0 0 10px; color: #8a3d1e;"><em>Unbiased</em> errors, filtered to keep only the expensive ones, <strong>lose money on average</strong>. No held-out score shows it: the held-out set does not get to decline your offer.</p>
-        <p style="font-size: 15pt; line-height: 1.5; margin-top: 10px;">You observe the outcome only for the units where some decision went one way:</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px;"><p style="font-size: 14.5pt;"><strong>Bank</strong>: repayment only for applicants <em>approved</em>.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px;"><p style="font-size: 14.5pt;"><strong>Court</strong>: reoffending only for defendants <em>released</em>.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px;"><p style="font-size: 14.5pt;"><strong>Hiring team</strong>: performance only for candidates <em>hired</em>.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 13px 18px;"><p style="font-size: 14.5pt;"><strong>Platform</strong>: conversion only for users <em>shown</em> the offer.</p></div>
+        <div class="fragment fade-up">
+        <p style="font-size: 15pt; line-height: 1.5; margin: 6px 0 0;">You observe the outcome only for the units where some decision went one way:</p>
+        <div class="mathjax_ignore tex2jax_ignore" style="margin: 4px 0 8px;"><svg viewBox="0 0 1160 144" width="100%" role="img" aria-label="Everyone who applies goes to the decision. Approved: repaid or not, the outcome is seen and enters the training data. Rejected: the outcome is never seen. A dashed arrow from the training data back to the decision: it trains the next model." style="display:block;font-family:inherit"><rect x="0" y="64" width="210" height="40" rx="7" fill="#f8f6f3" stroke="#9AA0A6" stroke-width="1.8"/><text x="105.0" y="89" font-size="15" text-anchor="middle" fill="#2D2D2D">everyone who applies</text><line x1="210" y1="84" x2="242" y2="84" stroke="#6B645E" stroke-width="2"/><polygon points="250,84 240,79 240,89" fill="#6B645E"/><rect x="252" y="64" width="190" height="40" rx="7" fill="#f8f6f3" stroke="#6B645E" stroke-width="1.8"/><text x="347.0" y="89" font-size="15" text-anchor="middle" fill="#2D2D2D" font-weight="700">the decision</text><line x1="442" y1="76" x2="512" y2="48" stroke="#1F7A5A" stroke-width="2"/><polygon points="520,48 510,43 510,53" fill="#1F7A5A"/><line x1="442" y1="92" x2="512" y2="120" stroke="#6B645E" stroke-width="2"/><polygon points="520,120 510,115 510,125" fill="#6B645E"/><rect x="522" y="28" width="638" height="40" rx="7" fill="#eef4ef" stroke="#1F7A5A" stroke-width="1.8"/><text x="841.0" y="53" font-size="15" text-anchor="middle" fill="#2D2D2D">approved: repaid or not, seen &#8594; training data</text><rect x="522" y="100" width="638" height="40" rx="7" fill="#f3f3f3" stroke="#8C8C8C" stroke-width="1.8" stroke-dasharray="7 5"/><text x="841.0" y="125" font-size="15" text-anchor="middle" fill="#6B645E">rejected: never seen ( ? )</text><path d="M 640 28 C 640 2, 347 2, 347 54" fill="none" stroke="#1F7A5A" stroke-width="2" stroke-dasharray="6 4"/><polygon points="347,63 342,53 352,53" fill="#1F7A5A"/><text x="652" y="20" font-size="15" text-anchor="start" fill="#1F7A5A">trains the next model</text></svg></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px;">
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 8px 16px;"><p style="font-size: 14.5pt;"><strong>Bank</strong>: repayment only for applicants <em>approved</em>.</p></div>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 8px 16px;"><p style="font-size: 14.5pt;"><strong>Court</strong>: reoffending only for defendants <em>released</em>.</p></div>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 8px 16px;"><p style="font-size: 14.5pt;"><strong>Hiring team</strong>: performance only for candidates <em>hired</em>.</p></div>
+          <div style="background: #f8f6f3; border-radius: 8px; padding: 8px 16px;"><p style="font-size: 14.5pt;"><strong>Platform</strong>: conversion only for users <em>shown</em> the offer.</p></div>
         </div>
-        <div style="background: linear-gradient(135deg, #fdf0ea, #f8ded1); border-radius: 10px; padding: 16px 24px; margin-top: 16px;">
+        <div style="background: linear-gradient(135deg, #fdf0ea, #f8ded1); border-radius: 10px; padding: 10px 22px; margin-top: 10px;">
           <p style="font-size: 16.5pt; color: #7a4a2f; line-height: 1.45;">Training data = a <strong>non-random sample, chosen by a decision correlated with the outcome</strong>, often by your own earlier model.</p>
+        </div>
         </div>
       </div>
     </section>
