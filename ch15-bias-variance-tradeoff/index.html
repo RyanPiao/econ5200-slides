@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=c044116cffe3d6d248efc9458d71a803">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=a611ec610c3ff642b2dfd12e331f1d93">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The ML Shift: Bias-Variance Tradeoff</title>
@@ -554,21 +554,18 @@
       <h2><i class="fa-solid fa-list-check" style="color: var(--accent-color);"></i> Three Things the Derivation Tells You</h2>
       <div class="content">
         <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> What does the formula say that one error number hides?</p>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div style="background: #f0f5f8; border-radius: 10px; padding: 11px 20px; border-left: 5px solid var(--secondary-color);">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 12px 20px; border-left: 5px solid var(--secondary-color);">
             <p style="font-size: 16pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">1 &nbsp;The split holds at each point \(x_0\), not just on average.</p>
-            <p style="font-size: 14pt; line-height: 1.45; margin: 0 0 3px;"><strong>Example.</strong> Degree 15&rsquo;s variance is 0.18 at the one point \(x_0 = 2.82\), but about 0.78 averaged over every \(x\) from &minus;3 to 3. Most of it comes from the two ends of the range.</p>
-            <p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>So:</strong> a model can be fine in the middle and wild at the edges. One overall error number hides where it fails.</p>
+            <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;">Degree 15&rsquo;s variance is 0.18 at \(x_0 = 2.82\) but about 0.78 averaged over all \(x\), mostly from the edges. <strong>One overall number hides where a model fails.</strong></p>
           </div>
-          <div style="background: #fdf0ea; border-radius: 10px; padding: 11px 20px; border-left: 5px solid var(--danger-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--danger-color); margin: 0 0 4px;">2 &nbsp;The three pieces add up only for squared error.</p>
-            <p style="font-size: 14pt; line-height: 1.45; margin: 0 0 3px;"><strong>Example.</strong> Score a yes/no prediction as simply right or wrong, and the pieces no longer add up. When a model leans the wrong way on a case, a shakier model is sometimes right more often (Domingos 2000; James 2003).</p>
-            <p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>So:</strong> do not split accuracy or AUC into bias and variance this way. Chapters 17&ndash;18 use other tools.</p>
+          <div style="background: #fdf0ea; border-radius: 10px; padding: 12px 20px; border-left: 5px solid var(--danger-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--danger-color); margin: 0 0 4px;">2 &nbsp;The pieces add up only for squared error.</p>
+            <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;">Score predictions right or wrong and a shakier model can be right more often (Domingos 2000; James 2003). <strong>Do not split accuracy or AUC this way</strong>; Ch 17&ndash;18 use other tools.</p>
           </div>
-          <div style="background: #f3f1ee; border-radius: 10px; padding: 11px 20px; border-left: 5px solid var(--muted-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--muted-color); margin: 0 0 4px;">3 &nbsp;The noise term \(\sigma^2\) is the same for every model.</p>
-            <p style="font-size: 14pt; line-height: 1.45; margin: 0 0 3px;"><strong>Example.</strong> 0.3025 (\(= 0.55^2\)) sits in every row of the decomposition table, for degree 1 and for degree 15.</p>
-            <p style="font-size: 14pt; line-height: 1.45; margin: 0;"><strong>So:</strong> no choice of model can lower it. That is what &ldquo;irreducible&rdquo; means; only better data or a better-measured \(y\) can.</p>
+          <div style="background: #f3f1ee; border-radius: 10px; padding: 12px 20px; border-left: 5px solid var(--muted-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--muted-color); margin: 0 0 4px;">3 &nbsp;The noise \(\sigma^2\) is the same for every model.</p>
+            <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;">0.3025 (\(= 0.55^2\)) is in every row of the decomposition table. <strong>No model choice lowers it</strong>; only better data can.</p>
           </div>
         </div>
       </div>
@@ -644,18 +641,19 @@
     <section id="ucurve-consequences" style="padding: 32px 55px;">
       <h2><i class="fa-solid fa-stethoscope" style="color: var(--secondary-color);"></i> Three Consequences Students Often Miss</h2>
       <div class="content">
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-left: 5px solid var(--secondary-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--secondary-color); margin-bottom: 5px;">A model can be bad <em>without</em> overfitting.</p>
-            <p style="font-size: 14.5pt; line-height: 1.5;">Degree 1 is poor with almost no gap. Its problem is bias, and the remedy is <strong>more</strong> flexibility, not less. "Underperforming" and "overfitting" are different diagnoses with <strong>opposite treatments</strong>, and the gap tells you which you have.</p>
+        <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> What does the table tell you to do?</p>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 12px 20px; border-left: 5px solid var(--secondary-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 4px;">A model can be bad <em>without</em> overfitting.</p>
+            <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;">Degree 1 is bad even on its own training data (1.0897). That is bias, and the fix is <strong>more</strong> flexibility. Overfitting is the opposite: low training error, much higher test error.</p>
           </div>
-          <div style="background: #fdf0ea; border-radius: 10px; padding: 16px 22px; border-left: 5px solid var(--accent-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--accent-color); margin-bottom: 5px;">The best model is rarely the most flexible one you can afford.</p>
-            <p style="font-size: 14.5pt; line-height: 1.5;">Degree 15 fits the training data best of anything in the table and is worse on new data than degrees 5, 7 and 10. A procedure that rewards training fit always chooses the most flexible model on the menu, whatever its test error &mdash; which disqualifies in-sample \(R^2\), the statistic most economists reach for first.</p>
+          <div style="background: #fdf0ea; border-radius: 10px; padding: 12px 20px; border-left: 5px solid var(--accent-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--accent-color); margin: 0 0 4px;">The best model is rarely the most flexible one.</p>
+            <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;">Degree 15 fits the training data best (0.2540) yet is worse on new data than 5, 7 and 10. <strong>Choosing by training fit or in-sample \(R^2\) always picks the most flexible model.</strong></p>
           </div>
-          <div style="background: #f3f1ee; border-radius: 10px; padding: 16px 22px; border-left: 5px solid var(--muted-color);">
-            <p style="font-size: 16pt; font-weight: 700; color: var(--muted-color); margin-bottom: 5px;">Degrees 5 and 7 are indistinguishable <em>on this split</em>.</p>
-            <p style="font-size: 14.5pt; line-height: 1.5;">0.3648 vs 0.3650 &mdash; two ten-thousandths, on 48 test observations. Treating that as a ranking is reading noise. When two models are this close, prefer the simpler one: not from aesthetics, but because it has less variance and <strong>the comparison lacks the resolution to justify anything else</strong>.</p>
+          <div style="background: #f3f1ee; border-radius: 10px; padding: 12px 20px; border-left: 5px solid var(--muted-color);">
+            <p style="font-size: 16pt; font-weight: 700; color: var(--muted-color); margin: 0 0 4px;">Degrees 5 and 7 tie <em>on this split</em>.</p>
+            <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;">0.3648 against 0.3650 on 48 test rows is noise. <strong>Take the simpler model</strong>: it has less variance, and the split cannot justify more.</p>
           </div>
         </div>
       </div>
