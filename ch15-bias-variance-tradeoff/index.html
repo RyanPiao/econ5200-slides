@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=2c8794095c4355289436094bff1332bd">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=6ba3c69c5d88bb79f9b683e67e83ab58">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The ML Shift: Bias-Variance Tradeoff</title>
@@ -986,7 +986,7 @@ mse = -cross_val_score(pipe, X_train, y_train, cv=<span class="t-num">5</span>, 
             <tr style="background: #f0f5f8;"><td style="padding: 8px 16px;">OLS (3 lags)</td><td style="text-align: right; padding: 8px 16px;">1.525</td><td style="text-align: right; padding: 8px 16px;">1.629</td><td style="text-align: right; padding: 8px 16px;"><strong>6%</strong></td></tr>
           </tbody>
         </table>
-        <p class="fragment fade-up" style="margin-top: 16px; font-size: 15.5pt; line-height: 1.5;">Shuffling flatters both; the point is <em>how much</em>. And <strong>OLS on three lags beats the 200-tree forest under both schemes.</strong></p>
+        <p class="fragment fade-up" style="margin-top: 16px; font-size: 15.5pt; line-height: 1.5;">This is <strong>one draw</strong> of the series. Shuffling flatters both; the point is <em>how much</em>. And <strong>OLS on three lags beats the 200-tree forest under both schemes.</strong></p>
       </div>
     </section>
 
@@ -996,12 +996,12 @@ mse = -cross_val_score(pipe, X_train, y_train, cv=<span class="t-num">5</span>, 
       <div class="content" style="display: grid; grid-template-columns: 58% 42%; gap: 22px; align-items: center;">
         <img src="figures/figure_005_leakage_asymmetry.png" alt="Bar chart with individual data points showing validation score inflation from shuffling across 40 independent draws: Random Forest averages 44.5 percent plus or minus 3.3, OLS averages 11.6 percent plus or minus 1.7" style="width: 100%; border-radius: 8px;">
         <div>
-          <p style="font-size: 14.5pt; line-height: 1.5;">One realisation is not a finding. Rerun over <strong>40 independent draws</strong> of the DGP:</p>
+          <p style="font-size: 14.5pt; line-height: 1.5;">One realisation is not a finding. Same series, same models, same measure (how much better the shuffled error looks, as a share of the time-respecting error), over <strong>40 independent draws</strong>:</p>
           <div class="fragment fade-up" style="background: #fdf0ea; border-radius: 10px; padding: 14px 18px; margin-top: 12px; border-left: 4px solid var(--danger-color);">
             <p style="font-size: 14.5pt; line-height: 1.5;">Random Forest inflated <strong>44.5% &plusmn; 3.3</strong><br>OLS inflated <strong>11.6% &plusmn; 1.7</strong><br>difference <strong>+32.9 pp &plusmn; 3.2</strong></p>
           </div>
-          <p class="fragment fade-up" style="font-size: 14.5pt; line-height: 1.5; margin-top: 12px;">RF is inflated more than OLS in <strong>95% of draws</strong>, gaining about three times as much (32% against 10% at matched training size).</p>
-          <p class="fragment fade-up" style="font-size: 13pt; line-height: 1.45; margin-top: 12px; color: var(--muted-color);">In the scatter the forest&rsquo;s draws span 11% to 84%; any one alone would be a different headline.</p>
+          <p class="fragment fade-up" style="font-size: 14.5pt; line-height: 1.5; margin-top: 12px;">RF is inflated more than OLS in <strong>95% of draws</strong>. Part of the gap is training size: TimeSeriesSplit trains on fewer rows. Matched for size, <strong>32% against 10%</strong>, still about three times.</p>
+          <p class="fragment fade-up" style="font-size: 13pt; line-height: 1.45; margin-top: 12px; color: var(--muted-color);">The last slide&rsquo;s draw (forest 16%, OLS 6%) sits near the bottom of the forest&rsquo;s range, which runs from 11% to 84%. Any one draw alone would be a different headline.</p>
         </div>
       </div>
     </section>
