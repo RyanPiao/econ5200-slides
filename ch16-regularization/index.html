@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=87f43096682d2bc9877c41616e819f17">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=4c06c9c292fc32f07c04707dd7795b36">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regularization: LASSO, Ridge & Elastic Net</title>
@@ -1063,33 +1063,34 @@ print(<span class="t-str">&quot;lambda selected by cross-validation:&quot;</span
     <section id="three-frameworks" style="padding: 24px 44px;">
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-scale-balanced" style="color: var(--secondary-color);"></i> Three Ways to Pay for the Selection</h2>
       <div class="content">
-        <table style="width: 100%; border-collapse: collapse; font-size: 13pt;">
-          <thead>
-            <tr style="border-bottom: 2px solid var(--line-color);">
-              <th style="text-align: left; padding: 7px 10px; width: 26%;">Framework</th>
-              <th style="text-align: left; padding: 7px 10px; width: 26%;">What it promises</th>
-              <th style="text-align: left; padding: 7px 10px;">Mechanism</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: #eef5ee;">
-              <td style="padding: 10px; vertical-align: top;"><strong>Post-double selection</strong><br><span style="font-size: 11.5pt; color: var(--muted-color);">BCH 2014</span></td>
-              <td style="padding: 10px; vertical-align: top;">valid inference on <strong>one</strong> target parameter</td>
-              <td style="padding: 10px; vertical-align: top;">select on both equations, take the union, unpenalised OLS. \(\sqrt{n}\)-consistent and asymptotically normal under approximate sparsity.</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px; vertical-align: top;"><strong>Exact post-selection inference</strong><br><span style="font-size: 11.5pt; color: var(--muted-color);">Lee, Sun, Sun &amp; Taylor 2016</span></td>
-              <td style="padding: 10px; vertical-align: top;">exact, valid intervals <strong>conditional on what you selected</strong></td>
-              <td style="padding: 10px; vertical-align: top;">LASSO's chosen model corresponds to the data falling in a polyhedron \(\{y : \mathbf{A}y \leq b\}\); conditioning on that event yields a truncated Gaussian.</td>
-            </tr>
-            <tr style="background: #f0f5f8;">
-              <td style="padding: 10px; vertical-align: top;"><strong>Debiased (desparsified) LASSO</strong><br><span style="font-size: 11.5pt; color: var(--muted-color);">Zhang &amp; Zhang 2014; van de Geer et al. 2014</span></td>
-              <td style="padding: 10px; vertical-align: top;">intervals for <strong>every</strong> coefficient, even when \(p \gg n\)</td>
-              <td style="padding: 10px; vertical-align: top;">add a correction derived from inverting the KKT conditions; removes the shrinkage bias and restores asymptotic normality.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="margin-top: 10px; font-size: 13.5pt;">Lee et al.'s intervals can be <strong>very wide</strong> &mdash; which accurately reflects how much the selection step cost you.</p>
+        <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> You selected with LASSO and want an honest interval. Which method? It depends on your question.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; align-items: stretch;">
+          <div class="fragment fade-up" data-fragment-index="1" style="background: #eef5ee; border-top: 5px solid #1F7A5A; border-radius: 10px; padding: 10px 14px;">
+            <p style="font-size: 12pt; font-weight: 700; color: #1F7A5A; letter-spacing: .04em; margin: 0 0 4px;">IF YOU ASK</p>
+            <p style="font-size: 15pt; font-weight: 700; line-height: 1.3; margin: 0 0 8px;">&ldquo;What is the effect of <em>one</em> treatment?&rdquo;</p>
+            <p style="font-size: 13.5pt; margin: 0 0 2px;"><strong style="color: #1F7A5A;">Use:</strong> post-double selection</p>
+            <p style="font-size: 11.5pt; color: var(--muted-color); margin: 0 0 8px;">Belloni, Chernozhukov &amp; Hansen, 2014 &middot; slide 48</p>
+            <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 8px;"><strong>How:</strong> LASSO on the outcome, LASSO on the treatment, keep both lists, plain OLS.</p>
+            <p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong>You get:</strong> a valid interval for that one coefficient. Lab 16: coverage 82.5% &rarr; 88.5%, about 95% with the plug-in penalty.</p>
+          </div>
+          <div class="fragment fade-up" data-fragment-index="2" style="background: #fdf0ea; border-top: 5px solid #C0603A; border-radius: 10px; padding: 10px 14px;">
+            <p style="font-size: 12pt; font-weight: 700; color: #C0603A; letter-spacing: .04em; margin: 0 0 4px;">IF YOU ASK</p>
+            <p style="font-size: 15pt; font-weight: 700; line-height: 1.3; margin: 0 0 8px;">&ldquo;Are the variables LASSO <em>picked</em> really there?&rdquo;</p>
+            <p style="font-size: 13.5pt; margin: 0 0 2px;"><strong style="color: #C0603A;">Use:</strong> exact post-selection inference</p>
+            <p style="font-size: 11.5pt; color: var(--muted-color); margin: 0 0 8px;">Lee, Sun, Sun &amp; Taylor, 2016</p>
+            <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 8px;"><strong>How:</strong> compute each interval <em>given</em> that LASSO picked this list: only the data sets that would have picked it count.</p>
+            <p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong>You get:</strong> exact intervals for the picked variables, often <strong>very wide</strong>: the honest price of looking first.</p>
+          </div>
+          <div class="fragment fade-up" data-fragment-index="3" style="background: #f0f5f8; border-top: 5px solid #2E6DB4; border-radius: 10px; padding: 10px 14px;">
+            <p style="font-size: 12pt; font-weight: 700; color: #2E6DB4; letter-spacing: .04em; margin: 0 0 4px;">IF YOU ASK</p>
+            <p style="font-size: 15pt; font-weight: 700; line-height: 1.3; margin: 0 0 8px;">&ldquo;What about <em>every</em> coefficient, even with \(p \gg n\)?&rdquo;</p>
+            <p style="font-size: 13.5pt; margin: 0 0 2px;"><strong style="color: #2E6DB4;">Use:</strong> the debiased LASSO</p>
+            <p style="font-size: 11.5pt; color: var(--muted-color); margin: 0 0 8px;">Zhang &amp; Zhang, 2014; van de Geer et al., 2014</p>
+            <p style="font-size: 13.5pt; line-height: 1.4; margin: 0 0 8px;"><strong>How:</strong> take the LASSO estimate and add back an estimate of what the penalty pulled toward zero (slide 38&rsquo;s shift, undone).</p>
+            <p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong>You get:</strong> an approximately normal estimate, and an interval, for each of the \(p\) coefficients.</p>
+          </div>
+        </div>
+        <p class="fragment fade-up" data-fragment-index="4" style="font-size: 15pt; margin-top: 12px; text-align: center;"><strong>Choose by the question, not the software:</strong> one effect &rarr; post-double selection &middot; the picked list &rarr; exact &middot; everything &rarr; debiased.</p>
       </div>
     </section>
 
