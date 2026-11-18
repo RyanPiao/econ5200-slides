@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=422352405e4560106f832aba8f99ed95">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=bc109985c5c253928c31eab848e2aab3">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classification: Logistic Regression</title>
@@ -1910,7 +1910,7 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
             <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Platt scaling.</strong> A one-dimensional logistic regression on the scores. Parametric, stable, appropriate for <em>small</em> calibration sets.</p>
           </div>
           <div style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 10px; padding: 14px 18px;">
-            <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Isotonic regression.</strong> A non-parametric monotone step function. More flexible; <strong>overfits badly below roughly a thousand</strong> calibration observations.</p>
+            <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Isotonic regression.</strong> A non-parametric monotone step function. More flexible; <strong>overfits badly below roughly a thousand</strong> calibration observations, and needs more when positives are rare: count the positives, not the rows.</p>
           </div>
         </div>
         <div style="background: #eef4ef; border-left: 5px solid var(--success-color); border-radius: 10px; padding: 14px 20px; margin-top: 16px;">
@@ -1942,7 +1942,7 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
             <pre style="font-size: 10pt; background: #f8f6f3; border-radius: 8px; padding: 9px 11px; margin: 0; line-height: 1.5;"><code>prevalence = 13.3%
    logistic: AUC 0.8389  Brier 0.0889
      forest: AUC 0.8232  Brier 0.0927</code></pre>
-            <p style="font-size: 13pt; line-height: 1.45; margin-top: 10px;">The depth-6 forest's <strong>highest</strong> predicted probability is <strong>0.735</strong>; the logistic reaches <strong>0.947</strong>. Depth-limited averaging shrinks the extremes inward &mdash; and <strong>AUC, which depends only on the ordering, cannot see it.</strong></p>
+            <p style="font-size: 13pt; line-height: 1.45; margin-top: 10px;">The depth-6 forest's <strong>highest</strong> predicted probability is <strong>0.735</strong>; the logistic reaches <strong>0.947</strong>. Nearly the same AUC, very different probabilities: <strong>Diagnosis 1 asks why.</strong></p>
             <p style="font-size: 13pt; line-height: 1.45; margin-top: 10px;">Then: refit the forest on a balanced sample, repair it with Platt and isotonic, and price \(t^* = 1/9\) on raw versus repaired scores at \(C_{FN} = 8\,C_{FP}\). Write <code>calibration_error()</code> yourself and ship it in <code>src/classify_tools.py</code>, which reports discrimination and calibration <strong>separately</strong>.</p>
           </div>
         </div>
