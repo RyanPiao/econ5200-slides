@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=925401db933f4b761b53f8e72c03c94c">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=87f43096682d2bc9877c41616e819f17">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regularization: LASSO, Ridge & Elastic Net</title>
@@ -808,8 +808,8 @@ print(<span class="t-str">&quot;lambda selected by cross-validation:&quot;</span
       <h2 style="font-size: 25pt;"><i class="fa-solid fa-square-root-variable" style="color: var(--accent-color);"></i> Ridge, From the Normal Equations</h2>
       <div class="content">
         <p style="font-size: 14pt;">Differentiate \(\|\mathbf{y}-\mathbf{X}\boldsymbol{\beta}\|^2 + \lambda\|\boldsymbol{\beta}\|_2^2\) and set the gradient to zero:</p>
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 8px 20px; margin: 8px 0; text-align: center; font-size: 0.92em;">
-          $$-2\mathbf{X}'(\mathbf{y} - \mathbf{X}\boldsymbol{\beta}) + 2\lambda\boldsymbol{\beta} = 0 \;\Longrightarrow\; (\mathbf{X}'\mathbf{X} + \lambda \mathbf{I})\boldsymbol{\beta} = \mathbf{X}'\mathbf{y} \;\Longrightarrow\; \hat{\boldsymbol{\beta}}^{\text{ridge}} = (\mathbf{X}'\mathbf{X} + \lambda \mathbf{I})^{-1}\mathbf{X}'\mathbf{y}$$
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 2px 20px; margin: 8px 0; text-align: center; font-size: 0.8em;">
+          $$\begin{aligned} -2\mathbf{X}'(\mathbf{y} - \mathbf{X}\boldsymbol{\beta}) + 2\lambda\boldsymbol{\beta} &= 0 \\ (\mathbf{X}'\mathbf{X} + \lambda \mathbf{I})\boldsymbol{\beta} &= \mathbf{X}'\mathbf{y} \\ \hat{\boldsymbol{\beta}}^{\text{ridge}} &= (\mathbf{X}'\mathbf{X} + \lambda \mathbf{I})^{-1}\mathbf{X}'\mathbf{y} \end{aligned}$$
         </div>
         <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 13px 20px; margin-top: 10px;">
           <p style="font-size: 14.5pt; margin: 0; line-height: 1.6;"><strong>The invertibility argument, properly.</strong> \(\mathbf{X}'\mathbf{X}\) is positive semi-definite with eigenvalues \(\gamma_j \geq 0\). So \(\mathbf{X}'\mathbf{X} + \lambda\mathbf{I}\) has eigenvalues \(\gamma_j + \lambda &gt; 0\) for any \(\lambda &gt; 0\). A matrix with no zero eigenvalue is invertible. <strong>Therefore Ridge is always defined</strong> &mdash; including when \(p &gt; n\) and \(\mathbf{X}'\mathbf{X}\) is singular.</p>
@@ -877,34 +877,59 @@ print(<span class="t-str">&quot;lambda selected by cross-validation:&quot;</span
       <p style="font-size: 15pt; color: var(--muted-color); font-style: italic;">Zhao &amp; Yu (2006) &mdash; and why economics fails the condition</p>
     </section>
 
-    <section id="irrepresentable" style="padding: 26px 55px;">
-      <h2 style="font-size: 25pt;"><i class="fa-solid fa-file-contract" style="color: var(--secondary-color);"></i> The Irrepresentable Condition</h2>
+    <section id="irrepresentable" style="padding: 26px 50px;">
+      <h2 style="font-size: 25pt; margin-bottom: 6px;"><i class="fa-solid fa-file-contract" style="color: var(--secondary-color);"></i> The Irrepresentable Condition</h2>
       <div class="content">
-        <p style="font-size: 13.8pt; line-height: 1.55;">Partition the columns of \(\mathbf{X}\) into the active set \(\mathbf{X}_1\) (truly nonzero) and the inactive set \(\mathbf{X}_2\), and write \(\Sigma = \tfrac{1}{n}\mathbf{X}'\mathbf{X}\) in matching blocks. LASSO recovers the true support with probability approaching one <strong>essentially if and only if</strong>:</p>
-        <div style="background: #f8f6f3; border-radius: 10px; padding: 6px 20px; margin: 8px 0; text-align: center; font-size: 0.92em;">
-          $$\left\|\Sigma_{21}\Sigma_{11}^{-1}\,\text{sign}(\boldsymbol{\beta}_1)\right\|_{\infty} \leq 1 - \eta \quad \text{for some } \eta &gt; 0$$
+        <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 6px;"><i class="fa-solid fa-circle-question"></i> When can LASSO find exactly the right variables, however much data it gets?</p>
+        <div style="background: #f8f6f3; border-radius: 10px; padding: 0 20px; text-align: center; font-size: 0.85em;">
+          $$\left\|\Sigma_{21}\Sigma_{11}^{-1}\,\text{sign}(\boldsymbol{\beta}_1)\right\|_{\infty} &lt; 1$$
         </div>
-        <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 12px 20px; margin-top: 8px;">
-          <p style="font-size: 14pt; margin: 0; line-height: 1.6;"><strong>Interpretation.</strong> \(\Sigma_{21}\Sigma_{11}^{-1}\) is the matrix of coefficients from regressing each <em>irrelevant</em> variable on the <em>relevant</em> ones. The condition says: <strong>no irrelevant variable may be too well explained by the relevant ones.</strong> If a noise variable is nearly a linear combination of the true predictors, LASSO cannot tell them apart &mdash; it will include it while dropping a genuine one.</p>
+        <p style="font-size: 12.5pt; color: var(--muted-color); margin: 4px 0 8px; line-height: 1.4; text-align: center;">\(\Sigma_{21}\Sigma_{11}^{-1}\): the slopes from regressing each <em>noise</em> variable on the <em>true</em> ones &middot; times the true signs &middot; \(\|\cdot\|_\infty\): the largest in absolute value. Below 1 (by a margin): LASSO finds the true set as \(n\) grows.</p>
+        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; align-items: start;">
+          <div>
+            <div style="background: #f8f6f3; border-radius: 8px; padding: 7px 14px; margin: 0 0 7px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: var(--secondary-color);">The data.</strong> \(x_1\) and \(x_2\) matter, true slope 1 each. \(x_3\) is noise built from them: \(x_3 = a(x_1 + x_2) + e\); all standardised.</p></div>
+            <div class="fragment fade-up" data-fragment-index="1" style="background: #f0f5f8; border-radius: 8px; padding: 7px 14px; margin: 0 0 7px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: var(--secondary-color);">Step 1 &middot; Regress the noise on the truth.</strong> \(x_3\) on \(x_1, x_2\) gives slopes \(a, a\). Times the signs \((+,+)\): \(2a\).</p></div>
+            <div class="fragment fade-up" data-fragment-index="2" style="background: #f0f5f8; border-radius: 8px; padding: 7px 14px; margin: 0 0 7px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: var(--secondary-color);">Step 2 &middot; The test.</strong> \(a = 0.3\): \(2a = 0.6\), passes. \(a = 0.6\): \(2a = 1.2\), <strong>fails</strong>.</p></div>
+            <div class="fragment fade-up" data-fragment-index="3" style="background: #fdf0ea; border-radius: 8px; padding: 7px 14px; margin: 0 0 7px;"><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong style="color: var(--secondary-color);">Step 3 &middot; Why it bites.</strong> At \(a = 0.6\) the noise moves with \(y\) more than either true variable (covariance 1.2 against 1.0), so LASSO picks \(x_3\) <strong>first</strong>.</p></div>
+          </div>
+          <div class="fragment fade-up" data-fragment-index="4">
+            <p style="font-size: 13pt; font-weight: 700; margin: 0 0 4px;">LASSO keeps exactly \(x_1, x_2\) at some \(\lambda\)</p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14pt;">
+              <thead><tr style="border-bottom: 2px solid #bdbdbd;"><th style="padding: 5px 10px; text-align: left; background: none; color: #2D2D2D;"></th><th style="padding: 5px 10px; text-align: right; background: none; color: #2D2D2D;">\(n\) = 100</th><th style="padding: 5px 10px; text-align: right; background: none; color: #2D2D2D;">1,000</th><th style="padding: 5px 10px; text-align: right; background: none; color: #2D2D2D;">10,000</th></tr></thead>
+              <tbody>
+                <tr style="background: #eef5ee;"><td style="padding: 5px 10px;">\(a = 0.3\), passes</td><td style="padding: 5px 10px; text-align: right;">99.6%</td><td style="padding: 5px 10px; text-align: right;">100%</td><td style="padding: 5px 10px; text-align: right;"><strong>100%</strong></td></tr>
+                <tr style="background: #fdf0ea;"><td style="padding: 5px 10px;">\(a = 0.6\), fails</td><td style="padding: 5px 10px; text-align: right;">52.2%</td><td style="padding: 5px 10px; text-align: right;">50.6%</td><td style="padding: 5px 10px; text-align: right;"><strong>50.4%</strong></td></tr>
+              </tbody>
+            </table>
+            <p style="font-size: 12pt; color: var(--muted-color); margin: 4px 0 0;">500 samples per cell; \(y = x_1 + x_2 + \varepsilon\), noise SD 1.</p>
+            <div class="key-result" style="margin-top: 10px;"><p style="font-size: 14pt; margin: 0;"><strong>More data does not fix it</strong>: the condition is about the design, not \(n\). Data with a <strong>factor structure</strong> (macro indicators, asset-pricing factors) is the \(a = 0.6\) row.</p></div>
+          </div>
         </div>
-        <div class="fragment fade-up" style="background: #fdf0ea; border-left: 4px solid var(--danger-color); border-radius: 8px; padding: 12px 20px; margin-top: 10px;">
-          <p style="font-size: 14.5pt; margin: 0;"><strong>And no increase in sample size repairs this.</strong> The condition is about the <em>design</em>, not about \(n\) &mdash; not a small-sample problem you can outgrow. Macroeconomic indicators, asset-pricing factors and anything with a <strong>factor structure</strong> have exactly the property it forbids: everything is well explained by everything else. Section 16.3&rsquo;s 34 false positives are <em>not</em> this condition failing: it holds on independent columns, and \(\lambda = 1.0\) recovers the support exactly. They come from CV picking a smaller \(\lambda\) than selection needs.</p>
-        </div>
+        <p class="fragment fade-up" data-fragment-index="5" style="font-size: 12.5pt; color: var(--muted-color); margin: 6px 0 0;">Section 16.3&rsquo;s 34 false positives are <em>not</em> this: those columns are independent (\(a = 0\)), and \(\lambda = 1.0\) keeps exactly the ten. CV chose a smaller \(\lambda\) than selection needs.</p>
       </div>
     </section>
 
-    <section id="adaptive-lasso" style="padding: 28px 55px;">
-      <h2 style="font-size: 25pt;"><i class="fa-solid fa-wrench" style="color: var(--success-color);"></i> Two Responses</h2>
+    <section id="adaptive-lasso" style="padding: 26px 50px;">
+      <h2 style="font-size: 25pt; margin-bottom: 6px;"><i class="fa-solid fa-wrench" style="color: var(--success-color);"></i> Two Responses</h2>
       <div class="content">
-        <div style="background: #f0f5f8; border-radius: 10px; padding: 14px 22px;">
-          <p style="font-size: 15pt; font-weight: 700; color: var(--secondary-color); margin-bottom: 6px;">Adaptive LASSO &mdash; Zou (2006)</p>
-          <p style="font-size: 14pt; line-height: 1.55;">Weight each penalty by the inverse of an initial consistent estimate: \(\lambda\sum_j w_j|\beta_j|\) with \(w_j = 1/|\hat\beta_j^{\text{init}}|^\gamma\). <strong>Large coefficients are penalised lightly and small ones heavily</strong> &mdash; which removes the shrinkage bias of the previous block and delivers the <strong>oracle property</strong>: asymptotically the estimator performs as if the true support had been known in advance.</p>
+        <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 6px;"><i class="fa-solid fa-circle-question"></i> When the condition fails, what do you do instead?</p>
+        <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; align-items: start;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 10px 16px;">
+            <p style="font-size: 15pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 6px;">1 &middot; Adaptive LASSO (Zou, 2006)</p>
+            <p style="font-size: 13.5pt; margin: 0 0 8px; line-height: 1.45;">Charge each coefficient its own fee: \(\lambda\sum_j w_j|\beta_j|\), with \(w_j = 1/|\hat\beta_j^{\text{init}}|\).</p>
+            <div style="background: #fff; border-radius: 8px; padding: 6px 12px; margin: 0 0 6px;"><p style="font-size: 13.5pt; margin: 0; line-height: 1.4;"><strong>Step 1 &middot; A first fit.</strong> OLS on one sample of the failing toy (\(a = 0.6\), \(n\) = 1,000): 1.051, 1.045, &minus;0.079.</p></div>
+            <div class="fragment fade-up" data-fragment-index="1" style="background: #fff; border-radius: 8px; padding: 6px 12px; margin: 0 0 6px;"><p style="font-size: 13.5pt; margin: 0; line-height: 1.4;"><strong>Step 2 &middot; The fees.</strong> \(w = 1/|\cdot|\): 0.95 and 0.96 for the true pair, <strong>12.7</strong> for the noise.</p></div>
+            <div class="fragment fade-up" data-fragment-index="2" style="background: #eef5ee; border-radius: 8px; padding: 6px 12px; margin: 0;"><p style="font-size: 13.5pt; margin: 0; line-height: 1.4;"><strong>Step 3 &middot; Rerun LASSO.</strong> Now \(x_3\) is expensive: exactly \(x_1, x_2\) in <strong>100%</strong> of samples at \(n\) = 1,000 and 10,000 (plain LASSO: about 50%).</p></div>
+            <p class="fragment fade-up" data-fragment-index="3" style="font-size: 12.5pt; color: var(--muted-color); margin: 6px 0 0; line-height: 1.4;">Big coefficients pay little, so their shrinkage bias goes too: the <strong>oracle property</strong>, as if the true set were known. It is asymptotic; in finite samples it can mislead (Leeb &amp; P&ouml;tscher, 2008).</p>
+          </div>
+          <div class="fragment fade-up" data-fragment-index="4" style="background: #eef5ee; border-radius: 10px; padding: 10px 16px;">
+            <p style="font-size: 15pt; font-weight: 700; color: var(--success-color); margin: 0 0 6px;">2 &middot; Factor-adjusted selection</p>
+            <p style="font-size: 13.5pt; margin: 0 0 8px; line-height: 1.45;">The economics: over a hundred US monthly indicators move with a handful of common factors (FRED-MD; McCracken &amp; Ng, 2016). That is the \(a = 0.6\) row on a large scale.</p>
+            <p style="font-size: 13.5pt; margin: 0 0 8px; line-height: 1.45;"><strong>Step 1.</strong> Estimate the factors and remove them from every column.<br><strong>Step 2.</strong> Run LASSO on what is left, which is close to independent.</p>
+            <p style="font-size: 13.5pt; margin: 0; line-height: 1.45;">Remove what makes everything correlate, and the condition stops failing (Fan, Ke &amp; Wang, 2020).</p>
+          </div>
         </div>
-        <div style="background: #eef5ee; border-radius: 10px; padding: 14px 22px; margin-top: 12px;">
-          <p style="font-size: 15pt; font-weight: 700; color: var(--success-color); margin-bottom: 6px;">Factor-adjusted selection</p>
-          <p style="font-size: 14pt; line-height: 1.55;">Project out the common factors <em>first</em>, restoring an approximately orthogonal design before applying \(L_1\). This is the response that matches the economics: if everything correlates because of a few common factors, remove the factors and the condition stops failing.</p>
-        </div>
-        <p style="margin-top: 12px; font-size: 13pt; color: var(--muted-color); font-style: italic;">Zhao &amp; Yu (2006) JMLR 7 &bull; Zou (2006) JASA 101(476) &bull; Fan &amp; Li (2001) JASA 96(456) for the SCAD alternative.</p>
+        <p style="margin-top: 8px; font-size: 12pt; color: var(--muted-color); font-style: italic;">Zhao &amp; Yu (2006) JMLR 7 &bull; Zou (2006) JASA 101(476) &bull; Fan &amp; Li (2001) JASA 96(456), SCAD &bull; Fan, Ke &amp; Wang (2020) J. Econometrics 216(1)</p>
       </div>
     </section>
 
