@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=4c06c9c292fc32f07c04707dd7795b36">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=94859905f3a4735c6aad1307ff222bc5">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regularization: LASSO, Ridge & Elastic Net</title>
@@ -1094,23 +1094,17 @@ print(<span class="t-str">&quot;lambda selected by cross-validation:&quot;</span
       </div>
     </section>
 
-    <section id="consumes-information" style="padding: 34px 62px;">
+    <section id="consumes-information" style="padding: 26px 50px;">
       <h2><i class="fa-solid fa-coins" style="color: var(--accent-color);"></i> The Idea Connecting All Three</h2>
       <div class="content">
-        <p style="font-size: 22pt; text-align: center; color: var(--primary-color); font-family: var(--heading-font); margin: 18px 0 24px;">Selection consumes information.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div style="background: #eef5ee; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 12px 20px;">
-            <p style="font-size: 14.5pt; margin: 0;">Pay by <strong>conditioning on what you did</strong> &nbsp;&mdash;&nbsp; Lee et al.</p>
-          </div>
-          <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 12px 20px;">
-            <p style="font-size: 14.5pt; margin: 0;">Pay by <strong>correcting the bias it introduced</strong> &nbsp;&mdash;&nbsp; debiased LASSO</p>
-          </div>
-          <div style="background: #fdf0ea; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 12px 20px;">
-            <p style="font-size: 14.5pt; margin: 0;">Pay by <strong>selecting on both equations</strong>, so a control is left out only if it predicts neither treatment nor outcome well &nbsp;&mdash;&nbsp; post-double selection</p>
-          </div>
-        </div>
-        <p style="margin-top: 16px; font-size: 16pt; color: var(--danger-color); font-weight: 600; text-align: center;">What you cannot do is ignore it. Lab 16 measures that failure: 82.5% coverage.</p>
-        <p style="margin-top: 12px; font-size: 14pt; color: var(--muted-color); text-align: center;">PDS is the direct ancestor of <strong>Double Machine Learning</strong>: swap the two LASSOs for arbitrary learners, add cross-fitting, and you have Chapter 24. The residualise-on-both-sides logic is Frisch&ndash;Waugh&ndash;Lovell from Chapter 14.</p>
+        <p class="q-line" style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 6px;"><i class="fa-solid fa-circle-question"></i> Why does choosing the controls change the interval at all?</p>
+        <p style="font-size: 15pt; margin: 0 0 4px; line-height: 1.45;"><strong>Selection consumes information.</strong> Choosing the controls with the same data is a look at the answer. An interval that ignores the look does not keep its promise (Lab 16):</p>
+        <div class="mathjax_ignore tex2jax_ignore" style="margin: 0 0 10px;"><svg viewBox="0 0 1160 96" width="100%" role="img" aria-label="Coverage of a nominal 95% interval in Lab 16: the naive interval covers 82.5% of the time, 12.5 points short of the 95% it promises" style="display:block;font-family:inherit"><line x1="60" y1="62" x2="960" y2="62" stroke="#999" stroke-width="1.5"/><line x1="60" y1="62" x2="60" y2="68" stroke="#999"/><text x="60" y="86" font-size="15" fill="#6B645E" text-anchor="middle">70%</text><line x1="210" y1="62" x2="210" y2="68" stroke="#999"/><text x="210" y="86" font-size="15" fill="#6B645E" text-anchor="middle">75%</text><line x1="360" y1="62" x2="360" y2="68" stroke="#999"/><text x="360" y="86" font-size="15" fill="#6B645E" text-anchor="middle">80%</text><line x1="510" y1="62" x2="510" y2="68" stroke="#999"/><text x="510" y="86" font-size="15" fill="#6B645E" text-anchor="middle">85%</text><line x1="660" y1="62" x2="660" y2="68" stroke="#999"/><text x="660" y="86" font-size="15" fill="#6B645E" text-anchor="middle">90%</text><line x1="810" y1="62" x2="810" y2="68" stroke="#999"/><text x="810" y="86" font-size="15" fill="#6B645E" text-anchor="middle">95%</text><line x1="960" y1="62" x2="960" y2="68" stroke="#999"/><text x="960" y="86" font-size="15" fill="#6B645E" text-anchor="middle">100%</text><rect x="60" y="22" width="375" height="34" rx="4" fill="#C0603A"/><text x="72" y="45" font-size="17" font-weight="700" fill="#fff">ignore the look: 82.5%</text><line x1="810" y1="10" x2="810" y2="62" stroke="#1F7A5A" stroke-width="3" stroke-dasharray="6 4"/><text x="818" y="24" font-size="16" font-weight="700" fill="#1F7A5A">promised: 95%</text><line x1="441.0" y1="39" x2="804" y2="39" stroke="#6B645E" stroke-width="1.5"/><path d="M804 39 l-8 -5 l0 10 z" fill="#6B645E"/><text x="622" y="33" font-size="15" fill="#6B645E" text-anchor="middle">12.5 points: the bill</text></svg></div>
+        <div class="fragment fade-up" data-fragment-index="1" style="display: grid; grid-template-columns: 250px 1fr; gap: 14px; align-items: center; background: #eef5ee; border-left: 5px solid #1F7A5A; border-radius: 8px; padding: 8px 16px; margin: 0 0 8px;"><p style="font-size: 16pt; font-weight: 700; color: #1F7A5A; margin: 0;">Make the look harmless</p><p style="font-size: 14pt; margin: 0; line-height: 1.4;">select on <strong>both</strong> equations, so a control is left out only if it predicts neither the treatment nor the outcome: 88.5%, about 95% with the plug-in penalty. <span style="color: var(--muted-color);">&mdash; post-double selection</span></p></div>
+        <div class="fragment fade-up" data-fragment-index="2" style="display: grid; grid-template-columns: 250px 1fr; gap: 14px; align-items: center; background: #fdf0ea; border-left: 5px solid #C0603A; border-radius: 8px; padding: 8px 16px; margin: 0 0 8px;"><p style="font-size: 16pt; font-weight: 700; color: #C0603A; margin: 0;">Admit the look</p><p style="font-size: 14pt; margin: 0; line-height: 1.4;">compute the interval <strong>given</strong> what you picked: honest, and often very wide. <span style="color: var(--muted-color);">&mdash; exact post-selection inference</span></p></div>
+        <div class="fragment fade-up" data-fragment-index="3" style="display: grid; grid-template-columns: 250px 1fr; gap: 14px; align-items: center; background: #f0f5f8; border-left: 5px solid #2E6DB4; border-radius: 8px; padding: 8px 16px; margin: 0 0 8px;"><p style="font-size: 16pt; font-weight: 700; color: #2E6DB4; margin: 0;">Undo what the look did</p><p style="font-size: 14pt; margin: 0; line-height: 1.4;"><strong>add back</strong> the shrinkage the penalty caused, then use the usual normal interval. <span style="color: var(--muted-color);">&mdash; debiased LASSO</span></p></div>
+        <p class="fragment fade-up" data-fragment-index="4" style="font-size: 15.5pt; margin: 6px 0 0; text-align: center; color: var(--danger-color); font-weight: 600;">What you cannot do is ignore it.</p>
+        <p class="fragment fade-up" data-fragment-index="5" style="font-size: 13.5pt; margin: 6px 0 0; text-align: center; color: var(--muted-color);">Next stop: swap post-double selection&rsquo;s two LASSOs for any learners, add cross-fitting, and you have <strong>Double Machine Learning</strong> (Chapter 24). Residualising on both sides is Frisch&ndash;Waugh&ndash;Lovell, Chapter 14.</p>
       </div>
     </section>
 
