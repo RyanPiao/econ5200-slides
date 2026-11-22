@@ -89,9 +89,11 @@
   "ch16-econ5200-poll-4": "16-5",
   "ch16-econ5200-poll-5": "16-1",
   "ch17-econ5200-poll-1": "17-1",
-  "ch17-econ5200-poll-4": "17-4",
+  "ch17-econ5200-poll-4": "17-6",
   "ch17-econ5200-poll-5": "17-2",
-  "ch17-econ5200-poll-6": "17-3",
+  "ch17-econ5200-poll-6": "17-5",
+  "ch17-econ5200-poll-7": "17-3",
+  "ch17-econ5200-poll-8": "17-4",
   "ch18-econ5200-poll-1": "18-1",
   "ch18-econ5200-poll-2": "18-2",
   "ch18-econ5200-poll-3": "18-3",
@@ -316,9 +318,17 @@
   ],
   "17-3": [
    "ch17-classification",
-   "ch17-econ5200-poll-6"
+   "ch17-econ5200-poll-7"
   ],
   "17-4": [
+   "ch17-classification",
+   "ch17-econ5200-poll-8"
+  ],
+  "17-5": [
+   "ch17-classification",
+   "ch17-econ5200-poll-6"
+  ],
+  "17-6": [
    "ch17-classification",
    "ch17-econ5200-poll-4"
   ],

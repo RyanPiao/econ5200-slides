@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=bc109985c5c253928c31eab848e2aab3">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=5705c8ff3a56811cd86ccd17794d84fc">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classification: Logistic Regression</title>
@@ -1214,9 +1214,51 @@ spread + unrate   0.0616   0.810       0.132
     </section>
     </section>
 
+    <section>
+    <section id="room-vote" style="padding: 34px 50px;">
+      <h2><i class="fa-solid fa-cake-candles" style="color: var(--secondary-color);"></i> Two Numbers Before We Start</h2>
+      <div class="content">
+        <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 10px;"><i class="fa-solid fa-circle-question"></i> Can how sure you are predict whether you are right?</p>
+        <div class="r-stack" style="width: 100%;">
+        <div class="fragment fade-out" data-fragment-index="1" style="width: 100%; margin: 0 auto auto;">
+          <div style="background: #f8f6f3; border-radius: 10px; padding: 26px 30px; text-align: center; margin-top: 30px;"><div style="font-size: 22pt; font-weight: 700; margin: 0 0 8px;">Two questions. One minute. On your phone.</div><div style="font-size: 15pt; color: var(--muted-color); margin: 0;">Scan the code now, or open the link in the chat; the questions appear when the minute starts.</div></div>
+        </div>
+        <div class="fragment fade-in" data-fragment-index="1" style="width: 100%; margin: 0 auto auto;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+          <div style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--secondary-color);">
+            <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">1. A class of 30 people. What is the chance that at least two of them share a birthday? <span style="font-weight: 400;">A guess is fine; no searching.</span></p>
+            <div class="poll-number" data-poll-id="ch17-econ5200-poll-7" data-poll-voting data-min="0" data-max="100" data-step="0.1" data-unit="%"></div>
+          </div>
+          <div style="background: #fdf0ea; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--accent-color);">
+            <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">2. How sure are you that your answer is within about 10 points of the truth? <span style="font-weight: 400;">0 = a pure guess, 100 = certain.</span></p>
+            <div class="poll-number" data-poll-id="ch17-econ5200-poll-8" data-poll-voting data-min="0" data-max="100" data-step="1"></div>
+          </div>
+        </div>
+        <p class="rv-timer" style="text-align: center; font-size: 20pt; font-weight: 700; color: var(--accent-color); margin: 12px 0 0;"></p>
+        </div>
+        </div>
+        <p class="rl-count" style="text-align: center; font-size: 13pt; color: var(--muted-color); margin-top: 14px;"></p>
+        <p style="text-align: center; font-size: 13pt; color: var(--muted-color); margin-top: 4px;">Next page: a model of this room.</p>
+      </div>
+    </section>
+    <section id="room-result" style="padding: 34px 55px;">
+      <h2><i class="fa-solid fa-cake-candles" style="color: var(--secondary-color);"></i> Our Room, Scored by Accuracy</h2>
+      <div class="content">
+        <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> How good is a model that predicts who in this room got it right?</p>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px;"><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">INPUT</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">How sure you were, <strong>0 to 100</strong>.</p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">OUTPUT</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">The probability your answer is <strong>right</strong>: 60 to 80%. The truth is 70.6%.</p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">DATA</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;"><strong class="rr-n">&mdash;</strong> of you, today. <span class="rr-k"></span></p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--accent-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--accent-color); margin: 0 0 4px;">DECISION RULE</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">Say &ldquo;right&rdquo; when the probability is <strong>0.5 or more</strong>: the library default.</p></div></div>
+        <p class="fragment fade-up text-lg" data-fragment-index="1" style="margin-top: 16px;">Score: the share of you its yes-or-no call gets right.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px;">
+          <div class="stat-highlight fragment fade-up" data-fragment-index="1"><div class="number rr-model" style="color: var(--secondary-color);">&mdash;</div><div class="label">today&rsquo;s model, a logistic regression on how sure you were</div></div>
+          <div class="stat-highlight fragment fade-up" data-fragment-index="2"><div class="r-stack"><div class="number fragment fade-out" data-fragment-index="3" style="color: var(--muted-color);">?</div><div class="number fragment rr-zero" data-fragment-index="3" style="color: var(--muted-color);">&mdash;</div></div><div class="label">a rule with <strong>no inputs</strong> that says &ldquo;wrong&rdquo; for everyone: all zeros. Guess first.</div></div>
+        </div>
+        <p class="fragment fade-up rr-verdict" data-fragment-index="4" style="margin-top: 16px; font-size: 17pt; color: var(--primary-color); text-align: center;"></p>
+        <p class="rr-wait" style="font-size: 13pt; color: var(--muted-color); margin: 10px 0 0; text-align: center;"></p>
+      </div>
+    </section>
     <section id="divider-4" class="section-divider" data-state="is-section-divider">
       <h1>Why Accuracy Is the Wrong Score</h1>
       <p class="subtitle">Section 17.4 &bull; The chapter. The benchmark is the base rate.</p>
+    </section>
     </section>
 
     <section id="the-arithmetic" style="padding: 32px 58px;">
@@ -1451,6 +1493,20 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         </div>
         <button class="reset-btn" onclick="clearPoll('ch17-econ5200-poll-6')" style="position:absolute; bottom:14px; right:20px; font-size:11pt; padding:4px 10px;">Reset</button>
       </section>
+    <section id="room-logit" style="padding: 26px 50px;">
+      <h2 style="margin-bottom: 4px;"><i class="fa-solid fa-cake-candles" style="color: var(--secondary-color);"></i> Back to Our Room: The Cut and Brier</h2>
+      <div class="content">
+        <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 6px;"><i class="fa-solid fa-circle-question"></i> Back in our room: what do the cut and Brier say?</p>
+        <p class="rl-head" style="font-size: 14pt; line-height: 1.4; margin: 0;"></p>
+        <div class="rl-plot mathjax_ignore tex2jax_ignore" style="margin: 4px 0 2px;"></div>
+        <p class="rl-wait" style="font-size: 14pt; color: var(--muted-color); margin: 10px 0;"></p>
+        <div class="rl-readout" style="font-size: 13.5pt; line-height: 1.45;"></div>
+        <span class="rl-step fragment" data-fragment-index="1"></span><span class="rl-step fragment" data-fragment-index="2"></span><span class="rl-step fragment" data-fragment-index="3"></span>
+        <div class="key-result fragment fade-up" data-fragment-index="4" style="margin-top: 6px;">
+          <p style="font-size: 13.5pt;">Accuracy scores only the yes/no call, and the cut decides it. <strong>Brier scores the probability, and puts all zeros last</strong>, as on the 523 months. With this few answers, one person moves every number.</p>
+        </div>
+      </div>
+    </section>
     </section>
 
     <section id="divider-5" class="section-divider" data-state="is-section-divider">
@@ -2902,5 +2958,204 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
     else if (window.Reveal && Reveal.on) Reveal.on('ready', go);
   })();
   </script>
+  <script>
+/* ============================================================
+   Topic 17: THE ROOM'S LOGIT (5200 port 21 Nov 2026 of 3916's 11 Nov build; built on Topic 13's room experiment). a = the birthday answer in %
+   (ch17-econ5200-poll-7, 0-100), x = how sure (ch17-econ5200-poll-8, 0-100). y = 1 when 60 <= a <= 80 (the truth for
+   30 people is 70.6%). Logit of y on x/10 by Newton's method, so exp(slope) is the odds ratio per 10 points. If how
+   sure splits right from wrong perfectly the hill has no top (slide 19), so it refits with scikit-learn's default
+   penalty (C = 1) and says so. Clicks: 1 accuracy at 0.5 against all zeros, 2 the cut at the base rate, 3 Brier.
+   Needs 8 pairs with at least 2 right and 2 wrong; otherwise Q on the reveal (or ?practice=1) loads made-up practice
+   numbers, labelled. Reads poll_votes; never writes. window.RoomLogit.paint(rows) takes planted rows for a test.
+   ============================================================ */
+(function () {
+  "use strict";
+  var ID_A = "ch17-econ5200-poll-7", ID_X = "ch17-econ5200-poll-8";
+  var NUM = /^\s*(?:[oe]\*?:)?\s*(-?\d+(?:\.\d+)?)\s*$/;
+  var MIN_N = 8, MIN_G = 2, LO = 60, HI = 80;
+  var RANGE = {}; RANGE[ID_A] = [0, 100]; RANGE[ID_X] = [0, 100];
+  // made-up demo numbers (answer %, how sure), shown only when Q is pressed on a result page: 20 people, 4 right,
+  // the logit flags nobody at 0.5 (80.0% vs 80.0%), the base-rate cut catches 3 of 4 (statsmodels-checked 12 Nov)
+  var PRACTICE = [[70,60],[68,45],[75,80],[20,85],[10,70],[50,90],[25,30],[30,50],[15,15],[40,40],[45,60],[20,25],[8,5],[35,30],[12,20],[45,55],[18,10],[3,0],[33,35],[60,20]];
+  var practice = false, rows0 = [];
+
+  function pairs(rows) {
+    var first = {};
+    (rows || []).slice().sort(function (a, b) { return String(a.created_at || "") < String(b.created_at || "") ? -1 : 1; })
+      .forEach(function (r) {
+        if (!r || !RANGE[r.poll_id]) return;
+        var m = NUM.exec(String(r.choice)); if (!m) return;
+        var v = +m[1], rg = RANGE[r.poll_id]; if (v < rg[0] || v > rg[1]) return;
+        var f = first[r.voter_id] = first[r.voter_id] || {};
+        if (f[r.poll_id] === undefined) f[r.poll_id] = v;
+      });
+    return Object.keys(first).sort().filter(function (k) { return first[k][ID_A] !== undefined && first[k][ID_X] !== undefined; })
+      .map(function (k) { var a = first[k][ID_A]; return { a: a, x: first[k][ID_X], y: (a >= LO && a <= HI) ? 1 : 0 }; });
+  }
+  function sig(z) { return 1 / (1 + Math.exp(-z)); }
+  // maximise the log-likelihood minus lam/2 * slope^2 (lam = 1 is scikit-learn's C = 1); null when there is no top
+  function newton(P, lam) {
+    var a = 0, b = 0;
+    for (var it = 0; it < 200; it++) {
+      var g0 = 0, g1 = 0, h00 = 0, h01 = 0, h11 = 0;
+      P.forEach(function (p) { var x = p.x / 10, q = sig(a + b * x), w = q * (1 - q);
+        g0 += p.y - q; g1 += (p.y - q) * x; h00 += w; h01 += w * x; h11 += w * x * x; });
+      g1 -= lam * b; h11 += lam;
+      var det = h00 * h11 - h01 * h01; if (!(det > 1e-12)) return null;
+      var da = (h11 * g0 - h01 * g1) / det, db = (h00 * g1 - h01 * g0) / det;
+      a += da; b += db;
+      if (!isFinite(a) || !isFinite(b) || Math.abs(b) > 15) return null;
+      if (Math.abs(da) < 1e-10 && Math.abs(db) < 1e-10) return { a: a, b: b };
+    }
+    return null;
+  }
+  function fit(P) {
+    var n = P.length, k = P.filter(function (p) { return p.y === 1; }).length;
+    if (n < MIN_N || k < MIN_G || n - k < MIN_G) return { ok: false, n: n, k: k };
+    var r = newton(P, 0), pen = false;
+    if (!r) { r = newton(P, 1); pen = true; }
+    if (!r) return { ok: false, n: n, k: k };
+    var br = k / n, ps = P.map(function (p) { return sig(r.a + r.b * p.x / 10); });
+    function at(t) {
+      var fl = 0, tp = 0;
+      P.forEach(function (p, i) { if (ps[i] >= t) { fl++; if (p.y === 1) tp++; } });
+      return { flag: fl, tp: tp, fp: fl - tp, acc: (tp + (n - k - (fl - tp))) / n };
+    }
+    var bm = 0; P.forEach(function (p, i) { bm += (ps[i] - p.y) * (ps[i] - p.y); });
+    return { ok: true, n: n, k: k, br: br, a: r.a, b: r.b, pen: pen, or: Math.exp(r.b),
+             acc0: (n - k) / n, c5: at(0.5), cb: at(br), b0: br, bb: br * (1 - br), bm: bm / n };
+  }
+  function pc(v) { return (Math.round(v * 1000) / 10).toFixed(1) + "%"; }
+  function f3(v) { return v.toFixed(3).replace("-", "−"); }
+  function f2(v) { return v.toFixed(2).replace("-", "−"); }
+
+  var W = 1100, H = 210, L = 70, R = 1080, T = 14, B = 172, RIGHT = "#C47B5A", WRONG = "#8C8580";
+  function plot(P, F, step) {
+    var X = function (v) { return L + (R - L) * v / 100; }, Y = function (v) { return B - (B - T) * v; };
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" font-family="inherit" style="width:100%;display:block" role="img" aria-label="Each answer as a dot: right answers at the top, wrong at the bottom, against how sure the person was, with the fitted logistic curve">';
+    s += '<rect x="' + L + '" y="' + T + '" width="' + (R - L) + '" height="' + (B - T) + '" fill="#fbfaf8" stroke="#d9d4cb"/>';
+    [0, 0.5, 1].forEach(function (v) { s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="#ece8e1"/><text x="' + (L - 8) + '" y="' + (Y(v) + 5) + '" text-anchor="end" font-size="14" fill="#777">' + (v * 100) + '%</text>'; });
+    for (var t = 0; t <= 100; t += 25) s += '<text x="' + X(t) + '" y="' + (B + 18) + '" text-anchor="middle" font-size="14" fill="#777">' + t + '</text>';
+    s += '<text x="' + ((L + R) / 2) + '" y="' + (H - 2) + '" text-anchor="middle" font-size="14" fill="#555">how sure you were (0 to 100)</text>';
+    s += '<text transform="translate(16 ' + ((T + B) / 2) + ') rotate(-90)" text-anchor="middle" font-size="13" fill="#555">chance of being right</text>';
+    if (step >= 1) s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(0.5) + '" y2="' + Y(0.5) + '" stroke="#6B8BA4" stroke-width="2" stroke-dasharray="8 6"/><text x="' + (R - 6) + '" y="' + (Y(0.5) - 7) + '" text-anchor="end" font-size="14" font-weight="700" fill="#6B8BA4">cut at 0.5: flags ' + F.c5.flag + '</text>';
+    if (step >= 2) s += '<line x1="' + L + '" x2="' + R + '" y1="' + Y(F.br) + '" y2="' + Y(F.br) + '" stroke="#6A8E6B" stroke-width="2" stroke-dasharray="8 6"/><text x="' + (R - 6) + '" y="' + (Y(F.br) - 7) + '" text-anchor="end" font-size="14" font-weight="700" fill="#6A8E6B">cut at the base rate, ' + F.br.toFixed(2) + ': flags ' + F.cb.flag + '</text>';
+    var d = "";
+    for (var v = 0; v <= 100; v += 1) d += (v ? " L" : "M") + X(v).toFixed(1) + " " + Y(sig(F.a + F.b * v / 10)).toFixed(1);
+    s += '<path d="' + d + '" fill="none" stroke="#2D2D2D" stroke-width="3"/>';
+    P.forEach(function (p, i) {
+      var j = ((i * 37) % 7 - 3) * 2.2, yy = p.y === 1 ? Y(1) + 9 + j : Y(0) - 9 - j;
+      s += '<circle cx="' + X(p.x) + '" cy="' + yy + '" r="7" fill="' + (p.y === 1 ? RIGHT : WRONG) + '" fill-opacity="' + (p.y === 1 ? 0.9 : 0.5) + '"/>';
+    });
+    s += '<circle cx="' + (L + 16) + '" cy="' + (T + 24) + '" r="6" fill="' + RIGHT + '"/><text x="' + (L + 28) + '" y="' + (T + 29) + '" font-size="14" fill="#555">right (60 to 80%)</text>';
+    s += '<circle cx="' + (L + 16) + '" cy="' + (B - 26) + '" r="6" fill="' + WRONG + '" fill-opacity="0.6"/><text x="' + (L + 28) + '" y="' + (B - 21) + '" font-size="14" fill="#555">wrong</text>';
+    return s + '</svg>';
+  }
+  function stepOf(sec) { return sec ? sec.querySelectorAll(".rl-step.visible").length : 0; }
+  function draw(rows) {
+    if (rows) rows0 = rows;
+    var P = practice ? PRACTICE.map(function (q) { var a = q[0]; return { a: a, x: q[1], y: (a >= LO && a <= HI) ? 1 : 0 }; }) : pairs(rows0);
+    var k = P.filter(function (p) { return p.y === 1; }).length;
+    [].forEach.call(document.querySelectorAll(".rl-count"), function (e) {
+      e.textContent = (!practice && P.length) ? P.length + " of you " + (P.length === 1 ? "has" : "have") + " sent both" : ""; });
+    paintResult(P, k);
+    var sec = document.getElementById("room-logit"); if (!sec) return;
+    var head = sec.querySelector(".rl-head"), host = sec.querySelector(".rl-plot"), out = sec.querySelector(".rl-readout"), wait = sec.querySelector(".rl-wait");
+    var F = fit(P);
+    if (!F.ok) {
+      head.innerHTML = ""; host.innerHTML = ""; out.innerHTML = "";
+      wait.style.display = "";
+      wait.textContent = "Waiting for at least " + MIN_N + " of you with both numbers, at least " + MIN_G + " right and " + MIN_G + " wrong (now " + P.length + ", " + k + " right). Q switches on demo numbers (made up).";
+      return;
+    }
+    wait.style.display = "none";
+    var step = stepOf(sec), tag = practice ? ' <span style="color:#a06000">(demo numbers, made up)</span>' : "";
+    head.innerHTML = "<strong>" + F.n + "</strong> answers; <strong>" + F.k + "</strong> said 60 to 80% (the truth: 70.6%), a base rate of <strong>" + pc(F.br) + "</strong>. " +
+      "Each 10 points more sure multiplies the odds of being right by <strong>" + f2(F.or) + "</strong>." +
+      (F.pen ? ' <span style="color:var(--muted-color)">How sure splits right from wrong perfectly, so the hill has no top (slide 19): fitted with scikit-learn&rsquo;s default penalty.</span>' : "") + tag;
+    host.innerHTML = plot(P, F, step);
+    var L1 = [];
+    if (step >= 1) L1.push("<strong>All zeros</strong> (&ldquo;nobody is right&rdquo;): accuracy <strong>" + pc(F.acc0) + "</strong>. <strong>The logit at 0.5</strong>: flags " + F.c5.flag + ", accuracy <strong>" + pc(F.c5.acc) + "</strong>" +
+      (F.c5.flag === 0 ? ": it flags nobody, so it ties the zeros, like 93.1% and 93.1%." : (F.c5.acc > F.acc0 ? ": here the confident ones carry it past the zeros." : "."))); 
+    if (step >= 2) L1.push("<strong>Cut at the base rate</strong>, " + F.br.toFixed(2) + ": flags " + F.cb.flag + ", catches <strong>" + F.cb.tp + " of " + F.k + "</strong>, " + F.cb.fp + " false alarm" + (F.cb.fp === 1 ? "" : "s") + "; accuracy " + pc(F.cb.acc) + ".");
+    if (step >= 3) L1.push("<strong>Brier</strong>, lower is better: all zeros <strong>" + f3(F.b0) + "</strong> &middot; the base rate for everyone " + f3(F.bb) + " &middot; the logit <strong>" + f3(F.bm) + "</strong>.");
+    out.innerHTML = L1.join("<br>");
+  }
+  function paintResult(P, k) {
+    var r = document.getElementById("room-result"); if (!r) return;
+    var F = fit(P), q = function (c) { return r.querySelector(c); };
+    var tag = practice ? ' <span style="color:#a06000">(demo numbers, made up)</span>' : "";
+    q(".rr-n").textContent = P.length ? String(P.length) : "\u2014";
+    q(".rr-k").innerHTML = P.length ? k + " right." + tag : "";
+    if (!F.ok) {
+      q(".rr-model").textContent = "\u2014"; q(".rr-zero").textContent = "\u2014"; q(".rr-verdict").innerHTML = "";
+      q(".rr-wait").textContent = "Waiting for at least " + MIN_N + " of you with both numbers, at least " + MIN_G + " right and " + MIN_G + " wrong (now " + P.length + ", " + k + " right). Q switches on demo numbers (made up).";
+      return;
+    }
+    q(".rr-wait").textContent = "";
+    q(".rr-model").textContent = pc(F.c5.acc); q(".rr-zero").textContent = pc(F.acc0);
+    var d = Math.round((F.c5.acc - F.acc0) * F.n);
+    q(".rr-verdict").innerHTML = F.c5.flag === 0 ? "<strong>Identical.</strong> It says &ldquo;wrong&rdquo; for all " + F.n + " of you, and so does the rule." :
+      d > 0 ? "<strong>The model wins by " + d + (d === 1 ? " person" : " people") + ":</strong> a few of you were sure and right. Rare &ldquo;right&rdquo;, and accuracy still starts at " + pc(F.acc0) + "." :
+      "<strong>All zeros wins.</strong> Rare &ldquo;right&rdquo;: guessing &ldquo;wrong&rdquo; for everyone already scores " + pc(F.acc0) + ".";
+  }
+  window.RoomLogit = { pairs: pairs, fit: fit, paint: function (rows) { draw(rows); } };
+
+  var SU = "https://dpntbrsorgbivmntwmod.supabase.co";
+  var SK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbnRicnNvcmdiaXZtbnR3bW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjY5NzksImV4cCI6MjA5MTQ0Mjk3OX0.7__ja5Sq2AB__iFXhj-CKZJ0l7SjUerf8mpGQlo2bxI";
+  function bestSession(rows) {
+    var by = {};
+    rows.forEach(function (r) { var k = String(r.session_key || ""); (by[k] = by[k] || []).push(r); });
+    var keys = Object.keys(by).sort().reverse(), pick = keys[0] || "";
+    for (var i = 0; i < keys.length; i++) { if (fit(pairs(by[keys[i]])).ok) { pick = keys[i]; break; } }
+    return by[pick] || [];
+  }
+  var HERE = ["room-vote", "room-result", "room-logit"];
+  function cur() { var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(); return s ? s.id : ""; }
+  function onRoom() { return HERE.indexOf(cur()) >= 0; }
+  function fetchRows() {
+    if (location.protocol === "file:") return;
+    var today = window.Poll ? Poll.q() : "";
+    var latest = !!(cur() !== "room-vote" && today);
+    var url = SU + "/rest/v1/poll_votes?poll_id=in.(" + ID_A + "," + ID_X + ")&select=poll_id,choice,voter_id,created_at" +
+              (latest ? ",session_key&session_key=like.*-" + today.split("-").pop() : today);
+    fetch(url, { headers: { apikey: SK, Authorization: "Bearer " + SK, "Cache-Control": "no-cache, no-store" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) { if (rows) draw(latest ? bestSession(rows) : rows); })
+      .catch(function () {});
+  }
+  setInterval(function () { if (!document.hidden && onRoom()) fetchRows(); }, 4000);
+  if (window.Reveal && Reveal.on) {
+    Reveal.on("slidechanged", function () { if (onRoom()) { fetchRows(); draw(); } });
+    ["fragmentshown", "fragmenthidden"].forEach(function (ev) { Reveal.on(ev, function () { if (onRoom()) draw(); }); });
+  }
+  document.addEventListener("keydown", function (e) {     // Q on the two result pages only: demo numbers on/off (Q on a poll slide moves the QR)
+    var t = e.target; if ((e.key === "q" || e.key === "Q") && (cur() === "room-result" || cur() === "room-logit") && !(t && t.closest && t.closest("input,textarea"))) { practice = !practice; draw(); } });
+  var tick = null, CAN_OPEN = /[?&]presenter(&|=|$)/.test(location.search) ||
+    (/[?&]receiver(&|$)/.test(location.search) && /postMessageEvents=true/.test(location.search));
+  function timer(on) {
+    var el = document.querySelector("#room-vote .rv-timer"); if (!el) return;
+    if (tick) { clearInterval(tick); tick = null; }
+    if (!on) { el.textContent = ""; return; }
+    var end = Date.now() + 60000;
+    var paint = function () { var left = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+      el.textContent = left ? "0:" + (left < 10 ? "0" : "") + left + " left" : "Time. Last answers in now.";
+      if (!left) { clearInterval(tick); tick = null; } };
+    paint(); tick = setInterval(paint, 250);
+  }
+  if (window.Reveal && Reveal.on) {
+    Reveal.on("fragmentshown", function (e) {
+      // Reveal renumbers fragment indices from 0 at load, so find the start by what it holds: the questions
+      if (cur() !== "room-vote" || !(e.fragments || []).some(function (f) { return f.querySelector && f.querySelector(".rv-timer"); })) return;
+      timer(true);
+      if (CAN_OPEN && window.Poll && Poll.openHere) Poll.openHere();      // the same as pressing t
+    });
+    Reveal.on("fragmenthidden", function (e) { if (cur() === "room-vote" && (e.fragments || []).some(function (f) { return f.querySelector && f.querySelector(".rv-timer"); })) timer(false); });
+    Reveal.on("slidechanged", function () { if (cur() !== "room-vote") timer(false); });
+  }
+  if (/[?&](practice|demo)=1/.test(location.search)) practice = true;
+  setTimeout(function () { fetchRows(); draw(); }, 900);
+})();
+</script>
 </body>
 </html>
