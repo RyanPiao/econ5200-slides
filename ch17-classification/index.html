@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=5705c8ff3a56811cd86ccd17794d84fc">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=357028ea47e27b45b0d2acb174bfdbc8">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classification: Logistic Regression</title>
@@ -1005,26 +1005,6 @@ odds ratio: exp(-0.8354) = 0.434</pre></div></div></div></div>
         </div>
       </div>
     </section>
-<section id="three-scales" style="padding: 20px 42px;">
-      <h2 style="font-size: 23pt;"><i class="fa-solid fa-layer-group" style="color: var(--secondary-color);"></i> Three Scales, Side by Side</h2>
-      <div class="content">
-        <div style="display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 18px; align-items: center;">
-          <img src="figures/figure_002_three_scales.png" alt="Three stacked panels against the term spread: log-odds falling as a straight line, odds decaying multiplicatively, and probability tracing an S-curve, with the same five spread values marked on each panel" style="width: 100%; max-height: 560px; object-fit: contain; border-radius: 6px; max-height: 535px;">
-          <div>
-            <table style="font-size: 11.5pt; width: 100%; border-collapse: collapse;">
-              <tr style="border-bottom: 1.5px solid var(--line-color);"><th style="text-align:right; padding: 2px 8px;">spread</th><th style="text-align:right; padding: 4px 8px;">logit</th><th style="text-align:right; padding: 4px 8px;">odds</th><th style="text-align:right; padding: 4px 8px;">prob.</th><th style="text-align:right; padding: 4px 8px;">marg. eff.</th></tr>
-              <tr><td style="text-align:right; padding: 2px 8px;">2.0</td><td style="text-align:right; padding: 2px 8px;">&minus;3.4301</td><td style="text-align:right; padding: 2px 8px;">0.032</td><td style="text-align:right; padding: 2px 8px;">3.1%</td><td style="text-align:right; padding: 2px 8px;">&minus;0.0254</td></tr>
-              <tr><td style="text-align:right; padding: 2px 8px;">1.0</td><td style="text-align:right; padding: 2px 8px;">&minus;2.5947</td><td style="text-align:right; padding: 2px 8px;">0.075</td><td style="text-align:right; padding: 2px 8px;">6.9%</td><td style="text-align:right; padding: 2px 8px;">&minus;0.0540</td></tr>
-              <tr style="background:#f8f6f3;"><td style="text-align:right; padding: 2px 8px;">0.0</td><td style="text-align:right; padding: 2px 8px;">&minus;1.7592</td><td style="text-align:right; padding: 2px 8px;">0.172</td><td style="text-align:right; padding: 2px 8px;"><strong>14.7%</strong></td><td style="text-align:right; padding: 2px 8px;">&minus;0.1047</td></tr>
-              <tr><td style="text-align:right; padding: 2px 8px;">&minus;1.0</td><td style="text-align:right; padding: 2px 8px;">&minus;0.9238</td><td style="text-align:right; padding: 2px 8px;">0.397</td><td style="text-align:right; padding: 2px 8px;">28.4%</td><td style="text-align:right; padding: 2px 8px;">&minus;0.1699</td></tr>
-              <tr><td style="text-align:right; padding: 2px 8px;">&minus;2.0</td><td style="text-align:right; padding: 2px 8px;">&minus;0.0884</td><td style="text-align:right; padding: 2px 8px;">0.915</td><td style="text-align:right; padding: 2px 8px;">47.8%</td><td style="text-align:right; padding: 2px 8px;">&minus;0.2084</td></tr>
-            </table>
-            <p style="font-size: 13pt; line-height: 1.45; margin-top: 12px;"><strong>logit</strong> moves in equal steps of &minus;0.8354. <strong>odds</strong> multiply by 0.434. <strong>probability</strong> does neither &mdash; 3.8 points from 2.0 to 1.0, but <strong>19.4</strong> points from &minus;1 to &minus;2.</p>
-            <p style="font-size: 13pt; line-height: 1.45; margin-top: 8px; color: var(--accent-color);"><strong>A quotable anchor:</strong> at a perfectly flat curve the model says <strong>14.7%</strong> &mdash; roughly double the 6.9% base rate (the share of yes months before any evidence).</p>
-          </div>
-        </div>
-      </div>
-    </section>
     </section>
 
     <section id="discussion-committee" style="padding: 34px 60px;">
@@ -1180,24 +1160,6 @@ unrate_chg  coef +0.0409   odds ratio 1.042   p-value 0.736</pre></div></div></d
         </div>
       </div>
     </section>
-<section id="unemployment-null" style="padding: 28px 50px;">
-      <h2 style="font-size: 24pt;"><i class="fa-solid fa-ban" style="color: var(--muted-color);"></i> A Plausible Variable That Adds Nothing</h2>
-      <div class="content">
-        <p style="font-size: 14.5pt;">Unemployment turns before a downturn. Add its twelve-month change:</p>
-        <pre style="font-size: 12.5pt; background: #f8f6f3; border-radius: 8px; padding: 12px 18px; margin: 8px 0 0 0;"><code>                   Brier     AUC   pseudo-R2
-spread only       0.0615   0.811       0.131
-spread + unrate   0.0616   0.810       0.132
-
-  spread      coef -0.8324   odds ratio 0.435   p 5.54e-08
-  unrate_chg  coef +0.0409   odds ratio 1.042   p 0.736</code></pre>
-        <div class="fragment fade-up" style="background: #f0f5f8; border-left: 5px solid var(--secondary-color); border-radius: 10px; padding: 14px 20px; margin-top: 14px;">
-          <p style="font-size: 15pt; line-height: 1.5;">Brier is fractionally <em>worse</em>, AUC a shade lower, \(p = 0.74\). <strong>The yield curve is a price, and prices aggregate forecasts</strong> &mdash; including whatever traders believe about the labour market. Ch 15's warning, in a classification setting: <strong>related to the outcome</strong> and <strong>adds information beyond what you have</strong> are different properties.</p>
-        </div>
-        <p style="font-size: 13pt; color: var(--muted-color); margin-top: 12px;">It is also why the NY Fed's model has stayed a one-variable model for thirty years. The reason is not simplicity for its own sake: the additions did not help.</p>
-      
-        <p style="font-size: 12pt; color: var(--muted-color); margin: 6px 0 0;">Brier score: the average of (p &minus; y)&sup2; over all months, lower is better (Section 17.4). AUC: the chance a recession month gets a higher p than a calm month (the opening slides).</p>
-      </div>
-    </section>
 <section id="discussion-1" style="padding: 30px 52px;">
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-comments" style="color: var(--secondary-color);"></i> Discussion: Related, but Not Incremental</h2>
       <div class="content">
@@ -1255,10 +1217,10 @@ spread + unrate   0.0616   0.810       0.132
         <p class="rr-wait" style="font-size: 13pt; color: var(--muted-color); margin: 10px 0 0; text-align: center;"></p>
       </div>
     </section>
+    </section>
     <section id="divider-4" class="section-divider" data-state="is-section-divider">
       <h1>Why Accuracy Is the Wrong Score</h1>
       <p class="subtitle">Section 17.4 &bull; The chapter. The benchmark is the base rate.</p>
-    </section>
     </section>
 
     <section id="the-arithmetic" style="padding: 32px 58px;">
@@ -1823,20 +1785,6 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
         <p class="fragment fade-up" data-fragment-index="3" style="font-size: 14pt; margin-top: 10px;"><strong>Ordered outcomes</strong> (ratings, survey scales): <em>ordered logit</em>, one coefficient vector plus cutpoints. Usually the right choice.</p>
       </div>
     </section>
-<section id="multinomial" style="padding: 26px 50px;">
-      <h2 style="font-size: 23pt;"><i class="fa-solid fa-list-ol" style="color: var(--secondary-color);"></i> Multinomial Logit: More Than Two Categories</h2>
-      <div class="content">
-        <div style="font-size: 12.5pt; margin: 2px 0;">
-          $$P(Y = j \mid \mathbf{x}) = \frac{e^{\mathbf{x}'\boldsymbol{\beta}_j}}{\sum_{m=1}^{J} e^{\mathbf{x}'\boldsymbol{\beta}_m}}$$
-        </div>
-        <p style="font-size: 13.5pt; line-height: 1.45; margin-top: 8px;"><strong>In words.</strong> <strong>Multinomial logit</strong> fits one linear predictor per category and normalises them into probabilities. Only <em>differences</em> between the \(\boldsymbol{\beta}_j\) are identified, so one category is fixed as the baseline and the rest are read relative to it &mdash; the reference-category logic of dummy regressors, now applied to the <em>outcome</em>.</p>
-        <div style="background: #fdf0ea; border-left: 5px solid var(--danger-color); border-radius: 10px; padding: 12px 18px; margin-top: 12px;">
-          <p style="font-size: 13.5pt; line-height: 1.45;"><strong>Its famous weakness: Independence of Irrelevant Alternatives.</strong> The ratio of probabilities for any two options cannot depend on what else is available. <strong>Red bus / blue bus:</strong> a commuter split evenly between car and a red bus should not, on the introduction of an <em>identical</em> blue bus, end up choosing the car only a third of the time. But that is what the model predicts &mdash; it cannot know the two buses are near-substitutes. Nested and mixed logit relax it, at a cost in complexity.</p>
-        </div>
-        <p style="font-size: 13.5pt; line-height: 1.45; margin-top: 10px;">For <strong>ordered</strong> outcomes &mdash; bond ratings, Likert responses &mdash; <strong>ordered logit</strong> exploits the ordering with a single coefficient vector and a set of cutpoints. More parsimonious, and usually right when the categories have a natural sequence.</p>
-        <p style="font-size: 12.5pt; color: var(--muted-color); margin-top: 8px;">The binary case carries every concept in this topic. Just do not assume the world is binary because the chapter was.</p>
-      </div>
-    </section>
     </section>
 
     <section id="divider-8" class="section-divider" data-state="is-section-divider">
@@ -2010,10 +1958,10 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
       <div class="content">
         <div style="display: flex; flex-direction: column; gap: 9px;">
           <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--secondary-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>1.</strong> The linear probability model gives <strong>84 negative probabilities</strong> on real FRED data and heteroscedastic errors. The logit makes the first impossible and absorbs the second into its weights: linear in log-odds.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--accent-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>2.</strong> A coefficient is a change in <strong>log-odds</strong>: &minus;0.8354 multiplies the odds by <strong>0.434</strong> (&minus;57% <em>in odds</em>); the probability effect depends on where you start.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--danger-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>3.</strong> <strong>Accuracy is an improper score</strong>, and under imbalance doing nothing scores 93.1%. Ours matched it, flagging 0 of 36; Brier 0.0615 and AUC 0.811 show the information is there.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--success-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>4.</strong> <strong>0.5 is a library default, not a decision.</strong> At 0.10 it flags 26 of 36 at the worst accuracy; the right cutoff is \(C_{FP}/(C_{FP}+C_{FN})\), a question about costs.</p></div>
-          <div style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--muted-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>5.</strong> A sound model fails when a <strong>feature stops meaning what it meant</strong>: two years inverted, in-sample probabilities of 25&ndash;42%, no recession, because QE had compressed the term premium.</p></div>
+          <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--accent-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>2.</strong> A coefficient is a change in <strong>log-odds</strong>: &minus;0.8354 multiplies the odds by <strong>0.434</strong> (&minus;57% <em>in odds</em>); the probability effect depends on where you start.</p></div>
+          <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--danger-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>3.</strong> <strong>Accuracy is an improper score</strong>, and under imbalance doing nothing scores 93.1%. Ours matched it, flagging 0 of 36; Brier 0.0615 and AUC 0.811 show the information is there.</p></div>
+          <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--success-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>4.</strong> <strong>0.5 is a library default, not a decision.</strong> At 0.10 it flags 26 of 36 at the worst accuracy; the right cutoff is \(C_{FP}/(C_{FP}+C_{FN})\), a question about costs.</p></div>
+          <div class="fragment fade-up" style="background: #f8f6f3; border-radius: 8px; padding: 11px 20px; border-left: 4px solid var(--muted-color);"><p style="font-size: 14.5pt; line-height: 1.45;"><strong>5.</strong> A sound model fails when a <strong>feature stops meaning what it meant</strong>: two years inverted, in-sample probabilities of 25&ndash;42%, no recession, because QE had compressed the term premium.</p></div>
         </div>
       </div>
     </section>
