@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=1082ad6afca59ed642d7726d28ba0134">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=fb54432b0de3d88cde09d8a5e361e764">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classification: Logistic Regression</title>
@@ -1317,8 +1317,7 @@ recession months caught:  0 of 36</pre></div></div></div></div>
       </div>
     </section>
 
-    <section>
-<section id="proper-scoring" style="padding: 30px 58px;">
+    <section id="proper-scoring" style="padding: 30px 58px;">
       <h2><i class="fa-solid fa-scale-unbalanced-flip" style="color: var(--accent-color);"></i> Accuracy Is an <em>Improper</em> Score</h2>
       <div class="content">
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> What makes a score reward true beliefs?</p>
@@ -1338,7 +1337,7 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         </div>
       </div>
     </section>
-<section id="propriety-proof" style="padding: 28px 52px;">
+    <section id="propriety-proof" style="padding: 28px 52px;">
       <p class="tier-tag" style="position: absolute; top: 8px; right: 26px; font-size: 10.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-color); font-weight: 700;">Formal Sketch</p>
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-square-root-variable" style="color: var(--secondary-color);"></i> Brier Is Strictly Proper &mdash; in Three Lines</h2>
       <div class="content">
@@ -1356,7 +1355,7 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         <p style="font-size: 13.5pt; color: var(--muted-color); margin-top: 12px;">Gneiting &amp; Raftery (2007), <em>JASA</em> 102(477).</p>
       </div>
     </section>
-<section id="accuracy-improper" style="padding: 32px 55px;">
+    <section id="accuracy-improper" style="padding: 32px 55px;">
       <p class="tier-tag" style="position: absolute; top: 8px; right: 26px; font-size: 10.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-color); font-weight: 700;">Formal Sketch</p>
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-xmark" style="color: var(--danger-color);"></i> And Why Accuracy Fails</h2>
       <div class="content">
@@ -1368,10 +1367,8 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         <p class="fragment fade-up" style="font-size: 15pt; line-height: 1.5; margin-top: 14px; color: var(--accent-color);">Which is why &ldquo;optimise accuracy&rdquo; is worse than a weak objective. <strong>A strategic forecaster can game it without lying detectably</strong> &mdash; and an ordinary fitting procedure can game it accidentally.</p>
       </div>
     </section>
-    </section>
 
-    <section>
-<section id="ch15-footnote" style="padding: 32px 60px;">
+    <section id="ch15-footnote" style="padding: 32px 60px;">
       <h2><i class="fa-solid fa-link" style="color: var(--muted-color);"></i> A Precise Footnote to Chapter 15</h2>
       <div class="content">
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> Is there a best possible Brier score, like Chapter 15&rsquo;s limit?</p>
@@ -1393,7 +1390,7 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         </div>
       </div>
     </section>
-<section id="murphy" style="padding: 26px 50px;">
+    <section id="murphy" style="padding: 26px 50px;">
       <p class="tier-tag" style="position: absolute; top: 8px; right: 26px; font-size: 10.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-color); font-weight: 700;">Formal Sketch</p>
       <h2 style="font-size: 23pt;"><i class="fa-solid fa-triangle-exclamation" style="color: var(--danger-color);"></i> The Murphy Decomposition &mdash; and What It Is Not</h2>
       <div class="content">
@@ -1407,7 +1404,6 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         </div>
         <p style="font-size: 13.5pt; line-height: 1.45; margin-top: 10px;">Extending it to 0&ndash;1 loss required separate work (Domingos 2000; James 2003), and those general-loss versions are <strong>not the same identity</strong>: the cross term does not vanish and can be <em>negative</em>, so bias and variance can offset. <strong>Never write &ldquo;the bias&ndash;variance decomposition of the misclassification rate&rdquo;</strong> &mdash; and do not write it of AUC either.</p>
       </div>
-    </section>
     </section>
 
     <section>
