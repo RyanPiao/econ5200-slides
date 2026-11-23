@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=c88e6a5da8bbd2d56cfde1ec3f45badd">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=08e573bd8b934b0f5d5d2dbdfa5e32f0">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Model Evaluation: Metrics That Matter</title>
@@ -729,17 +729,17 @@ pd.DataFrame({<span class="t-str">"months"</span>: g.size(),
       <div class="content">
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> How expensive is the default cutoff on Lab 18's data?</p>
         <div style="display: grid; grid-template-columns: 56% 44%; gap: 18px; align-items: center;">
-          <img class="figure" src="figures/figure_007_cost_curve.png" alt="Expected cost per case against threshold on Lab 18 test rows: the threshold chosen on the training rows, 0.0905, costs 0.4692, against 0.9437 at the default of 0.5" style="width: 100%; max-height: 340px; object-fit: contain;">
+          <img class="figure" src="figures/figure_007_cost_curve.png" alt="Cost per row against the threshold for Lab 18's logistic model on its 3,000 test rows, a missed 1 costing 10 and a false alarm 1: lowest 0.4347 at t = 0.08, and 0.9217 at the default of 0.5" style="width: 100%; height: auto; display: block;">
           <div>
-            <div class="mock colab mathjax_ignore tex2jax_ignore" style="--mk-size: 10.5pt;"><div class="mk-cell"><div class="mk-gut"><div class="mk-run"></div></div><div class="mk-body"><pre class="mk-code"><code><span class="t-com"># Lab 18 Step 8: choose on the training rows, price once on the test rows</span></code></pre><div class="mk-out mk-mono" style="display: block;"><pre>threshold chosen on the training rows: 0.0905
-its cost per case on the test rows   : 0.4692
-cost at the default 0.5 (test rows)  : 0.9437
-closed form 0.0909 (test rows)       : 0.4683</pre></div></div></div></div>
-            <p style="font-size: 14pt; line-height: 1.5; margin-top: 12px;">A simulated imbalanced problem where a <strong>miss costs ten times a false alarm</strong>.</p>
-            <p style="font-size: 15pt; line-height: 1.5; margin-top: 10px; color: var(--danger-color);"><strong>Shipping the default costs 2.01&times; as much.</strong></p>
+            <p style="font-size: 14pt; line-height: 1.5; margin: 0;">Lab 18's <strong>3,000 test rows</strong>, 533 of them 1s. A <strong>missed 1 costs ten times a false alarm</strong>. The logistic model, scored with the lab's <code>cost_per_row</code>:</p>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: baseline; margin-top: 12px; font-size: 15pt;">
+              <span style="font-weight: 700; color: var(--secondary-color);">0.4347</span><span style="font-size: 14pt;">per row, the lowest, at <em>t</em> &asymp; 0.08</span>
+              <span style="font-weight: 700; color: var(--danger-color);">0.9217</span><span style="font-size: 14pt;">per row at the default, 0.5</span>
+            </div>
+            <p style="font-size: 15pt; line-height: 1.5; margin-top: 12px; color: var(--danger-color);"><strong>Shipping the default costs 2.12&times; as much.</strong></p>
           </div>
         </div>
-        <p style="font-size: 14.5pt; margin-top: 8px;">Two lessons. The cheap cutoff is <strong>nowhere near 0.5</strong>: a 10:1 ratio puts Chapter 17's formula at \(1/11 \approx 0.091\), and the training rows choose 0.0905. And the curve is a <strong>lopsided V</strong>: cheap near 0.05&ndash;0.12, then rising steadily all the way to 0.5.</p>
+        <p style="font-size: 14.5pt; margin-top: 8px;">Two lessons. The cheap cutoff is <strong>nowhere near 0.5</strong>: with a miss ten times a false alarm, it sits near 0.08. And the bottom is <strong>flat</strong>: anything from 0.077 to 0.095 is within 2% of the lowest, while the cost climbs steadily past it.</p>
       </div>
     </section>
 
