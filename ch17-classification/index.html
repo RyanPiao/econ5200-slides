@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=e2df2f94c8dd045dab92157945fe0530">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=1082ad6afca59ed642d7726d28ba0134">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classification: Logistic Regression</title>
@@ -1178,7 +1178,7 @@ unrate_chg  coef +0.0409   odds ratio 1.042   p-value 0.736</pre></div></div></d
 
     <section>
     <section id="room-vote" style="padding: 34px 50px;">
-      <h2><i class="fa-solid fa-cake-candles" style="color: var(--secondary-color);"></i> Two Numbers Before We Start</h2>
+      <h2><i class="fa-solid fa-cart-shopping" style="color: var(--secondary-color);"></i> Two Numbers Before We Start</h2>
       <div class="content">
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 10px;"><i class="fa-solid fa-circle-question"></i> Can how sure you are predict whether you are right?</p>
         <div class="r-stack" style="width: 100%;">
@@ -1188,7 +1188,7 @@ unrate_chg  coef +0.0409   odds ratio 1.042   p-value 0.736</pre></div></div></d
         <div class="fragment fade-in" data-fragment-index="1" style="width: 100%; margin: 0 auto auto;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
           <div style="background: #f0f5f8; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--secondary-color);">
-            <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">1. A class of 30 people. What is the chance that at least two of them share a birthday? <span style="font-weight: 400;">A guess is fine; no searching.</span></p>
+            <p style="font-size: 15.5pt; font-weight: 700; margin: 0 0 10px;">1. What share of US GDP is consumer spending? <span style="font-weight: 400;">A percent, number only. A guess is fine; no searching.</span></p>
             <div class="poll-number" data-poll-id="ch17-econ5200-poll-7" data-poll-voting data-min="0" data-max="100" data-step="0.1" data-unit="%"></div>
           </div>
           <div style="background: #fdf0ea; border-radius: 10px; padding: 16px 22px; border-top: 5px solid var(--accent-color);">
@@ -1204,10 +1204,10 @@ unrate_chg  coef +0.0409   odds ratio 1.042   p-value 0.736</pre></div></div></d
       </div>
     </section>
     <section id="room-result" style="padding: 34px 55px;">
-      <h2><i class="fa-solid fa-cake-candles" style="color: var(--secondary-color);"></i> Our Room, Scored by Accuracy</h2>
+      <h2><i class="fa-solid fa-cart-shopping" style="color: var(--secondary-color);"></i> Our Room, Scored by Accuracy</h2>
       <div class="content">
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> How good is a model that predicts who in this room got it right?</p>
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px;"><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">INPUT</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">How sure you were, <strong>0 to 100</strong>.</p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">OUTPUT</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">The probability your answer is <strong>right</strong>: 60 to 80%. The truth is 70.6%.</p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">DATA</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;"><strong class="rr-n">&mdash;</strong> of you, today. <span class="rr-k"></span></p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--accent-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--accent-color); margin: 0 0 4px;">DECISION RULE</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">Say &ldquo;right&rdquo; when the probability is <strong>0.5 or more</strong>: the library default.</p></div></div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px;"><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">INPUT</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">How sure you were, <strong>0 to 100</strong>.</p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">OUTPUT</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">The probability your answer is <strong>right</strong>: 58 to 78%. The truth is 67.6% (2025).</p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--secondary-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--secondary-color); margin: 0 0 4px;">DATA</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;"><strong class="rr-n">&mdash;</strong> of you, today. <span class="rr-k"></span></p></div><div style="background: #f8f6f3; border-radius: 10px; padding: 10px 14px; border-top: 4px solid var(--accent-color);"><p style="font-size: 11.5pt; font-weight: 700; letter-spacing: .04em; color: var(--accent-color); margin: 0 0 4px;">DECISION RULE</p><p style="font-size: 14pt; line-height: 1.4; margin: 0;">Say &ldquo;right&rdquo; when the probability is <strong>0.5 or more</strong>: the library default.</p></div></div>
         <p class="fragment fade-up text-lg" data-fragment-index="1" style="margin-top: 16px;">Score: the share of you its yes-or-no call gets right.</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px;">
           <div class="stat-highlight fragment fade-up" data-fragment-index="1"><div class="number rr-model" style="color: var(--secondary-color);">&mdash;</div><div class="label">today&rsquo;s model, a logistic regression on how sure you were</div></div>
@@ -1326,7 +1326,7 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         <div class="fragment fade-up" data-fragment-index="1" style="margin-top: 10px;">
           <p style="font-size: 14.5pt; margin: 0 0 4px;"><strong>Example.</strong> A month whose true chance of a recession is 70%. Two forecasters:</p>
           <table style="width: 100%; font-size: 13.5pt; border-collapse: collapse;"><thead><tr style="border-bottom: 2px solid var(--secondary-color);">
-            <th style="text-align: left; padding: 5px 10px;">Reports</th><th style="text-align: right; padding: 5px 10px;">Accuracy (cutoff 0.5)</th><th style="text-align: right; padding: 5px 10px;">Brier on average: 0.7 &times; (r &minus; 1)&sup2; + 0.3 &times; r&sup2;</th></tr></thead><tbody>
+            <th style="text-align: left; padding: 5px 10px;">Reports <em>r</em> (the probability given)</th><th style="text-align: right; padding: 5px 10px;">Accuracy (cutoff 0.5)</th><th style="text-align: right; padding: 5px 10px;">Brier on average: 0.7 &times; (<em>r</em> &minus; 1)&sup2; + 0.3 &times; <em>r</em>&sup2;</th></tr></thead><tbody>
             <tr style="border-bottom: 1px solid #eae4dd;"><td style="padding: 5px 10px;">0.70, truthful</td><td style="text-align: right; padding: 5px 10px;">says yes: right 70%</td><td style="text-align: right; padding: 5px 10px;">0.7 &times; 0.09 + 0.3 &times; 0.49 = <strong>0.21</strong></td></tr>
             <tr><td style="padding: 5px 10px;">1.00, overconfident</td><td style="text-align: right; padding: 5px 10px;">says yes: right 70%</td><td style="text-align: right; padding: 5px 10px;">0.7 &times; 0 + 0.3 &times; 1 = <strong>0.30</strong></td></tr>
           </tbody></table>
@@ -1456,7 +1456,7 @@ recession months caught:  0 of 36</pre></div></div></div></div>
         <button class="reset-btn" onclick="clearPoll('ch17-econ5200-poll-6')" style="position:absolute; bottom:14px; right:20px; font-size:11pt; padding:4px 10px;">Reset</button>
       </section>
     <section id="room-logit" style="padding: 26px 50px;">
-      <h2 style="margin-bottom: 4px;"><i class="fa-solid fa-cake-candles" style="color: var(--secondary-color);"></i> Back to Our Room: The Cut and Brier</h2>
+      <h2 style="margin-bottom: 4px;"><i class="fa-solid fa-cart-shopping" style="color: var(--secondary-color);"></i> Back to Our Room: The Cut and Brier</h2>
       <div class="content">
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 6px;"><i class="fa-solid fa-circle-question"></i> Back in our room: what do the cut and Brier say?</p>
         <p class="rl-head" style="font-size: 14pt; line-height: 1.4; margin: 0;"></p>
@@ -2909,9 +2909,9 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
   </script>
   <script>
 /* ============================================================
-   Topic 17: THE ROOM'S LOGIT (5200 port 21 Nov 2026 of 3916's 11 Nov build; built on Topic 13's room experiment). a = the birthday answer in %
-   (ch17-econ5200-poll-7, 0-100), x = how sure (ch17-econ5200-poll-8, 0-100). y = 1 when 60 <= a <= 80 (the truth for
-   30 people is 70.6%). Logit of y on x/10 by Newton's method, so exp(slope) is the odds ratio per 10 points. If how
+   Topic 17: THE ROOM'S LOGIT (5200 port 21 Nov 2026 of 3916's 11 Nov build; built on Topic 13's room experiment). a = consumer spending's
+   share of US GDP in % (ch17-econ5200-poll-7, 0-100; the birthday % until 23 Nov), x = how sure (ch17-econ5200-poll-8, 0-100).
+   y = 1 when 58 <= a <= 78 (the truth is 67.6%: 2025 PCE 20,870.2 / GDP 30,861.3 $bn, BEA via FRED). Logit of y on x/10 by Newton's method, so exp(slope) is the odds ratio per 10 points. If how
    sure splits right from wrong perfectly the hill has no top (slide 19), so it refits with scikit-learn's default
    penalty (C = 1) and says so. Clicks: 1 accuracy at 0.5 against all zeros, 2 the cut at the base rate, 3 Brier.
    Needs 8 pairs with at least 2 right and 2 wrong; otherwise Q on the reveal (or ?practice=1) loads made-up practice
@@ -2921,11 +2921,12 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
   "use strict";
   var ID_A = "ch17-econ5200-poll-7", ID_X = "ch17-econ5200-poll-8";
   var NUM = /^\s*(?:[oe]\*?:)?\s*(-?\d+(?:\.\d+)?)\s*$/;
-  var MIN_N = 8, MIN_G = 2, LO = 60, HI = 80;
+  var MIN_N = 8, MIN_G = 2, LO = 58, HI = 78;
   var RANGE = {}; RANGE[ID_A] = [0, 100]; RANGE[ID_X] = [0, 100];
-  // made-up demo numbers (answer %, how sure), shown only when Q is pressed on a result page: 20 people, 4 right,
-  // the logit flags nobody at 0.5 (80.0% vs 80.0%), the base-rate cut catches 3 of 4 (statsmodels-checked 12 Nov)
-  var PRACTICE = [[70,60],[68,45],[75,80],[20,85],[10,70],[50,90],[25,30],[30,50],[15,15],[40,40],[45,60],[20,25],[8,5],[35,30],[12,20],[45,55],[18,10],[3,0],[33,35],[60,20]];
+  // made-up demo numbers (answer %, how sure), shown when Q is pressed on a result page (or ?demo=1): 20 people,
+  // 5 right; all zeros 75.0%, the logit at 0.5 flags 3 (2 right, a sure 50%) for 80.0%, the base-rate cut 0.25 flags 8,
+  // catches 3 of 5, 65.0%; Brier 0.250 / 0.188 / 0.148; odds x1.69 per 10 points (statsmodels-checked 23 Nov)
+  var PRACTICE = [[70,90],[68,75],[65,50],[75,65],[60,40],[50,85],[50,70],[45,45],[35,30],[30,20],[25,15],[85,25],[40,55],[20,10],[80,20],[30,10],[90,5],[20,30],[45,60],[80,55]];
   var practice = false, rows0 = [];
 
   function pairs(rows) {
@@ -2996,7 +2997,7 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
       var j = ((i * 37) % 7 - 3) * 2.2, yy = p.y === 1 ? Y(1) + 9 + j : Y(0) - 9 - j;
       s += '<circle cx="' + X(p.x) + '" cy="' + yy + '" r="7" fill="' + (p.y === 1 ? RIGHT : WRONG) + '" fill-opacity="' + (p.y === 1 ? 0.9 : 0.5) + '"/>';
     });
-    s += '<circle cx="' + (L + 16) + '" cy="' + (T + 24) + '" r="6" fill="' + RIGHT + '"/><text x="' + (L + 28) + '" y="' + (T + 29) + '" font-size="17" fill="#555">right (60 to 80%)</text>';
+    s += '<circle cx="' + (L + 16) + '" cy="' + (T + 24) + '" r="6" fill="' + RIGHT + '"/><text x="' + (L + 28) + '" y="' + (T + 29) + '" font-size="17" fill="#555">right (58 to 78%)</text>';
     s += '<circle cx="' + (L + 16) + '" cy="' + (B - 26) + '" r="6" fill="' + WRONG + '" fill-opacity="0.6"/><text x="' + (L + 28) + '" y="' + (B - 21) + '" font-size="17" fill="#555" stroke="#fbfaf8" stroke-width="4" paint-order="stroke">wrong</text>';
     return s + '</svg>';
   }
@@ -3019,7 +3020,7 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
     }
     wait.style.display = "none";
     var step = stepOf(sec), tag = practice ? ' <span style="color:#a06000">(demo numbers, made up)</span>' : "";
-    head.innerHTML = "<strong>" + F.n + "</strong> answers; <strong>" + F.k + "</strong> said 60 to 80% (the truth: 70.6%), a base rate of <strong>" + pc(F.br) + "</strong>. " +
+    head.innerHTML = "<strong>" + F.n + "</strong> answers; <strong>" + F.k + "</strong> said 58 to 78% (the truth: 67.6%), a base rate of <strong>" + pc(F.br) + "</strong>. " +
       "Each 10 points more sure multiplies the odds of being right by <strong>" + f2(F.or) + "</strong>." +
       (F.pen ? ' <span style="color:var(--muted-color)">How sure splits right from wrong perfectly, so the hill has no top (slide 19): fitted with scikit-learn&rsquo;s default penalty.</span>' : "") + tag;
     host.innerHTML = plot(P, F, step);
@@ -3044,8 +3045,10 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
     q(".rr-wait").textContent = "";
     q(".rr-model").textContent = pc(F.c5.acc); q(".rr-zero").textContent = pc(F.acc0);
     var d = Math.round((F.c5.acc - F.acc0) * F.n);
-    q(".rr-verdict").innerHTML = F.c5.flag === 0 ? "<strong>Identical.</strong> It says &ldquo;wrong&rdquo; for all " + F.n + " of you, and so does the rule." :
+    q(".rr-verdict").innerHTML = F.br >= 0.5 ? "<strong>Right was common today</strong>, " + F.k + " of " + F.n + ", so &ldquo;wrong&rdquo; for everyone scores only " + pc(F.acc0) + ". It looks good only when right is rare: 93.1% on the 523 months." :
+      F.c5.flag === 0 ? "<strong>Identical.</strong> It says &ldquo;wrong&rdquo; for all " + F.n + " of you, and so does the rule." :
       d > 0 ? "<strong>The model wins by " + d + (d === 1 ? " person" : " people") + ":</strong> a few of you were sure and right. Rare &ldquo;right&rdquo;, and accuracy still starts at " + pc(F.acc0) + "." :
+      d === 0 ? "<strong>A tie.</strong> Its " + F.c5.flag + " &ldquo;right&rdquo; calls gain as many people as they lose: both score " + pc(F.acc0) + "." :
       "<strong>All zeros wins.</strong> Rare &ldquo;right&rdquo;: guessing &ldquo;wrong&rdquo; for everyone already scores " + pc(F.acc0) + ".";
   }
   window.RoomLogit = { pairs: pairs, fit: fit, paint: function (rows) { draw(rows); } };
