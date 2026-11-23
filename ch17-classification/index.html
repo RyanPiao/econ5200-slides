@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=e0f5dd6c7ac0c334562347c5bfa35288">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=508b7a080522c0939210a31a617ce657">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classification: Logistic Regression</title>
@@ -1854,35 +1854,52 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
       <p class="tier-tag" style="position: absolute; top: 8px; right: 26px; font-size: 10.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-color); font-weight: 700;">Going Deeper</p>
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--secondary-color);"></i> Two Independent Properties</h2>
       <div class="content">
-        <p class="text-lg" style="line-height: 1.55;"><strong>Calibration</strong> is the property that among cases assigned probability \(p\), a fraction \(p\) actually occur. <strong>Discrimination</strong> is whether the ranking is right. They are independent.</p>
-        <div style="background: #fdf0ea; border-left: 5px solid var(--accent-color); border-radius: 10px; padding: 15px 22px; margin-top: 16px;">
-          <p style="font-size: 15.5pt; line-height: 1.5;"><strong>The proof is one line.</strong> Multiply every predicted probability by 0.5. The ranking is unchanged, so AUC is unchanged. Calibration is lost.</p>
+        <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> Can a model rank cases well and still give the wrong probabilities?</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 9px 15px;"><p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>Discrimination:</strong> does it put the riskier cases on top? <span style="color: var(--muted-color);">AUC measures this.</span></p></div>
+          <div style="background: #eef4ef; border-left: 4px solid var(--success-color); border-radius: 8px; padding: 9px 15px;"><p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>Calibration:</strong> when it says 20%, does it happen about 20% of the time? <span style="color: var(--muted-color);">A calibration plot checks this.</span></p></div>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px;">
-          <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 10px; padding: 14px 18px;">
-            <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Ranking applicants by risk?</strong> Only discrimination matters. Calibration is optional.</p>
-          </div>
-          <div style="background: #eef4ef; border-left: 4px solid var(--success-color); border-radius: 10px; padding: 14px 18px;">
-            <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Probability entering a formula</strong> &mdash; expected loss, expected revenue, a capital requirement? <strong>Calibration is everything.</strong></p>
+        <div class="fragment fade-up" data-fragment-index="1" style="margin-top: 12px;">
+          <p style="font-size: 14pt; margin: 0 0 5px;"><strong>Halve every probability.</strong> Five made-up loans:</p>
+          <div style="display: grid; grid-template-columns: 40px 1fr 1fr 150px; gap: 3px 14px; align-items: center;">
+            <span></span><span style="font-size: 12pt; color: var(--muted-color);">the model says</span><span style="font-size: 12pt; color: var(--muted-color);">after halving</span><span style="font-size: 12pt; color: var(--muted-color);">rank</span>
+            <span style="font-size: 13pt; font-weight: 600;">A</span><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 80.0%; background: #6B8BA4; border-radius: 3px;"></div><span style="font-size: 13pt;">40%</span></div><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 40.0%; background: #A85C5C; border-radius: 3px;"></div><span style="font-size: 13pt;">20%</span></div><span style="font-size: 13pt; color: var(--muted-color);">1st both times</span><span style="font-size: 13pt; font-weight: 600;">B</span><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 60.0%; background: #6B8BA4; border-radius: 3px;"></div><span style="font-size: 13pt;">30%</span></div><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 30.0%; background: #A85C5C; border-radius: 3px;"></div><span style="font-size: 13pt;">15%</span></div><span style="font-size: 13pt; color: var(--muted-color);">2nd both times</span><span style="font-size: 13pt; font-weight: 600;">C</span><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 40.0%; background: #6B8BA4; border-radius: 3px;"></div><span style="font-size: 13pt;">20%</span></div><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 20.0%; background: #A85C5C; border-radius: 3px;"></div><span style="font-size: 13pt;">10%</span></div><span style="font-size: 13pt; color: var(--muted-color);">3rd both times</span><span style="font-size: 13pt; font-weight: 600;">D</span><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 20.0%; background: #6B8BA4; border-radius: 3px;"></div><span style="font-size: 13pt;">10%</span></div><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 10.0%; background: #A85C5C; border-radius: 3px;"></div><span style="font-size: 13pt;">5%</span></div><span style="font-size: 13pt; color: var(--muted-color);">4th both times</span><span style="font-size: 13pt; font-weight: 600;">E</span><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 10.0%; background: #6B8BA4; border-radius: 3px;"></div><span style="font-size: 13pt;">5%</span></div><div style="display: flex; align-items: center; gap: 8px;"><div style="height: 15px; width: 5.0%; background: #A85C5C; border-radius: 3px;"></div><span style="font-size: 13pt;">2.5%</span></div><span style="font-size: 13pt; color: var(--muted-color);">5th both times</span>
           </div>
         </div>
-        <p style="font-size: 14.5pt; margin-top: 16px;">A classifier can rank perfectly and still be useless, if the <em>level</em> of its probabilities is wrong. Which matters depends entirely on the use &mdash; and the use is a business fact, not a modelling one.</p>
+        <div class="fragment fade-up" data-fragment-index="2" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+          <span style="display: inline-block; background: #E1E8F3; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">Same order &rarr; same AUC (our 523 months: 0.811 before and after)</span>
+          <span style="display: inline-block; background: #F6E0D6; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">Every level halved &rarr; calibration lost</span>
+        </div>
+        <div class="fragment fade-up" data-fragment-index="3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
+          <div style="background: #f8f6f3; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 9px 15px;"><p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>Ranking applicants?</strong> Only the order matters.</p></div>
+          <div style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 9px 15px;"><p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>A probability in a formula</strong> (expected loss, revenue, capital)? The level is everything.</p></div>
+        </div>
       </div>
     </section>
 
-    <section id="basel" style="padding: 32px 55px;">
+    <section id="basel" style="padding: 30px 55px;">
       <p class="tier-tag" style="position: absolute; top: 8px; right: 26px; font-size: 10.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-color); font-weight: 700;">Going Deeper</p>
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-building-columns" style="color: var(--accent-color);"></i> Basel III Makes This a Capital Number</h2>
       <div class="content">
-        <p class="text-lg">Under the Internal Ratings-Based approach, expected credit loss is</p>
-        <div style="background: #eef4ef; border-radius: 10px; padding: 4px 20px; margin-top: 8px; font-size: 15pt;">
-          $$EL = PD \times LGD \times EAD$$
+        <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> Who uses the probability, and what does a wrong one cost?</p>
+        <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;">Under Basel III&rsquo;s Internal Ratings-Based approach, a bank&rsquo;s expected credit loss is</p>
+        <div style="background: #eef4ef; border-radius: 10px; padding: 0 20px; margin-top: 6px; font-size: 14pt;">$$EL = PD \times LGD \times EAD$$</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+          <span style="display: inline-block; background: #E1E8F3; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">PD: the chance of default = <em>your model&rsquo;s probability</em></span>
+          <span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">LGD: the share lost if it defaults</span>
+          <span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">EAD: the amount owed at default</span>
         </div>
-        <p style="font-size: 14.5pt; line-height: 1.5; margin-top: 14px;"><strong>In words.</strong> Expected loss is the probability of default times loss-given-default times exposure-at-default &mdash; and the model's predicted probability <em>is</em> the \(PD\). It feeds directly into required regulatory capital.</p>
-        <div style="background: linear-gradient(135deg, #fdf0ea, #f8ded1); border-radius: 12px; padding: 18px 24px; margin-top: 16px;">
-          <p style="font-size: 16pt; line-height: 1.5;">A model whose PDs are systematically <strong>inflated</strong> forces the bank to hold capital against losses that will not occur &mdash; a direct and continuing cost, and <strong>invisible to any ranking metric</strong>.</p>
+        <div class="fragment fade-up" data-fragment-index="1" style="margin-top: 12px;">
+          <p style="font-size: 14pt; margin: 0 0 6px;"><strong>A made-up loan book:</strong> $100 million owed, 45% lost on a default.</p>
+          <div style="display: grid; grid-template-columns: 250px 290px 1fr 95px; gap: 6px 12px; align-items: center; font-size: 13.5pt;">
+            <span>calibrated model, PD 2%</span><span>0.02 &times; 0.45 &times; $100m</span><div style="height: 15px; width: 50.0%; background: #6A8E6B; border-radius: 3px;"></div><strong>$0.9m</strong>
+            <span>PD twice too high, 4%</span><span>0.04 &times; 0.45 &times; $100m</span><div style="height: 15px; width: 100.0%; background: #A85C5C; border-radius: 3px;"></div><strong>$1.8m</strong>
+          </div>
         </div>
-        <p style="font-size: 14.5pt; margin-top: 16px; line-height: 1.5;">Nobody in that chain reads an AUC. They read a number that came out of your model and was multiplied by a loan book.</p>
+        <div class="key-result fragment fade-up" data-fragment-index="2" style="margin-top: 12px;">
+          <p style="font-size: 14.5pt;">The extra <strong>$0.9m</strong> is set aside for losses that will not happen, every year the model runs, and the capital requirement rises with PD too. Both models rank the loans the same way, so their <strong>AUC is the same</strong>.</p>
+        </div>
+        <p class="fragment fade-up" data-fragment-index="3" style="font-size: 14.5pt; margin-top: 10px; color: var(--accent-color);"><i class="fa-solid fa-arrow-right"></i> Nobody in that chain reads an AUC. They read your model&rsquo;s number, multiplied by a loan book.</p>
       </div>
     </section>
 
@@ -1890,34 +1907,44 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
       <p class="tier-tag" style="position: absolute; top: 8px; right: 26px; font-size: 10.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-color); font-weight: 700;">Going Deeper</p>
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-skull-crossbones" style="color: var(--danger-color);"></i> Which Is Why the Standard Imbalance &ldquo;Fixes&rdquo; Are Dangerous</h2>
       <div class="content">
-        <p style="font-size: 15pt; line-height: 1.5;">SMOTE and naive over-sampling change <strong>the base rate the model is trained on</strong>. The resulting model estimates \(P(Y=1)\) under the <em>resampled</em> distribution, not the real one, and systematically <strong>overstates</strong> the rare event.</p>
-        <p style="font-size: 14.5pt; line-height: 1.5; margin-top: 12px;">Simulation studies find these corrections damage calibration substantially while <em>not reliably improving discrimination</em> &mdash; the thing they were adopted to improve. And by the previous slide, an inflated \(PD\) is a capital cost.</p>
-        <div style="background: #fdf0ea; border-left: 5px solid var(--danger-color); border-radius: 10px; padding: 14px 20px; margin-top: 14px;">
-          <p style="font-size: 15pt; line-height: 1.5;"><strong>Common misconception:</strong> &ldquo;class imbalance is a problem to be fixed before modelling.&rdquo; <strong>Imbalance is a property of the world, not a defect in the data.</strong> Rare events are rare. Resampling does not create information &mdash; it changes the prior the model learns, in exchange for a metric that looked better because it was the wrong metric.</p>
+        <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> Rare events are hard to learn. Why not just make them less rare?</p>
+        <p style="font-size: 14.5pt; line-height: 1.45; margin: 0;"><strong>SMOTE</strong> and over-sampling add copies, or made-up look-alikes, of the rare cases until the two classes are about equal. <strong>Balanced class weights</strong> do the same by counting each rare case more.</p>
+        <div class="fragment fade-up" data-fragment-index="1" style="margin-top: 10px;">
+          <div style="display: grid; grid-template-columns: 410px 1fr 70px; gap: 5px 12px; align-items: center; font-size: 13.5pt;">
+            <span>months followed by a recession (the truth)</span><div style="height: 15px; width: 17.2%; background: #6A8E6B; border-radius: 3px;"></div><strong>6.9%</strong>
+            <span>model&rsquo;s average probability, balanced weights</span><div style="height: 15px; width: 94.3%; background: #A85C5C; border-radius: 3px;"></div><strong>37.7%</strong>
+          </div>
+          <p style="font-size: 13.5pt; margin: 4px 0 0; color: var(--muted-color);">Our 523 months: the model now says a recession is about <strong>5.5 times</strong> as likely as it is.</p>
         </div>
-        <div style="background: #eef4ef; border-left: 5px solid var(--success-color); border-radius: 10px; padding: 14px 20px; margin-top: 12px;">
-          <p style="font-size: 15pt; line-height: 1.5;"><strong>Do this instead.</strong> Train on the true distribution, unweighted: <code>class_weight='balanced'</code> moves the prior just as resampling does (on our data the mean probability went from 6.9% to 37.7%). <strong>Move the threshold, not the data</strong> &mdash; Section 17.5's cost-based cutoff does everything resampling was supposed to do, without corrupting the probabilities.</p>
+        <div class="fragment fade-up" data-fragment-index="2" style="background: #fdf0ea; border-left: 5px solid var(--danger-color); border-radius: 8px; padding: 9px 16px; margin-top: 10px;">
+          <p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>Common misconception:</strong> &ldquo;imbalance is a defect to fix before modelling.&rdquo; It is a property of the world: rare events are rare. Resampling adds no information; it changes the base rate the model learns. Studies find it hurts calibration and does not reliably improve the ranking.</p>
+        </div>
+        <div class="fragment fade-up" data-fragment-index="3" style="background: #eef4ef; border-left: 5px solid var(--success-color); border-radius: 8px; padding: 9px 16px; margin-top: 10px;">
+          <p style="font-size: 14pt; margin: 0 0 6px;"><strong>Do this instead: move the threshold, not the data.</strong></p>
+          <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px;"><span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">keep the real data</span><span style="color: var(--muted-color); font-size: 14pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">fit the model as usual</span><span style="color: var(--muted-color); font-size: 14pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #E1E8F3; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">move the threshold (17.5&rsquo;s cutoff)</span><span style="color: var(--muted-color); font-size: 14pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #DCEBDD; color: #2D2D2D; border-radius: 6px; padding: 4px 10px; font-size: 13pt; font-weight: 600;">honest probabilities</span></div>
         </div>
       </div>
     </section>
 
-    <section id="platt-isotonic" style="padding: 30px 52px;">
+    <section id="platt-isotonic" style="padding: 26px 52px;">
       <p class="tier-tag" style="position: absolute; top: 8px; right: 26px; font-size: 10.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-color); font-weight: 700;">Going Deeper</p>
       <h2 style="font-size: 24pt;"><i class="fa-solid fa-screwdriver-wrench" style="color: var(--secondary-color);"></i> Repairing Calibration After the Fact</h2>
       <div class="content">
-        <p style="font-size: 14.5pt; line-height: 1.5;">Post-hoc calibration fits a <em>second</em>, monotone model mapping raw scores to empirical frequencies on <strong>held-out</strong> data &mdash; Ch 15's leakage discipline, applied to the calibration step.</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 14px;">
-          <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 10px; padding: 14px 18px;">
-            <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Platt scaling.</strong> A one-dimensional logistic regression on the scores. Parametric, stable, appropriate for <em>small</em> calibration sets.</p>
-          </div>
-          <div style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 10px; padding: 14px 18px;">
-            <p style="font-size: 14.5pt; line-height: 1.5;"><strong>Isotonic regression.</strong> A non-parametric monotone step function. More flexible; <strong>overfits badly below roughly a thousand</strong> calibration observations, and needs more when positives are rare: count the positives, not the rows.</p>
+        <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> The probabilities are off. Can we repair them without refitting the model?</p>
+        <div style="display: grid; grid-template-columns: 54% 1fr; gap: 18px; align-items: start;">
+          <div class="fragment fade-up" data-fragment-index="1"><img class="figure" src="figures/figure_008_calibration_repair.png" alt="Simulated held-out loans: raw scores sit far above the share that defaulted; Platt scaling draws one smooth rising curve and isotonic regression a rising staircase, both through the binned default shares and well below the face-value diagonal" style="max-width: 100%; max-height: 492px; width: auto; height: auto; display: block; margin: 0 auto;"></div>
+          <div>
+            <p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>Yes.</strong> Fit a second, small model that maps each raw score to the share that actually happened, on <strong>held-out</strong> rows (Ch 15&rsquo;s leakage rule).</p>
+            <div class="fragment fade-up" data-fragment-index="2" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+              <div style="background: #f0f5f8; border-left: 4px solid var(--secondary-color); border-radius: 8px; padding: 9px 15px;"><p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>Platt scaling:</strong> one smooth curve, a logistic regression on the score. Stable, fine for small sets.</p></div>
+              <div style="background: #f8f6f3; border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 9px 15px;"><p style="font-size: 14pt; line-height: 1.42; margin: 0;"><strong>Isotonic regression:</strong> steps that only go up. More flexible, but noisy below about a thousand rows; with rare events, count the positives, not the rows.</p></div>
+            </div>
+            <div class="key-result fragment fade-up" data-fragment-index="3" style="margin-top: 10px;">
+              <p style="font-size: 14pt;">Both only go up, so the order never changes and <strong>AUC barely moves</strong>. If AUC moves a lot, something other than calibration happened.</p>
+            </div>
+            <p style="font-size: 12.5pt; color: var(--muted-color); margin-top: 8px;"><code>CalibratedClassifierCV</code> does both. You run both in Lab 17.</p>
           </div>
         </div>
-        <div style="background: #eef4ef; border-left: 5px solid var(--success-color); border-radius: 10px; padding: 14px 20px; margin-top: 16px;">
-          <p style="font-size: 15pt; line-height: 1.5;">Both are monotone, so <strong>neither can reverse the ranking</strong> &mdash; AUC is essentially unmoved by construction. <em>That is the diagnostic, not a disappointment.</em> Isotonic's ties can nudge it; a larger move means something other than calibration happened.</p>
-        </div>
-        <p style="font-size: 13.5pt; color: var(--muted-color); margin-top: 12px;">Both available through <code>CalibratedClassifierCV</code>, and both require data not used for fitting. You will run both in Lab 17.</p>
       </div>
     </section>
 
