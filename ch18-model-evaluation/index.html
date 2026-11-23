@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=08e573bd8b934b0f5d5d2dbdfa5e32f0">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=53ea2590e82447a33040e1c472edf27b">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Model Evaluation: Metrics That Matter</title>
@@ -518,7 +518,7 @@ round(roc_auc_score(y, p), 3)</code></pre><div class="mk-out mk-mono" style="dis
     <section id="amplification" style="padding: 20px 50px;">
       <h2><i class="fa-solid fa-arrow-trend-down" style="color: #7C3A5F;"></i> The Amplification Factor, Drawn</h2>
       <div class="content">
-        <div style="display: grid; grid-template-columns: 400px 1fr; gap: 26px; align-items: center;">
+        <div style="display: grid; grid-template-columns: 460px 1fr; gap: 26px; align-items: center;">
           <img src="figures/figure_005_pi_amplification.png" alt="Two panels: precision at a fixed ROC point rising with the base rate while recall and FPR stay flat, and the amplification factor one minus pi over pi falling steeply from above twenty toward one" style="width: 100%; border-radius: 8px;">
           <div>
             <p style="font-size: 15pt; line-height: 1.6;"><strong>Top panel.</strong> Hold the operating point fixed. Recall and FPR are flat lines &mdash; they are properties of the model. Precision is a curve, because it is a property of the model <em>and the world</em>.</p>

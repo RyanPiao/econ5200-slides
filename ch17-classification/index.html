@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=fb54432b0de3d88cde09d8a5e361e764">
+<meta name="deck-build" content="public; speaker notes removed by strip_notes.py; out=e0f5dd6c7ac0c334562347c5bfa35288">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Classification: Logistic Regression</title>
@@ -1718,7 +1718,7 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
           </div>
           <div class="fragment fade-up" data-fragment-index="2" style="display: grid; grid-template-columns: 34px 1fr; gap: 12px; background: #f8f6f3; border-radius: 8px; padding: 9px 16px; border-left: 4px solid var(--accent-color);">
             <p style="font-size: 18pt; font-weight: 700; color: var(--accent-color); margin: 0;">2</p>
-            <div><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong>Name the mechanism.</strong> Write the story as a chain, so each link can be checked. 10-year rate = expected rates + extra pay.</p><div style="display: flex; align-items: center; flex-wrap: wrap; gap: 2px; margin-top: 5px;"><span style="font-size: 12.5pt; color: var(--muted-color); width: 92px; flex: none;">before 2022</span><span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">downturn expected</span><span style="color: var(--muted-color); font-size: 13pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">cuts bigger than the 1.4 extra pay</span><span style="color: var(--muted-color); font-size: 13pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">long yield below short</span><span style="color: var(--muted-color); font-size: 13pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #E1E8F3; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">inverted</span></div><div style="display: flex; align-items: center; flex-wrap: wrap; gap: 2px; margin-top: 5px;"><span style="font-size: 12.5pt; color: var(--muted-color); width: 92px; flex: none;">2022&ndash;24</span><span style="display: inline-block; background: #F6E0D6; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">extra pay only 0.24</span><span style="color: var(--muted-color); font-size: 13pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">smaller expected cuts are enough</span><span style="color: var(--muted-color); font-size: 13pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #F3EEE7; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">long yield below short</span><span style="color: var(--muted-color); font-size: 13pt; margin: 0 4px;">&rarr;</span><span style="display: inline-block; background: #E1E8F3; color: #2D2D2D; border-radius: 6px; padding: 3px 9px; font-size: 12.5pt; font-weight: 600;">inverted</span></div></div>
+            <div><p style="font-size: 13.5pt; line-height: 1.4; margin: 0;"><strong>Name the mechanism.</strong> Same result, different cause. The 10-year rate = expected short rates + extra pay for tying money up.</p><div style="display: grid; grid-template-columns: 92px 1fr 1fr; gap: 4px 8px; margin-top: 5px; align-items: stretch;"><span></span><span style="font-size: 11.5pt; color: var(--muted-color);">why the 10-year fell below the 3-month</span><span style="font-size: 11.5pt; color: var(--muted-color);">what &ldquo;inverted&rdquo; meant</span><span style="font-size: 12.5pt; color: var(--muted-color); align-self: center;">before 2022</span><span style="background: #F3EEE7; font-size: 12.5pt; line-height: 1.3; padding: 4px 8px; border-radius: 6px;">markets expected rate cuts bigger than the <strong>1.4</strong> points of extra pay</span><span style="background: #E1E8F3; font-size: 12.5pt; line-height: 1.3; padding: 4px 8px; border-radius: 6px; font-weight: 600;">a downturn is coming</span><span style="font-size: 12.5pt; color: var(--muted-color); align-self: center;">2022&ndash;24</span><span style="background: #F6E0D6; font-size: 12.5pt; line-height: 1.3; padding: 4px 8px; border-radius: 6px;">extra pay was only <strong>0.24</strong>, so small expected cuts were enough</span><span style="background: #E1E8F3; font-size: 12.5pt; line-height: 1.3; padding: 4px 8px; border-radius: 6px; font-weight: 600;">mostly: the extra pay is missing</span></div></div>
           </div>
           <div class="fragment fade-up" data-fragment-index="3" style="display: grid; grid-template-columns: 34px 1fr; gap: 12px; background: #f8f6f3; border-radius: 8px; padding: 9px 16px; border-left: 4px solid var(--success-color);">
             <p style="font-size: 18pt; font-weight: 700; color: var(--success-color); margin: 0;">3</p>
@@ -1733,29 +1733,29 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
       <h2><i class="fa-solid fa-building-columns" style="color: var(--secondary-color);"></i> Economist at Work &mdash; The NY Fed's Model</h2>
       <div class="content">
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> What do professionals do when a trusted model misses?</p>
-        <p style="font-size: 15pt; line-height: 1.45; margin: 0;">The New York Fed publishes a monthly recession probability from the term spread alone.</p>
+        <p style="font-size: 15pt; line-height: 1.45; margin: 0;">Every month the New York Fed publishes the chance of a recession in the next 12 months, using <strong>only the term spread</strong>.</p>
         <div style="display: flex; gap: 10px; margin-top: 10px; align-items: stretch;">
           <div class="fragment fade-up" data-fragment-index="1" style="flex: 1; background: #f8f6f3; border-radius: 8px; padding: 8px 12px; border-top: 4px solid var(--secondary-color);">
             <p style="font-size: 12.5pt; font-weight: 700; color: var(--secondary-color); margin: 0 0 3px;">1990s</p>
-            <p style="font-size: 13pt; line-height: 1.4; margin: 0;">Estrella and Mishkin propose it: <strong>one variable</strong>, a probit (a close cousin of our logit). The version the New York Fed publishes is estimated on 1959&ndash;2009.</p>
+            <p style="font-size: 13pt; line-height: 1.4; margin: 0;">Two economists, Estrella and Mishkin, build it with <strong>one input</strong>. It is a probit, a close cousin of our logit, fit on 1959&ndash;2009.</p>
           </div>
           <div class="fragment fade-up" data-fragment-index="2" style="flex: 1; background: #f8f6f3; border-radius: 8px; padding: 8px 12px; border-top: 4px solid var(--danger-color);">
             <p style="font-size: 12.5pt; font-weight: 700; color: var(--danger-color); margin: 0 0 3px;">2022&ndash;23</p>
-            <p style="font-size: 13pt; line-height: 1.4; margin: 0;">It flashes, peaking near <strong>71%</strong>. Many forecasters call a downturn.</p>
+            <p style="font-size: 13pt; line-height: 1.4; margin: 0;">The model says a recession is likely: up to <strong>71%</strong>. Economists agreed: in an October 2022 survey they put the chance at <strong>63%</strong>.</p>
           </div>
           <div class="fragment fade-up" data-fragment-index="3" style="flex: 1; background: #f8f6f3; border-radius: 8px; padding: 8px 12px; border-top: 4px solid var(--muted-color);">
             <p style="font-size: 12.5pt; font-weight: 700; color: var(--muted-color); margin: 0 0 3px;">2023&ndash;24</p>
-            <p style="font-size: 13pt; line-height: 1.4; margin: 0;">No recession comes.</p>
+            <p style="font-size: 13pt; line-height: 1.4; margin: 0;"><strong>No recession came.</strong> The economy kept growing.</p>
           </div>
           <div class="fragment fade-up" data-fragment-index="4" style="flex: 1; background: #f8f6f3; border-radius: 8px; padding: 8px 12px; border-top: 4px solid var(--success-color);">
             <p style="font-size: 12.5pt; font-weight: 700; color: var(--success-color); margin: 0 0 3px;">Today</p>
-            <p style="font-size: 13pt; line-height: 1.4; margin: 0;">The Fed <strong>still publishes it</strong>.</p>
+            <p style="font-size: 13pt; line-height: 1.4; margin: 0;">The Fed <strong>still publishes it</strong> every month.</p>
           </div>
         </div>
         <div class="key-result fragment fade-up" data-fragment-index="5" style="margin-top: 12px;">
-          <p style="font-size: 15pt;">Parsimony is the point: one input you can explain is <strong>auditable</strong>. When it misses, you can see why, which a hundred-feature model never lets you do.</p>
+          <p style="font-size: 15pt;">Why keep a model that missed? With <strong>one input</strong>, you can see <em>why</em> it missed. A model with a hundred inputs never lets you see that.</p>
         </div>
-        <p class="fragment fade-up" data-fragment-index="6" style="margin-top: 10px; font-size: 14.5pt; color: var(--accent-color);"><i class="fa-solid fa-arrow-right"></i> A feature&rsquo;s meaning belongs to the regime that produced it. Checking that it still means the same is routine maintenance for a model in use.</p>
+        <p class="fragment fade-up" data-fragment-index="6" style="margin-top: 10px; font-size: 14.5pt; color: var(--accent-color);"><i class="fa-solid fa-arrow-right"></i> A feature can change what it means. Checking that it still means the same thing is routine upkeep for any model in use.</p>
       </div>
     </section>
 
@@ -1771,7 +1771,7 @@ for m in [<span class="t-str">&quot;2023-01&quot;</span>, <span class="t-str">&q
         <p style="font-size: 14pt; color: var(--secondary-color); margin: 0 0 8px;"><i class="fa-solid fa-circle-question"></i> What if there are more than two outcomes?</p>
         <p style="font-size: 15pt; line-height: 1.45; margin: 0;">A commuter&rsquo;s mode, a bond&rsquo;s rating, a firm that expands, contracts or holds.</p>
         <div class="fragment fade-up" data-fragment-index="1" style="margin-top: 6px;">
-          <div class="equation-box" style="margin: 6px 0; font-size: 0.85em;">$$P(Y = j \mid \mathbf{x}) = \frac{e^{\mathbf{x}'\boldsymbol{\beta}_j}}{\sum_{m=1}^{J} e^{\mathbf{x}'\boldsymbol{\beta}_m}}$$</div>
+          <div class="equation-box" style="margin: 6px 0; font-size: 0.85em;">$$P(Y = j \mid \mathbf{x}) = \frac{e^{\mathbf{x}'\boldsymbol{\beta}_j}}{\sum_{m=1}^{J} e^{\mathbf{x}'\boldsymbol{\beta}_m}}$$</div><p style="font-size: 12.5pt; line-height: 1.35; color: var(--muted-color); margin: 0 0 4px;">\( j \): one outcome (car, bus, &hellip;) &middot; \( J \): how many outcomes &middot; \( \boldsymbol{\beta}_j \): that outcome&rsquo;s own coefficients &middot; the bottom adds the same term over every outcome \( m = 1, \dots, J \), so the shares add to 1.</p>
           <p style="font-size: 14pt; line-height: 1.4; margin: 0;"><strong>Multinomial logit:</strong> one linear predictor per category, turned into shares that sum to 1, each read against a baseline category (the reference category of a dummy regressor, now on the outcome). McFadden, Nobel Prize 2000.</p>
         </div>
         <div class="fragment fade-up" data-fragment-index="2" style="margin-top: 10px; background: #f8f6f3; border-radius: 8px; padding: 8px 14px; border-left: 4px solid var(--danger-color);">
