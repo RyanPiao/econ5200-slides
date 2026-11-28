@@ -98,9 +98,20 @@
   "ch18-econ5200-poll-2": "18-2",
   "ch18-econ5200-poll-3": "18-3",
   "ch18-econ5200-poll-4": "18-4",
-  "ch21-econ5200-poll-1": "21-1",
-  "ch21-econ5200-poll-2": "21-2",
-  "ch21-econ5200-poll-3": "21-3",
+  "ch19-econ5200-poll-1": "19-1",
+  "ch19-econ5200-poll-2": "19-3",
+  "ch19-econ5200-poll-3": "19-4",
+  "ch19-econ5200-poll-4": "19-2",
+  "ch20-econ5200-poll-1": "20-2",
+  "ch20-econ5200-poll-2": "20-3",
+  "ch20-econ5200-poll-3": "20-4",
+  "ch20-econ5200-poll-4": "20-5",
+  "ch20-econ5200-poll-5": "20-1",
+  "ch21-econ5200-poll-1": "21-2",
+  "ch21-econ5200-poll-2": "21-3",
+  "ch21-econ5200-poll-3": "21-4",
+  "ch21-econ5200-poll-4": "21-5",
+  "ch21-econ5200-poll-5": "21-1",
   "ch22-econ5200-poll1": "22-1",
   "ch22-econ5200-poll2": "22-2",
   "ch23-econ5200-poll1": "23-1",
@@ -348,6 +359,22 @@
    "ch18-model-evaluation",
    "ch18-econ5200-poll-4"
   ],
+  "19-1": [
+   "ch19-tree-based-models-random-forests",
+   "ch19-econ5200-poll-1"
+  ],
+  "19-2": [
+   "ch19-tree-based-models-random-forests",
+   "ch19-econ5200-poll-4"
+  ],
+  "19-3": [
+   "ch19-tree-based-models-random-forests",
+   "ch19-econ5200-poll-2"
+  ],
+  "19-4": [
+   "ch19-tree-based-models-random-forests",
+   "ch19-econ5200-poll-3"
+  ],
   "2-1": [
    "ch02-measurement-indexes-nominal-vs-real",
    "ch02-econ5200-poll-1"
@@ -360,17 +387,45 @@
    "ch02-measurement-indexes-nominal-vs-real",
    "ch02-econ5200-poll-4"
   ],
+  "20-1": [
+   "ch20-time-series-trends-decomposition",
+   "ch20-econ5200-poll-5"
+  ],
+  "20-2": [
+   "ch20-time-series-trends-decomposition",
+   "ch20-econ5200-poll-1"
+  ],
+  "20-3": [
+   "ch20-time-series-trends-decomposition",
+   "ch20-econ5200-poll-2"
+  ],
+  "20-4": [
+   "ch20-time-series-trends-decomposition",
+   "ch20-econ5200-poll-3"
+  ],
+  "20-5": [
+   "ch20-time-series-trends-decomposition",
+   "ch20-econ5200-poll-4"
+  ],
   "21-1": [
    "ch21-time-series-prophet-arima-structural-breaks",
-   "ch21-econ5200-poll-1"
+   "ch21-econ5200-poll-5"
   ],
   "21-2": [
    "ch21-time-series-prophet-arima-structural-breaks",
-   "ch21-econ5200-poll-2"
+   "ch21-econ5200-poll-1"
   ],
   "21-3": [
    "ch21-time-series-prophet-arima-structural-breaks",
+   "ch21-econ5200-poll-2"
+  ],
+  "21-4": [
+   "ch21-time-series-prophet-arima-structural-breaks",
    "ch21-econ5200-poll-3"
+  ],
+  "21-5": [
+   "ch21-time-series-prophet-arima-structural-breaks",
+   "ch21-econ5200-poll-4"
   ],
   "22-1": [
    "ch22-unsupervised-learning-clustering-economies",
